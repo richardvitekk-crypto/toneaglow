@@ -1,0 +1,88 @@
+{%- comment -%}
+  Výběr balení (1 kus / 2 kusy) jako velké karty.
+  Karty přepínají skrytou volbu „Balení“ v přepínači variant Dawn,
+  takže cena, košík i dostupnost fungují standardně.
+
+  Accepts:
+  - product {Object}
+  - option_name {String} – název volby, výchozí „Balení“
+  - badge {String} – štítek u nejvýhodnější volby
+{%- endcomment -%}
+{%- liquid
+  assign option_name = option_name | default: 'Balení'
+  assign option_handle = option_name | handleize
+  assign target_option = null
+  for option in product.options_with_values
+    assign this_handle = option.name | handleize
+    if this_handle == option_handle
+      assign target_option = option
+    endif
+  endfor
+-%}
+
+{%- if target_option != null and target_option.values.size > 1 -%}
+  {%- liquid
+    assign option_index = target_option.position | minus: 1
+    assign first_value_price = 0
+    for value in target_option.values
+      for variant in product.variants
+        if variant.options[option_index] == value.name
+          assign first_value_price = variant.price
+          break
+        endif
+      endfor
+      break
+    endfor
+  -%}
+  <kt-offers class="kt-offers-wrap" data-option="{{ option_handle }}">
+    <p class="kt-offers__label" id="kt-offers-label-{{ product.id }}">{{ target_option.name }}</p>
+    <div role="radiogroup" aria-labelledby="kt-offers-label-{{ product.id }}" class="kt-offers">
+      {%- for value in target_option.values -%}
+        {%- liquid
+          assign value_price = 0
+          for variant in product.variants
+            if variant.options[option_index] == value.name
+              assign value_price = variant.price
+              break
+            endif
+          endfor
+          assign qty = value.name | split: ' ' | first | plus: 0
+          if qty < 1
+            assign qty = 1
+          endif
+          assign full_price = first_value_price | times: qty
+          assign saving = full_price | minus: value_price
+          assign unit_price = value_price | divided_by: qty
+        -%}
+        <button
+          type="button"
+          role="radio"
+          class="kt-offer{% if value.selected %} is-active{% endif %}"
+          data-value="{{ value.name | escape }}"
+          aria-checked="{% if value.selected %}true{% else %}false{% endif %}"
+        >
+          <span class="kt-offer__radio" aria-hidden="true"></span>
+          <span>
+            <span class="kt-offer__title">{{ value.name }}</span>
+            <span class="kt-offer__sub">
+              {%- if qty > 1 -%}
+                Na obě kolena · ušetříš {{ saving | money_without_trailing_zeros }}
+              {%- else -%}
+                Na jedno koleno
+              {%- endif -%}
+            </span>
+          </span>
+          <span class="kt-offer__price">
+            {{ value_price | money_without_trailing_zeros }}
+            {%- if qty > 1 -%}
+              <span class="kt-offer__unit">{{ unit_price | money_without_trailing_zeros }} / kus</span>
+            {%- endif -%}
+          </span>
+          {%- if qty > 1 and saving > 0 and badge != blank -%}
+            <span class="kt-offer__badge">{{ badge }}</span>
+          {%- endif -%}
+        </button>
+      {%- endfor -%}
+    </div>
+  </kt-offers>
+{%- endif -%}

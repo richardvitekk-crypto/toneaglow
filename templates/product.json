@@ -1,0 +1,581 @@
+/*
+ * KNEETECH – šablona. Upravuj přes editor motivu v Shopify.
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "KNEETECH · Pro fotbalisty 13–18",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "offers": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'kt-offers', product: product, option_name: 'Balení', badge: 'Nejvýhodnější' %}"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "none"
+          }
+        },
+        "size_link": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<a class=\"kt-size-link\" href=\"{{ pages['velikosti'].url | default: '/pages/velikosti' }}\">{% render 'kt-icon', name: 'ruler' %}Nevíš velikost? Změř se za minutu</a>"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "trust": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "vertical",
+            "icon_1": "truck",
+            "heading_1": "Doručení do 14 dnů",
+            "icon_2": "lock",
+            "heading_2": "Bezpečná platba",
+            "icon_3": "chat_bubble",
+            "heading_3": "Poradíme s velikostí"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "tab_material": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materiál a péče",
+            "icon": "washing",
+            "content": "<p><strong>Materiál:</strong> polyesterové vlákno, suchý zip, protiskluzový pásek.<br><strong>Hmotnost:</strong> asi 70 g za kus.<br><strong>Barvy:</strong> černá, šedá.<br><strong>Velikosti:</strong> S, M, L, XL.</p><p><strong>Péče:</strong> perte ručně ve vlažné vodě s jemným prostředkem, suchý zip před praním zapněte. Sušte volně na vzduchu, ne v sušičce ani na topení.</p>"
+          }
+        },
+        "tab_shipping": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Doprava a vrácení",
+            "icon": "truck",
+            "content": "<p>Doručení obvykle do 14 dnů. Doprava stojí 72 Kč, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p><p>Od nákupu můžeš odstoupit do 14 dnů od převzetí. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>"
+          }
+        },
+        "tab_safety": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Bezpečnost",
+            "icon": "check_mark",
+            "content": "<p>Bandáž není zdravotnický prostředek a nenahrazuje vyšetření ani léčbu.</p><ul><li>Nepřetahuj ji – koleno musíš v bandáži normálně ohnout.</li><li>Když cítíš brnění, otok nebo se změní barva kůže, povol ji nebo sundej.</li><li>Nenos ji celý den ani přes noc.</li><li>Nenos ji na poraněnou nebo podrážděnou kůži.</li><li>Při bolesti, která neustupuje, navštiv lékaře.</li></ul>"
+          }
+        },
+        "manufacturer": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- if product.metafields.custom.vyrobce != blank -%}<p class=\"kt-note\">{{ product.metafields.custom.vyrobce | newline_to_br }}</p>{%- endif -%}"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "offers",
+        "variant_picker",
+        "size_link",
+        "buy_buttons",
+        "trust",
+        "description",
+        "tab_material",
+        "tab_shipping",
+        "tab_safety",
+        "manufacturer"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": true,
+        "padding_top": 24,
+        "padding_bottom": 56
+      }
+    },
+    "marquee": {
+      "type": "kt-marquee",
+      "blocks": {
+        "m0": {
+          "type": "item",
+          "settings": {
+            "text": "Komprese"
+          }
+        },
+        "m1": {
+          "type": "item",
+          "settings": {
+            "text": "Opora"
+          }
+        },
+        "m2": {
+          "type": "item",
+          "settings": {
+            "text": "Suchý zip"
+          }
+        },
+        "m3": {
+          "type": "item",
+          "settings": {
+            "text": "Protiskluz"
+          }
+        },
+        "m4": {
+          "type": "item",
+          "settings": {
+            "text": "Jen 70 g"
+          }
+        },
+        "m5": {
+          "type": "item",
+          "settings": {
+            "text": "Pro fotbalisty"
+          }
+        }
+      },
+      "block_order": [
+        "m0",
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5"
+      ],
+      "settings": {
+        "speed": 40,
+        "color_scheme": "scheme-3",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "benefits": {
+      "type": "kt-benefits",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "compression",
+            "title": "Komprese",
+            "text": "<p>Obepne koleno ze všech stran. Hodně hráčů díky tomu cítí koleno jistěji při doskoku i změně směru.</p>"
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "velcro",
+            "title": "Utáhneš si ji sám",
+            "text": "<p>Suchý zip povolíš nebo přitáhneš přesně podle sebe. Na zápas víc, na rozcvičku míň.</p>"
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "grip",
+            "title": "Nesjíždí",
+            "text": "<p>Protiskluzový pásek drží bandáž na místě i při sprintu nebo skluzu.</p>"
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "feather",
+            "title": "Nepřekáží",
+            "text": "<p>Asi 70 gramů a prodyšný materiál. Po pár minutách hry o ní skoro nevíš.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "eyebrow": "Co umí",
+        "heading": "Není to jen kus látky",
+        "text": "",
+        "center": false,
+        "show_numbers": true,
+        "columns": "4",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "pain": {
+      "type": "kt-pain",
+      "blocks": {
+        "p1": {
+          "type": "item",
+          "settings": {
+            "question": "Koleno se ozve po tréninku",
+            "answer": "<p>Nejvíc po sprintech a výskocích. A druhý den to cítíš ještě ve škole.</p>"
+          }
+        },
+        "p2": {
+          "type": "item",
+          "settings": {
+            "question": "Při doskoku ho necítíš jistě",
+            "answer": "<p>Po hlavičce nebo prudké změně směru máš pocit, že koleno nedrží, jak by mělo.</p>"
+          }
+        },
+        "p3": {
+          "type": "item",
+          "settings": {
+            "question": "Nechceš kvůli tomu vynechat trénink",
+            "answer": "<p>Chceš hrát naplno a myslet na míč. Ne na koleno.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "eyebrow": "Znáš to?",
+        "heading": "Kolena to všechno nesou",
+        "text": "<p>Trénink třikrát týdně, o víkendu zápas, mezitím fotbal s kámošema na umělce. Spousta kluků mezi 13 a 18 lety tohle zná.</p>",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "facts": {
+      "type": "kt-facts",
+      "blocks": {
+        "f1": {
+          "type": "fact",
+          "settings": {
+            "big": "Komprese",
+            "text": "<p>Bandáž rovnoměrně obepne tkáně kolem kolene. Koleno víc cítíš a máš pocit opory – proto se kompresní bandáže ve sportu používají.</p>",
+            "source": ""
+          }
+        },
+        "f2": {
+          "type": "fact",
+          "settings": {
+            "big": "Vnímání kolene",
+            "text": "<p>Výzkumy ukazují, že kolenní návleky a ortézy mohou zlepšit vnímání polohy kolene (tzv. propriocepci) – tedy jak přesně tvůj mozek ví, kde se koleno právě nachází.</p>",
+            "source": "Ghai, Driller, Ghai: Effects of joint stabilizers on proprioception and stability: A systematic review and meta-analysis. Physical Therapy in Sport, 2017."
+          }
+        },
+        "f3": {
+          "type": "fact",
+          "settings": {
+            "big": "Rosteš",
+            "text": "<p>U kluků v růstu, kteří hodně sportují, je častá bolest pod čéškou – typicky Osgoodova-Schlatterova nemoc. Bandáž ji nevyléčí. Když bolest trvá, patří to k doktorovi.</p>",
+            "source": "Zdroj: NHS, Osgood-Schlatter disease (nhs.uk)."
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "settings": {
+        "eyebrow": "Jak to funguje",
+        "heading": "Žádná magie. Fakta.",
+        "text": "<p>Píšeme jen to, co se dá doložit.</p>",
+        "disclaimer": "<p>KNEETECH není zdravotnický prostředek a nenahrazuje vyšetření ani léčbu. Při bolesti, která neustupuje, navštiv lékaře.</p>",
+        "color_scheme": "scheme-3",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "videos": {
+      "type": "kt-videos",
+      "settings": {
+        "eyebrow": "Z hřiště",
+        "heading": "Vyzkoušeno na trávě",
+        "text": "<p>Žádné studio. Tréninky, zápasy a kluci, co v ní hrají.</p>",
+        "color_scheme": "scheme-3",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "steps": {
+      "type": "kt-steps",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Natáhni",
+            "text": "<p>Nasaď bandáž na nohu tak, aby byla středem přes čéšku.</p>"
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Utáhni",
+            "text": "<p>Přitáhni suchý zip. Pevně, ale tak, abys normálně ohnul koleno.</p>"
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Hraj",
+            "text": "<p>Pár dřepů na zkoušku a jdeš na hřiště. Když cítíš brnění, povol.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "eyebrow": "Nasazení",
+        "heading": "Nasazená za pár vteřin",
+        "text": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "compare": {
+      "type": "kt-compare",
+      "blocks": {
+        "c1": {
+          "type": "row",
+          "settings": {
+            "label": "Komprese kolem kolene",
+            "us": true,
+            "them": true
+          }
+        },
+        "c2": {
+          "type": "row",
+          "settings": {
+            "label": "Utažení suchým zipem podle sebe",
+            "us": true,
+            "them": false
+          }
+        },
+        "c3": {
+          "type": "row",
+          "settings": {
+            "label": "Protiskluzový pásek",
+            "us": true,
+            "them": false
+          }
+        },
+        "c4": {
+          "type": "row",
+          "settings": {
+            "label": "Lehká a prodyšná",
+            "us": true,
+            "them": true
+          }
+        },
+        "c5": {
+          "type": "row",
+          "settings": {
+            "label": "Na obě kolena se slevou",
+            "us": true,
+            "them": false
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
+      ],
+      "settings": {
+        "eyebrow": "Srovnání",
+        "heading": "Proč ne obyčejný návlek",
+        "text": "<p>Obyčejný návlek je fajn. Jenže ho neutáhneš podle sebe.</p>",
+        "us_label": "KNEETECH",
+        "them_label": "Obyčejný návlek",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "size": {
+      "type": "kt-size",
+      "blocks": {
+        "z1": {
+          "type": "size",
+          "settings": {
+            "size": "S",
+            "range": "30–33 cm",
+            "note": "mladší a štíhlejší hráči"
+          }
+        },
+        "z2": {
+          "type": "size",
+          "settings": {
+            "size": "M",
+            "range": "33–36 cm",
+            "note": "nejčastější pro 13–16 let"
+          }
+        },
+        "z3": {
+          "type": "size",
+          "settings": {
+            "size": "L",
+            "range": "36–40 cm",
+            "note": "starší a silnější hráči"
+          }
+        },
+        "z4": {
+          "type": "size",
+          "settings": {
+            "size": "XL",
+            "range": "40–44 cm",
+            "note": "dospělí hráči"
+          }
+        }
+      },
+      "block_order": [
+        "z1",
+        "z2",
+        "z3",
+        "z4"
+      ],
+      "settings": {
+        "eyebrow": "Velikost",
+        "heading": "Změř se za minutu",
+        "text": "<p>Krejčovským metrem změř obvod kolena přes střed čéšky. Nohu měj lehce pokrčenou, jako když stojíš v obraně.</p>",
+        "note": "<p>Rozměry jsou orientační. Suchým zipem si bandáž ještě dotáhneš přesně podle sebe.</p>",
+        "button_label": "Celý návod k měření",
+        "button_link": "shopify://pages/velikosti",
+        "color_scheme": "scheme-2",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "faq": {
+      "type": "kt-faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Pomůže mi, když mě bolí koleno?",
+            "answer": "<p>Bandáž dává kolenu kompresi a oporu. Hodně hráčů díky tomu cítí koleno jistěji. Neslibujeme ale, že bolest zmizí – bandáž není lék. Když tě koleno bolí déle než pár dní, zajdi za doktorem.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Můžu v ní hrát zápas?",
+            "answer": "<p>Ano. Pravidla fotbalu povolují měkké ochranné pomůcky, které nejsou nebezpečné pro tebe ani pro soupeře. Poslední slovo má vždy rozhodčí.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Jak pevně ji utáhnout?",
+            "answer": "<p>Pevně, ale ne na doraz. Musíš v ní normálně ohnout koleno a noha nesmí brnět, modrat ani otékat. Když něco z toho cítíš, povol suchý zip.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Je cena za kus, nebo za pár?",
+            "answer": "<p>Za jeden kus, tedy na jedno koleno. Na obě kolena vyber 2 kusy za 790 Kč a ušetříš 390 Kč.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "Jak dlouho trvá doručení?",
+            "answer": "<p>Obvykle do 14 dnů. Doprava stojí 72 Kč, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "Sedí na levé i pravé koleno?",
+            "answer": "<p>Ano, bandáž je stejná pro obě kolena.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ],
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Časté dotazy",
+        "button_label": "Všechny dotazy",
+        "button_link": "shopify://pages/faq",
+        "schema_markup": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    },
+    "reviews": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "sticky": {
+      "type": "kt-sticky-atc",
+      "settings": {
+        "button_label": "Vybrat a koupit",
+        "price_text": "1 ks 590 Kč · 2 ks 790 Kč",
+        "color_scheme": "scheme-1"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "marquee",
+    "benefits",
+    "pain",
+    "facts",
+    "videos",
+    "steps",
+    "compare",
+    "size",
+    "faq",
+    "reviews",
+    "sticky"
+  ]
+}

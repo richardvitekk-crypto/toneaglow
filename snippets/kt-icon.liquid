@@ -1,0 +1,34 @@
+{%- comment -%}
+  Ikony KNEETECH (tenké linky, currentColor).
+  Accepts: name {String}, class {String}
+{%- endcomment -%}
+{%- case name -%}
+  {%- when 'compression' -%}
+    <svg class="kt-icon {{ class }}" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M12 4v10c0 3 2 5 2 6s-2 3-2 6v10"/><path d="M28 4v10c0 3-2 5-2 6s2 3 2 6v10"/><path d="M8 16l4 2M8 24l4-2M32 16l-4 2M32 24l-4-2"/></svg>
+  {%- when 'velcro' -%}
+    <svg class="kt-icon {{ class }}" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true" focusable="false"><rect x="4" y="14" width="32" height="12"/><path d="M20 14v12"/><path d="M24 17h8M24 20h8M24 23h8"/><path d="M10 20h6M13 17l3 3-3 3"/></svg>
+  {%- when 'grip' -%}
+    <svg class="kt-icon {{ class }}" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M6 10h28M6 30h28"/><path d="M9 15l3 3M15 15l3 3M21 15l3 3M27 15l3 3M9 22l3 3M15 22l3 3M21 22l3 3M27 22l3 3"/></svg>
+  {%- when 'feather' -%}
+    <svg class="kt-icon {{ class }}" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M8 32L30 10"/><path d="M30 10c3 6 0 14-8 16l-8 1 1-8c2-8 10-11 15-9z"/><path d="M14 26l6-6"/></svg>
+  {%- when 'air' -%}
+    <svg class="kt-icon {{ class }}" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M4 14h20a4 4 0 1 0-4-4"/><path d="M4 21h28a4 4 0 1 1-4 4"/><path d="M4 28h12"/></svg>
+  {%- when 'knee' -%}
+    <svg class="kt-icon {{ class }}" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4l6 14"/><path d="M20 22l-6 14"/><circle cx="21" cy="20" r="4"/><path d="M28 12c3 2 5 5 5 8s-2 6-5 8"/></svg>
+  {%- when 'ball' -%}
+    <svg class="kt-icon {{ class }}" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="15"/><path d="M20 13l6 4-2 7h-8l-2-7z"/><path d="M20 13V5M26 17l7-3M24 24l4 7M16 24l-4 7M14 17l-7-3"/></svg>
+  {%- when 'truck' -%}
+    <svg class="kt-icon {{ class }}" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M3 10h21v17H3zM24 16h7l5 6v5H24"/><circle cx="10" cy="29" r="3"/><circle cx="29" cy="29" r="3"/></svg>
+  {%- when 'lock' -%}
+    <svg class="kt-icon {{ class }}" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true" focusable="false"><rect x="8" y="17" width="24" height="18"/><path d="M13 17v-5a7 7 0 0 1 14 0v5"/><path d="M20 24v4"/></svg>
+  {%- when 'chat' -%}
+    <svg class="kt-icon {{ class }}" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M5 7h30v20H17l-8 6v-6H5z"/><path d="M12 15h16M12 20h10"/></svg>
+  {%- when 'check' -%}
+    <svg class="kt-icon {{ class }}" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M3 8.5l3 3 7-7"/></svg>
+  {%- when 'cross' -%}
+    <svg class="kt-icon {{ class }}" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+  {%- when 'ruler' -%}
+    <svg class="kt-icon {{ class }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" aria-hidden="true" focusable="false"><rect x="2" y="8" width="20" height="8"/><path d="M6 8v3M10 8v4M14 8v3M18 8v4"/></svg>
+  {%- when 'arrow' -%}
+    <svg class="kt-icon {{ class }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+{%- endcase -%}

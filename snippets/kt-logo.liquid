@@ -1,0 +1,46 @@
+{%- comment -%}
+  KNEETECH logo – značka „K“ s kloubem kolena + nápis.
+  Barva se přebírá z textu (currentColor), takže funguje na světlém i tmavém pozadí.
+
+  Accepts:
+  - class {String} – extra class
+  - mark_only {Boolean} – jen značka bez nápisu
+{%- endcomment -%}
+{%- if mark_only -%}
+  <svg
+    class="kt-logo kt-logo--mark {{ class }}"
+    viewBox="0 0 48 48"
+    role="img"
+    aria-label="KNEETECH"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect x="4" y="4" width="8.5" height="40" fill="currentColor"/>
+    <polygon points="21.5,19.5 37,4 46.5,4 27.5,23" fill="currentColor"/>
+    <polygon points="21.5,28.5 27.5,25 46.5,44 37,44" fill="currentColor"/>
+    <circle cx="24.5" cy="24" r="6.8" fill="currentColor"/>
+  </svg>
+{%- else -%}
+  <svg
+    class="kt-logo {{ class }}"
+    viewBox="0 0 236 48"
+    role="img"
+    aria-label="KNEETECH"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect x="4" y="4" width="8.5" height="40" fill="currentColor"/>
+    <polygon points="21.5,19.5 37,4 46.5,4 27.5,23" fill="currentColor"/>
+    <polygon points="21.5,28.5 27.5,25 46.5,44 37,44" fill="currentColor"/>
+    <circle cx="24.5" cy="24" r="6.8" fill="currentColor"/>
+    <text
+      x="56"
+      y="41"
+      fill="currentColor"
+      font-family="'KT Oswald', 'Oswald', 'Arial Narrow', sans-serif"
+      font-weight="600"
+      font-size="41"
+      letter-spacing="1.5"
+    >
+      KNEETECH
+    </text>
+  </svg>
+{%- endif -%}

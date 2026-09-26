@@ -1,0 +1,77 @@
+{%- render 'kt-section-padding', section: section -%}
+
+<div class="kt-section kt-faq color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="kt-center kt-reveal">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="kt-eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="kt-heading">{{ section.settings.heading }}</h2>
+    </div>
+    {%- if section.blocks.size > 0 -%}
+      <div class="kt-faq__list kt-reveal">
+        {%- for block in section.blocks -%}
+          <details class="kt-faq__item" {{ block.shopify_attributes }}>
+            <summary>{{ block.settings.question }}</summary>
+            <div class="kt-faq__answer">{{ block.settings.answer }}</div>
+          </details>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+      <div class="kt-center" style="margin-top: 4rem;">
+        <a href="{{ section.settings.button_link }}" class="button button--secondary">{{ section.settings.button_label }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{%- if section.settings.schema_markup and section.blocks.size > 0 -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in section.blocks -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.answer | strip_html | json }} }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "KT – Časté dotazy",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 16,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Malý nadpis", "default": "FAQ" },
+    { "type": "text", "id": "heading", "label": "Nadpis", "default": "Časté dotazy" },
+    { "type": "text", "id": "button_label", "label": "Tlačítko – text", "default": "Všechny dotazy" },
+    { "type": "url", "id": "button_link", "label": "Tlačítko – odkaz" },
+    { "type": "checkbox", "id": "schema_markup", "label": "Přidat strukturovaná data pro Google", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 80 }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Dotaz",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Otázka", "default": "Otázka" },
+        { "type": "richtext", "id": "answer", "label": "Odpověď", "default": "<p>Odpověď.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "KT – Časté dotazy", "blocks": [{ "type": "question" }, { "type": "question" }] }
+  ]
+}
+{% endschema %}

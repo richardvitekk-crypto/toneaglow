@@ -1,0 +1,81 @@
+{%- render 'kt-section-padding', section: section -%}
+
+<div class="kt-section kt-size color-{{ section.settings.color_scheme }} gradient" id="velikosti">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="kt-size__grid">
+      <div class="kt-reveal">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="kt-eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h2 class="kt-heading">{{ section.settings.heading }}</h2>
+        {%- if section.settings.text != blank -%}
+          <div class="kt-lead-text">{{ section.settings.text }}</div>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+          <a href="{{ section.settings.button_link }}" class="button button--secondary" style="margin-top: 3.2rem;">
+            {{- section.settings.button_label -}}
+          </a>
+        {%- endif -%}
+      </div>
+      {%- if section.blocks.size > 0 -%}
+        <div class="kt-reveal">
+          <table class="kt-table">
+            <thead>
+              <tr>
+                <th scope="col">Velikost</th>
+                <th scope="col">Obvod kolena</th>
+                <th scope="col">Obvykle sedí</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%- for block in section.blocks -%}
+                <tr {{ block.shopify_attributes }}>
+                  <td>{{ block.settings.size }}</td>
+                  <td>{{ block.settings.range }}</td>
+                  <td>{{ block.settings.note }}</td>
+                </tr>
+              {%- endfor -%}
+            </tbody>
+          </table>
+          {%- if section.settings.note != blank -%}
+            <div class="kt-note">{{ section.settings.note }}</div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "KT – Velikosti",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Malý nadpis", "default": "Velikost" },
+    { "type": "text", "id": "heading", "label": "Nadpis", "default": "Změř se za minutu" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "richtext", "id": "note", "label": "Poznámka pod tabulkou" },
+    { "type": "text", "id": "button_label", "label": "Tlačítko – text", "default": "Celý návod k měření" },
+    { "type": "url", "id": "button_link", "label": "Tlačítko – odkaz" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-2" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 80 }
+  ],
+  "blocks": [
+    {
+      "type": "size",
+      "name": "Velikost",
+      "settings": [
+        { "type": "text", "id": "size", "label": "Velikost", "default": "M" },
+        { "type": "text", "id": "range", "label": "Obvod kolena", "default": "33–36 cm" },
+        { "type": "text", "id": "note", "label": "Obvykle sedí" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "KT – Velikosti", "blocks": [{ "type": "size" }] }
+  ]
+}
+{% endschema %}

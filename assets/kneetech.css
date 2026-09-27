@@ -1256,3 +1256,403 @@ button.shopify-payment-button__button--unbranded {
     width: 46%;
   }
 }
+
+/* ---------- Hero s hřištěm na pozadí ---------- */
+.kt-hero--bg-pitch,
+.kt-hero--bg-image {
+  isolation: isolate;
+  background: #05070a;
+}
+
+.kt-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.kt-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 60%;
+  display: block;
+  transform: scale(1.04);
+  animation: kt-hero-zoom 18s ease-out both;
+}
+
+.kt-hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, calc(var(--kt-hero-overlay) + 0.25)) 0%, rgba(0, 0, 0, var(--kt-hero-overlay)) 45%, rgba(0, 0, 0, calc(var(--kt-hero-overlay) - 0.25)) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, transparent 30%, transparent 70%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+@media screen and (max-width: 989px) {
+  .kt-hero__bg::after {
+    background: linear-gradient(180deg, rgba(0, 0, 0, calc(var(--kt-hero-overlay) + 0.2)) 0%, rgba(0, 0, 0, var(--kt-hero-overlay)) 55%, rgba(0, 0, 0, calc(var(--kt-hero-overlay) + 0.15)) 100%);
+  }
+}
+
+@keyframes kt-hero-zoom {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kt-hero__bg img {
+    animation: none;
+  }
+}
+
+.kt-hero--bg-pitch .kt-hero__media,
+.kt-hero--bg-image .kt-hero__media {
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  outline: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.kt-hero--bg-pitch .kt-hero__title,
+.kt-hero--bg-image .kt-hero__title {
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Zvýraznění nabídky 2 kusy ---------- */
+.kt-offer__main {
+  display: block;
+  min-width: 0;
+}
+
+.kt-offer__now {
+  display: block;
+}
+
+.kt-offer__compare {
+  display: block;
+  font-family: var(--font-body-family);
+  font-size: 1.6rem;
+  font-weight: 500;
+  opacity: 0.7;
+  margin-bottom: 0.2rem;
+  text-decoration-thickness: 1.5px;
+}
+
+.kt-offer--best {
+  padding: 2.4rem 1.8rem 2rem;
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+  border-color: rgb(var(--color-foreground));
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+  margin-top: 1.4rem;
+}
+
+.kt-offer--best:hover {
+  border-color: rgb(var(--color-foreground));
+  transform: translateY(-1px);
+}
+
+.kt-offer--best .kt-offer__title {
+  font-size: 2.4rem;
+}
+
+.kt-offer--best .kt-offer__price {
+  font-size: 2.8rem;
+}
+
+.kt-offer--best .kt-offer__sub {
+  color: rgba(var(--color-background), 0.75);
+}
+
+.kt-offer--best .kt-offer__radio {
+  border-color: rgba(var(--color-background), 0.7);
+}
+
+.kt-offer--best .kt-offer__radio::after {
+  background: rgb(var(--color-background));
+}
+
+.kt-offer--best.is-active {
+  box-shadow: 0 0 0 3px rgb(var(--color-background)), 0 0 0 5px rgb(var(--color-foreground)), 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.kt-offer--best.is-active .kt-offer__radio {
+  border-color: rgb(var(--color-background));
+}
+
+.kt-offer--best .kt-offer__badge {
+  top: -1.3rem;
+  left: 1.8rem;
+  right: auto;
+  background: #d8ff3e;
+  color: #0a0a0a;
+  font-size: 1.2rem;
+  padding: 0.5rem 1.1rem;
+}
+
+.kt-offer__save {
+  display: inline-block;
+  margin-top: 0.8rem;
+  background: #d8ff3e;
+  color: #0a0a0a;
+  font-family: var(--font-heading-family);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.35rem 0.8rem;
+}
+
+.kt-offer:not(.kt-offer--best) {
+  opacity: 0.9;
+}
+
+.kt-offer:not(.kt-offer--best).is-active {
+  opacity: 1;
+}
+
+/* ---------- Vyskakovací okno se slevou ---------- */
+.kt-popup-section {
+  margin: 0 !important;
+}
+
+.kt-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 1.6rem;
+  background: transparent;
+}
+
+.kt-popup[hidden] {
+  display: none;
+}
+
+.kt-popup__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 0.3s var(--kt-ease);
+}
+
+.kt-popup__dialog {
+  position: relative;
+  display: grid;
+  width: min(86rem, 100%);
+  max-height: calc(100vh - 3.2rem);
+  overflow: auto;
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  transition: opacity 0.35s var(--kt-ease), transform 0.35s var(--kt-ease);
+  outline: none;
+}
+
+@media screen and (min-width: 750px) {
+  .kt-popup__dialog {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.kt-popup.is-open .kt-popup__backdrop {
+  opacity: 1;
+}
+
+.kt-popup.is-open .kt-popup__dialog {
+  opacity: 1;
+  transform: none;
+}
+
+body.kt-popup-open {
+  overflow: hidden;
+}
+
+.kt-popup__close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 2;
+  width: 4rem;
+  height: 4rem;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: rgba(var(--color-background), 0.9);
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+}
+
+.kt-popup__close svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.kt-popup__visual {
+  position: relative;
+  min-height: 18rem;
+  background: #05070a;
+  overflow: hidden;
+  color: #fff;
+}
+
+.kt-popup__visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 65%;
+}
+
+.kt-popup__visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.7));
+}
+
+.kt-popup__big {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: var(--font-heading-family);
+  text-transform: uppercase;
+}
+
+.kt-popup__big span {
+  font-size: clamp(6rem, 11vw, 11rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+}
+
+.kt-popup__big small {
+  font-size: 1.6rem;
+  letter-spacing: 0.3em;
+  margin-top: 1rem;
+}
+
+.kt-popup__body {
+  padding: 3.6rem 2.8rem 3.2rem;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: 750px) {
+  .kt-popup__body {
+    padding: 5.6rem 4.8rem;
+  }
+}
+
+.kt-popup__form {
+  width: 100%;
+}
+
+.kt-popup__title {
+  font-size: clamp(3rem, 4vw, 4.2rem);
+  margin: 0 0 1.2rem;
+}
+
+.kt-popup__text {
+  margin: 0 0 2.4rem;
+  color: rgba(var(--color-foreground), 0.75);
+  line-height: 1.6;
+}
+
+.kt-popup__text p {
+  margin: 0;
+}
+
+.kt-popup__field {
+  margin-bottom: 1.2rem;
+}
+
+.kt-popup__error {
+  color: #c2261a;
+  font-size: 1.3rem;
+  margin: 0 0 1.2rem;
+}
+
+.kt-popup__consent {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: rgba(var(--color-foreground), 0.55);
+  margin: 1.2rem 0 0;
+}
+
+.kt-popup__dismiss {
+  display: block;
+  margin: 1.6rem auto 0;
+  background: none;
+  border: 0;
+  padding: 0.4rem;
+  font: inherit;
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.6);
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  cursor: pointer;
+}
+
+.kt-popup__code {
+  display: flex;
+  align-items: stretch;
+  border: 2px dashed rgb(var(--color-foreground));
+  margin: 0.8rem 0 1.6rem;
+}
+
+.kt-popup__code span {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-heading-family);
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 1.2rem;
+}
+
+.kt-popup__copy {
+  border: 0;
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+  font-family: var(--font-heading-family);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.3rem;
+  padding: 0 1.8rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 749px) {
+  .kt-popup {
+    align-items: end;
+    padding: 0;
+  }
+  .kt-popup__dialog {
+    max-height: 92vh;
+    transform: translateY(100%);
+  }
+  .kt-popup__visual {
+    min-height: 15rem;
+  }
+}
+
+.kt-popup .kt-popup__backdrop {
+  display: block;
+}

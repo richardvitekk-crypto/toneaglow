@@ -61,7 +61,7 @@
     "label": "E-mail",
     "success": "Vďaka! Tvoj kód na 15 % je VITEJ15",
     "button_label": "Prihlásiť sa na odber",
-    "kt_consent": "Prihlásením súhlasíš so zasielaním noviniek. Odhlásiť sa môžeš kedykoľvek jedným kliknutím."
+    "kt_consent": "Prihlásením súhlasíš so zasielaním noviniek a potvrdzuješ, že máš aspoň 16 rokov (inak sa prihlás so súhlasom rodičov). Odhlásiť sa môžeš kedykoľvek jedným kliknutím."
   },
   "accessibility": {
     "skip_to_text": "Prejsť na obsah",

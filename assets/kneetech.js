@@ -152,3 +152,127 @@ if (!customElements.get('kt-sticky-atc')) {
     }
   );
 }
+
+/* Vyskakovací okno se slevou za e-mail */
+if (!customElements.get('kt-popup')) {
+  customElements.define(
+    'kt-popup',
+    class KtPopup extends HTMLElement {
+      connectedCallback() {
+        this.key = 'kt_popup_' + (this.dataset.section || 'x');
+        this.dialog = this.querySelector('.kt-popup__dialog');
+        this.form = this.querySelector('form');
+        this.querySelectorAll('[data-kt-popup-close]').forEach((el) => el.addEventListener('click', () => this.close(true)));
+        this.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') this.close(true);
+          if (event.key === 'Tab') this.trapFocus(event);
+        });
+        const copy = this.querySelector('[data-kt-copy]');
+        if (copy) copy.addEventListener('click', () => this.copyCode(copy));
+
+        const params = new URLSearchParams(window.location.search);
+        const posted = params.get('customer_posted') === 'true';
+        const ownForm = this.form && window.location.hash === '#' + this.form.id;
+        const hasError = !!this.querySelector('[data-kt-popup-error]');
+        const success = !!this.querySelector('[data-kt-popup-success]');
+
+        if (success && (ownForm || posted)) {
+          this.store('subscribed');
+          if (ownForm) this.open();
+          return;
+        }
+        if (hasError && ownForm) {
+          this.open();
+          return;
+        }
+        if (window.Shopify && window.Shopify.designMode) {
+          document.addEventListener('shopify:section:select', (e) => {
+            if (e.detail && e.detail.sectionId === this.dataset.section) this.open();
+          });
+          document.addEventListener('shopify:section:deselect', (e) => {
+            if (e.detail && e.detail.sectionId === this.dataset.section) this.close(false);
+          });
+          return;
+        }
+        if (!this.shouldShow()) return;
+        const delay = Math.max(0, parseInt(this.dataset.delay || '2', 10)) * 1000;
+        this.timer = window.setTimeout(() => this.open(), delay);
+      }
+
+      read() {
+        try {
+          return JSON.parse(window.localStorage.getItem(this.key) || 'null');
+        } catch (e) {
+          return null;
+        }
+      }
+
+      store(state) {
+        try {
+          window.localStorage.setItem(this.key, JSON.stringify({ state, at: Date.now() }));
+        } catch (e) {}
+      }
+
+      shouldShow() {
+        const saved = this.read();
+        if (!saved) return true;
+        if (saved.state === 'subscribed') return false;
+        const days = parseInt(this.dataset.days || '7', 10);
+        return Date.now() - saved.at > days * 86400000;
+      }
+
+      open() {
+        if (!this.hidden) return;
+        this.lastFocus = document.activeElement;
+        this.hidden = false;
+        document.body.classList.add('kt-popup-open');
+        requestAnimationFrame(() => {
+          this.classList.add('is-open');
+          const input = this.querySelector('input[type="email"]');
+          (input || this.dialog).focus({ preventScroll: true });
+        });
+      }
+
+      close(remember) {
+        if (this.timer) window.clearTimeout(this.timer);
+        if (this.hidden) return;
+        if (remember && !this.querySelector('[data-kt-popup-success]')) this.store('closed');
+        this.classList.remove('is-open');
+        document.body.classList.remove('kt-popup-open');
+        window.setTimeout(() => {
+          this.hidden = true;
+        }, 250);
+        if (this.lastFocus && this.lastFocus.focus) this.lastFocus.focus({ preventScroll: true });
+      }
+
+      trapFocus(event) {
+        const focusable = Array.from(
+          this.dialog.querySelectorAll('a[href], button, input:not([type="hidden"]), [tabindex]:not([tabindex="-1"])')
+        ).filter((el) => !el.disabled && el.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+
+      copyCode(button) {
+        const code = button.dataset.ktCopy;
+        const done = () => {
+          button.textContent = 'Zkopírováno';
+          window.setTimeout(() => (button.textContent = 'Zkopírovat'), 2000);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(code).then(done, done);
+        } else {
+          done();
+        }
+      }
+    }
+  );
+}

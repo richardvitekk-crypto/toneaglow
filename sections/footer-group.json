@@ -53,9 +53,32 @@
         "padding_top": 64,
         "padding_bottom": 40
       }
+    },
+    "popup": {
+      "type": "kt-popup",
+      "settings": {
+        "enabled": true,
+        "delay": 2,
+        "days_hidden": 7,
+        "big_text": "−15 %",
+        "big_subtext": "na první nákup",
+        "eyebrow": "Vítej v KNEETECH",
+        "heading": "15 % na první nákup",
+        "text": "<p>Nech nám e-mail a slevový kód ti ukážeme hned tady.</p>",
+        "button": "Chci slevu",
+        "dismiss": "Ne, díky",
+        "code": "VITEJ15",
+        "success_eyebrow": "Hotovo",
+        "success_heading": "Tady je tvůj kód",
+        "success_text": "Zadej ho v pokladně. Platí na první objednávku.",
+        "success_button": "Vybrat bandáž",
+        "product": "kneetech-bandaz-na-koleno",
+        "color_scheme": "scheme-1"
+      }
     }
   },
   "order": [
-    "footer"
+    "footer",
+    "popup"
   ]
 }

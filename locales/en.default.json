@@ -61,7 +61,7 @@
     "label": "Email",
     "success": "Thanks! Your 15% code is VITEJ15",
     "button_label": "Subscribe",
-    "kt_consent": "By subscribing you agree to receive our news. You can unsubscribe anytime with one click."
+    "kt_consent": "By subscribing you agree to receive our news and confirm you are at least 15 (or have your parent’s permission). You can unsubscribe anytime with one click."
   },
   "accessibility": {
     "skip_to_text": "Skip to content",

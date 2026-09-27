@@ -1,0 +1,122 @@
+{%- comment -%}
+  Vyskakovací okno se slevou za přihlášení k newsletteru.
+  E-mail se uloží jako zákazník Shopify se souhlasem s marketingem (štítky newsletter, popup),
+  takže ho převezme i Klaviyo po propojení se Shopify.
+{%- endcomment -%}
+{%- if section.settings.enabled -%}
+  {%- liquid
+    assign form_id = 'KtPopupForm-' | append: section.id
+  -%}
+  <kt-popup
+    class="kt-popup color-{{ section.settings.color_scheme }}"
+    data-delay="{{ section.settings.delay }}"
+    data-days="{{ section.settings.days_hidden }}"
+    data-section="{{ section.id }}"
+    hidden
+  >
+    <div class="kt-popup__backdrop" data-kt-popup-close></div>
+    <div
+      class="kt-popup__dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="KtPopupTitle-{{ section.id }}"
+      tabindex="-1"
+    >
+      <button type="button" class="kt-popup__close" data-kt-popup-close aria-label="Zavřít">
+        {% render 'kt-icon', name: 'cross' %}
+      </button>
+
+      <div class="kt-popup__visual" aria-hidden="true">
+        <img src="{{ 'kt-pitch.svg' | asset_url }}" alt="" width="1600" height="1000" loading="lazy">
+        <div class="kt-popup__big">
+          <span>{{ section.settings.big_text }}</span>
+          <small>{{ section.settings.big_subtext }}</small>
+        </div>
+      </div>
+
+      <div class="kt-popup__body">
+        {%- form 'customer', id: form_id, class: 'kt-popup__form' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="kt-popup__success" data-kt-popup-success>
+              <p class="kt-eyebrow">{{ section.settings.success_eyebrow }}</p>
+              <h2 class="kt-popup__title" id="KtPopupTitle-{{ section.id }}">{{ section.settings.success_heading }}</h2>
+              <div class="kt-popup__code">
+                <span data-kt-code>{{ section.settings.code }}</span>
+                <button type="button" class="kt-popup__copy" data-kt-copy="{{ section.settings.code | escape }}">
+                  Zkopírovat
+                </button>
+              </div>
+              <p class="kt-popup__text">{{ section.settings.success_text }}</p>
+              {%- if section.settings.product != blank -%}
+                <a href="{{ section.settings.product.url }}" class="button button--primary button--full-width">
+                  {{- section.settings.success_button -}}
+                </a>
+              {%- endif -%}
+            </div>
+          {%- else -%}
+            <p class="kt-eyebrow">{{ section.settings.eyebrow }}</p>
+            <h2 class="kt-popup__title" id="KtPopupTitle-{{ section.id }}">{{ section.settings.heading }}</h2>
+            <div class="kt-popup__text">{{ section.settings.text }}</div>
+            <input type="hidden" name="contact[tags]" value="newsletter, popup">
+            <input type="hidden" name="contact[accepts_marketing]" value="true">
+            <div class="field kt-popup__field">
+              <input
+                id="KtPopupEmail-{{ section.id }}"
+                type="email"
+                name="contact[email]"
+                class="field__input"
+                value="{{ form.email }}"
+                autocomplete="email"
+                autocorrect="off"
+                autocapitalize="off"
+                required
+                placeholder="Tvůj e-mail"
+                {% if form.errors %}
+                  aria-invalid="true" aria-describedby="KtPopupError-{{ section.id }}"
+                {% endif %}
+              >
+              <label class="field__label" for="KtPopupEmail-{{ section.id }}">Tvůj e-mail</label>
+            </div>
+            {%- if form.errors -%}
+              <p class="kt-popup__error" id="KtPopupError-{{ section.id }}" data-kt-popup-error>
+                {{ form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email }}
+              </p>
+            {%- endif -%}
+            <button type="submit" class="button button--primary button--full-width">{{ section.settings.button }}</button>
+            <p class="kt-popup__consent">{{ 'newsletter.kt_consent' | t }}</p>
+            <button type="button" class="kt-popup__dismiss" data-kt-popup-close>{{ section.settings.dismiss }}</button>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+  </kt-popup>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "KT – Sleva za e-mail",
+  "tag": "section",
+  "class": "section kt-popup-section",
+  "settings": [
+    { "type": "checkbox", "id": "enabled", "label": "Zapnout vyskakovací okno", "default": true },
+    { "type": "range", "id": "delay", "min": 0, "max": 30, "step": 1, "unit": "s", "label": "Zobrazit po", "default": 2 },
+    { "type": "range", "id": "days_hidden", "min": 1, "max": 30, "step": 1, "unit": "d", "label": "Po zavření znovu ukázat za", "default": 7 },
+    { "type": "text", "id": "big_text", "label": "Velký text", "default": "−15 %" },
+    { "type": "text", "id": "big_subtext", "label": "Malý text pod ním", "default": "na první nákup" },
+    { "type": "text", "id": "eyebrow", "label": "Malý nadpis", "default": "Vítej v KNEETECH" },
+    { "type": "text", "id": "heading", "label": "Nadpis", "default": "15 % na první nákup" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Nech nám e-mail a slevový kód ti ukážeme hned tady.</p>" },
+    { "type": "text", "id": "button", "label": "Tlačítko", "default": "Chci slevu" },
+    { "type": "text", "id": "dismiss", "label": "Text pro zavření", "default": "Ne, díky" },
+    { "type": "text", "id": "code", "label": "Slevový kód", "default": "VITEJ15", "info": "Kód musí existovat v Shopify → Slevy." },
+    { "type": "text", "id": "success_eyebrow", "label": "Po přihlášení – malý nadpis", "default": "Hotovo" },
+    { "type": "text", "id": "success_heading", "label": "Po přihlášení – nadpis", "default": "Tady je tvůj kód" },
+    { "type": "text", "id": "success_text", "label": "Po přihlášení – text", "default": "Zadej ho v pokladně. Platí na první objednávku." },
+    { "type": "text", "id": "success_button", "label": "Po přihlášení – tlačítko", "default": "Vybrat bandáž" },
+    { "type": "product", "id": "product", "label": "Produkt pro tlačítko" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" }
+  ],
+  "presets": [{ "name": "KT – Sleva za e-mail" }]
+}
+{% endschema %}

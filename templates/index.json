@@ -43,8 +43,10 @@
         "badge_big": "2 ks = 790 Kč",
         "badge_small": "Na obě kolena",
         "color_scheme": "scheme-3",
-        "padding_top": 24,
-        "padding_bottom": 24
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "background": "pitch",
+        "overlay": 40
       }
     },
     "marquee": {

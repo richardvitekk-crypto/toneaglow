@@ -307,8 +307,8 @@
           "type": "fact",
           "settings": {
             "big": "Rosteš",
-            "text": "<p>U kluků v růstu, kteří hodně sportují, je častá bolest pod čéškou – typicky Osgoodova-Schlatterova nemoc. Bandáž ji nevyléčí. Když bolest trvá, patří to k doktorovi.</p>",
-            "source": "Zdroj: NHS, Osgood-Schlatter disease (nhs.uk)."
+            "text": "<p>U kluků v růstu, kteří hodně sportují, bolí kolena docela často – kosti rostou rychle a svaly se šlachami to chvíli dohánějí. Většinou to s růstem přejde. Když bolest trvá, patří to k doktorovi.</p>",
+            "source": ""
           }
         }
       },

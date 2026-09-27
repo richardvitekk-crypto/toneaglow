@@ -507,7 +507,7 @@
           "type": "question",
           "settings": {
             "question": "Můžu v ní hrát zápas?",
-            "answer": "<p>Ano. Pravidla fotbalu povolují měkké ochranné pomůcky, které nejsou nebezpečné pro tebe ani pro soupeře. Poslední slovo má vždy rozhodčí.</p>"
+            "answer": "<p>Ano. Pravidla fotbalu povolují měkké ochranné pomůcky, které nejsou nebezpečné pro tebe ani pro soupeře.&nbsp;</p>"
           }
         },
         "q3": {

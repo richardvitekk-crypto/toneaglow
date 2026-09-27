@@ -1,0 +1,54 @@
+{
+  "welcome-1": {
+    "subject": "Tvůj kód na 15 % je tady 🔓",
+    "preview_text": "VITEJ15 – sleva 15 % na první nákup."
+  },
+  "welcome-2": {
+    "subject": "Jakou velikost? Změř se za minutu",
+    "preview_text": "Obvod kolena přes střed čéšky – a máš hotovo."
+  },
+  "welcome-3": {
+    "subject": "Na obě kolena? Tohle se vyplatí",
+    "preview_text": "2 kusy za 790 Kč a tvůj kód VITEJ15 pořád platí."
+  },
+  "checkout-1": {
+    "subject": "Zapomněl jsi něco v pokladně?",
+    "preview_text": "Tvoje objednávka na tebe čeká."
+  },
+  "checkout-2": {
+    "subject": "Nejsi si jistý velikostí?",
+    "preview_text": "Změř se za minutu a dokonči objednávku."
+  },
+  "checkout-3": {
+    "subject": "Poslední připomínka k tvé objednávce",
+    "preview_text": "Doručení do 14 dnů, doprava 72 Kč."
+  },
+  "cart-1": {
+    "subject": "Máš něco v košíku",
+    "preview_text": "Bandáž KNEETECH na tebe čeká."
+  },
+  "cart-2": {
+    "subject": "Na obě kolena ušetříš 390 Kč",
+    "preview_text": "2 kusy za 790 Kč místo 1 180 Kč."
+  },
+  "browse-1": {
+    "subject": "Líbila se ti bandáž?",
+    "preview_text": "Tady je všechno, co potřebuješ vědět."
+  },
+  "post-1": {
+    "subject": "Díky za objednávku! Tohle se ti bude hodit",
+    "preview_text": "Jak bandáž nasadit a utáhnout."
+  },
+  "post-2": {
+    "subject": "Jak se ti v ní hraje?",
+    "preview_text": "Pár tipů, ať ti bandáž vydrží co nejdéle."
+  },
+  "post-3": {
+    "subject": "Pomůžeš dalším hráčům?",
+    "preview_text": "Napiš, jak jsi s bandáží spokojený."
+  },
+  "winback-1": {
+    "subject": "Druhé koleno?",
+    "preview_text": "Bandáž KNEETECH – 1 ks 590 Kč, 2 ks 790 Kč."
+  }
+}

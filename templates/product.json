@@ -1,5 +1,11 @@
 /*
- * KNEETECH – šablona. Upravuj přes editor motivu v Shopify.
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
  */
 {
   "sections": {
@@ -68,7 +74,8 @@
           "settings": {
             "heading": "Materiál a péče",
             "icon": "washing",
-            "content": "<p><strong>Materiál:</strong> polyesterové vlákno, suchý zip, protiskluzový pásek.<br><strong>Hmotnost:</strong> asi 70 g za kus.<br><strong>Barvy:</strong> černá, šedá.<br><strong>Velikosti:</strong> S, M, L, XL.</p><p><strong>Péče:</strong> perte ručně ve vlažné vodě s jemným prostředkem, suchý zip před praním zapněte. Sušte volně na vzduchu, ne v sušičce ani na topení.</p>"
+            "content": "<p><strong>Materiál:</strong> polyesterové vlákno, suchý zip, protiskluzový pásek.<br/><strong>Hmotnost:</strong> asi 70 g na kus.<br/><strong>Barvy:</strong> černá, šedá.<br/><strong>Velikosti:</strong> S, M, L, XL.</p><p><strong>Péče:</strong> perte ručně ve vlažné vodě s jemným prostředkem, suchý zip před praním zapněte. Sušte volně na vzduchu, ne v sušičce ani na topení.</p>",
+            "page": ""
           }
         },
         "tab_shipping": {
@@ -76,7 +83,8 @@
           "settings": {
             "heading": "Doprava a vrácení",
             "icon": "truck",
-            "content": "<p>Doručení obvykle do 14 dnů. Doprava stojí 72 Kč, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p><p>Od nákupu můžeš odstoupit do 14 dnů od převzetí. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>"
+            "content": "<p>Doručení obvykle do 14 dnů. Doprava stojí 72 Kč, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p><p>Od nákupu můžeš odstoupit do 14 dnů od převzetí. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>",
+            "page": ""
           }
         },
         "tab_safety": {
@@ -84,7 +92,8 @@
           "settings": {
             "heading": "Bezpečnost",
             "icon": "check_mark",
-            "content": "<p>Bandáž není zdravotnický prostředek a nenahrazuje vyšetření ani léčbu.</p><ul><li>Nepřetahuj ji – koleno musíš v bandáži normálně ohnout.</li><li>Když cítíš brnění, otok nebo se změní barva kůže, povol ji nebo sundej.</li><li>Nenos ji celý den ani přes noc.</li><li>Nenos ji na poraněnou nebo podrážděnou kůži.</li><li>Při bolesti, která neustupuje, navštiv lékaře.</li></ul>"
+            "content": "<p>Bandáž není zdravotnický prostředek a nenahrazuje vyšetření ani léčbu.</p><ul><li>Nepřetahuj ji – koleno musíš v bandáži normálně ohnout.</li><li>Když cítíš brnění, otok nebo se změní barva kůže, povol ji nebo sundej.</li><li>Nenos ji celý den ani přes noc.</li><li>Nenos ji na poraněnou nebo podrážděnou kůži.</li><li>Při bolesti, která neustupuje, navštiv lékaře.</li></ul>",
+            "page": ""
           }
         },
         "manufacturer": {

@@ -1,4 +1,4 @@
-/* KNEETECH – nákupní cesta: plovoucí tlačítko a tabulka velikostí v okně */
+/* KNEETECH – nákupní cesta: plovoucí tlačítko, tabulka velikostí v okně, „Chci 2 kusy“ */
 (() => {
   if (window.ktLanding) return;
   window.ktLanding = true;
@@ -54,8 +54,20 @@
     );
   }
 
-  /* ---------- Tabulka velikostí v okně ---------- */
+  /* ---------- Tabulka velikostí v okně + „Chci 2 kusy“ u balení ---------- */
   document.addEventListener('click', (event) => {
+    const upsell = event.target.closest('[data-kt-upsell]');
+    if (upsell) {
+      const wrap = upsell.closest('kt-offers');
+      const value = upsell.dataset.ktUpsell;
+      const offer = wrap && Array.from(wrap.querySelectorAll('.kt-offer')).find((o) => o.dataset.value === value);
+      if (offer) {
+        offer.click();
+        offer.focus({ preventScroll: true });
+        offer.scrollIntoView({ behavior: smooth(), block: 'nearest' });
+      }
+      return;
+    }
     const opener = event.target.closest('[data-kt-size-open]');
     if (opener) {
       const dialog = document.getElementById(opener.getAttribute('aria-controls'));

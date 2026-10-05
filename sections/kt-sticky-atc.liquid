@@ -9,9 +9,31 @@
   if sticky_product == blank
     assign sticky_product = section.settings.product
   endif
+
+  # úspora za vícekusové balení (1. volba „Balení“: „1 kus“ / „2 kusy“) – z cen variant
+  assign one_price = 0
+  assign multi_price = 0
+  assign multi_qty = 0
+  if sticky_product != blank
+    for v in sticky_product.variants
+      assign q = v.option1 | split: ' ' | first | plus: 0
+      if q == 1 and one_price == 0
+        assign one_price = v.price
+      elsif q > 1 and multi_price == 0
+        assign multi_price = v.price
+        assign multi_qty = q
+      endif
+    endfor
+  endif
+  assign deal_pct = 0
+  if one_price > 0 and multi_price > 0
+    assign deal_full = one_price | times: multi_qty
+    assign deal_pct = deal_full | minus: multi_price | times: 100 | divided_by: deal_full
+  endif
 -%}
 {%- if sticky_product != blank -%}
   {{ 'kt-landing.css' | asset_url | stylesheet_tag }}
+  {{ 'kt-offers.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'kt-landing.js' | asset_url }}" defer="defer"></script>
   <kt-sticky-buy>
     <div class="kt-sticky color-{{ section.settings.color_scheme }}" aria-hidden="true">
@@ -26,11 +48,16 @@
           {%- endif -%}
           <div style="min-width: 0;">
             <div class="kt-sticky__title">{{ sticky_product.title }}</div>
-            {%- if section.settings.price_text != blank -%}
-              <div class="kt-sticky__price">{{ section.settings.price_text }}</div>
-            {%- else -%}
-              <div class="kt-sticky__price">od {{ sticky_product.price_min | money_without_trailing_zeros }}</div>
-            {%- endif -%}
+            <div class="kt-sticky__price">
+              {%- if section.settings.price_text != blank -%}
+                {{ section.settings.price_text }}
+              {%- else -%}
+                od {{ sticky_product.price_min | money_without_trailing_zeros }}
+              {%- endif -%}
+              {%- if deal_pct > 0 -%}
+                <span class="kt-sticky__deal">−{{ deal_pct }}&nbsp;% za {{ multi_qty }}&nbsp;ks</span>
+              {%- endif -%}
+            </div>
           </div>
         </div>
         <button type="button" class="button button--primary" data-kt-sticky-button tabindex="-1">

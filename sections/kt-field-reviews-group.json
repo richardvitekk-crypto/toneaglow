@@ -1,0 +1,32 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "custom.recenze",
+  "name": "Recenze z terénu",
+  "sections": {
+    "field_reviews": {
+      "type": "kt-field-reviews",
+      "settings": {
+        "eyebrow": "Testováno v terénu",
+        "heading": "Dali jsme naši bandáž vyzkoušet 30+ fotbalistům. Zde jsou jejich reálné recenze.",
+        "subheading": "Osobní testování přímo na trénincích a zápasech.",
+        "show_summary": true,
+        "summary_note": "průměr z [pocet] hodnocení hráčů",
+        "anchor": "recenze-z-terenu",
+        "color_scheme": "scheme-3",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    }
+  },
+  "order": [
+    "field_reviews"
+  ]
+}

@@ -1,0 +1,221 @@
+{%- comment -%}
+  Recenze z terénu – karusel hráčů, kteří bandáž zkoušeli na tréninku/zápase.
+  Každý hráč = jeden blok (max. 50). Blok se zobrazí, jen když má jméno nebo
+  citaci a není skrytý přepínačem „Skrýt kartu“.
+  Průměr a počet se počítají z viditelných karet a předávají se odznaku
+  hodnocení pod názvem produktu (snippet kt-field-rating) přes data atributy.
+  [pocet] v nadpisech se nahradí skutečným počtem zobrazených karet.
+{%- endcomment -%}
+{%- render 'kt-section-padding', section: section -%}
+
+{%- liquid
+  assign visible_count = 0
+  assign rated_count = 0
+  assign rating_sum = 0.0
+  for block in section.blocks
+    if block.settings.hidden
+      continue
+    endif
+    if block.settings.name == blank and block.settings.quote == blank
+      continue
+    endif
+    assign visible_count = visible_count | plus: 1
+    if block.settings.rating > 0
+      assign rated_count = rated_count | plus: 1
+      assign rating_sum = rating_sum | plus: block.settings.rating
+    endif
+  endfor
+
+  assign avg = 0
+  if rated_count > 0
+    assign avg = rating_sum | divided_by: rated_count | round: 1
+  endif
+  assign avg_label = avg | append: '' | replace: '.', ','
+  assign anchor = section.settings.anchor | default: 'recenze-z-terenu' | handleize
+  assign count_str = visible_count | append: ''
+  assign heading = section.settings.heading | replace: '[pocet]', count_str
+  assign subheading = section.settings.subheading | replace: '[pocet]', count_str
+-%}
+
+{%- if visible_count > 0 or request.design_mode -%}
+  {{ 'kt-field-reviews.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'kt-field-reviews.js' | asset_url }}" defer="defer"></script>
+  {%- render 'kt-ball-sprite', id: 'kt-ball-fr' -%}
+
+  <div
+    id="{{ anchor }}"
+    class="kt-section kt-fr color-{{ section.settings.color_scheme }} gradient"
+    data-kt-fr-summary
+    data-avg="{{ avg }}"
+    data-count="{{ visible_count }}"
+    data-rated="{{ rated_count }}"
+  >
+    <div class="page-width section-{{ section.id }}-padding">
+      <div class="kt-fr__head kt-reveal">
+        <div class="kt-fr__titles">
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="kt-eyebrow">{{ section.settings.eyebrow }}</p>
+          {%- endif -%}
+          {%- if heading != blank -%}
+            <h2 class="kt-heading kt-heading--md kt-fr__heading" tabindex="-1">{{ heading }}</h2>
+          {%- endif -%}
+          {%- if subheading != blank -%}
+            <p class="kt-lead-text kt-fr__sub">{{ subheading }}</p>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.show_summary and rated_count > 0 -%}
+          <div class="kt-fr__score">
+            <p class="kt-fr__score-value">{{ avg_label }}<span>/5</span></p>
+            {%- render 'kt-balls', rating: avg, sprite: 'kt-ball-fr', class: 'kt-balls--lg' -%}
+            <p class="kt-fr__score-note">{{ section.settings.summary_note | replace: '[pocet]', count_str }}</p>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if visible_count > 0 -%}
+        <div class="kt-fr__carousel" data-kt-fr-carousel>
+          <div
+            class="kt-fr__track"
+            role="region"
+            aria-roledescription="karusel"
+            aria-label="{{ section.settings.eyebrow | default: 'Recenze hráčů' | escape }}"
+            tabindex="0"
+            data-kt-fr-track
+          >
+            {%- for block in section.blocks -%}
+              {%- if block.settings.hidden -%}{%- continue -%}{%- endif -%}
+              {%- if block.settings.name == blank and block.settings.quote == blank -%}{%- continue -%}{%- endif -%}
+              {%- liquid
+                assign alt = block.settings.name
+                if block.settings.club != blank
+                  assign alt = alt | append: ' – ' | append: block.settings.club
+                endif
+              -%}
+              <article class="kt-fr__card" {{ block.shopify_attributes }}>
+                <div class="kt-fr__media">
+                  {%- if block.settings.image != blank -%}
+                    {{
+                      block.settings.image
+                      | image_url: width: 900
+                      | image_tag:
+                        class: 'kt-fr__img',
+                        loading: 'lazy',
+                        widths: '320, 480, 640, 900',
+                        sizes: '(min-width: 1200px) 360px, (min-width: 750px) 42vw, 82vw',
+                        alt: alt
+                    }}
+                  {%- else -%}
+                    <div class="kt-fr__img kt-fr__img--empty" aria-hidden="true">
+                      <svg><use href="#kt-ball-fr"/></svg>
+                    </div>
+                  {%- endif -%}
+
+                  {%- if block.settings.age != blank -%}
+                    <span class="kt-fr__badge kt-fr__badge--age">{{ block.settings.age }}</span>
+                  {%- endif -%}
+                  {%- if block.settings.club != blank -%}
+                    <span class="kt-fr__badge kt-fr__badge--club">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="currentColor"/></svg>
+                      {{ block.settings.club }}
+                    </span>
+                  {%- endif -%}
+                  {%- if block.settings.photo_credit != blank -%}
+                    <span class="kt-fr__credit">Foto: {{ block.settings.photo_credit }}</span>
+                  {%- endif -%}
+                </div>
+
+                <div class="kt-fr__body">
+                  {%- if block.settings.rating > 0 -%}
+                    <div class="kt-fr__rating">
+                      {%- render 'kt-balls', rating: block.settings.rating, sprite: 'kt-ball-fr' -%}
+                      <span class="kt-fr__rating-num">{{ block.settings.rating | append: '' | replace: '.', ',' }}/5</span>
+                    </div>
+                  {%- endif -%}
+
+                  {%- if block.settings.quote != blank -%}
+                    <blockquote class="kt-fr__quote">{{ block.settings.quote | escape | newline_to_br }}</blockquote>
+                  {%- endif -%}
+
+                  <footer class="kt-fr__who">
+                    {%- if block.settings.name != blank -%}
+                      <h3 class="kt-fr__name">
+                        {{- block.settings.name -}}
+                        {%- if block.settings.age != blank -%}<span class="kt-fr__name-age">, {{ block.settings.age }}</span>{%- endif -%}
+                      </h3>
+                    {%- endif -%}
+                    {%- if block.settings.achievement != blank -%}
+                      <p class="kt-fr__achievement">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v2h3v3a4 4 0 0 1-4 4h-.3A5 5 0 0 1 13 14.9V18h3v3H8v-3h3v-3.1A5 5 0 0 1 8.3 12H8a4 4 0 0 1-4-4V5h3V3Zm0 4H6v1a2 2 0 0 0 1 1.7V7Zm10 0v2.7A2 2 0 0 0 18 8V7h-1Z" fill="currentColor"/></svg>
+                        {{ block.settings.achievement }}
+                      </p>
+                    {%- endif -%}
+                  </footer>
+                </div>
+              </article>
+            {%- endfor -%}
+          </div>
+
+          <div class="kt-fr__controls">
+            <button type="button" class="kt-fr__arrow" data-kt-fr-prev aria-label="Předchozí hráč">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="kt-fr__progress" aria-hidden="true"><span data-kt-fr-bar></span></div>
+            <div class="kt-fr__dots" data-kt-fr-dots></div>
+            <p class="kt-fr__counter" aria-live="polite" data-kt-fr-counter></p>
+            <button type="button" class="kt-fr__arrow" data-kt-fr-next aria-label="Další hráč">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      {%- else -%}
+        <div class="kt-fr__empty">
+          <strong>Zatím tu není žádný hráč.</strong>
+          Vlevo v editoru klikni na „Přidat blok → Hráč“ a vyplň fotku, jméno, klub, hodnocení a citaci.
+          Na webu se sekce ukáže, až bude vyplněný aspoň jeden hráč.
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "KT – Recenze z terénu",
+  "tag": "section",
+  "class": "section kt-fr-section",
+  "max_blocks": 50,
+  "settings": [
+    { "type": "paragraph", "content": "Karusel hráčů, kteří bandáž zkoušeli na tréninku. [pocet] v textech se nahradí počtem zobrazených karet. Průměr se počítá automaticky a ukazuje se i v odznaku pod názvem produktu." },
+    { "type": "text", "id": "eyebrow", "label": "Malý nadpis", "default": "Testováno v terénu" },
+    { "type": "textarea", "id": "heading", "label": "Nadpis", "default": "Dali jsme naši bandáž vyzkoušet 30+ fotbalistům. Zde jsou jejich reálné recenze." },
+    { "type": "textarea", "id": "subheading", "label": "Podnadpis", "default": "Osobní testování přímo na trénincích a zápasech." },
+    { "type": "checkbox", "id": "show_summary", "label": "Ukázat průměrné hodnocení v záhlaví", "default": true },
+    { "type": "text", "id": "summary_note", "label": "Text pod průměrem", "default": "průměr z [pocet] hodnocení hráčů" },
+    { "type": "text", "id": "anchor", "label": "Kotva (id sekce)", "default": "recenze-z-terenu", "info": "Na tuto kotvu skroluje odznak hodnocení pod produktem. Neměň, pokud nemusíš." },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-3" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 96 }
+  ],
+  "blocks": [
+    {
+      "type": "player",
+      "name": "Hráč",
+      "settings": [
+        { "type": "checkbox", "id": "hidden", "label": "Skrýt kartu (bez mazání)", "default": false },
+        { "type": "image_picker", "id": "image", "label": "Fotka hráče", "info": "Ideálně na výšku (4:5). Používej jen fotky, ke kterým máš souhlas hráče – u nezletilých i rodiče – a autora fotky." },
+        { "type": "text", "id": "name", "label": "Jméno", "placeholder": "Filip K." },
+        { "type": "text", "id": "age", "label": "Věk", "placeholder": "16 let" },
+        { "type": "text", "id": "club", "label": "Klub a kategorie", "placeholder": "FC Zbrojovka Brno – U17" },
+        { "type": "text", "id": "achievement", "label": "Úspěchy / pozice (nepovinné)", "placeholder": "Záložník · Reprezentace ČR U16", "info": "Když necháš prázdné, řádek se skryje." },
+        { "type": "range", "id": "rating", "label": "Hodnocení v míčích", "min": 0, "max": 5, "step": 0.5, "default": 5, "info": "0 = bez hodnocení (nezapočítá se do průměru)." },
+        { "type": "textarea", "id": "quote", "label": "Citace hráče", "placeholder": "Co hráč řekl po vyzkoušení bandáže…" },
+        { "type": "text", "id": "photo_credit", "label": "Autor fotky (nepovinné)", "placeholder": "fotbal.cz / jméno fotografa" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "KT – Recenze z terénu" }
+  ]
+}
+{% endschema %}

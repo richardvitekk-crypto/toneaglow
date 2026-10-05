@@ -70,7 +70,7 @@
         "vendor": {
           "type": "text",
           "settings": {
-            "text": "KNEETECH · Bandáž na koleno",
+            "text": "KNEETECH · Pro hráče a hráčky 13–17",
             "text_style": "uppercase"
           }
         },
@@ -110,12 +110,6 @@
             "show_gift_card_recipient": false
           }
         },
-        "more": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<a class=\"kt-size-link\" href=\"{{ product.url }}\">Všechno o bandáži {% render 'kt-icon', name: 'arrow' %}</a>"
-          }
-        },
         "field_rating": {
           "type": "custom_liquid",
           "settings": {
@@ -139,6 +133,48 @@
           "settings": {
             "custom_liquid": "{% render 'kt-assurance', delivery: 'Doručení do 14 dnů', delivery_sub: 'Doprava 72 Kč', returns: '30 dní na vrácení', returns_sub: 'Bez udání důvodu' %}"
           }
+        },
+        "share": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'kt-share', product: product %}"
+          }
+        },
+        "manufacturer": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- if product.metafields.custom.vyrobce != blank -%}<p class=\"kt-note\">{{ product.metafields.custom.vyrobce | newline_to_br }}</p>{%- endif -%}"
+          }
+        },
+        "description": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- if product.description != blank -%}<div class=\"product__description rte quick-add-hidden\">{{ product.description }}</div>{%- endif -%}"
+          }
+        },
+        "tab_fit": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% capture c %}<ol><li><strong>Natáhni</strong> – středem přes čéšku.</li><li><strong>Utáhni</strong> – suchý zip pevně, ale koleno musí jít normálně ohnout.</li><li><strong>Hraj</strong> – pár dřepů na zkoušku. Když cítíš brnění, povol.</li></ol>{% endcapture %}{% render 'kt-accordion', id: 'fit', icon: 'check_mark', heading: 'Jak ji nasadit', content: c %}"
+          }
+        },
+        "tab_material": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% capture c %}<p><strong>Materiál:</strong> polyesterové vlákno, suchý zip, protiskluzový pásek.<br/><strong>Hmotnost:</strong> asi 70 g na kus.<br/><strong>Barvy:</strong> černo-šedá, černo-červená.<br/><strong>Velikosti:</strong> S, M, L, XL.</p><p><strong>Péče:</strong> perte ručně ve vlažné vodě s jemným prostředkem, suchý zip před praním zapněte. Sušte volně na vzduchu, ne v sušičce ani na topení.</p>{% endcapture %}{% render 'kt-accordion', id: 'material', icon: 'washing', heading: 'Materiál a péče', content: c %}"
+          }
+        },
+        "tab_shipping": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% capture c %}<p>Doručení do 14 dnů od objednávky. Doprava stojí 72 Kč, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p><p>Na vrácení máš 30 dní od převzetí, bez udání důvodu. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>{% endcapture %}{% render 'kt-accordion', id: 'shipping', icon: 'truck', heading: 'Doprava a vrácení', content: c %}"
+          }
+        },
+        "tab_safety": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% capture c %}<p>Bandáž není zdravotnický prostředek a nenahrazuje vyšetření ani léčbu.</p><ul><li>Nepřetahuj ji – koleno musíš v bandáži normálně ohnout.</li><li>Když cítíš brnění, otok nebo se změní barva kůže, povol ji nebo sundej.</li><li>Nenos ji celý den ani přes noc.</li><li>Nenos ji na poraněnou nebo podrážděnou kůži.</li><li>Při bolesti, která neustupuje, navštiv lékaře.</li></ul>{% endcapture %}{% render 'kt-accordion', id: 'safety', icon: 'check_mark', heading: 'Bezpečnost', content: c %}"
+          }
         }
       },
       "block_order": [
@@ -153,13 +189,19 @@
         "selection",
         "buy_buttons",
         "assurance",
-        "more"
+        "share",
+        "description",
+        "tab_fit",
+        "tab_material",
+        "tab_shipping",
+        "tab_safety",
+        "manufacturer"
       ],
       "settings": {
         "product": "kneetech-bandaz-na-koleno",
         "color_scheme": "scheme-1",
         "secondary_background": false,
-        "media_size": "medium",
+        "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "media_position": "left",
@@ -471,6 +513,117 @@
         "product": "kneetech-bandaz-na-koleno",
         "color_scheme": "scheme-1"
       }
+    },
+    "compare": {
+      "type": "kt-compare",
+      "blocks": {
+        "c1": {
+          "type": "row",
+          "settings": {
+            "label": "Komprese kolem kolene",
+            "us": true,
+            "them": true
+          }
+        },
+        "c2": {
+          "type": "row",
+          "settings": {
+            "label": "Utažení suchým zipem podle sebe",
+            "us": true,
+            "them": false
+          }
+        },
+        "c3": {
+          "type": "row",
+          "settings": {
+            "label": "Protiskluzový pásek",
+            "us": true,
+            "them": false
+          }
+        },
+        "c4": {
+          "type": "row",
+          "settings": {
+            "label": "Lehká a prodyšná",
+            "us": true,
+            "them": true
+          }
+        },
+        "c5": {
+          "type": "row",
+          "settings": {
+            "label": "Křížový pásek přes koleno",
+            "us": true,
+            "them": false
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
+      ],
+      "settings": {
+        "eyebrow": "Srovnání",
+        "heading": "Proč ne obyčejný návlek",
+        "text": "<p>Obyčejný návlek je fajn. Jenže ho neutáhneš podle sebe a pevnost si nenastavíš.</p>",
+        "us_label": "KNEETECH",
+        "them_label": "Obyčejný návlek",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "facts": {
+      "type": "kt-facts",
+      "blocks": {
+        "f1": {
+          "type": "fact",
+          "settings": {
+            "big": "Komprese",
+            "text": "<p>Bandáž rovnoměrně obepne tkáně kolem kolene. Koleno víc cítíš a máš pocit opory – proto se kompresní bandáže ve sportu používají.</p>",
+            "source": ""
+          }
+        },
+        "f2": {
+          "type": "fact",
+          "settings": {
+            "big": "Vnímání kolene",
+            "text": "<p>Výzkumy ukazují, že kolenní návleky a ortézy mohou zlepšit vnímání polohy kolene (tzv. propriocepci) – tedy jak přesně tvůj mozek ví, kde se koleno právě nachází.</p>",
+            "source": "Ghai, Driller, Ghai: Effects of joint stabilizers on proprioception and stability: A systematic review and meta-analysis. Physical Therapy in Sport, 2017."
+          }
+        },
+        "f3": {
+          "type": "fact",
+          "settings": {
+            "big": "Rosteš",
+            "text": "<p>U hráčů a hráček v růstu, kteří hodně sportují, bolí kolena docela často – kosti rostou rychle a svaly se šlachami to chvíli dohánějí. Většinou to s růstem přejde. Když bolest trvá, patří to k doktorovi.</p>",
+            "source": ""
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "settings": {
+        "eyebrow": "Jak to funguje",
+        "heading": "Žádná magie. Fakta.",
+        "text": "<p>Píšeme jen to, co se dá doložit.</p>",
+        "disclaimer": "<p>KNEETECH není zdravotnický prostředek a nenahrazuje vyšetření ani léčbu. Při bolesti, která neustupuje, navštiv lékaře.</p>",
+        "color_scheme": "scheme-3",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "reviews": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -481,7 +634,10 @@
     "videos",
     "size",
     "parents",
+    "compare",
+    "facts",
     "faq",
+    "reviews",
     "cta",
     "sticky"
   ]

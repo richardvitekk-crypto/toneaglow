@@ -79,7 +79,7 @@
         "offers": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'kt-offers', product: product, option_name: 'Balení', badge: 'Nejvýhodnější' %}"
+            "custom_liquid": "{%- assign kt_product = all_products['kneetech-bandaz-na-koleno'] -%}{% render 'kt-offers', product: kt_product, option_name: 'Balení', badge: 'Nejvýhodnější' %}"
           }
         },
         "size_dialog": {
@@ -98,7 +98,7 @@
         "selection": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'kt-selection', product: product, sizes: 'S:30–33 cm|M:33–36 cm|L:36–40 cm|XL:40–44 cm' %}"
+            "custom_liquid": "{%- assign kt_product = all_products['kneetech-bandaz-na-koleno'] -%}{% render 'kt-selection', product: kt_product, sizes: 'S:30–33 cm|M:33–36 cm|L:36–40 cm|XL:40–44 cm' %}"
           }
         },
         "buy_buttons": {
@@ -117,13 +117,13 @@
         "share": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'kt-share', product: product %}"
+            "custom_liquid": "{%- assign kt_product = all_products['kneetech-bandaz-na-koleno'] -%}{% render 'kt-share', product: kt_product %}"
           }
         },
         "description": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{%- if product.description != blank -%}<div class=\"product__description rte quick-add-hidden\">{{ product.description }}</div>{%- endif -%}"
+            "custom_liquid": "{%- assign kt_product = all_products['kneetech-bandaz-na-koleno'] -%}{%- if kt_product.description != blank -%}<div class=\"product__description rte quick-add-hidden\">{{ kt_product.description }}</div>{%- endif -%}"
           }
         },
         "tab_fit": {
@@ -153,7 +153,7 @@
         "manufacturer": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{%- if product.metafields.custom.vyrobce != blank -%}<p class=\"kt-note\">{{ product.metafields.custom.vyrobce | newline_to_br }}</p>{%- endif -%}"
+            "custom_liquid": "{%- assign kt_product = all_products['kneetech-bandaz-na-koleno'] -%}{%- if kt_product.metafields.custom.vyrobce != blank -%}<p class=\"kt-note\">{{ kt_product.metafields.custom.vyrobce | newline_to_br }}</p>{%- endif -%}"
           }
         }
       },

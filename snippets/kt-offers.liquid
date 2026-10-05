@@ -4,6 +4,7 @@
   takže cena, košík i dostupnost fungují standardně.
   Všechna čísla se počítají z cen variant (nic natvrdo):
   přeškrtnutá cena = cena 1 kusu × počet kusů (nákup po kusech), ne „původní cena“.
+  Sleva na druhý kus = úspora ÷ cena 1 kusu (790 vs. 2 × 590 → druhý kus za 200 místo 590 = −66 %).
   Výhodnější balení se vždy ukáže jako první.
   Hodnoty volby se berou přímo z variant (product.options + variant.options) – bez options_with_values.
   V editoru se při chybě ukáže červená kontrolní hláška.
@@ -93,6 +94,10 @@
       endif
     endfor
     assign upsell_extra = best_price | minus: single_price
+    assign extra_pct = 0
+    if single_price > 0 and best_saving > 0
+      assign extra_pct = best_saving | times: 100 | divided_by: single_price
+    endif
     assign reason_list = reasons | split: '|'
   -%}
   {{ 'kt-offers.css' | asset_url | stylesheet_tag }}
@@ -150,8 +155,8 @@
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.7 6.3.9-4.6 4.4 1.1 6.2L12 17l-5.6 3 1.1-6.2-4.6-4.4 6.3-.9L12 2.8Z" fill="currentColor"/></svg>
                   {{ recommend }}
                 </span>
-                {%- if percent > 0 -%}
-                  <span class="kt-offer__pct" aria-hidden="true"><small>{{ best_value | split: ' ' | first }}&nbsp;ks</small>−{{ percent }}&nbsp;%</span>
+                {%- if extra_pct > 0 -%}
+                  <span class="kt-offer__pct" aria-hidden="true"><small>2.&nbsp;kus</small>−{{ extra_pct }}&nbsp;%</span>
                 {%- endif -%}
               {%- endif -%}
               <span class="kt-offer__radio" aria-hidden="true"></span>
@@ -193,7 +198,7 @@
                   {%- endfor -%}
                 </span>
                 <span class="kt-offer__savebar">
-                  Ušetříš <strong>{{ saving | money_without_trailing_zeros }}</strong> ({{ percent }}&nbsp;%) oproti nákupu po kusech
+                  Druhá bandáž o <strong>{{ extra_pct }}&nbsp;% levěji</strong> – ušetříš {{ saving | money_without_trailing_zeros }}
                 </span>
               {%- endif -%}
             </button>
@@ -206,7 +211,7 @@
       <div class="kt-upsell" role="note">
         <p class="kt-upsell__text">
           Co druhé koleno? <strong>Druhý kus jen za +{{ upsell_extra | money_without_trailing_zeros }}</strong>
-          a ušetříš {{ best_saving | money_without_trailing_zeros }}.
+          – o {{ extra_pct }}&nbsp;% levěji, ušetříš {{ best_saving | money_without_trailing_zeros }}.
         </p>
         <button type="button" class="kt-upsell__button" data-kt-upsell="{{ best_value | escape }}">
           Chci {{ best_value | downcase }}

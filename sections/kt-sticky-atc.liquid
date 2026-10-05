@@ -27,7 +27,7 @@
   assign deal_pct = 0
   if one_price > 0 and multi_price > 0
     assign deal_full = one_price | times: multi_qty
-    assign deal_pct = deal_full | minus: multi_price | times: 100 | divided_by: deal_full
+    assign deal_pct = deal_full | minus: multi_price | times: 100 | divided_by: one_price
   endif
 -%}
 {%- if sticky_product != blank -%}
@@ -54,7 +54,7 @@
                 od {{ sticky_product.price_min | money_without_trailing_zeros }}
               {%- endif -%}
               {%- if deal_pct > 0 -%}
-                <span class="kt-sticky__deal">−{{ deal_pct }}&nbsp;% za {{ multi_qty }}&nbsp;ks</span>
+                <span class="kt-sticky__deal">2.&nbsp;kus −{{ deal_pct }}&nbsp;%</span>
               {%- endif -%}
             </div>
           </div>

@@ -1,0 +1,56 @@
+{%- comment -%}
+  Tabulka velikostí na 1 kliknutí – otevře se v okně přímo u výběru velikosti,
+  zákazník neodchází ze stránky. Bez JS odkaz vede na stránku Velikosti.
+  Accepts:
+  - sizes {String} – 'S:30–33 cm:mladší a štíhlejší hráči|M:33–36 cm:…' (poznámka nepovinná)
+  - label {String} – text odkazu
+  - page {String}  – odkaz na celou stránku (výchozí /pages/velikosti)
+{%- endcomment -%}
+{%- liquid
+  assign label = label | default: 'Nevíš velikost? Tabulka velikostí'
+  assign page = page | default: '/pages/velikosti'
+  assign dialog_id = 'kt-size-dialog'
+  assign rows = sizes | split: '|'
+-%}
+{{ 'kt-landing.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'kt-landing.js' | asset_url }}" defer="defer"></script>
+
+<a class="kt-size-link kt-size-open" href="{{ page }}" data-kt-size-open aria-controls="{{ dialog_id }}" aria-haspopup="dialog">
+  {%- render 'kt-icon', name: 'ruler' -%}
+  {{ label }}
+</a>
+
+<dialog class="kt-size-dialog color-scheme-1" id="{{ dialog_id }}" aria-labelledby="{{ dialog_id }}-title">
+  <div class="kt-size-dialog__box">
+    <button type="button" class="kt-size-dialog__close" data-kt-size-close aria-label="Zavřít">
+      {%- render 'kt-icon', name: 'cross' -%}
+    </button>
+    <p class="kt-size-dialog__title" id="{{ dialog_id }}-title">Tabulka velikostí</p>
+    <ol class="kt-size-dialog__steps">
+      <li>Nohu lehce pokrč, jako když stojíš v obraně.</li>
+      <li>Krejčovským metrem změř obvod kolena přes střed čéšky.</li>
+      <li>Najdi obvod v tabulce.</li>
+    </ol>
+    <table class="kt-size-dialog__table">
+      <thead>
+        <tr><th scope="col">Velikost</th><th scope="col">Obvod kolena</th></tr>
+      </thead>
+      <tbody>
+        {%- for row in rows -%}
+          {%- assign parts = row | split: ':' -%}
+          <tr>
+            <th scope="row">{{ parts[0] }}</th>
+            <td>
+              {{- parts[1] -}}
+              {%- if parts[2] != blank -%}<small>{{ parts[2] }}</small>{%- endif -%}
+            </td>
+          </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+    <p class="kt-size-dialog__tip">
+      Jsi mezi dvěma velikostmi? Pro pevnější stisk vezmi menší. Suchým zipem si bandáž ještě dotáhneš.
+    </p>
+    <a class="kt-size-dialog__more" href="{{ page }}">Celý návod k měření</a>
+  </div>
+</dialog>

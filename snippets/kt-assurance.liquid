@@ -1,0 +1,29 @@
+{%- comment -%}
+  Pravdivé informace pod tlačítkem „Přidat do košíku“: doručení, cena dopravy, vrácení.
+  Nahrazuje původní ikonky (vrácení / platba / poradíme).
+  Accepts:
+  - delivery {String}      – např. 'Doručení do 14 dnů'
+  - delivery_sub {String}  – např. 'Doprava 72 Kč'
+  - returns {String}       – např. '30 dní na vrácení'
+  - returns_sub {String}   – např. 'Bez udání důvodu'
+  - link {String}          – odkaz na podrobnosti (výchozí /pages/doprava-a-vraceni)
+{%- endcomment -%}
+{{ 'kt-landing.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign delivery = delivery | default: 'Doručení do 14 dnů'
+  assign returns = returns | default: '30 dní na vrácení'
+  assign link = link | default: '/pages/doprava-a-vraceni'
+-%}
+<div class="kt-assure">
+  <ul class="kt-assure__list">
+    <li>
+      {% render 'kt-icon', name: 'truck', class: 'kt-assure__icon' %}
+      <span><strong>{{ delivery }}</strong>{% if delivery_sub != blank %}<small>{{ delivery_sub }}</small>{% endif %}</span>
+    </li>
+    <li>
+      {% render 'kt-icon', name: 'return', class: 'kt-assure__icon' %}
+      <span><strong>{{ returns }}</strong>{% if returns_sub != blank %}<small>{{ returns_sub }}</small>{% endif %}</span>
+    </li>
+  </ul>
+  <a class="kt-assure__link" href="{{ link }}">Doprava a vrácení podrobně</a>
+</div>

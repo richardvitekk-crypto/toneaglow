@@ -1,0 +1,55 @@
+{%- comment -%}
+  Úzký pruh s hlavním sdělením nad nákupním boxem (úvod i produkt).
+  Na mobilu je první, co návštěvník z TikToku/Instagramu uvidí – hned pod ním
+  je fotka produktu a výběr balení. Záměrně krátký, aby netlačil nákup dolů.
+{%- endcomment -%}
+{{ 'kt-landing.css' | asset_url | stylesheet_tag }}
+
+<div class="kt-hl color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width kt-hl__inner">
+    <p class="kt-hl__title">
+      {{- section.settings.heading -}}
+      {%- if section.settings.heading_accent != blank -%}
+        {{ ' ' }}<em>{{ section.settings.heading_accent }}</em>
+      {%- endif -%}
+    </p>
+    {%- if section.blocks.size > 0 -%}
+      <ul class="kt-hl__chips">
+        {%- for block in section.blocks -%}
+          <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "KT – Hlavní sdělení",
+  "tag": "section",
+  "class": "section kt-hl-section",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Nadpis", "default": "Hraj naplno." },
+    { "type": "text", "id": "heading_accent", "label": "Nadpis – zvýrazněná část", "default": "Jistota v každé kličce." },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-3" }
+  ],
+  "blocks": [
+    {
+      "type": "chip",
+      "name": "Štítek",
+      "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Doručení do 14 dnů" }]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KT – Hlavní sdělení",
+      "blocks": [
+        { "type": "chip", "settings": { "text": "Pro hráče 13–17 let" } },
+        { "type": "chip", "settings": { "text": "Doručení do 14 dnů" } },
+        { "type": "chip", "settings": { "text": "30 dní na vrácení" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

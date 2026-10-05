@@ -1,25 +1,35 @@
 {%- comment -%}
-  Plovoucí lišta s tlačítkem „Koupit“ na stránce produktu.
-  Objeví se, když zákazník odscrolluje pod hlavní tlačítko, a vrátí ho k výběru varianty.
+  Plovoucí lišta s tlačítkem na úvodu i produktu.
+  Je vidět vždy, když hlavní tlačítko „Přidat do košíku“ není na obrazovce –
+  na mobilu tedy hned po otevření stránky. Klik sjede k výběru velikosti.
+  Na úvodu se produkt bere z nastavení sekce.
 {%- endcomment -%}
-{%- if product != blank -%}
-  <kt-sticky-atc>
+{%- liquid
+  assign sticky_product = product
+  if sticky_product == blank
+    assign sticky_product = section.settings.product
+  endif
+-%}
+{%- if sticky_product != blank -%}
+  {{ 'kt-landing.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'kt-landing.js' | asset_url }}" defer="defer"></script>
+  <kt-sticky-buy>
     <div class="kt-sticky color-{{ section.settings.color_scheme }}" aria-hidden="true">
       <div class="page-width kt-sticky__inner">
         <div class="kt-sticky__info">
-          {%- if product.featured_media != blank -%}
+          {%- if sticky_product.featured_media != blank -%}
             {{
-              product.featured_media.preview_image
+              sticky_product.featured_media.preview_image
               | image_url: width: 120
-              | image_tag: class: 'kt-sticky__img', loading: 'lazy', alt: product.title
+              | image_tag: class: 'kt-sticky__img', loading: 'lazy', alt: sticky_product.title
             }}
           {%- endif -%}
           <div style="min-width: 0;">
-            <div class="kt-sticky__title">{{ product.title }}</div>
+            <div class="kt-sticky__title">{{ sticky_product.title }}</div>
             {%- if section.settings.price_text != blank -%}
               <div class="kt-sticky__price">{{ section.settings.price_text }}</div>
             {%- else -%}
-              <div class="kt-sticky__price">od {{ product.price_min | money_without_trailing_zeros }}</div>
+              <div class="kt-sticky__price">od {{ sticky_product.price_min | money_without_trailing_zeros }}</div>
             {%- endif -%}
           </div>
         </div>
@@ -28,7 +38,7 @@
         </button>
       </div>
     </div>
-  </kt-sticky-atc>
+  </kt-sticky-buy>
 {%- endif -%}
 
 {% schema %}
@@ -36,10 +46,11 @@
   "name": "KT – Plovoucí Koupit",
   "tag": "section",
   "class": "section",
-  "enabled_on": { "templates": ["product"] },
+  "enabled_on": { "templates": ["product", "index"] },
   "settings": [
-    { "type": "text", "id": "button_label", "label": "Tlačítko – text", "default": "Vybrat a koupit" },
+    { "type": "text", "id": "button_label", "label": "Tlačítko – text", "default": "Vybrat velikost" },
     { "type": "text", "id": "price_text", "label": "Text s cenou", "info": "Když necháš prázdné, ukáže se nejnižší cena." },
+    { "type": "product", "id": "product", "label": "Produkt (jen pro úvodní stránku)", "info": "Na stránce produktu se použije zobrazený produkt." },
     { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" }
   ],
   "presets": [{ "name": "KT – Plovoucí Koupit" }]

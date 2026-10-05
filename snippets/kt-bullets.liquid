@@ -1,0 +1,17 @@
+{%- comment -%}
+  Krátké výhody v nákupním boxu (odrážky s fajfkou).
+  Accepts: items {String} – body oddělené svislítkem „|“
+  Použití: {% render 'kt-bullets', items: 'První|Druhá|Třetí' %}
+{%- endcomment -%}
+{{ 'kt-landing.css' | asset_url | stylesheet_tag }}
+{%- assign list = items | split: '|' -%}
+{%- if list.size > 0 -%}
+  <ul class="kt-bullets">
+    {%- for item in list -%}
+      {%- assign text = item | strip -%}
+      {%- if text != blank -%}
+        <li>{% render 'kt-icon', name: 'check', class: 'kt-bullets__icon' %}<span>{{ text }}</span></li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+{%- endif -%}

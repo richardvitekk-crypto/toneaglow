@@ -5,6 +5,8 @@
   Všechna čísla se počítají z cen variant (nic natvrdo):
   přeškrtnutá cena = cena 1 kusu × počet kusů (nákup po kusech), ne „původní cena“.
   Výhodnější balení se vždy ukáže jako první.
+  Hodnoty volby se berou přímo z variant (product.options + variant.options) – bez options_with_values.
+  V editoru se při chybě ukáže červená kontrolní hláška.
 
   Accepts:
   - product {Object}
@@ -17,47 +19,74 @@
   assign option_handle = option_name | handleize
   assign recommend = recommend | default: 'Doporučujeme'
   assign reasons = reasons | default: 'Stejná opora pro obě kolena|Začne zlobit i druhé koleno? Máš ji hned po ruce|Jedna se pere, druhá je připravená na trénink'
-  assign target_option = null
-  for option in product.options_with_values
-    assign this_handle = option.name | handleize
+
+  assign option_index = -1
+  assign option_label = option_name
+  for name in product.options
+    assign this_handle = name | handleize
     if this_handle == option_handle
-      assign target_option = option
+      assign option_index = forloop.index0
+      assign option_label = name
     endif
   endfor
+
+  assign values_csv = ''
+  if option_index >= 0
+    for variant in product.variants
+      assign v = variant.options[option_index]
+      assign hay = '|' | append: values_csv | append: '|'
+      assign token = '|' | append: v | append: '|'
+      unless hay contains token
+        if values_csv == ''
+          assign values_csv = v
+        else
+          assign values_csv = values_csv | append: '|' | append: v
+        endif
+      endunless
+    endfor
+  endif
+  assign option_values = values_csv | split: '|'
+  assign selected_value = ''
+  if option_index >= 0
+    assign selected_value = product.selected_or_first_available_variant.options[option_index]
+  endif
 -%}
 
-{%- if target_option != null and target_option.values.size > 1 -%}
+{%- if option_index < 0 or option_values.size < 2 -%}
+  {%- if request.design_mode -%}
+    <p style="padding:1rem;border:1px dashed #f66;color:#f66;font-size:1.3rem">
+      KT balení: nenašel jsem volbu „{{ option_name }}“ (volby produktu: {{ product.options | join: ', ' }}).
+    </p>
+  {%- endif -%}
+{%- else -%}
   {%- liquid
-    assign option_index = target_option.position | minus: 1
     assign single_price = 0
-    for value in target_option.values
-      assign value_qty = value.name | split: ' ' | first | plus: 0
-      if value_qty <= 1
+    for value in option_values
+      assign value_qty = value | split: ' ' | first | plus: 0
+      if value_qty <= 1 and single_price == 0
         for variant in product.variants
-          if variant.options[option_index] == value.name
+          if variant.options[option_index] == value and single_price == 0
             assign single_price = variant.price
-            break
           endif
         endfor
-        break
       endif
     endfor
 
     assign best_value = ''
     assign best_price = 0
     assign best_saving = 0
-    for value in target_option.values
-      assign value_qty = value.name | split: ' ' | first | plus: 0
+    for value in option_values
+      assign value_qty = value | split: ' ' | first | plus: 0
       if value_qty > 1
+        assign candidate_price = 0
         for variant in product.variants
-          if variant.options[option_index] == value.name
+          if variant.options[option_index] == value and candidate_price == 0
             assign candidate_price = variant.price
-            break
           endif
         endfor
         assign candidate_saving = single_price | times: value_qty | minus: candidate_price
         if candidate_saving > best_saving
-          assign best_value = value.name
+          assign best_value = value
           assign best_price = candidate_price
           assign best_saving = candidate_saving
         endif
@@ -70,16 +99,16 @@
   <script src="{{ 'kt-landing.js' | asset_url }}" defer="defer"></script>
   <kt-offers class="kt-offers-wrap kt-offers-v2" data-option="{{ option_handle }}">
     <div class="kt-offers__head">
-      <p class="kt-offers__label" id="kt-offers-label-{{ product.id }}">Vyber {{ target_option.name | downcase }}</p>
+      <p class="kt-offers__label" id="kt-offers-label-{{ product.id }}">Vyber {{ option_label | downcase }}</p>
       {%- if best_saving > 0 -%}
         <p class="kt-offers__tip">Fotbal zatěžuje obě kolena</p>
       {%- endif -%}
     </div>
     <div role="radiogroup" aria-labelledby="kt-offers-label-{{ product.id }}" class="kt-offers">
       {%- for pass in (1..2) -%}
-        {%- for value in target_option.values -%}
+        {%- for value in option_values -%}
           {%- liquid
-            assign qty = value.name | split: ' ' | first | plus: 0
+            assign qty = value | split: ' ' | first | plus: 0
             if qty < 1
               assign qty = 1
             endif
@@ -92,9 +121,8 @@
             endif
             assign value_price = 0
             for variant in product.variants
-              if variant.options[option_index] == value.name
+              if variant.options[option_index] == value and value_price == 0
                 assign value_price = variant.price
-                break
               endif
             endfor
             assign full_price = single_price | times: qty
@@ -113,9 +141,9 @@
             <button
               type="button"
               role="radio"
-              class="kt-offer{% if is_best %} kt-offer--best{% endif %}{% if value.selected %} is-active{% endif %}"
-              data-value="{{ value.name | escape }}"
-              aria-checked="{% if value.selected %}true{% else %}false{% endif %}"
+              class="kt-offer{% if is_best %} kt-offer--best{% endif %}{% if value == selected_value %} is-active{% endif %}"
+              data-value="{{ value | escape }}"
+              aria-checked="{% if value == selected_value %}true{% else %}false{% endif %}"
             >
               {%- if is_best -%}
                 <span class="kt-offer__badge">
@@ -128,7 +156,7 @@
               {%- endif -%}
               <span class="kt-offer__radio" aria-hidden="true"></span>
               <span class="kt-offer__main">
-                <span class="kt-offer__title">{{ value.name }}</span>
+                <span class="kt-offer__title">{{ value }}</span>
                 <span class="kt-offer__sub">
                   {%- if qty > 1 -%}
                     Na obě kolena

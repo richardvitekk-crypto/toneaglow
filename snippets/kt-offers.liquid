@@ -198,7 +198,7 @@
                   {%- endfor -%}
                 </span>
                 <span class="kt-offer__savebar">
-                  Druhá bandáž o <strong>{{ extra_pct }}&nbsp;% levěji</strong> – ušetříš {{ saving | money_without_trailing_zeros }}
+                  Druhá bandáž o <strong>{{ extra_pct }}&nbsp;% levněji</strong> – ušetříš {{ saving | money_without_trailing_zeros }}
                 </span>
               {%- endif -%}
             </button>
@@ -211,7 +211,7 @@
       <div class="kt-upsell" role="note">
         <p class="kt-upsell__text">
           Co druhé koleno? <strong>Druhý kus jen za +{{ upsell_extra | money_without_trailing_zeros }}</strong>
-          – o {{ extra_pct }}&nbsp;% levěji, ušetříš {{ best_saving | money_without_trailing_zeros }}.
+          – o {{ extra_pct }}&nbsp;% levněji, ušetříš {{ best_saving | money_without_trailing_zeros }}.
         </p>
         <button type="button" class="kt-upsell__button" data-kt-upsell="{{ best_value | escape }}">
           Chci {{ best_value | downcase }}

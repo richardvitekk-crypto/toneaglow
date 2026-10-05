@@ -1,0 +1,35 @@
+{%- comment -%}
+  Odznak hodnocení z testování v klubech – patří pod název produktu.
+  Čísla nejsou natvrdo: JS je převezme ze sekce „KT – Recenze z terénu“
+  na stejné stránce (průměr + počet karet). Když sekce na stránce není
+  nebo nemá žádné hodnocení, odznak zůstane skrytý.
+  Parametry:
+    title  – text nad míči
+    label  – text za skóre, [pocet] = počet hráčů
+    anchor – id sekce, na kterou se skroluje (výchozí recenze-z-terenu)
+  Použití: {% render 'kt-field-rating', title: '…', label: 'z [pocet] testování v klubech' %}
+{%- endcomment -%}
+{%- liquid
+  assign target = anchor | default: 'recenze-z-terenu'
+  assign title_text = title | default: 'Vybraní profi fotbalisti zhodnotili naši bandáž:'
+  assign label_text = label | default: 'z [pocet] testování v klubech'
+-%}
+{{ 'kt-field-reviews.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'kt-field-reviews.js' | asset_url }}" defer="defer"></script>
+{%- render 'kt-ball-sprite', id: 'kt-ball-badge' -%}
+<a
+  href="#{{ target }}"
+  class="kt-frb"
+  data-kt-fr-badge
+  data-target="{{ target }}"
+  data-label="{{ label_text | escape }}"
+  hidden
+>
+  <span class="kt-frb__title">{{ title_text }}</span>
+  <span class="kt-frb__row">
+    {%- render 'kt-balls', rating: 0, sprite: 'kt-ball-badge' -%}
+    <strong class="kt-frb__score" data-kt-frb-score></strong>
+    <span class="kt-frb__label" data-kt-frb-label></span>
+    <svg class="kt-frb__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </span>
+</a>

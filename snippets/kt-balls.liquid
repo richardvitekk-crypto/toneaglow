@@ -1,0 +1,22 @@
+{%- comment -%}
+  Hodnocení v míčích (0–5, i desetinné). Spodní řada je tlumená, horní plná
+  se ořízne na šířku podle hodnocení – funguje i 4,5 nebo průměr 4,8.
+  Parametry: rating (číslo), sprite (id symbolu, výchozí kt-ball), class.
+{%- endcomment -%}
+{%- liquid
+  assign sprite_id = sprite | default: 'kt-ball'
+  assign value = rating | default: 0 | times: 1.0
+  if value > 5
+    assign value = 5
+  endif
+  assign percent = value | times: 20
+  assign label = value | round: 1 | append: ' z 5 míčů' | replace: '.', ','
+-%}
+<span class="kt-balls {{ class }}" role="img" aria-label="Hodnocení {{ label }}">
+  <span class="kt-balls__row kt-balls__row--empty" aria-hidden="true">
+    {%- for i in (1..5) -%}<svg class="kt-balls__ball"><use href="#{{ sprite_id }}"/></svg>{%- endfor -%}
+  </span>
+  <span class="kt-balls__row kt-balls__row--full" style="width: {{ percent }}%" aria-hidden="true" data-kt-balls-fill>
+    {%- for i in (1..5) -%}<svg class="kt-balls__ball"><use href="#{{ sprite_id }}"/></svg>{%- endfor -%}
+  </span>
+</span>

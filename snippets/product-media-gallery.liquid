@@ -15,7 +15,6 @@
   assign gallery_layout = section.settings.gallery_layout
   assign mobile_thumbnails = section.settings.mobile_thumbnails
 
-  # KNEETECH: „Vybraný produkt“ na úvodu (předává limit 1) ukáže celou galerii jako stránka produktu
   if limit == 1 and section.settings.product != blank
     assign limit = kt_no_limit
     assign gallery_layout = 'thumbnail_slider'

@@ -3,15 +3,68 @@
    doručení/vrácení pod tlačítkem, tabulka velikostí v okně, plovoucí lišta
    ========================================================================== */
 
-/* ---------- Hlavní sdělení nad nákupním boxem ---------- */
+/* ---------- Hlavní sdělení nad nákupním boxem – hřištní pruh ---------- */
 .kt-hl-section + .section,
 .kt-hl-section + .shopify-section {
   margin-top: 0;
 }
 
+.kt-hl {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* středový kruh, půlicí čára a světlo reflektoru */
+.kt-hl__pitch {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 26rem at 100% 0%, rgba(216, 255, 62, 0.14), transparent 60%),
+    linear-gradient(90deg, transparent calc(78% - 0.5px), rgba(255, 255, 255, 0.09) calc(78% - 0.5px), rgba(255, 255, 255, 0.09) calc(78% + 0.5px), transparent calc(78% + 0.5px));
+}
+
+.kt-hl__pitch span {
+  position: absolute;
+  top: 50%;
+  left: 78%;
+  width: 26rem;
+  height: 26rem;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 50%;
+}
+
+.kt-hl__pitch span::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.8rem;
+  height: 0.8rem;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(216, 255, 62, 0.7);
+  box-shadow: 0 0 2rem rgba(216, 255, 62, 0.6);
+}
+
 .kt-hl__inner {
-  padding-top: 1.6rem;
-  padding-bottom: 1.6rem;
+  position: relative;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.kt-hl__kicker {
+  margin: 0 0 0.8rem;
+  font-family: var(--font-heading-family);
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--kt-lime, #d8ff3e);
 }
 
 .kt-hl__title {
@@ -20,48 +73,43 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.01em;
-  line-height: 1;
-  font-size: clamp(2.8rem, 7.4vw, 5.2rem);
+  line-height: 0.98;
+  font-size: clamp(3rem, 8vw, 5.6rem);
   color: rgb(var(--color-foreground));
 }
 
 .kt-hl__title em {
+  display: block;
   font-style: normal;
   color: var(--kt-lime, #d8ff3e);
-}
-
-.color-scheme-1 .kt-hl__title em,
-.color-scheme-2 .kt-hl__title em,
-.color-scheme-5 .kt-hl__title em {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: var(--kt-lime, #d8ff3e);
-  text-decoration-thickness: 0.18em;
-  text-underline-offset: 0.08em;
 }
 
 .kt-hl__chips {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem 1.6rem;
-  margin: 1.2rem 0 0;
+  gap: 0.8rem;
+  margin: 1.4rem 0 0;
   padding: 0;
-  font-size: 1.3rem;
-  line-height: 1.3;
-  color: rgba(var(--color-foreground), 0.85);
 }
 
 .kt-hl__chips li {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 99rem;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: rgba(var(--color-foreground), 0.9);
 }
 
 .kt-hl__chips li::before {
   content: '';
-  width: 0.7rem;
-  height: 0.7rem;
+  width: 0.6rem;
+  height: 0.6rem;
   border-radius: 50%;
   background: var(--kt-lime, #d8ff3e);
   flex-shrink: 0;
@@ -69,18 +117,38 @@
 
 @media screen and (min-width: 990px) {
   .kt-hl__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3.2rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    column-gap: 4rem;
+    padding-top: 3.2rem;
+    padding-bottom: 3.2rem;
+  }
+
+  .kt-hl__kicker,
+  .kt-hl__title {
+    grid-column: 1;
   }
 
   .kt-hl__chips {
-    margin: 0;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: end;
     justify-content: flex-end;
-    flex-shrink: 0;
+    max-width: 42rem;
+    margin: 0;
+  }
+
+  .kt-hl__pitch span {
+    width: 34rem;
+    height: 34rem;
+    left: 62%;
+  }
+
+  .kt-hl__pitch {
+    background:
+      radial-gradient(60rem 26rem at 100% 0%, rgba(216, 255, 62, 0.14), transparent 60%),
+      linear-gradient(90deg, transparent calc(62% - 0.5px), rgba(255, 255, 255, 0.09) calc(62% - 0.5px), rgba(255, 255, 255, 0.09) calc(62% + 0.5px), transparent calc(62% + 0.5px));
   }
 }
 
@@ -272,7 +340,7 @@
 .kt-size-dialog__tip {
   margin: 1.6rem 0 0;
   padding: 1.2rem 1.4rem;
-  background: var(--kt-grey-100, #f3f3f1);
+  background: rgba(var(--color-foreground), 0.05);
   border-left: 3px solid var(--kt-lime, #d8ff3e);
   font-size: 1.35rem;
   line-height: 1.5;

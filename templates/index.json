@@ -37,10 +37,10 @@
         "h3"
       ],
       "settings": {
-        "eyebrow": "Pro hráče a hráčky 13–17 let",
+        "eyebrow": "",
         "heading": "Hraj naplno.",
         "heading_outline": "Koleno pod kontrolou.",
-        "text": "<p>Pro všechny, které po tréninku zlobí kolena. Kompresní bandáž s páskem na suchý zip, který si utáhneš přesně podle sebe. Myslíš na míč, ne na koleno.</p>",
+        "text": "<p>Pro mladé fotbalisty, které po tréninku zlobí kolena. Kompresní bandáž s páskem na suchý zip, který si utáhneš přesně podle sebe. Myslíš na míč, ne na koleno.</p>",
         "button_label": "Chci bandáž",
         "button_link": "",
         "button_label_2": "Jak vybrat velikost",
@@ -48,11 +48,11 @@
         "product": "kneetech-bandaz-na-koleno",
         "badge_big": "2 ks = 790 Kč",
         "badge_small": "Na obě kolena",
+        "background": "pitch",
+        "overlay": 40,
         "color_scheme": "scheme-3",
         "padding_top": 40,
-        "padding_bottom": 40,
-        "background": "pitch",
-        "overlay": 40
+        "padding_bottom": 40
       }
     },
     "marquee": {
@@ -122,7 +122,9 @@
         },
         "title": {
           "type": "title",
-          "settings": {}
+          "settings": {
+            "heading_size": "h1"
+          }
         },
         "price": {
           "type": "price",
@@ -141,6 +143,12 @@
             "swatch_shape": "none"
           }
         },
+        "selection": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'kt-selection', product: product, sizes: 'S:30–33 cm|M:33–36 cm|L:36–40 cm|XL:40–44 cm', note: 'Doručení obvykle do 14 dnů · 14 dní na vrácení' %}"
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -152,12 +160,6 @@
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "<a class=\"kt-size-link\" href=\"{{ product.url }}\">Všechno o bandáži {% render 'kt-icon', name: 'arrow' %}</a>"
-          }
-        },
-        "selection": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'kt-selection', product: product, sizes: 'S:30–33 cm|M:33–36 cm|L:36–40 cm|XL:40–44 cm', note: 'Doručení obvykle do 14 dnů · 14 dní na vrácení' %}"
           }
         }
       },
@@ -320,6 +322,61 @@
         "text": "<p>Píšeme jen to, co se dá doložit.</p>",
         "disclaimer": "<p>KNEETECH není zdravotnický prostředek a nenahrazuje vyšetření ani léčbu. Při bolesti, která neustupuje, navštiv lékaře.</p>",
         "color_scheme": "scheme-3",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "parents": {
+      "type": "kt-parents",
+      "blocks": {
+        "p1": {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "title": "Bezpečné nošení",
+            "text": "<p>Bandáž má být pevná, ale koleno v ní musí jít normálně ohnout. Když se objeví brnění, otok nebo změna barvy kůže, stačí pásek povolit. Nosí se na trénink a zápas, ne celý den ani přes noc.</p>"
+          }
+        },
+        "p2": {
+          "type": "item",
+          "settings": {
+            "icon": "medical",
+            "title": "Kdy k lékaři",
+            "text": "<p>Když koleno bolí déle než pár dní, bolest se zhoršuje, koleno otéká nebo bolí i v klidu, patří k lékaři nebo fyzioterapeutovi. Bandáž je opora při sportu, ne léčba.</p>"
+          }
+        },
+        "p3": {
+          "type": "item",
+          "settings": {
+            "icon": "ruler",
+            "title": "Správná velikost",
+            "text": "<p>Stačí krejčovský metr a minuta času. Když si nebudete jistí, pošlete nám obvod kolena v centimetrech a velikost doporučíme.</p>"
+          }
+        },
+        "p4": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "title": "Nákup bez rizika",
+            "text": "<p>Platba probíhá v zabezpečené pokladně. Do 14 dnů od převzetí můžete od nákupu odstoupit bez udání důvodu a na vady platí záruka 24 měsíců.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "settings": {
+        "eyebrow": "Pro rodiče",
+        "heading": "Co potřebujete vědět",
+        "text": "<p>Nákup platíte vy, tak chcete mít jistotu. Tady je všechno podstatné na jednom místě. Bez přehánění a bez slibů, které nejde doložit.</p>",
+        "button_label": "Napsat nám",
+        "button_link": "shopify://pages/contact",
+        "button_label_2": "Tabulka velikostí",
+        "button_link_2": "shopify://pages/velikosti",
+        "color_scheme": "scheme-2",
         "padding_top": 96,
         "padding_bottom": 96
       }
@@ -503,61 +560,6 @@
         "product": "kneetech-bandaz-na-koleno",
         "color_scheme": "scheme-1",
         "padding_top": 24,
-        "padding_bottom": 96
-      }
-    },
-    "parents": {
-      "type": "kt-parents",
-      "blocks": {
-        "p1": {
-          "type": "item",
-          "settings": {
-            "icon": "shield",
-            "title": "Bezpečné nošení",
-            "text": "<p>Bandáž má být pevná, ale koleno v ní musí jít normálně ohnout. Když se objeví brnění, otok nebo změna barvy kůže, stačí pásek povolit. Nosí se na trénink a zápas, ne celý den ani přes noc.</p>"
-          }
-        },
-        "p2": {
-          "type": "item",
-          "settings": {
-            "icon": "medical",
-            "title": "Kdy k lékaři",
-            "text": "<p>Když koleno bolí déle než pár dní, bolest se zhoršuje, koleno otéká nebo bolí i v klidu, patří k lékaři nebo fyzioterapeutovi. Bandáž je opora při sportu, ne léčba.</p>"
-          }
-        },
-        "p3": {
-          "type": "item",
-          "settings": {
-            "icon": "ruler",
-            "title": "Správná velikost",
-            "text": "<p>Stačí krejčovský metr a minuta času. Když si nebudete jistí, pošlete nám obvod kolena v centimetrech a velikost doporučíme.</p>"
-          }
-        },
-        "p4": {
-          "type": "item",
-          "settings": {
-            "icon": "return",
-            "title": "Nákup bez rizika",
-            "text": "<p>Platba probíhá v zabezpečené pokladně. Do 14 dnů od převzetí můžete od nákupu odstoupit bez udání důvodu a na vady platí záruka 24 měsíců.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "p1",
-        "p2",
-        "p3",
-        "p4"
-      ],
-      "settings": {
-        "eyebrow": "Pro rodiče",
-        "heading": "Co potřebujete vědět",
-        "text": "<p>Nákup platíte vy, tak chcete mít jistotu. Tady je všechno podstatné na jednom místě. Bez přehánění a bez slibů, které nejde doložit.</p>",
-        "button_label": "Napsat nám",
-        "button_link": "shopify://pages/contact",
-        "button_label_2": "Tabulka velikostí",
-        "button_link_2": "shopify://pages/velikosti",
-        "color_scheme": "scheme-2",
-        "padding_top": 96,
         "padding_bottom": 96
       }
     }

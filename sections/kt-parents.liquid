@@ -1,0 +1,146 @@
+{%- comment -%}
+  Sekce pro rodiče – vyká a odpovídá na to, co rodič před nákupem řeší:
+  bezpečnost, kdy k lékaři, velikost a nákup bez rizika.
+  Blok „Doporučení odborníka“ se ukáže, jen když má vyplněnou citaci.
+  Kotva #pro-rodice – na ni míří odkaz „Poslat rodičům“.
+{%- endcomment -%}
+{%- render 'kt-section-padding', section: section -%}
+
+{%- liquid
+  assign items = section.blocks | where: 'type', 'item'
+  assign experts = section.blocks | where: 'type', 'expert'
+-%}
+
+<div id="pro-rodice" class="kt-section kt-parents color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="kt-parents__grid">
+      <div class="kt-parents__intro kt-reveal">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="kt-eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="kt-heading kt-heading--md">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="kt-lead-text">{{ section.settings.text }}</div>
+        {%- endif -%}
+
+        {%- for block in experts -%}
+          {%- if block.settings.quote != blank -%}
+            <figure class="kt-parents__expert" {{ block.shopify_attributes }}>
+              <blockquote>{{ block.settings.quote }}</blockquote>
+              <figcaption>
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 160
+                    | image_tag: class: 'kt-parents__expert-img', loading: 'lazy', alt: block.settings.name
+                  }}
+                {%- endif -%}
+                <span>
+                  <strong>{{ block.settings.name }}</strong>
+                  {%- if block.settings.role != blank -%}<br>{{ block.settings.role }}{%- endif -%}
+                </span>
+              </figcaption>
+            </figure>
+          {%- endif -%}
+        {%- endfor -%}
+
+        <div class="kt-parents__actions">
+          {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+            <a href="{{ section.settings.button_link }}" class="button button--primary">{{ section.settings.button_label }}</a>
+          {%- endif -%}
+          {%- if section.settings.button_label_2 != blank and section.settings.button_link_2 != blank -%}
+            <a href="{{ section.settings.button_link_2 }}" class="button button--secondary">{{ section.settings.button_label_2 }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- if items.size > 0 -%}
+        <div class="kt-parents__items">
+          {%- for block in items -%}
+            <div class="kt-parents__item kt-reveal" {{ block.shopify_attributes }}>
+              {%- if block.settings.icon != 'none' -%}
+                {%- render 'kt-icon', name: block.settings.icon, class: 'kt-parents__icon' -%}
+              {%- endif -%}
+              <h3 class="kt-parents__title">{{ block.settings.title }}</h3>
+              {%- if block.settings.text != blank -%}
+                <div class="kt-parents__text">{{ block.settings.text }}</div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "KT – Pro rodiče",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Malý nadpis", "default": "Pro rodiče" },
+    { "type": "text", "id": "heading", "label": "Nadpis", "default": "Co potřebujete vědět" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Tlačítko 1 – text", "default": "Napsat nám" },
+    { "type": "url", "id": "button_link", "label": "Tlačítko 1 – odkaz" },
+    { "type": "text", "id": "button_label_2", "label": "Tlačítko 2 – text", "default": "Tabulka velikostí" },
+    { "type": "url", "id": "button_link_2", "label": "Tlačítko 2 – odkaz" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-2" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 96 }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Bod",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Ikona",
+          "options": [
+            { "value": "none", "label": "Žádná" },
+            { "value": "shield", "label": "Bezpečnost" },
+            { "value": "medical", "label": "Lékař" },
+            { "value": "ruler", "label": "Velikost" },
+            { "value": "return", "label": "Vrácení" },
+            { "value": "lock", "label": "Zámek" },
+            { "value": "chat", "label": "Zpráva" },
+            { "value": "knee", "label": "Koleno" }
+          ],
+          "default": "shield"
+        },
+        { "type": "text", "id": "title", "label": "Nadpis", "default": "Bezpečné nošení" },
+        { "type": "richtext", "id": "text", "label": "Text" }
+      ]
+    },
+    {
+      "type": "expert",
+      "name": "Doporučení odborníka",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Vyplň jen skutečné doporučení se souhlasem dané osoby. Bez citace se blok nezobrazí." },
+        { "type": "textarea", "id": "quote", "label": "Citace" },
+        { "type": "text", "id": "name", "label": "Jméno" },
+        { "type": "text", "id": "role", "label": "Role (např. sportovní masér, fyzioterapeut)" },
+        { "type": "image_picker", "id": "image", "label": "Fotka" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KT – Pro rodiče",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "shield", "title": "Bezpečné nošení" } },
+        { "type": "item", "settings": { "icon": "medical", "title": "Kdy k lékaři" } },
+        { "type": "item", "settings": { "icon": "ruler", "title": "Správná velikost" } },
+        { "type": "item", "settings": { "icon": "return", "title": "Nákup bez rizika" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

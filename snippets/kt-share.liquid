@@ -1,0 +1,31 @@
+{%- comment -%}
+  „Pošli rodičům“ – hráč pošle odkaz tomu, kdo nákup platí.
+  Na mobilu otevře systémové sdílení, jinde nabídne WhatsApp, e-mail a zkopírování odkazu.
+  Odkaz míří rovnou na sekci pro rodiče (#pro-rodice).
+
+  Accepts:
+  - product {Object}
+{%- endcomment -%}
+{%- liquid
+  assign share_url = shop.url | append: product.url | append: '#pro-rodice'
+  assign share_text = 'Mrkni prosím na tuhle bandáž na koleno na fotbal. Je tam i všechno o velikosti a bezpečnosti:'
+  assign wa_text = share_text | append: ' ' | append: share_url | url_encode
+  assign mail_subject = 'Bandáž na koleno na fotbal' | url_encode
+-%}
+<kt-share class="kt-share" data-url="{{ share_url }}" data-text="{{ share_text | escape }}" data-title="{{ product.title | escape }}">
+  <div class="kt-share__head">
+    <span class="kt-share__icon" aria-hidden="true">{% render 'kt-icon', name: 'chat' %}</span>
+    <div>
+      <p class="kt-share__title">Platí rodiče?</p>
+      <p class="kt-share__text">Pošli jim odkaz. Najdou tam všechno o velikosti, bezpečnosti a vrácení.</p>
+    </div>
+  </div>
+  <button type="button" class="kt-share__button" data-kt-share-native hidden>
+    Poslat rodičům {% render 'kt-icon', name: 'arrow' %}
+  </button>
+  <div class="kt-share__links" data-kt-share-links>
+    <a class="kt-share__link" href="https://wa.me/?text={{ wa_text }}" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="kt-share__link" href="mailto:?subject={{ mail_subject }}&amp;body={{ wa_text }}">E-mail</a>
+    <button type="button" class="kt-share__link" data-kt-share-copy>Zkopírovat odkaz</button>
+  </div>
+</kt-share>

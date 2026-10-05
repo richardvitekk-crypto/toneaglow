@@ -1,0 +1,335 @@
+/* ==========================================================================
+   Vizuální úpravy 2026-10 – limetkový akcent značky, souhrn výběru,
+   „Poslat rodičům“, sekce Pro rodiče
+   ========================================================================== */
+:root {
+  --kt-lime: #d8ff3e;
+  --kt-lime-dark: #c4ec22;
+}
+
+/* Hlavní tlačítko na produktu – jediný limetkový prvek, ať je jasné, kam kliknout */
+.product-form__submit.button {
+  background-color: var(--kt-lime);
+  color: var(--kt-black);
+  --color-button: 216, 255, 62;
+  --color-button-text: 10, 10, 10;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(160, 200, 20, 0.28);
+}
+
+.product-form__submit.button::after,
+.product-form__submit.button::before {
+  box-shadow: none;
+}
+
+.product-form__submit.button:not([disabled]):hover {
+  background-color: var(--kt-lime-dark);
+}
+
+.product-form__submit.button[disabled] {
+  background-color: var(--kt-grey-300);
+  color: var(--kt-grey-700);
+  box-shadow: none;
+}
+
+/* „Koupit hned“ jako druhotná volba – obrys, ne druhé plné tlačítko */
+.product-form .shopify-payment-button__button--unbranded {
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  box-shadow: inset 0 0 0 1.5px rgb(var(--color-foreground));
+}
+
+.product-form .shopify-payment-button__button--unbranded:hover:not([disabled]) {
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+  text-decoration: none;
+}
+
+.product-form .shopify-payment-button__more-options {
+  font-size: 1.2rem;
+}
+
+/* Limetka jako akcent na tmavých sekcích */
+.color-scheme-3 .kt-eyebrow,
+.color-scheme-4 .kt-eyebrow {
+  color: var(--kt-lime);
+  opacity: 1;
+}
+
+.kt-hero__meta li::before {
+  background: var(--kt-lime);
+}
+
+.kt-hero__badge {
+  background: var(--kt-lime);
+  color: var(--kt-black);
+}
+
+/* ---------- Souhrn výběru ---------- */
+.kt-selection {
+  margin: 2rem 0 1.2rem;
+  padding: 1.4rem 1.6rem;
+  background: var(--kt-grey-100);
+  border-left: 3px solid var(--kt-black);
+}
+
+.kt-selection p {
+  margin: 0;
+}
+
+.kt-selection__label {
+  font-family: var(--font-heading-family);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--kt-grey-700);
+}
+
+.kt-selection__value {
+  font-family: var(--font-heading-family);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 0.4rem !important;
+}
+
+.kt-selection__size {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.6rem !important;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.kt-selection__size .kt-icon {
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+}
+
+.kt-selection__note {
+  margin-top: 0.6rem !important;
+  font-size: 1.25rem;
+  color: var(--kt-grey-700);
+}
+
+/* Odkaz na měření nad výběrem velikosti */
+.product__info-container .kt-size-link {
+  margin: 0.4rem 0 0.2rem;
+  padding: 0.8rem 0;
+  text-decoration: underline;
+}
+
+.kt-size-link .kt-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+/* ---------- Poslat rodičům ---------- */
+.kt-share {
+  display: block;
+  margin: 1.6rem 0 0.8rem;
+  padding: 1.6rem;
+  border: 1.5px dashed rgba(var(--color-foreground), 0.35);
+}
+
+.kt-share__head {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+}
+
+.kt-share__icon .kt-icon {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+
+.kt-share__title {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.kt-share__text {
+  margin: 0.4rem 0 0;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.kt-share__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 100%;
+  margin-top: 1.4rem;
+  min-height: 4.8rem;
+  border: 0;
+  background: var(--kt-black);
+  color: var(--kt-white);
+  font-family: var(--font-heading-family);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.kt-share__button .kt-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.kt-share__button[hidden],
+.kt-share__links[hidden] {
+  display: none;
+}
+
+.kt-share__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+
+.kt-share__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 4rem;
+  padding: 0 1.4rem;
+  border: 1px solid rgba(var(--color-foreground), 0.25);
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  font: inherit;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s var(--kt-ease), background-color 0.2s var(--kt-ease);
+}
+
+.kt-share__link:hover {
+  border-color: rgb(var(--color-foreground));
+  background: var(--kt-grey-100);
+}
+
+/* ---------- Pro rodiče ---------- */
+.kt-parents {
+  scroll-margin-top: 8rem;
+}
+
+.kt-parents__grid {
+  display: grid;
+  gap: 4rem;
+}
+
+@media screen and (min-width: 990px) {
+  .kt-parents__grid {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 8rem;
+    align-items: start;
+  }
+  .kt-parents__intro {
+    position: sticky;
+    top: 10rem;
+  }
+}
+
+.kt-parents__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 3.2rem;
+}
+
+.kt-parents__items {
+  display: grid;
+  gap: 1.6rem;
+}
+
+@media screen and (min-width: 750px) {
+  .kt-parents__items {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.kt-parents__item {
+  padding: 2.8rem 2.4rem;
+  background: rgb(var(--color-background));
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.color-scheme-2 .kt-parents__item {
+  background: var(--kt-white);
+}
+
+.kt-parents__icon {
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1.6rem;
+}
+
+.kt-parents__title {
+  font-size: 2rem;
+  margin: 0 0 0.8rem;
+  letter-spacing: 0.03em;
+}
+
+.kt-parents__text {
+  font-size: 1.5rem;
+  line-height: 1.65;
+  color: rgba(var(--color-foreground), 0.78);
+}
+
+.kt-parents__text p {
+  margin: 0;
+}
+
+.kt-parents__expert {
+  margin: 3.2rem 0 0;
+  padding: 2.4rem;
+  background: var(--kt-black);
+  color: var(--kt-white);
+}
+
+.kt-parents__expert blockquote {
+  margin: 0 0 1.6rem;
+  font-size: 1.7rem;
+  line-height: 1.55;
+}
+
+.kt-parents__expert blockquote::before {
+  content: '„';
+  color: var(--kt-lime);
+  font-family: var(--font-heading-family);
+  font-size: 4rem;
+  line-height: 0;
+  margin-right: 0.4rem;
+}
+
+.kt-parents__expert figcaption {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.kt-parents__expert figcaption strong {
+  color: var(--kt-white);
+  font-size: 1.5rem;
+}
+
+.kt-parents__expert-img {
+  width: 5.6rem;
+  height: 5.6rem;
+  border-radius: 50%;
+  object-fit: cover;
+}

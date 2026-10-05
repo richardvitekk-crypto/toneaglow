@@ -333,3 +333,452 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+/* ==========================================================================
+   Tmavý motiv „fotbalové hřiště“ (2026-10)
+   Barvy dělají barevná schémata (tmavá, do zelena laděná černá + limetková
+   tlačítka). Tady je travnatý pruh na pozadí, čáry hřiště a karty ve stylu
+   recenzí z terénu. Hloubka = světlejší karta na tmavším pozadí.
+   ========================================================================== */
+:root {
+  --kt-card-bg: linear-gradient(180deg, #172019 0%, #101611 100%);
+  --kt-card-border: rgba(255, 255, 255, 0.08);
+  --kt-card-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 18px 40px -20px rgba(0, 0, 0, 0.8);
+  --kt-pitch-line: rgba(255, 255, 255, 0.08);
+  --kt-radius: 1.8rem;
+}
+
+::selection {
+  background: var(--kt-lime);
+  color: #0a0a0a;
+}
+
+/* Posekaná tráva – jemné pruhy, plynule přes celou stránku */
+.color-scheme-1.gradient,
+.color-scheme-2.gradient,
+.color-scheme-3.gradient,
+.color-scheme-4.gradient {
+  background-image:
+    repeating-linear-gradient(180deg, rgba(120, 200, 120, 0.022) 0 12rem, rgba(0, 0, 0, 0) 12rem 24rem);
+  background-attachment: fixed;
+}
+
+/* Postranní čára mezi sekcemi */
+.kt-section {
+  isolation: isolate;
+}
+
+.kt-section::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--kt-pitch-line) 15%, var(--kt-pitch-line) 85%, transparent);
+  pointer-events: none;
+}
+
+/* Malý nadpis všude limetkový */
+.kt-eyebrow {
+  color: var(--kt-lime);
+  opacity: 1;
+}
+
+.color-scheme-5 .kt-eyebrow {
+  color: #0a0a0a;
+}
+
+/* ---------- Karty (jednotný styl jako recenze) ---------- */
+.kt-benefit,
+.kt-fact,
+.kt-parents__item,
+.kt-cta__box,
+.kt-faq__list,
+.kt-size .kt-table,
+.kt-assure,
+.kt-selection,
+body .kt-frb {
+  background: var(--kt-card-bg);
+  border: 1px solid var(--kt-card-border);
+  border-radius: var(--kt-radius);
+  box-shadow: var(--kt-card-shadow);
+}
+
+/* Výhody: z řádků dlaždice */
+.kt-benefits__grid {
+  gap: 1.6rem;
+  border-top: 0;
+}
+
+.kt-benefit {
+  padding: 2.8rem 2.4rem;
+  transition: transform 0.35s var(--kt-ease), border-color 0.35s var(--kt-ease);
+}
+
+@media screen and (max-width: 749px) {
+  .kt-benefit {
+    display: grid;
+    grid-template-columns: 4.8rem 1fr;
+    column-gap: 1.6rem;
+    align-items: start;
+    padding: 2rem 2rem 2.2rem;
+  }
+
+  .kt-benefit__num {
+    display: none;
+  }
+
+  .kt-benefit__icon {
+    grid-row: span 2;
+    width: 4.8rem;
+    height: 4.8rem;
+    margin: 0;
+    padding: 1rem;
+    border-radius: 1.2rem;
+    background: rgba(216, 255, 62, 0.08);
+  }
+
+  .kt-benefit__title {
+    font-size: 1.9rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .kt-benefit__text {
+    font-size: 1.45rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .kt-benefit {
+    padding: 3.6rem 2.8rem;
+    border-right: 1px solid var(--kt-card-border);
+  }
+}
+
+.kt-benefit__num {
+  color: var(--kt-lime);
+  opacity: 1;
+}
+
+.kt-benefit__icon,
+.kt-parents__icon {
+  color: var(--kt-lime);
+}
+
+@media (hover: hover) {
+  .kt-benefit:hover,
+  .kt-parents__item:hover,
+  .kt-fact:hover {
+    transform: translateY(-3px);
+    border-color: rgba(216, 255, 62, 0.35);
+  }
+}
+
+.kt-fact,
+.kt-parents__item {
+  transition: transform 0.35s var(--kt-ease), border-color 0.35s var(--kt-ease);
+}
+
+.kt-fact__big {
+  color: var(--kt-lime);
+}
+
+.color-scheme-2 .kt-parents__item {
+  background: var(--kt-card-bg);
+}
+
+.kt-parents__expert {
+  background: var(--kt-card-bg);
+  border: 1px solid var(--kt-card-border);
+  border-left: 3px solid var(--kt-lime);
+  border-radius: var(--kt-radius);
+}
+
+/* FAQ jako jedna karta s oddělenými otázkami */
+.kt-faq__list {
+  padding: 0 2.4rem;
+}
+
+.kt-faq__item:last-child {
+  border-bottom: 0;
+}
+
+.kt-faq__item[open] summary {
+  color: var(--kt-lime);
+}
+
+/* Tabulka velikostí */
+.kt-size .kt-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+.kt-size .kt-table th,
+.kt-size .kt-table td {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.kt-size .kt-table thead th {
+  border-bottom: 1px solid var(--kt-card-border);
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.kt-size .kt-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.kt-size .kt-table td:first-child,
+.rte table td:first-child {
+  color: var(--kt-lime);
+}
+
+.rte table thead th {
+  border-bottom-color: var(--kt-lime);
+}
+
+/* Srovnání */
+.kt-compare__table {
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--kt-card-bg);
+  border: 1px solid var(--kt-card-border);
+  border-radius: var(--kt-radius);
+  overflow: hidden;
+  box-shadow: var(--kt-card-shadow);
+}
+
+.kt-compare__table th,
+.kt-compare__table td {
+  padding-left: 1.8rem;
+  padding-right: 1.8rem;
+}
+
+.kt-compare__table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.kt-compare__table thead th.kt-compare__us {
+  background: var(--kt-lime);
+  color: #0a0a0a;
+}
+
+.kt-compare__table td.kt-compare__us {
+  background: rgba(216, 255, 62, 0.06);
+}
+
+.kt-compare__yes {
+  background: var(--kt-lime);
+  color: #0a0a0a;
+}
+
+/* Výzva k akci – středový kruh hřiště */
+.kt-cta__box {
+  position: relative;
+  overflow: hidden;
+}
+
+.kt-cta__box::before {
+  content: '';
+  position: absolute;
+  width: 28rem;
+  height: 28rem;
+  right: -9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid var(--kt-pitch-line);
+  border-radius: 50%;
+  box-shadow: 0 0 0 9rem rgba(216, 255, 62, 0.025);
+  pointer-events: none;
+}
+
+.kt-cta__box > * {
+  position: relative;
+}
+
+/* ---------- Nákupní box ---------- */
+.product__media-wrapper {
+  --media-radius: 18px;
+}
+
+.product__media-wrapper .product-media-container {
+  border: 1px solid var(--kt-card-border);
+}
+
+.product__title h1,
+.product__title h2 {
+  letter-spacing: 0.01em;
+}
+
+/* Velikost/barva: vybraná volba limetkově */
+.product-form__input--pill input[type='radio'] + label {
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--kt-card-border);
+  color: rgb(var(--color-foreground));
+}
+
+.product-form__input--pill input[type='radio'] + label:hover {
+  border-color: rgba(216, 255, 62, 0.6);
+}
+
+.product-form__input--pill input[type='radio']:checked + label {
+  background: var(--kt-lime);
+  border-color: var(--kt-lime);
+  color: #0a0a0a;
+}
+
+.product-form__input--pill input[type='radio'].disabled + label,
+.product-form__input--pill input[type='radio']:disabled + label {
+  opacity: 0.45;
+}
+
+/* Karty balení */
+.kt-offer {
+  border-radius: 1.4rem;
+  background: var(--kt-card-bg);
+  border-color: var(--kt-card-border);
+}
+
+.kt-offer.is-active {
+  border-color: var(--kt-lime);
+}
+
+.kt-offer.is-active .kt-offer__radio {
+  border-color: var(--kt-lime);
+}
+
+.kt-offer.is-active .kt-offer__radio::after {
+  background: var(--kt-lime);
+}
+
+.kt-offer--best {
+  background: var(--kt-lime);
+  border-color: var(--kt-lime);
+  color: #0a0a0a;
+  --color-background: 10, 10, 10;
+  box-shadow: 0 18px 44px -16px rgba(216, 255, 62, 0.45);
+}
+
+.kt-offer--best:hover {
+  border-color: var(--kt-lime);
+}
+
+.kt-offer--best.is-active {
+  box-shadow: 0 0 0 3px #0b100d, 0 0 0 5px var(--kt-lime), 0 18px 44px -16px rgba(216, 255, 62, 0.5);
+}
+
+.kt-offer--best.is-active .kt-offer__radio,
+.kt-offer--best .kt-offer__radio {
+  border-color: rgba(10, 10, 10, 0.7);
+}
+
+.kt-offer--best .kt-offer__radio::after,
+.kt-offer--best.is-active .kt-offer__radio::after {
+  background: #0a0a0a;
+}
+
+.kt-offer--best .kt-offer__badge,
+.kt-offer--best .kt-offer__save {
+  background: #0a0a0a;
+  color: var(--kt-lime);
+}
+
+/* Souhrn výběru */
+.kt-selection {
+  border-left: 3px solid var(--kt-lime);
+}
+
+.kt-selection__label,
+.kt-selection__note {
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+/* Vyprodáno / nedostupné tlačítko */
+.product-form__submit.button[disabled] {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Poslat rodičům */
+.kt-share__button {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgb(var(--color-foreground));
+  border: 1px solid var(--kt-card-border);
+  border-radius: 1.2rem;
+}
+
+.kt-share__button:hover {
+  border-color: rgba(216, 255, 62, 0.6);
+}
+
+.kt-share__link {
+  border-radius: 1rem;
+}
+
+.kt-share__link:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Záložky pod tlačítkem */
+.product__accordion .summary__title .icon {
+  color: var(--kt-lime);
+}
+
+/* Tlačítka – zaoblení jako karty */
+.button,
+.shopify-payment-button__button--unbranded {
+  border-radius: 1.2rem;
+}
+
+.button::after,
+.button::before {
+  border-radius: 1.2rem;
+}
+
+/* Plovoucí lišta a obrázky v ní */
+.kt-sticky {
+  background: rgba(11, 16, 13, 0.92);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-top-color: var(--kt-card-border);
+}
+
+.kt-sticky__img {
+  border-radius: 0.8rem;
+  background: #fff;
+}
+
+/* Okno s tabulkou velikostí */
+body .kt-size-dialog {
+  background: #111913;
+  border: 1px solid var(--kt-card-border);
+}
+
+body .kt-size-dialog__tip {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body .kt-size-dialog__table tbody th {
+  color: var(--kt-lime);
+}
+
+/* Odznak hodnocení pod názvem */
+body .kt-frb:hover {
+  border-color: rgba(216, 255, 62, 0.4);
+}
+
+body .kt-frb {
+  --kt-ball-rim: #fff;
+}
+
+/* Hlavička a patička – čára hřiště */
+.header-wrapper {
+  border-bottom: 1px solid var(--kt-card-border);
+}
+
+.footer {
+  border-top: 1px solid var(--kt-card-border);
+}

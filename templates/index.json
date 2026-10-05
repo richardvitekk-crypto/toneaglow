@@ -161,11 +161,18 @@
           "settings": {
             "custom_liquid": "<a class=\"kt-size-link\" href=\"{{ product.url }}\">Všechno o bandáži {% render 'kt-icon', name: 'arrow' %}</a>"
           }
+        },
+        "field_rating": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'kt-field-rating', title: 'Vybraní profi fotbalisti zhodnotili naši bandáž:', label: 'z [pocet] testování v klubech' %}"
+          }
         }
       },
       "block_order": [
         "vendor",
         "title",
+        "field_rating",
         "price",
         "offers",
         "variant_picker",

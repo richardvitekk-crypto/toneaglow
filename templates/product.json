@@ -17,7 +17,8 @@
           "settings": {
             "text": "KNEETECH · Pro hráče a hráčky 13–17",
             "text_style": "uppercase"
-          }
+          },
+          "disabled": true
         },
         "title": {
           "type": "title",
@@ -219,7 +220,8 @@
         "color_scheme": "scheme-3",
         "padding_top": 0,
         "padding_bottom": 0
-      }
+      },
+      "disabled": true
     },
     "benefits": {
       "type": "kt-benefits",
@@ -530,7 +532,8 @@
         "button_label": "Vybrat velikost",
         "price_text": "1 ks 590 Kč · 2 ks 790 Kč",
         "color_scheme": "scheme-1"
-      }
+      },
+      "disabled": true
     },
     "parents": {
       "type": "kt-parents",

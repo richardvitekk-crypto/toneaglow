@@ -1,5 +1,5 @@
 {%- comment -%}
-  Úzký pruh s hlavním sdělením nad nákupním boxem (úvod i produkt).
+  Hřištní pruh s hlavním sdělením nad nákupním boxem (úvod i produkt).
   Na mobilu je první, co návštěvník z TikToku/Instagramu uvidí – hned pod ním
   je fotka produktu a výběr balení. Záměrně krátký, aby netlačil nákup dolů.
 {%- endcomment -%}
@@ -8,7 +8,12 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
 <div class="kt-hl color-{{ section.settings.color_scheme }} gradient">
+  <div class="kt-hl__pitch" aria-hidden="true"><span></span></div>
   <div class="page-width kt-hl__inner">
+    {%- assign kicker = section.settings.kicker | default: 'Kompresní bandáž na koleno pro fotbalisty' -%}
+    {%- if kicker != '-' -%}
+      <p class="kt-hl__kicker">{{ kicker }}</p>
+    {%- endif -%}
     <p class="kt-hl__title">
       {{- section.settings.heading -}}
       {%- if section.settings.heading_accent != blank -%}
@@ -32,6 +37,7 @@
   "class": "section kt-hl-section",
   "max_blocks": 4,
   "settings": [
+    { "type": "text", "id": "kicker", "label": "Malý text nad nadpisem", "info": "Napiš jen pomlčku (-), když ho nechceš.", "default": "Kompresní bandáž na koleno pro fotbalisty" },
     { "type": "text", "id": "heading", "label": "Nadpis", "default": "Hraj naplno." },
     { "type": "text", "id": "heading_accent", "label": "Nadpis – zvýrazněná část", "default": "Jistota v každé kličce." },
     { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-3" }

@@ -372,6 +372,11 @@
       data-template="{{ template.name }}"
     >
       {{ content_for_layout }}
+
+      {%- comment -%} Recenze z terénu – jedna sada hráčů pro úvod i produkt (skupina sekcí) {%- endcomment -%}
+      {%- if template.name == 'index' or template.name == 'product' -%}
+        {% sections 'kt-field-reviews-group' %}
+      {%- endif -%}
     </main>
 
     {% sections 'footer-group' %}

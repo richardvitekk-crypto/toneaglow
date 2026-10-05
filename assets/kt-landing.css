@@ -321,3 +321,19 @@ body:has(kt-sticky-buy) .footer {
     animation: none;
   }
 }
+
+/* ---------- Galerie „Vybraného produktu“ na úvodu – stejně jako na stránce produktu ---------- */
+@media screen and (min-width: 750px) {
+  .featured-product media-gallery[data-desktop-layout*='thumbnail'] .product__media-item:not(.is-active) {
+    display: none;
+  }
+
+  .featured-product media-gallery[data-desktop-layout='thumbnail_slider'] .thumbnail-slider {
+    display: flex;
+    align-items: center;
+  }
+
+  .featured-product media-gallery[data-desktop-layout='thumbnail_slider'] .slider-mobile-gutter .slider-button {
+    display: flex;
+  }
+}

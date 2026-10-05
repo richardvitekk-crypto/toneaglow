@@ -4,6 +4,8 @@
   je fotka produktu a výběr balení. Záměrně krátký, aby netlačil nákup dolů.
 {%- endcomment -%}
 {{ 'kt-landing.css' | asset_url | stylesheet_tag }}
+{%- comment -%} posuvník galerie produktu – na úvodu ho sekce „Vybraný produkt“ sama nenačítá {%- endcomment -%}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
 <div class="kt-hl color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width kt-hl__inner">

@@ -1,18 +1,22 @@
 {%- comment -%}
-  Výběr balení (1 kus / 2 kusy) jako velké karty.
+  Výběr balení (1 kus / 2 kusy) jako velké karty – nastavené tak, aby táhly 2 kusy.
   Karty přepínají skrytou volbu „Balení“ v přepínači variant Dawn,
   takže cena, košík i dostupnost fungují standardně.
-  Cena za kus se bere z hodnoty s 1 kusem (nezáleží na pořadí hodnot),
-  výhodnější balení se vždy ukáže jako první.
+  Všechna čísla se počítají z cen variant (nic natvrdo):
+  přeškrtnutá cena = cena 1 kusu × počet kusů (nákup po kusech), ne „původní cena“.
+  Výhodnější balení se vždy ukáže jako první.
 
   Accepts:
   - product {Object}
   - option_name {String} – název volby, výchozí „Balení“
-  - badge {String} – štítek u nejvýhodnější volby
+  - recommend {String} – štítek u nejvýhodnější volby (výchozí „Doporučujeme“)
+  - reasons {String} – důvody pro víc kusů, oddělené „|“
 {%- endcomment -%}
 {%- liquid
   assign option_name = option_name | default: 'Balení'
   assign option_handle = option_name | handleize
+  assign recommend = recommend | default: 'Doporučujeme'
+  assign reasons = reasons | default: 'Stejná opora pro obě kolena|Začne zlobit i druhé koleno? Máš ji hned po ruce|Jedna se pere, druhá je připravená na trénink'
   assign target_option = null
   for option in product.options_with_values
     assign this_handle = option.name | handleize
@@ -38,9 +42,40 @@
         break
       endif
     endfor
+
+    # nejvýhodnější balení pro nabídku „přidej druhý kus“
+    assign best_value = ''
+    assign best_price = 0
+    assign best_saving = 0
+    for value in target_option.values
+      assign value_qty = value.name | split: ' ' | first | plus: 0
+      if value_qty > 1
+        for variant in product.variants
+          if variant.options[option_index] == value.name
+            assign candidate_price = variant.price
+            break
+          endif
+        endfor
+        assign candidate_saving = single_price | times: value_qty | minus: candidate_price
+        if candidate_saving > best_saving
+          assign best_value = value.name
+          assign best_price = candidate_price
+          assign best_saving = candidate_saving
+        endif
+      endif
+    endfor
+    assign upsell_extra = best_price | minus: single_price
+    assign reason_list = reasons | split: '|'
   -%}
-  <kt-offers class="kt-offers-wrap" data-option="{{ option_handle }}">
-    <p class="kt-offers__label" id="kt-offers-label-{{ product.id }}">{{ target_option.name }}</p>
+  {{ 'kt-offers.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'kt-landing.js' | asset_url }}" defer="defer"></script>
+  <kt-offers class="kt-offers-wrap kt-offers-v2" data-option="{{ option_handle }}">
+    <div class="kt-offers__head">
+      <p class="kt-offers__label" id="kt-offers-label-{{ product.id }}">Vyber {{ target_option.name | downcase }}</p>
+      {%- if best_saving > 0 -%}
+        <p class="kt-offers__tip">Fotbal zatěžuje obě kolena</p>
+      {%- endif -%}
+    </div>
     <div role="radiogroup" aria-labelledby="kt-offers-label-{{ product.id }}" class="kt-offers">
       {%- for pass in (1..2) -%}
         {%- for value in target_option.values -%}
@@ -66,49 +101,90 @@
             assign full_price = single_price | times: qty
             assign saving = full_price | minus: value_price
             assign unit_price = value_price | divided_by: qty
+            assign percent = 0
+            if full_price > 0
+              assign percent = saving | times: 100 | divided_by: full_price
+            endif
             assign is_best = false
             if qty > 1 and saving > 0 and single_price > 0
               assign is_best = true
             endif
           -%}
           {%- if show_offer -%}
-          <button
-            type="button"
-            role="radio"
-            class="kt-offer{% if is_best %} kt-offer--best{% endif %}{% if value.selected %} is-active{% endif %}"
-            data-value="{{ value.name | escape }}"
-            aria-checked="{% if value.selected %}true{% else %}false{% endif %}"
-          >
-            {%- if is_best and badge != blank -%}
-              <span class="kt-offer__badge">{{ badge }}</span>
-            {%- endif -%}
-            <span class="kt-offer__radio" aria-hidden="true"></span>
-            <span class="kt-offer__main">
-              <span class="kt-offer__title">{{ value.name }}</span>
-              <span class="kt-offer__sub">
-                {%- if qty > 1 -%}
-                  Na obě kolena · {{ unit_price | money_without_trailing_zeros }} za kus
-                {%- else -%}
-                  Na jedno koleno
+            <button
+              type="button"
+              role="radio"
+              class="kt-offer{% if is_best %} kt-offer--best{% endif %}{% if value.selected %} is-active{% endif %}"
+              data-value="{{ value.name | escape }}"
+              aria-checked="{% if value.selected %}true{% else %}false{% endif %}"
+            >
+              {%- if is_best -%}
+                <span class="kt-offer__badge">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.7 6.3.9-4.6 4.4 1.1 6.2L12 17l-5.6 3 1.1-6.2-4.6-4.4 6.3-.9L12 2.8Z" fill="currentColor"/></svg>
+                  {{ recommend }}
+                </span>
+                {%- if percent > 0 -%}
+                  <span class="kt-offer__pct" aria-hidden="true"><small>{{ best_value | split: ' ' | first }}&nbsp;ks</small>−{{ percent }}&nbsp;%</span>
                 {%- endif -%}
+              {%- endif -%}
+              <span class="kt-offer__radio" aria-hidden="true"></span>
+              <span class="kt-offer__main">
+                <span class="kt-offer__title">{{ value.name }}</span>
+                <span class="kt-offer__sub">
+                  {%- if qty > 1 -%}
+                    Na obě kolena
+                  {%- elsif upsell_extra > 0 -%}
+                    Na jedno koleno · za +{{ upsell_extra | money_without_trailing_zeros }} máš {{ best_value | downcase }}
+                  {%- else -%}
+                    Na jedno koleno
+                  {%- endif -%}
+                </span>
+              </span>
+              <span class="kt-offer__price">
+                {%- if is_best -%}
+                  <s class="kt-offer__compare">
+                    <span class="visually-hidden">Po kusech by stály</span>
+                    {{- full_price | money_without_trailing_zeros -}}
+                  </s>
+                {%- endif -%}
+                <span class="kt-offer__now">{{ value_price | money_without_trailing_zeros }}</span>
+                <span class="kt-offer__unit">
+                  {%- if is_best -%}jen {% endif -%}
+                  {{- unit_price | money_without_trailing_zeros }} / ks
+                </span>
               </span>
               {%- if is_best -%}
-                <span class="kt-offer__save">Ušetříš {{ saving | money_without_trailing_zeros }}</span>
+                <span class="kt-offer__why">
+                  {%- for reason in reason_list -%}
+                    {%- assign reason_text = reason | strip -%}
+                    {%- if reason_text != blank -%}
+                      <span class="kt-offer__why-item">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        {{ reason_text }}
+                      </span>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </span>
+                <span class="kt-offer__savebar">
+                  Ušetříš <strong>{{ saving | money_without_trailing_zeros }}</strong> ({{ percent }}&nbsp;%) oproti nákupu po kusech
+                </span>
               {%- endif -%}
-            </span>
-            <span class="kt-offer__price">
-              {%- if is_best -%}
-                <s class="kt-offer__compare">
-                  <span class="visually-hidden">Jednotlivě by stály</span>
-                  {{- full_price | money_without_trailing_zeros -}}
-                </s>
-              {%- endif -%}
-              <span class="kt-offer__now">{{ value_price | money_without_trailing_zeros }}</span>
-            </span>
-          </button>
+            </button>
           {%- endif -%}
         {%- endfor -%}
       {%- endfor -%}
     </div>
+
+    {%- if best_saving > 0 and upsell_extra > 0 -%}
+      <div class="kt-upsell" role="note">
+        <p class="kt-upsell__text">
+          Co druhé koleno? <strong>Druhý kus jen za +{{ upsell_extra | money_without_trailing_zeros }}</strong>
+          a ušetříš {{ best_saving | money_without_trailing_zeros }}.
+        </p>
+        <button type="button" class="kt-upsell__button" data-kt-upsell="{{ best_value | escape }}">
+          Chci {{ best_value | downcase }}
+        </button>
+      </div>
+    {%- endif -%}
   </kt-offers>
 {%- endif -%}

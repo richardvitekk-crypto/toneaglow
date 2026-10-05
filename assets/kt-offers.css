@@ -1,0 +1,339 @@
+/* ==========================================================================
+   KNEETECH – karty balení v2: táhnou 2 kusy (doporučení, −%, cena za kus,
+   důvody, úspora, nabídka „druhý kus za +X Kč“). Tmavý motiv hřiště.
+   ========================================================================== */
+.kt-offers-v2 {
+  margin: 1.2rem 0 1.6rem;
+}
+
+.kt-offers-v2 .kt-offers__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.kt-offers-v2 .kt-offers__label {
+  margin: 0;
+}
+
+.kt-offers__tip {
+  margin: 0;
+  font-size: 1.25rem;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.kt-offers-v2 .kt-offers {
+  gap: 1.4rem;
+}
+
+/* ---------- Společné ---------- */
+.kt-offers-v2 .kt-offer {
+  grid-template-columns: 2.2rem 1fr auto;
+  grid-template-areas: 'radio main price';
+  column-gap: 1.4rem;
+  row-gap: 1.2rem;
+  padding: 1.6rem 1.8rem;
+  border-radius: 1.6rem;
+}
+
+.kt-offers-v2 .kt-offer__radio {
+  grid-area: radio;
+}
+
+.kt-offers-v2 .kt-offer__main {
+  grid-area: main;
+}
+
+.kt-offers-v2 .kt-offer__price {
+  grid-area: price;
+  align-self: center;
+}
+
+.kt-offers-v2 .kt-offer__unit {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+/* ---------- 2 kusy – hlavní hvězda ---------- */
+.kt-offers-v2 .kt-offer--best {
+  grid-template-areas:
+    'radio main price'
+    'why why why'
+    'save save save';
+  margin-top: 1.6rem;
+  padding: 2.6rem 1.8rem 1.8rem;
+  border-radius: 1.8rem;
+  background:
+    radial-gradient(28rem 14rem at 100% 0%, rgba(255, 255, 255, 0.35), transparent 60%),
+    var(--kt-lime, #d8ff3e);
+  color: #0a0a0a;
+  opacity: 1;
+}
+
+.kt-offers-v2 .kt-offer--best .kt-offer__title {
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.kt-offers-v2 .kt-offer--best .kt-offer__sub {
+  margin-top: 0.4rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: rgba(10, 10, 10, 0.75);
+}
+
+.kt-offers-v2 .kt-offer--best .kt-offer__compare {
+  font-size: 1.5rem;
+  opacity: 0.6;
+  text-decoration-thickness: 2px;
+}
+
+.kt-offers-v2 .kt-offer--best .kt-offer__now {
+  font-size: 3.4rem;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.kt-offers-v2 .kt-offer--best .kt-offer__unit {
+  color: rgba(10, 10, 10, 0.75);
+  font-weight: 700;
+}
+
+/* Štítek „Doporučujeme“ */
+.kt-offers-v2 .kt-offer--best .kt-offer__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  top: -1.4rem;
+  left: 1.6rem;
+  right: auto;
+  padding: 0.6rem 1.2rem 0.6rem 1rem;
+  border-radius: 99rem;
+  background: #0a0a0a;
+  color: var(--kt-lime, #d8ff3e);
+  font-size: 1.15rem;
+  letter-spacing: 0.14em;
+  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.6);
+}
+
+.kt-offers-v2 .kt-offer__badge svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+/* Nálepka −33 % */
+.kt-offer__pct {
+  position: absolute;
+  top: -2rem;
+  right: 1.2rem;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  width: 6.8rem;
+  height: 6.8rem;
+  border-radius: 50%;
+  background: #0a0a0a;
+  color: var(--kt-lime, #d8ff3e);
+  font-family: var(--font-heading-family);
+  font-size: 1.8rem;
+  white-space: nowrap;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  transform: rotate(10deg);
+  box-shadow: 0 0 0 3px var(--kt-lime, #d8ff3e), 0 10px 24px -8px rgba(0, 0, 0, 0.7);
+}
+
+.kt-offer__pct small {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* aby cena nekolidovala s nálepkou */
+.kt-offers-v2 .kt-offer--best .kt-offer__price {
+  padding-top: 2.4rem;
+}
+
+/* Důvody pro 2 kusy */
+.kt-offer__why {
+  grid-area: why;
+  display: grid;
+  gap: 0.6rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(10, 10, 10, 0.14);
+}
+
+.kt-offer__why-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #0a0a0a;
+}
+
+.kt-offer__why-item svg {
+  flex-shrink: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-top: 0.05rem;
+  padding: 0.25rem;
+  border-radius: 50%;
+  background: #0a0a0a;
+  color: var(--kt-lime, #d8ff3e);
+}
+
+/* Pruh s úsporou */
+.kt-offer__savebar {
+  grid-area: save;
+  display: block;
+  padding: 1rem 1.2rem;
+  border-radius: 1.1rem;
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.kt-offer__savebar strong {
+  color: var(--kt-lime, #d8ff3e);
+  font-weight: 700;
+}
+
+/* původní malý štítek „Ušetříš“ už nahrazuje pruh */
+.kt-offers-v2 .kt-offer__save {
+  display: none;
+}
+
+/* ---------- 1 kus – záměrně klidnější ---------- */
+.kt-offers-v2 .kt-offer:not(.kt-offer--best) {
+  padding: 1.4rem 1.8rem;
+  opacity: 1;
+}
+
+.kt-offers-v2 .kt-offer:not(.kt-offer--best) .kt-offer__title {
+  font-size: 1.7rem;
+}
+
+.kt-offers-v2 .kt-offer:not(.kt-offer--best) .kt-offer__now {
+  font-size: 2rem;
+}
+
+.kt-offers-v2 .kt-offer:not(.kt-offer--best) .kt-offer__sub {
+  font-size: 1.25rem;
+}
+
+/* ---------- Nabídka „druhý kus za +X Kč“ – jen když je vybraný 1 kus ---------- */
+.kt-upsell {
+  display: none;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px dashed rgba(216, 255, 62, 0.6);
+  border-radius: 1.4rem;
+  background: rgba(216, 255, 62, 0.07);
+}
+
+.kt-offers-v2:has(.kt-offer:not(.kt-offer--best).is-active) .kt-upsell {
+  display: flex;
+  animation: kt-upsell-in 0.35s var(--kt-ease, ease) both;
+}
+
+@keyframes kt-upsell-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.kt-upsell__text {
+  flex: 1;
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.4;
+  color: rgb(var(--color-foreground));
+}
+
+.kt-upsell__text strong {
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-upsell__button {
+  flex-shrink: 0;
+  min-height: 4.4rem;
+  padding: 0 1.6rem;
+  border: 0;
+  border-radius: 1.1rem;
+  background: var(--kt-lime, #d8ff3e);
+  color: #0a0a0a;
+  font-family: var(--font-heading-family);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s var(--kt-ease, ease), box-shadow 0.2s;
+}
+
+.kt-upsell__button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px -8px rgba(216, 255, 62, 0.6);
+}
+
+.kt-upsell__button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 389px) {
+  .kt-offers-v2 .kt-offer--best .kt-offer__now {
+    font-size: 3rem;
+  }
+
+  .kt-upsell {
+    flex-wrap: wrap;
+  }
+
+  .kt-upsell__button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kt-offers-v2:has(.kt-offer:not(.kt-offer--best).is-active) .kt-upsell {
+    animation: none;
+  }
+}
+
+/* ---------- Štítek úspory v plovoucí liště ---------- */
+.kt-sticky__deal {
+  display: inline-block;
+  margin-left: 0.6rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 99rem;
+  background: var(--kt-lime, #d8ff3e);
+  color: #0a0a0a;
+  font-family: var(--font-heading-family);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  vertical-align: 0.1em;
+}

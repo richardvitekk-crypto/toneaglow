@@ -12,6 +12,16 @@
 {% endcomment %}
 
 {%- liquid
+  assign gallery_layout = section.settings.gallery_layout
+  assign mobile_thumbnails = section.settings.mobile_thumbnails
+
+  # KNEETECH: „Vybraný produkt“ na úvodu (předává limit 1) ukáže celou galerii jako stránka produktu
+  if limit == 1 and section.settings.product != blank
+    assign limit = kt_no_limit
+    assign gallery_layout = 'thumbnail_slider'
+    assign mobile_thumbnails = 'hide'
+  endif
+
   if section.settings.hide_variants and variant_images.size == product.media.size
     assign single_media_visible = true
   endif
@@ -29,7 +39,7 @@
     assign single_media_visible_mobile = true
   endif
 
-  if media_count == 0 or single_media_visible_mobile or section.settings.mobile_thumbnails == 'show' or section.settings.mobile_thumbnails == 'columns' and media_count < 3
+  if media_count == 0 or single_media_visible_mobile or mobile_thumbnails == 'show' or mobile_thumbnails == 'columns' and media_count < 3
     assign hide_mobile_slider = true
   endif
 
@@ -49,7 +59,7 @@
     class="product__column-sticky"
   {% endif %}
   aria-label="{{ 'products.product.media.gallery_viewer' | t }}"
-  data-desktop-layout="{{ section.settings.gallery_layout }}"
+  data-desktop-layout="{{ gallery_layout }}"
 >
   <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
   <slider-component id="GalleryViewer-{{ section.id }}" class="slider-mobile-gutter">
@@ -73,8 +83,8 @@
             media: featured_media,
             media_count: media_count,
             position: media_position,
-            desktop_layout: section.settings.gallery_layout,
-            mobile_layout: section.settings.mobile_thumbnails,
+            desktop_layout: gallery_layout,
+            mobile_layout: mobile_thumbnails,
             loop: section.settings.enable_video_looping,
             modal_id: section.id,
             xr_button: true,
@@ -111,8 +121,8 @@
               media: media,
               media_count: media_count,
               position: media_position,
-              desktop_layout: section.settings.gallery_layout,
-              mobile_layout: section.settings.mobile_thumbnails,
+              desktop_layout: gallery_layout,
+              mobile_layout: mobile_thumbnails,
               loop: section.settings.enable_video_looping,
               modal_id: section.id,
               xr_button: true,
@@ -178,12 +188,12 @@
   -%}
   {%- if is_not_limited_to_single_item
     and media_count > 1
-    and section.settings.gallery_layout contains 'thumbnail'
-    or section.settings.mobile_thumbnails == 'show'
+    and gallery_layout contains 'thumbnail'
+    or mobile_thumbnails == 'show'
   -%}
     <slider-component
       id="GalleryThumbnails-{{ section.id }}"
-      class="thumbnail-slider slider-mobile-gutter quick-add-hidden{% unless section.settings.gallery_layout contains 'thumbnail' %} medium-hide large-up-hide{% endunless %}{% if section.settings.mobile_thumbnails != 'show' %} small-hide{% endif %}{% if media_count <= 3 %} thumbnail-slider--no-slide{% endif %}"
+      class="thumbnail-slider slider-mobile-gutter quick-add-hidden{% unless gallery_layout contains 'thumbnail' %} medium-hide large-up-hide{% endunless %}{% if mobile_thumbnails != 'show' %} small-hide{% endif %}{% if media_count <= 3 %} thumbnail-slider--no-slide{% endif %}"
     >
       <button
         type="button"
@@ -199,7 +209,7 @@
       </button>
       <ul
         id="Slider-Thumbnails-{{ section.id }}"
-        class="thumbnail-list list-unstyled slider slider--mobile{% if section.settings.gallery_layout == 'thumbnail_slider' %} slider--tablet-up{% endif %}"
+        class="thumbnail-list list-unstyled slider slider--mobile{% if gallery_layout == 'thumbnail_slider' %} slider--tablet-up{% endif %}"
       >
         {%- capture sizes -%}
           (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width | minus: 100 | times: media_width | round }} - 4rem) / 4),

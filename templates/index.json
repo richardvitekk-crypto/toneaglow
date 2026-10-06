@@ -111,7 +111,7 @@
         "assurance": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'kt-assurance', delivery: 'Doručení do 14 dnů', delivery_sub: 'Doprava 72 Kč', returns: '30 dní na vrácení', returns_sub: 'Bez udání důvodu' %}"
+            "custom_liquid": "{% render 'kt-assurance', delivery: 'Doručení do 14 dnů', delivery_sub: 'Doprava 72 Kč', returns: '14 dní na vrácení', returns_sub: 'Bez udání důvodu' %}"
           }
         },
         "share": {
@@ -141,7 +141,7 @@
         "tab_shipping": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% capture c %}<p>Doručení do 14 dnů od objednávky. Doprava stojí 72 Kč, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p><p>Na vrácení máš 30 dní od převzetí, bez udání důvodu. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>{% endcapture %}{% render 'kt-accordion', id: 'shipping', icon: 'truck', heading: 'Doprava a vrácení', content: c %}"
+            "custom_liquid": "{% capture c %}<p>Doručení do 14 dnů od objednávky. Doprava stojí 72 Kč, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p><p>Na vrácení máš 14 dní od převzetí, bez udání důvodu. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>{% endcapture %}{% render 'kt-accordion', id: 'shipping', icon: 'truck', heading: 'Doprava a vrácení', content: c %}"
           }
         },
         "tab_safety": {
@@ -222,7 +222,7 @@
         "m4": {
           "type": "item",
           "settings": {
-            "text": "30 dní na vrácení"
+            "text": "14 dní na vrácení"
           }
         },
         "m5": {
@@ -399,7 +399,7 @@
           "settings": {
             "icon": "return",
             "title": "Nákup bez rizika",
-            "text": "<p>Platba probíhá v zabezpečené pokladně. Na vrácení máte 30 dní od převzetí, bez udání důvodu. Na vady platí záruka 24 měsíců.</p>"
+            "text": "<p>Platba probíhá v zabezpečené pokladně. Na vrácení máte 14 dní od převzetí, bez udání důvodu. Na vady platí záruka 24 měsíců.</p>"
           }
         }
       },
@@ -569,7 +569,7 @@
           "type": "question",
           "settings": {
             "question": "Můžu bandáž vrátit?",
-            "answer": "<p>Ano. Na vrácení máš 30 dní od převzetí, bez udání důvodu. Stačí nám napsat a bandáž poslat zpět čistou a nepoškozenou. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>"
+            "answer": "<p>Ano. Na vrácení máš 14 dní od převzetí, bez udání důvodu. Stačí nám napsat a bandáž poslat zpět čistou a nepoškozenou. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>"
           }
         },
         "q6": {

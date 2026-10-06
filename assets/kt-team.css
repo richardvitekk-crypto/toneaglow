@@ -85,6 +85,11 @@
   color: rgba(var(--color-foreground), 0.8);
 }
 
+.kt-team__sub strong {
+  color: var(--kt-lime, #d8ff3e);
+  font-weight: 600;
+}
+
 .kt-team__price {
   text-align: right;
   white-space: nowrap;

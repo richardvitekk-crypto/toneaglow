@@ -73,7 +73,9 @@ if (!customElements.get('kt-team')) {
             this.hintEl.textContent =
               count === 0 ? `Přidej aspoň ${this.min} ks.` : `Přidej ještě ${missing} ks a platí týmová cena.`;
           } else {
-            this.hintEl.textContent = `${this.money(this.price)} za kus, týmová cena platí.`;
+            const free = parseInt(this.dataset.free || '0', 10);
+            const shipping = free > 0 && count * this.price >= free ? ' + doprava zdarma' : '';
+            this.hintEl.textContent = `${this.money(this.price)} za kus${shipping}, týmová cena platí.`;
           }
         }
         if (this.addButton) this.addButton.disabled = !ready;

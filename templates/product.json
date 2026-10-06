@@ -89,7 +89,8 @@
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "{% render 'kt-selection', product: product, sizes: 'S:30–33 cm|M:33–36 cm|L:36–40 cm|XL:40–44 cm' %}"
-          }
+          },
+          "disabled": true
         },
         "share": {
           "type": "custom_liquid",

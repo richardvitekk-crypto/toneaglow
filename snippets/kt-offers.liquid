@@ -14,6 +14,7 @@
   - option_name {String} – název volby, výchozí „Balení“
   - recommend {String} – štítek u nejvýhodnější volby (výchozí „Doporučujeme“)
   - reasons {String} – důvody pro víc kusů, oddělené „|“
+  - hide_team {Boolean} – true skryje kartu „Pro celý tým“ (snippet kt-team)
 {%- endcomment -%}
 {%- liquid
   assign option_name = option_name | default: 'Balení'
@@ -218,5 +219,10 @@
         </button>
       </div>
     {%- endif -%}
+
+    {%- comment -%} Týmová objednávka – menší karta, 2 kusy zůstávají hlavní volbou {%- endcomment -%}
+    {%- unless hide_team -%}
+      {% render 'kt-team', product: product, pack_option: option_name %}
+    {%- endunless -%}
   </kt-offers>
 {%- endif -%}

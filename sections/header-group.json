@@ -35,7 +35,8 @@
           "settings": {
             "text": "15 % na první nákup za odběr novinek",
             "link": ""
-          }
+          },
+          "disabled": true
         },
         "a3": {
           "type": "announcement",

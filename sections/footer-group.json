@@ -38,7 +38,7 @@
           "type": "text",
           "settings": {
             "heading": "Kontakt",
-            "subtext": "<p><a href=\"mailto:richard.vitekk@gmail.com\">richard.vitekk@gmail.com</a><br>Hálkova 565/52, 614 00 Brno</p><p>Odpovídáme obvykle do 24 hodin.</p>"
+            "subtext": "<p><a href=\"mailto:kneetechsupport@gmail.com\">kneetechsupport@gmail.com</a></p><p>Odpovídáme obvykle do 24 hodin.</p>"
           }
         }
       },
@@ -51,7 +51,7 @@
       "settings": {
         "color_scheme": "scheme-3",
         "newsletter_enable": true,
-        "newsletter_heading": "15 % na první nákup",
+        "newsletter_heading": "Novinky a tipy pro hráče",
         "enable_follow_on_shop": false,
         "show_social": true,
         "enable_country_selector": false,

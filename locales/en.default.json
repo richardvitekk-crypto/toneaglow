@@ -608,7 +608,7 @@
     },
     "assure": {
       "delivery": "Delivery within 14 days",
-      "delivery_sub": "Shipping 72 Kč",
+      "delivery_sub": "With tracking",
       "returns": "14-day returns",
       "returns_sub": "No reason needed",
       "brand": "Czech brand from Brno",
@@ -663,7 +663,7 @@
       "material_title": "Material and care",
       "material_html": "<p><strong>Material:</strong> polyester fibre, Velcro, anti-slip strip.<br/><strong>Weight:</strong> about 70 g each.<br/><strong>Colours:</strong> black-grey, black-red.<br/><strong>Sizes:</strong> S, M, L, XL.</p><p><strong>Care:</strong> hand wash in lukewarm water with a mild detergent, fasten the Velcro before washing. Air dry – no tumble dryer or radiator.</p>",
       "shipping_title": "Shipping and returns",
-      "shipping_html": "<p>Delivery within 14 days of ordering. Shipping costs 72 Kč and is free from 1 500 Kč. Once shipped, you'll get a tracking link.</p><p>You have 14 days from delivery to return it, no reason needed. Details are on the <a href=\"[root]pages/doprava-a-vraceni\">Shipping and returns</a> page.</p>",
+      "shipping_html": "<p>Delivery within 14 days of ordering. You'll see the shipping price at checkout; it's free from 1 500 Kč. Once shipped, you'll get a tracking link.</p><p>You have 14 days from delivery to return it, no reason needed. Details are on the <a href=\"[root]pages/doprava-a-vraceni\">Shipping and returns</a> page.</p>",
       "safety_title": "Safety",
       "safety_html": "<p>This knee support is not a medical device and does not replace examination or treatment.</p><ul><li>Don't overtighten it – you must be able to bend your knee normally.</li><li>If you feel tingling, swelling or your skin changes colour, loosen it or take it off.</li><li>Don't wear it all day or overnight.</li><li>Don't wear it on injured or irritated skin.</li><li>If the pain doesn't go away, see a doctor.</li></ul>"
     },

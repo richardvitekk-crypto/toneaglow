@@ -10,9 +10,10 @@
     assign value = 5
   endif
   assign percent = value | times: 20
-  assign label = value | round: 1 | append: ' z 5 míčů' | replace: '.', ','
+  assign value_text = value | round: 1 | append: '' | replace: '.', ','
+  assign label = 'kneetech.rating.balls' | t | replace: '[value]', value_text
 -%}
-<span class="kt-balls {{ class }}" role="img" aria-label="Hodnocení {{ label }}">
+<span class="kt-balls {{ class }}" role="img" aria-label="{{ label | escape }}">
   <span class="kt-balls__row kt-balls__row--empty" aria-hidden="true">
     {%- for i in (1..5) -%}<svg class="kt-balls__ball"><use href="#{{ sprite_id }}"/></svg>{%- endfor -%}
   </span>

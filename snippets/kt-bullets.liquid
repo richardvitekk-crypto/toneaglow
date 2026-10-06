@@ -4,6 +4,8 @@
   Použití: {% render 'kt-bullets', items: 'První|Druhá|Třetí' %}
 {%- endcomment -%}
 {{ 'kt-landing.css' | asset_url | stylesheet_tag }}
+{%- assign default_items = 'kneetech.bullets.items' | t -%}
+{%- assign items = items | default: default_items -%}
 {%- assign list = items | split: '|' -%}
 {%- if list.size > 0 -%}
   <ul class="kt-bullets">

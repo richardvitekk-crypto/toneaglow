@@ -13,7 +13,7 @@
   assign size_index = -1
   for option in product.options_with_values
     assign this_handle = option.name | handleize
-    if this_handle == 'velikost'
+    if this_handle == 'velikost' or this_handle == 'size'
       assign size_index = option.position | minus: 1
     endif
   endfor
@@ -30,15 +30,15 @@
     endif
   endfor
 -%}
-<div class="kt-selection" data-kt-selection data-sizes="{{ sizes | escape }}" data-size-index="{{ size_index }}">
-  <p class="kt-selection__label">Tvoje volba</p>
+<div class="kt-selection" data-kt-selection data-sizes="{{ sizes | escape }}" data-size-index="{{ size_index }}" data-t-size="{{ 'kneetech.selection.size_fit' | t | escape }}">
+  <p class="kt-selection__label">{{ 'kneetech.selection.label' | t }}</p>
   <p class="kt-selection__value" data-kt-selection-value>{{ variant.title | replace: ' / ', ' · ' }}</p>
   {%- if size_index >= 0 -%}
     <p class="kt-selection__size">
       {% render 'kt-icon', name: 'ruler' -%}
       <span data-kt-selection-size>
         {%- if current_range != blank -%}
-          Velikost {{ current_size }} sedí na obvod kolena {{ current_range }}
+          {{ 'kneetech.selection.size_fit' | t | replace: '[size]', current_size | replace: '[range]', current_range }}
         {%- endif -%}
       </span>
     </p>

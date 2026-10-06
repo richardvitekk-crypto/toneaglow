@@ -11,8 +11,10 @@
 {%- endcomment -%}
 {%- liquid
   assign target = anchor | default: 'recenze-z-terenu'
-  assign title_text = title | default: 'Vybraní profi fotbalisti zhodnotili naši bandáž:'
-  assign label_text = label | default: 'z [pocet] testování v klubech'
+  assign d_title = 'kneetech.rating.title' | t
+  assign d_label = 'kneetech.rating.label' | t
+  assign title_text = title | default: d_title
+  assign label_text = label | default: d_label
 -%}
 {{ 'kt-field-reviews.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'kt-field-reviews.js' | asset_url }}" defer="defer"></script>
@@ -23,6 +25,7 @@
   data-kt-fr-badge
   data-target="{{ target }}"
   data-label="{{ label_text | escape }}"
+  data-t-balls="{{ 'kneetech.rating.balls' | t | escape }}"
   hidden
 >
   <span class="kt-frb__title">{{ title_text }}</span>

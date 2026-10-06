@@ -16,10 +16,19 @@
 {{ 'kt-landing.css' | asset_url | stylesheet_tag }}
 {{ 'kt-popis.css' | asset_url | stylesheet_tag }}
 {%- liquid
-  assign delivery = delivery | default: 'Doručení do 14 dnů'
-  assign returns = returns | default: '14 dní na vrácení'
-  assign link = link | default: '/pages/doprava-a-vraceni'
-  assign brand = brand | default: 'Česká značka z Brna'
+  assign root = routes.root_url | append: '/' | replace: '//', '/'
+  assign d_delivery = 'kneetech.assure.delivery' | t
+  assign d_delivery_sub = 'kneetech.assure.delivery_sub' | t
+  assign d_returns = 'kneetech.assure.returns' | t
+  assign d_returns_sub = 'kneetech.assure.returns_sub' | t
+  assign d_link = root | append: 'pages/doprava-a-vraceni'
+  assign d_brand = 'kneetech.assure.brand' | t
+  assign delivery = delivery | default: d_delivery
+  assign delivery_sub = delivery_sub | default: d_delivery_sub
+  assign returns = returns | default: d_returns
+  assign returns_sub = returns_sub | default: d_returns_sub
+  assign link = link | default: d_link
+  assign brand = brand | default: d_brand
 -%}
 <div class="kt-assure">
   <ul class="kt-assure__list">
@@ -42,11 +51,11 @@
     {%- endif -%}
     <p class="kt-trust__secure">
       {%- render 'kt-icon', name: 'lock', class: 'kt-trust__lock' -%}
-      Zabezpečená platba
+      {{ 'kneetech.assure.secure' | t }}
     </p>
     {%- unless payments == false -%}
       {%- if shop.enabled_payment_types.size > 0 -%}
-        <ul class="kt-trust__pay" role="list" aria-label="Způsoby platby">
+        <ul class="kt-trust__pay" role="list" aria-label="{{ 'kneetech.assure.payments' | t | escape }}">
           {%- for type in shop.enabled_payment_types -%}
             <li>{{ type | payment_type_svg_tag: class: 'kt-trust__pay-icon' }}</li>
           {%- endfor -%}
@@ -55,5 +64,5 @@
     {%- endunless -%}
   </div>
 
-  <a class="kt-assure__link" href="{{ link }}">Doprava a vrácení podrobně</a>
+  <a class="kt-assure__link" href="{{ link }}">{{ 'kneetech.assure.link' | t }}</a>
 </div>

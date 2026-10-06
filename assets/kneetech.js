@@ -264,8 +264,8 @@ if (!customElements.get('kt-popup')) {
       copyCode(button) {
         const code = button.dataset.ktCopy;
         const done = () => {
-          button.textContent = 'Zkopírováno';
-          window.setTimeout(() => (button.textContent = 'Zkopírovat'), 2000);
+          button.textContent = button.dataset.copiedLabel || 'Zkopírováno';
+          window.setTimeout(() => (button.textContent = button.dataset.copyLabel || 'Zkopírovat'), 2000);
         };
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(code).then(done, done);

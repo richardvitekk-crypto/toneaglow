@@ -66,7 +66,7 @@
           "settings": {
             "heading": "Doprava a vrácení",
             "icon": "truck",
-            "content": "<p>Doručení do 14 dnů od objednávky. Doprava stojí 72 Kč, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p><p>Na vrácení máš 30 dní od převzetí, bez udání důvodu. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>",
+            "content": "<p>Doručení do 14 dnů od objednávky. Doprava stojí 72 Kč, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p><p>Na vrácení máš 14 dní od převzetí, bez udání důvodu. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>",
             "page": ""
           }
         },
@@ -118,7 +118,7 @@
         "assurance": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'kt-assurance', delivery: 'Doručení do 14 dnů', delivery_sub: 'Doprava 72 Kč', returns: '30 dní na vrácení', returns_sub: 'Bez udání důvodu' %}"
+            "custom_liquid": "{% render 'kt-assurance', delivery: 'Doručení do 14 dnů', delivery_sub: 'Doprava 72 Kč', returns: '14 dní na vrácení', returns_sub: 'Bez udání důvodu' %}"
           }
         },
         "tab_fit": {
@@ -197,7 +197,7 @@
         "m4": {
           "type": "item",
           "settings": {
-            "text": "30 dní na vrácení"
+            "text": "14 dní na vrácení"
           }
         },
         "m5": {
@@ -496,7 +496,7 @@
           "type": "question",
           "settings": {
             "question": "Můžu bandáž vrátit?",
-            "answer": "<p>Ano. Na vrácení máš 30 dní od převzetí, bez udání důvodu. Stačí nám napsat a bandáž poslat zpět čistou a nepoškozenou. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>"
+            "answer": "<p>Ano. Na vrácení máš 14 dní od převzetí, bez udání důvodu. Stačí nám napsat a bandáž poslat zpět čistou a nepoškozenou. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>"
           }
         }
       },
@@ -567,7 +567,7 @@
           "settings": {
             "icon": "return",
             "title": "Nákup bez rizika",
-            "text": "<p>Platba probíhá v zabezpečené pokladně. Na vrácení máte 30 dní od převzetí, bez udání důvodu. Na vady platí záruka 24 měsíců.</p>"
+            "text": "<p>Platba probíhá v zabezpečené pokladně. Na vrácení máte 14 dní od převzetí, bez udání důvodu. Na vady platí záruka 24 měsíců.</p>"
           }
         }
       },
@@ -596,7 +596,7 @@
         "c1": {
           "type": "chip",
           "settings": {
-            "text": "Pro hráče 13–17 let"
+            "text": "Pro mladé fotbalisty"
           }
         },
         "c2": {
@@ -608,7 +608,7 @@
         "c3": {
           "type": "chip",
           "settings": {
-            "text": "30 dní na vrácení"
+            "text": "14 dní na vrácení"
           }
         }
       },

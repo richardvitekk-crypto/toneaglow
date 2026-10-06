@@ -32,6 +32,7 @@
   endif
   assign avg_label = avg | append: '' | replace: '.', ','
   assign anchor = section.settings.anchor | default: 'recenze-z-terenu' | handleize
+  assign fr_default_label = 'kneetech.reviews.label' | t
   assign count_str = visible_count | append: ''
   assign heading = section.settings.heading | replace: '[pocet]', count_str
   assign subheading = section.settings.subheading | replace: '[pocet]', count_str
@@ -78,8 +79,8 @@
           <div
             class="kt-fr__track"
             role="region"
-            aria-roledescription="karusel"
-            aria-label="{{ section.settings.eyebrow | default: 'Recenze hráčů' | escape }}"
+            aria-roledescription="{{ 'kneetech.reviews.carousel' | t | escape }}"
+            aria-label="{{ section.settings.eyebrow | default: fr_default_label | escape }}"
             tabindex="0"
             data-kt-fr-track
           >
@@ -121,7 +122,7 @@
                     </span>
                   {%- endif -%}
                   {%- if block.settings.photo_credit != blank -%}
-                    <span class="kt-fr__credit">Foto: {{ block.settings.photo_credit }}</span>
+                    <span class="kt-fr__credit">{{ 'kneetech.reviews.photo' | t }} {{ block.settings.photo_credit }}</span>
                   {%- endif -%}
                 </div>
 
@@ -157,13 +158,13 @@
           </div>
 
           <div class="kt-fr__controls">
-            <button type="button" class="kt-fr__arrow" data-kt-fr-prev aria-label="Předchozí hráč">
+            <button type="button" class="kt-fr__arrow" data-kt-fr-prev aria-label="{{ 'kneetech.reviews.prev' | t | escape }}">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="kt-fr__progress" aria-hidden="true"><span data-kt-fr-bar></span></div>
-            <div class="kt-fr__dots" data-kt-fr-dots></div>
+            <div class="kt-fr__dots" data-kt-fr-dots data-t-goto="{{ 'kneetech.reviews.go_to' | t | escape }}"></div>
             <p class="kt-fr__counter" aria-live="polite" data-kt-fr-counter></p>
-            <button type="button" class="kt-fr__arrow" data-kt-fr-next aria-label="Další hráč">
+            <button type="button" class="kt-fr__arrow" data-kt-fr-next aria-label="{{ 'kneetech.reviews.next' | t | escape }}">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
           </div>

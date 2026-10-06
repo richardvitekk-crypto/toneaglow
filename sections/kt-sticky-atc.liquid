@@ -51,10 +51,11 @@
               {%- if section.settings.price_text != blank -%}
                 {{ section.settings.price_text }}
               {%- else -%}
-                od {{ sticky_product.price_min | money_without_trailing_zeros }}
+                {%- assign sticky_from = sticky_product.price_min | money_without_trailing_zeros -%}
+                {{ 'kneetech.sticky.from' | t: price: sticky_from }}
               {%- endif -%}
               {%- if deal_pct > 0 -%}
-                <span class="kt-sticky__deal">2.&nbsp;kus −{{ deal_pct }}&nbsp;%</span>
+                <span class="kt-sticky__deal">{{ 'kneetech.sticky.deal_html' | t: pct: deal_pct }}</span>
               {%- endif -%}
             </div>
           </div>

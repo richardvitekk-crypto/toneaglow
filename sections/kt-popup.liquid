@@ -22,7 +22,7 @@
       aria-labelledby="KtPopupTitle-{{ section.id }}"
       tabindex="-1"
     >
-      <button type="button" class="kt-popup__close" data-kt-popup-close aria-label="Zavřít">
+      <button type="button" class="kt-popup__close" data-kt-popup-close aria-label="{{ 'kneetech.popup.close' | t | escape }}">
         {% render 'kt-icon', name: 'cross' %}
       </button>
 
@@ -42,8 +42,8 @@
               <h2 class="kt-popup__title" id="KtPopupTitle-{{ section.id }}">{{ section.settings.success_heading }}</h2>
               <div class="kt-popup__code">
                 <span data-kt-code>{{ section.settings.code }}</span>
-                <button type="button" class="kt-popup__copy" data-kt-copy="{{ section.settings.code | escape }}">
-                  Zkopírovat
+                <button type="button" class="kt-popup__copy" data-kt-copy="{{ section.settings.code | escape }}" data-copy-label="{{ 'kneetech.popup.copy' | t | escape }}" data-copied-label="{{ 'kneetech.popup.copied' | t | escape }}">
+                  {{ 'kneetech.popup.copy' | t }}
                 </button>
               </div>
               <p class="kt-popup__text">{{ section.settings.success_text }}</p>
@@ -70,12 +70,12 @@
                 autocorrect="off"
                 autocapitalize="off"
                 required
-                placeholder="Tvůj e-mail"
+                placeholder="{{ 'kneetech.popup.email' | t | escape }}"
                 {% if form.errors %}
                   aria-invalid="true" aria-describedby="KtPopupError-{{ section.id }}"
                 {% endif %}
               >
-              <label class="field__label" for="KtPopupEmail-{{ section.id }}">Tvůj e-mail</label>
+              <label class="field__label" for="KtPopupEmail-{{ section.id }}">{{ 'kneetech.popup.email' | t }}</label>
             </div>
             {%- if form.errors -%}
               <p class="kt-popup__error" id="KtPopupError-{{ section.id }}" data-kt-popup-error>

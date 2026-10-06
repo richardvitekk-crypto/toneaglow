@@ -15,7 +15,7 @@
       <table class="kt-compare__table kt-reveal">
         <thead>
           <tr>
-            <th scope="col"><span class="visually-hidden">Vlastnost</span></th>
+            <th scope="col"><span class="visually-hidden">{{ 'kneetech.compare.feature' | t }}</span></th>
             <th scope="col" class="kt-compare__us">{{ section.settings.us_label }}</th>
             <th scope="col">{{ section.settings.them_label }}</th>
           </tr>
@@ -26,16 +26,16 @@
               <th scope="row">{{ block.settings.label }}</th>
               <td class="kt-compare__us">
                 {%- if block.settings.us -%}
-                  <span class="kt-compare__yes">{% render 'kt-icon', name: 'check' %}<span class="visually-hidden">Ano</span></span>
+                  <span class="kt-compare__yes">{% render 'kt-icon', name: 'check' %}<span class="visually-hidden">{{ 'kneetech.compare.yes' | t }}</span></span>
                 {%- else -%}
-                  <span class="kt-compare__no">{% render 'kt-icon', name: 'cross' %}<span class="visually-hidden">Ne</span></span>
+                  <span class="kt-compare__no">{% render 'kt-icon', name: 'cross' %}<span class="visually-hidden">{{ 'kneetech.compare.no' | t }}</span></span>
                 {%- endif -%}
               </td>
               <td>
                 {%- if block.settings.them -%}
-                  <span class="kt-compare__yes">{% render 'kt-icon', name: 'check' %}<span class="visually-hidden">Ano</span></span>
+                  <span class="kt-compare__yes">{% render 'kt-icon', name: 'check' %}<span class="visually-hidden">{{ 'kneetech.compare.yes' | t }}</span></span>
                 {%- else -%}
-                  <span class="kt-compare__no">{% render 'kt-icon', name: 'cross' %}<span class="visually-hidden">Ne</span></span>
+                  <span class="kt-compare__no">{% render 'kt-icon', name: 'cross' %}<span class="visually-hidden">{{ 'kneetech.compare.no' | t }}</span></span>
                 {%- endif -%}
               </td>
             </tr>

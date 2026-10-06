@@ -16,23 +16,28 @@
   - pack_option {String}  – volba balení, výchozí „Balení“
   - color_option {String} – výchozí „Barva“
   - size_option {String}  – výchozí „Velikost“
+  Texty jsou v jazykových souborech (kneetech.team.*). Názvy voleb se hledají i anglicky (Pack, Color, Size).
   - free_from {Number}    – od kolika Kč je doprava zdarma (výchozí 1500, musí sedět s nastavením dopravy v Shopify)
 {%- endcomment -%}
 {%- liquid
   assign pack_handle = pack_option | default: 'Balení' | handleize
   assign color_handle = color_option | default: 'Barva' | handleize
   assign size_handle = size_option | default: 'Velikost' | handleize
+  assign pack_handles = 'baleni,pack,package,bundle' | split: ','
+  assign color_handles = 'barva,color,colour' | split: ','
+  assign size_handles = 'velikost,size' | split: ','
+  assign root = routes.root_url | append: '/' | replace: '//', '/'
 
   assign pack_i = -1
   assign color_i = -1
   assign size_i = -1
   for name in product.options
     assign this_handle = name | handleize
-    if this_handle == pack_handle
+    if this_handle == pack_handle or pack_handles contains this_handle
       assign pack_i = forloop.index0
-    elsif this_handle == color_handle
+    elsif this_handle == color_handle or color_handles contains this_handle
       assign color_i = forloop.index0
-    elsif this_handle == size_handle
+    elsif this_handle == size_handle or size_handles contains this_handle
       assign size_i = forloop.index0
     endif
   endfor
@@ -122,6 +127,13 @@
       data-free="{{ free_from }}"
       data-cart="{{ routes.cart_url }}"
       data-add="{{ routes.cart_add_url }}"
+      data-t-more="{{ 'kneetech.team.hint_more' | t | escape }}"
+      data-t-ready="{{ 'kneetech.team.hint_ready' | t | escape }}"
+      data-t-ready-free="{{ 'kneetech.team.hint_ready_free' | t | escape }}"
+      data-t-start="{{ 'kneetech.team.hint_start' | t: min: team_min | escape }}"
+      data-t-noprice="{{ 'kneetech.team.hint_noprice' | t | escape }}"
+      data-t-total="{{ 'kneetech.team.total' | t | escape }}"
+      data-t-error="{{ 'kneetech.team.error' | t | escape }}"
     >
       {%- if request.design_mode -%}
         {%- if has_price == false -%}
@@ -142,15 +154,15 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 19.5c.6-3.3 3-5.3 6-5.3s5.4 2 6 5.3"/><circle cx="17" cy="9" r="2.6"/><path d="M16.2 14.3c2.6-.3 4.4 1.4 4.8 4.4"/></svg>
         </span>
         <span class="kt-team__main">
-          <span class="kt-team__title">Pro celý tým</span>
-          <span class="kt-team__sub">Od {{ team_min }} ks{% if team_free_shipping %} · <strong>doprava zdarma</strong>{% endif %} · různé velikosti a barvy v jedné objednávce</span>
+          <span class="kt-team__title">{{ 'kneetech.team.title' | t }}</span>
+          <span class="kt-team__sub">{{ 'kneetech.team.from' | t: min: team_min }}{% if team_free_shipping %} · {{ 'kneetech.team.free_html' | t }}{% endif %} · {{ 'kneetech.team.mix' | t }}</span>
         </span>
         <span class="kt-team__price">
           {%- if has_price -%}
             <span class="kt-team__now">{{ team_price_cents | money_without_trailing_zeros }}</span>
-            <span class="kt-team__unit">/ ks</span>
+            <span class="kt-team__unit">{{ 'kneetech.team.per_piece' | t }}</span>
           {%- else -%}
-            <span class="kt-team__unit">cena brzy</span>
+            <span class="kt-team__unit">{{ 'kneetech.team.price_soon' | t }}</span>
           {%- endif -%}
         </span>
         <span class="kt-team__chev" aria-hidden="true">
@@ -160,10 +172,11 @@
 
       <div class="kt-team__panel" id="{{ panel_id }}" hidden>
         <p class="kt-team__intro">
-          Vyplň, kolik kusů potřebuješ v každé velikosti a barvě.
+          {{ 'kneetech.team.intro' | t }}
           {% if has_price -%}
-            Od {{ team_min }} ks platí týmová cena <strong>{{ team_price_cents | money_without_trailing_zeros }} za kus</strong>
-            {%- if team_free_shipping %} a doprava je zdarma{% endif %}.
+            {%- assign team_price_money = team_price_cents | money_without_trailing_zeros -%}
+            {{ 'kneetech.team.intro_price_html' | t: min: team_min, price: team_price_money }}
+            {%- if team_free_shipping %}{{ 'kneetech.team.intro_free' | t }}{% endif %}.
           {%- endif %}
         </p>
 
@@ -171,7 +184,7 @@
           <table class="kt-team__grid">
             <thead>
               <tr>
-                <th scope="col">Velikost</th>
+                <th scope="col">{{ 'kneetech.team.size' | t }}</th>
                 {%- for color in colors -%}
                   <th scope="col">{{ color }}</th>
                 {%- endfor -%}
@@ -212,7 +225,7 @@
                     <td>
                       {%- if cell_id != '' and cell_available -%}
                         <div class="kt-team__step">
-                          <button type="button" data-kt-step="-1" aria-label="Ubrat: {{ cell_label | escape }}">−</button>
+                          <button type="button" data-kt-step="-1" aria-label="{{ 'kneetech.team.minus' | t: label: cell_label | escape }}">−</button>
                           <input
                             type="number"
                             inputmode="numeric"
@@ -220,12 +233,12 @@
                             max="99"
                             value="0"
                             data-kt-variant="{{ cell_id }}"
-                            aria-label="Počet kusů: {{ cell_label | escape }}"
+                            aria-label="{{ 'kneetech.team.qty' | t: label: cell_label | escape }}"
                           >
-                          <button type="button" data-kt-step="1" aria-label="Přidat: {{ cell_label | escape }}">+</button>
+                          <button type="button" data-kt-step="1" aria-label="{{ 'kneetech.team.plus' | t: label: cell_label | escape }}">+</button>
                         </div>
                       {%- else -%}
-                        <span class="kt-team__na">Vyprodáno</span>
+                        <span class="kt-team__na">{{ 'kneetech.team.sold_out' | t }}</span>
                       {%- endif -%}
                     </td>
                   {%- endfor -%}
@@ -235,19 +248,19 @@
           </table>
         </div>
 
-        <a class="kt-team__sizes" href="/pages/velikosti" data-kt-size-open aria-controls="kt-size-dialog" aria-haspopup="dialog">
+        <a class="kt-team__sizes" href="{{ root }}pages/velikosti" data-kt-size-open aria-controls="kt-size-dialog" aria-haspopup="dialog">
           {%- render 'kt-icon', name: 'ruler' -%}
-          Nevíš velikosti? Tabulka velikostí
+          {{ 'kneetech.team.sizes_link' | t }}
         </a>
 
         <div class="kt-team__sum" aria-live="polite">
-          <p class="kt-team__count"><strong data-kt-team-count>0</strong> ks</p>
+          <p class="kt-team__count"><strong data-kt-team-count>0</strong> {{ 'kneetech.team.pcs' | t }}</p>
           <p class="kt-team__total" data-kt-team-total></p>
         </div>
-        <p class="kt-team__hint" data-kt-team-hint>Přidej aspoň {{ team_min }} ks.</p>
+        <p class="kt-team__hint" data-kt-team-hint>{{ 'kneetech.team.hint_start' | t: min: team_min }}</p>
 
-        <button type="button" class="kt-team__add" data-kt-team-add disabled>Přidat tým do košíku</button>
-        <p class="kt-team__note">Týmovou slevu uvidíš v košíku. Doprava a vrácení platí stejně jako u běžné objednávky.</p>
+        <button type="button" class="kt-team__add" data-kt-team-add disabled>{{ 'kneetech.team.add' | t }}</button>
+        <p class="kt-team__note">{{ 'kneetech.team.note' | t }}</p>
         <p class="kt-team__error" data-kt-team-error role="alert" hidden></p>
       </div>
     </kt-team>

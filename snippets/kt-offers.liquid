@@ -15,19 +15,26 @@
   - recommend {String} – štítek u nejvýhodnější volby (výchozí „Doporučujeme“)
   - reasons {String} – důvody pro víc kusů, oddělené „|“
   - hide_team {Boolean} – true skryje kartu „Pro celý tým“ (snippet kt-team)
+
+  Texty jsou v jazykových souborech (locales, klíče kneetech.offers.*), takže funguje i angličtina.
+  Název volby se v angličtině překládá (Balení → Pack), proto se volba hledá i podle seznamu option_handles.
 {%- endcomment -%}
 {%- liquid
   assign option_name = option_name | default: 'Balení'
   assign option_handle = option_name | handleize
-  assign recommend = recommend | default: 'Doporučujeme'
-  assign reasons = reasons | default: 'Stejná opora pro obě kolena|Začne zlobit i druhé koleno? Máš ji hned po ruce|Jedna se pere, druhá je připravená na trénink'
+  assign option_handles = 'baleni,pack,package,bundle' | split: ','
+  assign default_recommend = 'kneetech.offers.recommend' | t
+  assign default_reasons = 'kneetech.offers.reasons' | t
+  assign recommend = recommend | default: default_recommend
+  assign reasons = reasons | default: default_reasons
 
   assign option_index = -1
   assign option_label = option_name
   for name in product.options
     assign this_handle = name | handleize
-    if this_handle == option_handle
+    if this_handle == option_handle or option_handles contains this_handle
       assign option_index = forloop.index0
+      assign option_handle = this_handle
       assign option_label = name
     endif
   endfor
@@ -100,14 +107,16 @@
       assign extra_pct = best_saving | times: 100 | divided_by: single_price
     endif
     assign reason_list = reasons | split: '|'
+    assign extra_money = upsell_extra | money_without_trailing_zeros
+    assign best_lower = best_value | downcase
   -%}
   {{ 'kt-offers.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'kt-landing.js' | asset_url }}" defer="defer"></script>
   <kt-offers class="kt-offers-wrap kt-offers-v2" data-option="{{ option_handle }}">
     <div class="kt-offers__head">
-      <p class="kt-offers__label" id="kt-offers-label-{{ product.id }}">Vyber {{ option_label | downcase }}</p>
+      <p class="kt-offers__label" id="kt-offers-label-{{ product.id }}">{%- assign option_lower = option_label | downcase -%}{{ 'kneetech.offers.choose' | t: option: option_lower }}</p>
       {%- if best_saving > 0 -%}
-        <p class="kt-offers__tip">Fotbal zatěžuje obě kolena</p>
+        <p class="kt-offers__tip">{{ 'kneetech.offers.tip' | t }}</p>
       {%- endif -%}
     </div>
     <div role="radiogroup" aria-labelledby="kt-offers-label-{{ product.id }}" class="kt-offers">
@@ -157,7 +166,7 @@
                   {{ recommend }}
                 </span>
                 {%- if extra_pct > 0 -%}
-                  <span class="kt-offer__pct" aria-hidden="true"><small>2.&nbsp;kus</small>−{{ extra_pct }}&nbsp;%</span>
+                  <span class="kt-offer__pct" aria-hidden="true"><small>{{ 'kneetech.offers.second_html' | t }}</small>−{{ extra_pct }}&nbsp;%</span>
                 {%- endif -%}
               {%- endif -%}
               <span class="kt-offer__radio" aria-hidden="true"></span>
@@ -165,25 +174,25 @@
                 <span class="kt-offer__title">{{ value }}</span>
                 <span class="kt-offer__sub">
                   {%- if qty > 1 -%}
-                    Na obě kolena
+                    {{ 'kneetech.offers.both_knees' | t }}
                   {%- elsif upsell_extra > 0 -%}
-                    Na jedno koleno · za +{{ upsell_extra | money_without_trailing_zeros }} máš {{ best_value | downcase }}
+                    {{- 'kneetech.offers.one_knee_upsell' | t: extra: extra_money, best: best_lower -}}
                   {%- else -%}
-                    Na jedno koleno
+                    {{ 'kneetech.offers.one_knee' | t }}
                   {%- endif -%}
                 </span>
               </span>
               <span class="kt-offer__price">
                 {%- if is_best -%}
                   <s class="kt-offer__compare">
-                    <span class="visually-hidden">Po kusech by stály</span>
+                    <span class="visually-hidden">{{ 'kneetech.offers.compare_label' | t }}</span>
                     {{- full_price | money_without_trailing_zeros -}}
                   </s>
                 {%- endif -%}
                 <span class="kt-offer__now">{{ value_price | money_without_trailing_zeros }}</span>
                 <span class="kt-offer__unit">
-                  {%- if is_best -%}jen {% endif -%}
-                  {{- unit_price | money_without_trailing_zeros }} / ks
+                  {%- if is_best -%}{{ 'kneetech.offers.only' | t }} {% endif -%}
+                  {{- unit_price | money_without_trailing_zeros }} {{ 'kneetech.offers.per_piece' | t }}
                 </span>
               </span>
               {%- if is_best -%}
@@ -199,7 +208,8 @@
                   {%- endfor -%}
                 </span>
                 <span class="kt-offer__savebar">
-                  Druhá bandáž o <strong>{{ extra_pct }}&nbsp;% levněji</strong> – ušetříš {{ saving | money_without_trailing_zeros }}
+                  {%- assign saving_money = saving | money_without_trailing_zeros -%}
+                  {{- 'kneetech.offers.savebar_html' | t: pct: extra_pct, saving: saving_money -}}
                 </span>
               {%- endif -%}
             </button>
@@ -211,11 +221,11 @@
     {%- if best_saving > 0 and upsell_extra > 0 -%}
       <div class="kt-upsell" role="note">
         <p class="kt-upsell__text">
-          Co druhé koleno? <strong>Druhý kus jen za +{{ upsell_extra | money_without_trailing_zeros }}</strong>
-          – o {{ extra_pct }}&nbsp;% levněji, ušetříš {{ best_saving | money_without_trailing_zeros }}.
+          {%- assign best_saving_money = best_saving | money_without_trailing_zeros -%}
+          {{- 'kneetech.offers.upsell_html' | t: extra: extra_money, pct: extra_pct, saving: best_saving_money -}}
         </p>
         <button type="button" class="kt-upsell__button" data-kt-upsell="{{ best_value | escape }}">
-          Chci {{ best_value | downcase }}
+          {{ 'kneetech.offers.upsell_button' | t: best: best_lower }}
         </button>
       </div>
     {%- endif -%}

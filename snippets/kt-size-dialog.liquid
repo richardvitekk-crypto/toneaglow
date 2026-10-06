@@ -12,10 +12,16 @@
   Na hranici dvou velikostí vybere menší (pevnější stisk), stejně jako radí tabulka.
 {%- endcomment -%}
 {%- liquid
-  assign label = label | default: 'Nevíš velikost? Tabulka velikostí'
-  assign page = page | default: '/pages/velikosti'
+  assign root = routes.root_url | append: '/' | replace: '//', '/'
+  assign default_label = 'kneetech.size.link' | t
+  assign default_page = root | append: 'pages/velikosti'
+  assign default_sizes = 'kneetech.size.list' | t
+  assign label = label | default: default_label
+  assign page = page | default: default_page
+  assign sizes = sizes | default: default_sizes
   assign dialog_id = 'kt-size-dialog'
   assign rows = sizes | split: '|'
+  assign contact_url = root | append: 'pages/contact'
 -%}
 {{ 'kt-landing.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'kt-landing.js' | asset_url }}" defer="defer"></script>
@@ -40,8 +46,19 @@
       {{- parts[0] | strip }};{{ low }};{{ high -}}
     {%- endfor -%}
   {%- endcapture -%}
-  <kt-size-calc class="kt-calc" data-ranges="{{ calc_ranges | escape }}">
-    <label class="kt-calc__label" for="KtCalc-{{ section.id }}">Spočítej si velikost</label>
+  <kt-size-calc
+    class="kt-calc"
+    data-ranges="{{ calc_ranges | escape }}"
+    data-contact="{{ contact_url }}"
+    data-t-invalid="{{ 'kneetech.size.calc_invalid' | t | escape }}"
+    data-t-below="{{ 'kneetech.size.calc_below_html' | t | escape }}"
+    data-t-above="{{ 'kneetech.size.calc_above_html' | t | escape }}"
+    data-t-missing="{{ 'kneetech.size.calc_missing_html' | t | escape }}"
+    data-t-done="{{ 'kneetech.size.calc_done' | t | escape }}"
+    data-t-edge="{{ 'kneetech.size.calc_edge' | t | escape }}"
+    data-t-range="{{ 'kneetech.size.calc_range' | t | escape }}"
+  >
+    <label class="kt-calc__label" for="KtCalc-{{ section.id }}">{{ 'kneetech.size.calc_label' | t }}</label>
     <div class="kt-calc__row">
       <div class="kt-calc__field">
         <input
@@ -50,30 +67,30 @@
           inputmode="decimal"
           autocomplete="off"
           maxlength="5"
-          placeholder="např. 34"
+          placeholder="{{ 'kneetech.size.calc_placeholder' | t | escape }}"
           aria-describedby="KtCalcOut-{{ section.id }}"
         >
         <span aria-hidden="true">cm</span>
       </div>
-      <p class="kt-calc__out" id="KtCalcOut-{{ section.id }}" aria-live="polite">Obvod kolena přes střed čéšky</p>
+      <p class="kt-calc__out" id="KtCalcOut-{{ section.id }}" aria-live="polite">{{ 'kneetech.size.calc_hint' | t }}</p>
     </div>
   </kt-size-calc>
 {%- endunless -%}
 
 <dialog class="kt-size-dialog color-scheme-1" id="{{ dialog_id }}" aria-labelledby="{{ dialog_id }}-title">
   <div class="kt-size-dialog__box">
-    <button type="button" class="kt-size-dialog__close" data-kt-size-close aria-label="Zavřít">
+    <button type="button" class="kt-size-dialog__close" data-kt-size-close aria-label="{{ 'kneetech.size.close' | t | escape }}">
       {%- render 'kt-icon', name: 'cross' -%}
     </button>
-    <p class="kt-size-dialog__title" id="{{ dialog_id }}-title">Tabulka velikostí</p>
+    <p class="kt-size-dialog__title" id="{{ dialog_id }}-title">{{ 'kneetech.size.title' | t }}</p>
     <ol class="kt-size-dialog__steps">
-      <li>Nohu lehce pokrč, jako když stojíš v obraně.</li>
-      <li>Krejčovským metrem změř obvod kolena přes střed čéšky.</li>
-      <li>Najdi obvod v tabulce.</li>
+      <li>{{ 'kneetech.size.step1' | t }}</li>
+      <li>{{ 'kneetech.size.step2' | t }}</li>
+      <li>{{ 'kneetech.size.step3' | t }}</li>
     </ol>
     <table class="kt-size-dialog__table">
       <thead>
-        <tr><th scope="col">Velikost</th><th scope="col">Obvod kolena</th></tr>
+        <tr><th scope="col">{{ 'kneetech.size.col_size' | t }}</th><th scope="col">{{ 'kneetech.size.col_circumference' | t }}</th></tr>
       </thead>
       <tbody>
         {%- for row in rows -%}
@@ -89,8 +106,8 @@
       </tbody>
     </table>
     <p class="kt-size-dialog__tip">
-      Jsi mezi dvěma velikostmi? Pro pevnější stisk vezmi menší. Suchým zipem si bandáž ještě dotáhneš.
+      {{ 'kneetech.size.tip' | t }}
     </p>
-    <a class="kt-size-dialog__more" href="{{ page }}">Celý návod k měření</a>
+    <a class="kt-size-dialog__more" href="{{ page }}">{{ 'kneetech.size.more' | t }}</a>
   </div>
 </dialog>

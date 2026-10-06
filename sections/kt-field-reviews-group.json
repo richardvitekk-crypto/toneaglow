@@ -13,6 +13,24 @@
   "sections": {
     "field_reviews": {
       "type": "kt-field-reviews",
+      "blocks": {
+        "player_QTkbna": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "name": "martin dolezal",
+            "age": "17",
+            "club": "sparta brno u 19",
+            "achievement": "",
+            "rating": 5,
+            "quote": "dobry",
+            "photo_credit": ""
+          }
+        }
+      },
+      "block_order": [
+        "player_QTkbna"
+      ],
       "settings": {
         "eyebrow": "Testováno v terénu",
         "heading": "Dali jsme naši bandáž vyzkoušet 30+ fotbalistům. Zde jsou jejich reálné recenze.",

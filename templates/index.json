@@ -63,7 +63,7 @@
         "field_rating": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'kt-field-rating', title: 'Vybraní profi fotbalisti zhodnotili naši bandáž:', label: 'z [pocet] testování v klubech' %}"
+            "custom_liquid": "{% render 'kt-field-rating' %}"
           }
         },
         "price": {
@@ -73,7 +73,7 @@
         "bullets": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'kt-bullets', items: 'Jistota v kličkách i při doskoku|Utáhneš suchým zipem přesně podle sebe|Nesjíždí ani při sprintu|Tenká a prodyšná – vejde se pod štulpnu' %}"
+            "custom_liquid": "{% render 'kt-bullets' %}"
           }
         },
         "offers": {
@@ -85,7 +85,7 @@
         "size_dialog": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'kt-size-dialog', sizes: 'S:30–33 cm:mladší a štíhlejší hráči|M:33–36 cm:nejčastější pro 13–16 let|L:36–40 cm:starší a silnější hráči|XL:40–44 cm:dospělí hráči' %}"
+            "custom_liquid": "{% render 'kt-size-dialog' %}"
           }
         },
         "variant_picker": {
@@ -111,7 +111,7 @@
         "assurance": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'kt-assurance', delivery: 'Doručení do 14 dnů', delivery_sub: 'Doprava 72 Kč', returns: '14 dní na vrácení', returns_sub: 'Bez udání důvodu' %}"
+            "custom_liquid": "{% render 'kt-assurance' %}"
           }
         },
         "share": {
@@ -129,25 +129,25 @@
         "tab_fit": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% capture c %}<ol><li><strong>Natáhni</strong> – středem přes čéšku.</li><li><strong>Utáhni</strong> – suchý zip pevně, ale koleno musí jít normálně ohnout.</li><li><strong>Hraj</strong> – pár dřepů na zkoušku. Když cítíš brnění, povol.</li></ol>{% endcapture %}{% render 'kt-accordion', id: 'fit', icon: 'check_mark', heading: 'Jak ji nasadit', content: c %}"
+            "custom_liquid": "{%- assign kt_root = routes.root_url | append: '/' | replace: '//', '/' -%}{%- capture c -%}{{ 'kneetech.tabs.fit_html' | t | replace: '[root]', kt_root }}{%- endcapture -%}{%- assign h = 'kneetech.tabs.fit_title' | t -%}{% render 'kt-accordion', id: 'fit', icon: 'check_mark', heading: h, content: c %}"
           }
         },
         "tab_material": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% capture c %}<p><strong>Materiál:</strong> polyesterové vlákno, suchý zip, protiskluzový pásek.<br/><strong>Hmotnost:</strong> asi 70 g na kus.<br/><strong>Barvy:</strong> černo-šedá, černo-červená.<br/><strong>Velikosti:</strong> S, M, L, XL.</p><p><strong>Péče:</strong> perte ručně ve vlažné vodě s jemným prostředkem, suchý zip před praním zapněte. Sušte volně na vzduchu, ne v sušičce ani na topení.</p>{% endcapture %}{% render 'kt-accordion', id: 'material', icon: 'washing', heading: 'Materiál a péče', content: c %}"
+            "custom_liquid": "{%- assign kt_root = routes.root_url | append: '/' | replace: '//', '/' -%}{%- capture c -%}{{ 'kneetech.tabs.material_html' | t | replace: '[root]', kt_root }}{%- endcapture -%}{%- assign h = 'kneetech.tabs.material_title' | t -%}{% render 'kt-accordion', id: 'material', icon: 'washing', heading: h, content: c %}"
           }
         },
         "tab_shipping": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% capture c %}<p>Doručení do 14 dnů od objednávky. Doprava stojí 72 Kč, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p><p>Na vrácení máš 14 dní od převzetí, bez udání důvodu. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>{% endcapture %}{% render 'kt-accordion', id: 'shipping', icon: 'truck', heading: 'Doprava a vrácení', content: c %}"
+            "custom_liquid": "{%- assign kt_root = routes.root_url | append: '/' | replace: '//', '/' -%}{%- capture c -%}{{ 'kneetech.tabs.shipping_html' | t | replace: '[root]', kt_root }}{%- endcapture -%}{%- assign h = 'kneetech.tabs.shipping_title' | t -%}{% render 'kt-accordion', id: 'shipping', icon: 'truck', heading: h, content: c %}"
           }
         },
         "tab_safety": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% capture c %}<p>Bandáž není zdravotnický prostředek a nenahrazuje vyšetření ani léčbu.</p><ul><li>Nepřetahuj ji – koleno musíš v bandáži normálně ohnout.</li><li>Když cítíš brnění, otok nebo se změní barva kůže, povol ji nebo sundej.</li><li>Nenos ji celý den ani přes noc.</li><li>Nenos ji na poraněnou nebo podrážděnou kůži.</li><li>Při bolesti, která neustupuje, navštiv lékaře.</li></ul>{% endcapture %}{% render 'kt-accordion', id: 'safety', icon: 'check_mark', heading: 'Bezpečnost', content: c %}"
+            "custom_liquid": "{%- assign kt_root = routes.root_url | append: '/' | replace: '//', '/' -%}{%- capture c -%}{{ 'kneetech.tabs.safety_html' | t | replace: '[root]', kt_root }}{%- endcapture -%}{%- assign h = 'kneetech.tabs.safety_title' | t -%}{% render 'kt-accordion', id: 'safety', icon: 'check_mark', heading: h, content: c %}"
           }
         },
         "manufacturer": {

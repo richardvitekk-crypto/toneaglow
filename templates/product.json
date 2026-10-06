@@ -66,7 +66,7 @@
           "settings": {
             "heading": "Doprava a vrácení",
             "icon": "truck",
-            "content": "<p>Doručení do 14 dnů od objednávky. Doprava stojí 72 Kč, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p><p>Na vrácení máš 14 dní od převzetí, bez udání důvodu. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>",
+            "content": "<p>Doručení do 14 dnů od objednávky. Cenu dopravy uvidíš v pokladně, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p><p>Na vrácení máš 14 dní od převzetí, bez udání důvodu. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>",
             "page": ""
           }
         },
@@ -483,7 +483,7 @@
           "type": "question",
           "settings": {
             "question": "Jak dlouho trvá doručení?",
-            "answer": "<p>Do 14 dnů od objednávky. Doprava stojí 72 Kč, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p>"
+            "answer": "<p>Do 14 dnů od objednávky. Cenu dopravy uvidíš v pokladně, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p>"
           }
         },
         "q6": {

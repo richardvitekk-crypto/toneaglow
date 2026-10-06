@@ -93,3 +93,60 @@
 .product__info-container .kt-note {
   color: rgba(var(--color-foreground), 0.9);
 }
+
+/* ---------- Důvěra pod doručením: značka, zabezpečená platba, ikony plateb ---------- */
+.kt-trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem 1.6rem;
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(var(--color-foreground), 0.1);
+}
+
+.kt-trust__brand,
+.kt-trust__secure {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: rgb(var(--color-foreground));
+}
+
+.kt-trust__flag {
+  width: 2.1rem;
+  height: 1.4rem;
+  flex-shrink: 0;
+  border-radius: 0.2rem;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.kt-trust__lock {
+  width: 1.8rem;
+  height: 1.8rem;
+  flex-shrink: 0;
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-trust__pay {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kt-trust__pay li {
+  display: flex;
+}
+
+.kt-trust__pay-icon {
+  width: 3.8rem;
+  height: 2.4rem;
+}

@@ -1,0 +1,136 @@
+/* ==========================================================================
+   KNEETECH – kalkulačka velikosti nad výběrem velikosti
+   ========================================================================== */
+.kt-calc {
+  display: block;
+  margin: 0.4rem 0 1.4rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid var(--kt-card-border, rgba(255, 255, 255, 0.08));
+  border-radius: 1.4rem;
+  background: var(--kt-card-bg, rgba(255, 255, 255, 0.03));
+}
+
+.kt-calc__label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-family: var(--font-heading-family);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgb(var(--color-foreground));
+}
+
+.kt-calc__row {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.kt-calc__field {
+  position: relative;
+  flex: 0 0 11.5rem;
+}
+
+.kt-calc__field input {
+  width: 100%;
+  height: 4.6rem;
+  padding: 0 3.6rem 0 1.4rem;
+  border: 1.5px solid rgba(var(--color-foreground), 0.25);
+  border-radius: 1.1rem;
+  background: rgba(0, 0, 0, 0.3);
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-heading-family);
+  font-size: 2rem;
+  font-weight: 700;
+  transition: border-color 0.2s;
+}
+
+.kt-calc__field input::placeholder {
+  font-family: var(--font-body-family);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: rgba(var(--color-foreground), 0.5);
+}
+
+.kt-calc__field input:focus {
+  outline: none;
+  border-color: var(--kt-lime, #d8ff3e);
+  box-shadow: 0 0 0 3px rgba(216, 255, 62, 0.2);
+}
+
+.kt-calc__field span {
+  position: absolute;
+  top: 50%;
+  right: 1.2rem;
+  transform: translateY(-50%);
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.7);
+  pointer-events: none;
+}
+
+.kt-calc__out {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.35;
+  color: rgba(var(--color-foreground), 0.8);
+}
+
+.kt-calc__out strong {
+  display: inline-grid;
+  place-items: center;
+  min-width: 4.6rem;
+  height: 4.6rem;
+  padding: 0 1rem;
+  border-radius: 1.1rem;
+  background: var(--kt-lime, #d8ff3e);
+  color: #0a0a0a;
+  font-family: var(--font-heading-family);
+  font-size: 2.2rem;
+  font-weight: 700;
+  vertical-align: middle;
+  animation: kt-calc-pop 0.3s var(--kt-ease, ease) both;
+}
+
+.kt-calc__done {
+  display: inline-block;
+  margin-left: 0.8rem;
+  font-weight: 600;
+  color: var(--kt-lime, #d8ff3e);
+  vertical-align: middle;
+}
+
+.kt-calc__done::before {
+  content: '✓ ';
+}
+
+.kt-calc__out small {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 1.2rem;
+  color: rgba(var(--color-foreground), 0.85);
+}
+
+.kt-calc[data-state='error'] .kt-calc__out {
+  color: #ffb4a8;
+}
+
+.kt-calc__out a {
+  color: inherit;
+  text-underline-offset: 0.2rem;
+}
+
+@keyframes kt-calc-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kt-calc__out strong {
+    animation: none;
+  }
+}

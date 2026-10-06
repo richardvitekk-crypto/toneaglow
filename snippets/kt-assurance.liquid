@@ -7,6 +7,11 @@
   - returns {String}       – např. '14 dní na vrácení'
   - returns_sub {String}   – např. 'Bez udání důvodu'
   - link {String}          – odkaz na podrobnosti (výchozí /pages/doprava-a-vraceni)
+  - brand {String}         – řádek se značkou (výchozí „Česká značka z Brna“, '-' skryje)
+  - payments {Boolean}     – false skryje ikony plateb
+
+  Ikony plateb se berou ze skutečně zapnutých plateb v Shopify (shop.enabled_payment_types),
+  takže ukazují jen to, co jde opravdu zaplatit.
 {%- endcomment -%}
 {{ 'kt-landing.css' | asset_url | stylesheet_tag }}
 {{ 'kt-popis.css' | asset_url | stylesheet_tag }}
@@ -14,6 +19,7 @@
   assign delivery = delivery | default: 'Doručení do 14 dnů'
   assign returns = returns | default: '14 dní na vrácení'
   assign link = link | default: '/pages/doprava-a-vraceni'
+  assign brand = brand | default: 'Česká značka z Brna'
 -%}
 <div class="kt-assure">
   <ul class="kt-assure__list">
@@ -26,5 +32,28 @@
       <span><strong>{{ returns }}</strong>{% if returns_sub != blank %}<small>{{ returns_sub }}</small>{% endif %}</span>
     </li>
   </ul>
+
+  <div class="kt-trust">
+    {%- if brand != '-' -%}
+      <p class="kt-trust__brand">
+        <svg class="kt-trust__flag" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="10" fill="#fff"/><rect y="10" width="30" height="10" fill="#d7141a"/><path d="M0 0 15 10 0 20Z" fill="#11457e"/></svg>
+        {{ brand }}
+      </p>
+    {%- endif -%}
+    <p class="kt-trust__secure">
+      {%- render 'kt-icon', name: 'lock', class: 'kt-trust__lock' -%}
+      Zabezpečená platba
+    </p>
+    {%- unless payments == false -%}
+      {%- if shop.enabled_payment_types.size > 0 -%}
+        <ul class="kt-trust__pay" role="list" aria-label="Způsoby platby">
+          {%- for type in shop.enabled_payment_types -%}
+            <li>{{ type | payment_type_svg_tag: class: 'kt-trust__pay-icon' }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    {%- endunless -%}
+  </div>
+
   <a class="kt-assure__link" href="{{ link }}">Doprava a vrácení podrobně</a>
 </div>

@@ -5,6 +5,11 @@
   - sizes {String} – 'S:30–33 cm:mladší a štíhlejší hráči|M:33–36 cm:…' (poznámka nepovinná)
   - label {String} – text odkazu
   - page {String}  – odkaz na celou stránku (výchozí /pages/velikosti)
+  - calc {Boolean} – false skryje kalkulačku velikosti (výchozí zobrazená)
+
+  Kalkulačka: zákazník zadá obvod kolena v cm, ukáže se velikost a sama se vybere
+  ve výběru „Velikost“. Rozsahy se berou ze sizes (např. „30–33 cm“), nic natvrdo.
+  Na hranici dvou velikostí vybere menší (pevnější stisk), stejně jako radí tabulka.
 {%- endcomment -%}
 {%- liquid
   assign label = label | default: 'Nevíš velikost? Tabulka velikostí'
@@ -19,6 +24,41 @@
   {%- render 'kt-icon', name: 'ruler' -%}
   {{ label }}
 </a>
+
+{%- unless calc == false -%}
+  {{ 'kt-size-calc.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'kt-size-calc.js' | asset_url }}" defer="defer"></script>
+  {%- capture calc_ranges -%}
+    {%- for row in rows -%}
+      {%- liquid
+        assign parts = row | split: ':'
+        assign range = parts[1] | remove: 'cm' | replace: '-', '–' | split: '–'
+        assign low = range[0] | strip | replace: ',', '.'
+        assign high = range[1] | strip | replace: ',', '.'
+      -%}
+      {%- unless forloop.first %}|{% endunless -%}
+      {{- parts[0] | strip }};{{ low }};{{ high -}}
+    {%- endfor -%}
+  {%- endcapture -%}
+  <kt-size-calc class="kt-calc" data-ranges="{{ calc_ranges | escape }}">
+    <label class="kt-calc__label" for="KtCalc-{{ section.id }}">Spočítej si velikost</label>
+    <div class="kt-calc__row">
+      <div class="kt-calc__field">
+        <input
+          id="KtCalc-{{ section.id }}"
+          type="text"
+          inputmode="decimal"
+          autocomplete="off"
+          maxlength="5"
+          placeholder="např. 34"
+          aria-describedby="KtCalcOut-{{ section.id }}"
+        >
+        <span aria-hidden="true">cm</span>
+      </div>
+      <p class="kt-calc__out" id="KtCalcOut-{{ section.id }}" aria-live="polite">Obvod kolena přes střed čéšky</p>
+    </div>
+  </kt-size-calc>
+{%- endunless -%}
 
 <dialog class="kt-size-dialog color-scheme-1" id="{{ dialog_id }}" aria-labelledby="{{ dialog_id }}-title">
   <div class="kt-size-dialog__box">

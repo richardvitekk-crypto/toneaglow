@@ -15,7 +15,7 @@
         "c1": {
           "type": "chip",
           "settings": {
-            "text": "Pro hráče 13–17 let"
+            "text": "Pro mladé fotbalisty"
           }
         },
         "c2": {
@@ -27,7 +27,7 @@
         "c3": {
           "type": "chip",
           "settings": {
-            "text": "30 dní na vrácení"
+            "text": "14 dní na vrácení"
           }
         }
       },

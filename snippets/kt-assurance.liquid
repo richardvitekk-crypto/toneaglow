@@ -4,14 +4,15 @@
   Accepts:
   - delivery {String}      – např. 'Doručení do 14 dnů'
   - delivery_sub {String}  – např. 'Doprava 72 Kč'
-  - returns {String}       – např. '30 dní na vrácení'
+  - returns {String}       – např. '14 dní na vrácení'
   - returns_sub {String}   – např. 'Bez udání důvodu'
   - link {String}          – odkaz na podrobnosti (výchozí /pages/doprava-a-vraceni)
 {%- endcomment -%}
 {{ 'kt-landing.css' | asset_url | stylesheet_tag }}
+{{ 'kt-popis.css' | asset_url | stylesheet_tag }}
 {%- liquid
   assign delivery = delivery | default: 'Doručení do 14 dnů'
-  assign returns = returns | default: '30 dní na vrácení'
+  assign returns = returns | default: '14 dní na vrácení'
   assign link = link | default: '/pages/doprava-a-vraceni'
 -%}
 <div class="kt-assure">

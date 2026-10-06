@@ -99,7 +99,8 @@
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "{%- assign kt_product = all_products['kneetech-bandaz-na-koleno'] -%}{% render 'kt-selection', product: kt_product, sizes: 'S:30–33 cm|M:33–36 cm|L:36–40 cm|XL:40–44 cm' %}"
-          }
+          },
+          "disabled": true
         },
         "buy_buttons": {
           "type": "buy_buttons",

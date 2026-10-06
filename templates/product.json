@@ -100,25 +100,25 @@
         "field_rating": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'kt-field-rating', title: 'Vybraní profi fotbalisti zhodnotili naši bandáž:', label: 'z [pocet] testování v klubech' %}"
+            "custom_liquid": "{% render 'kt-field-rating' %}"
           }
         },
         "bullets": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'kt-bullets', items: 'Jistota v kličkách i při doskoku|Utáhneš suchým zipem přesně podle sebe|Nesjíždí ani při sprintu|Tenká a prodyšná – vejde se pod štulpnu' %}"
+            "custom_liquid": "{% render 'kt-bullets' %}"
           }
         },
         "size_dialog": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'kt-size-dialog', sizes: 'S:30–33 cm:mladší a štíhlejší hráči|M:33–36 cm:nejčastější pro 13–16 let|L:36–40 cm:starší a silnější hráči|XL:40–44 cm:dospělí hráči' %}"
+            "custom_liquid": "{% render 'kt-size-dialog' %}"
           }
         },
         "assurance": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'kt-assurance', delivery: 'Doručení do 14 dnů', delivery_sub: 'Doprava 72 Kč', returns: '14 dní na vrácení', returns_sub: 'Bez udání důvodu' %}"
+            "custom_liquid": "{% render 'kt-assurance' %}"
           }
         },
         "tab_fit": {
@@ -620,7 +620,8 @@
       "settings": {
         "heading": "Hraj naplno.",
         "heading_accent": "Jistota v každé kličce.",
-        "color_scheme": "scheme-3"
+        "color_scheme": "scheme-3",
+        "kicker": "Kompresní bandáž na koleno pro fotbalisty"
       }
     }
   },

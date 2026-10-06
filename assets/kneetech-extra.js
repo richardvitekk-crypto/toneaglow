@@ -20,7 +20,8 @@
       .split('|')
       .map((item) => item.split(':'))
       .find((item) => item[0] === size);
-    sizeEl.textContent = pair ? `Velikost ${size} sedí na obvod kolena ${pair[1]}` : '';
+    const template = box.dataset.tSize || 'Velikost [size] sedí na obvod kolena [range]';
+    sizeEl.textContent = pair ? template.replace('[size]', size).replace('[range]', pair[1]) : '';
   };
 
   const boxes = () => document.querySelectorAll('[data-kt-selection]');
@@ -59,8 +60,8 @@ if (!customElements.get('kt-share')) {
         if (copy) {
           copy.addEventListener('click', () => {
             const done = () => {
-              copy.textContent = 'Odkaz zkopírován';
-              window.setTimeout(() => (copy.textContent = 'Zkopírovat odkaz'), 2000);
+              copy.textContent = copy.dataset.copied || 'Odkaz zkopírován';
+              window.setTimeout(() => (copy.textContent = copy.dataset.copy || 'Zkopírovat odkaz'), 2000);
             };
             if (navigator.clipboard && navigator.clipboard.writeText) {
               navigator.clipboard.writeText(this.dataset.url).then(done, done);

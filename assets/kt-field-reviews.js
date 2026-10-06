@@ -46,7 +46,7 @@
         const b = document.createElement('button');
         b.type = 'button';
         b.className = 'kt-fr__dot';
-        b.setAttribute('aria-label', `Přejít na hráče ${i + 1}`);
+        b.setAttribute('aria-label', (dotsWrap.dataset.tGoto || 'Přejít na hráče [n]').replace('[n]', i + 1));
         b.addEventListener('click', () => goTo(i));
         dotsWrap.appendChild(b);
       }
@@ -126,7 +126,7 @@
       const fill = badge.querySelector('[data-kt-balls-fill]');
       if (fill) fill.style.width = `${(Math.min(avg, 5) / 5) * 100}%`;
       const balls = badge.querySelector('.kt-balls');
-      if (balls) balls.setAttribute('aria-label', `Hodnocení ${avgText} z 5 míčů`);
+      if (balls) balls.setAttribute('aria-label', (badge.dataset.tBalls || 'Hodnocení [value] z 5 míčů').replace('[value]', avgText));
       badge.setAttribute('href', `#${summary.id}`);
       badge.hidden = false;
 

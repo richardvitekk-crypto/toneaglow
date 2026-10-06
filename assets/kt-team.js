@@ -58,24 +58,33 @@ if (!customElements.get('kt-team')) {
         return kc.toLocaleString('cs-CZ') + ' Kč';
       }
 
+      text(key, fallback) {
+        return this.dataset[key] || fallback;
+      }
+
       update() {
         const count = this.inputs.reduce((sum, input) => sum + Math.max(0, this.read(input)), 0);
         const ready = count >= this.min && this.price > 0;
         if (this.countEl) this.countEl.textContent = String(count);
         if (this.totalEl) {
-          this.totalEl.textContent = ready ? `Celkem ${this.money(count * this.price)}` : '';
+          this.totalEl.textContent = ready ? this.text('tTotal', 'Celkem [total]').replace('[total]', this.money(count * this.price)) : '';
         }
         if (this.hintEl) {
           const missing = this.min - count;
           if (this.price <= 0) {
-            this.hintEl.textContent = 'Týmová cena zatím není nastavená.';
+            this.hintEl.textContent = this.text('tNoprice', 'Týmová cena zatím není nastavená.');
           } else if (missing > 0) {
             this.hintEl.textContent =
-              count === 0 ? `Přidej aspoň ${this.min} ks.` : `Přidej ještě ${missing} ks a platí týmová cena.`;
+              count === 0
+                ? this.text('tStart', `Přidej aspoň ${this.min} ks.`)
+                : this.text('tMore', 'Přidej ještě [n] ks a platí týmová cena.').replace('[n]', missing);
           } else {
             const free = parseInt(this.dataset.free || '0', 10);
-            const shipping = free > 0 && count * this.price >= free ? ' + doprava zdarma' : '';
-            this.hintEl.textContent = `${this.money(this.price)} za kus${shipping}, týmová cena platí.`;
+            const freeShipping = free > 0 && count * this.price >= free;
+            const template = freeShipping
+              ? this.text('tReadyFree', '[price] za kus + doprava zdarma, týmová cena platí.')
+              : this.text('tReady', '[price] za kus, týmová cena platí.');
+            this.hintEl.textContent = template.replace('[price]', this.money(this.price));
           }
         }
         if (this.addButton) this.addButton.disabled = !ready;
@@ -97,7 +106,7 @@ if (!customElements.get('kt-team')) {
             body: JSON.stringify({ items }),
           });
           const data = await response.json().catch(() => ({}));
-          if (!response.ok) throw new Error(data.description || data.message || 'Nepodařilo se přidat do košíku.');
+          if (!response.ok) throw new Error(data.description || data.message || this.text('tError', 'Nepodařilo se přidat do košíku.'));
           window.location.href = this.dataset.cart || '/cart';
         } catch (error) {
           if (this.errorEl) {

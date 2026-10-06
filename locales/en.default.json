@@ -537,5 +537,138 @@
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
     }
+  },
+  "kneetech": {
+    "offers": {
+      "choose": "Choose {{ option }}",
+      "tip": "Football puts strain on both knees",
+      "recommend": "Recommended",
+      "reasons": "Same support for both knees|Other knee starts acting up? You've got one ready|One in the wash, one ready for training",
+      "second_html": "2nd&nbsp;pc",
+      "both_knees": "For both knees",
+      "one_knee": "For one knee",
+      "one_knee_upsell": "For one knee · +{{ extra }} gets you {{ best }}",
+      "compare_label": "Bought separately",
+      "only": "only",
+      "per_piece": "/ pc",
+      "savebar_html": "Second support <strong>{{ pct }}&nbsp;% cheaper</strong> – you save {{ saving }}",
+      "upsell_html": "What about the other knee? <strong>A second one for just +{{ extra }}</strong> – {{ pct }}&nbsp;% cheaper, you save {{ saving }}.",
+      "upsell_button": "I want {{ best }}"
+    },
+    "team": {
+      "title": "For the whole team",
+      "from": "From {{ min }} pcs",
+      "free_html": "<strong>free shipping</strong>",
+      "mix": "mix sizes and colours in one order",
+      "price_soon": "price coming soon",
+      "per_piece": "/ pc",
+      "intro": "Enter how many you need in each size and colour.",
+      "intro_price_html": "From {{ min }} pcs the team price is <strong>{{ price }} each</strong>",
+      "intro_free": " and shipping is free",
+      "size": "Size",
+      "minus": "Remove one: {{ label }}",
+      "plus": "Add one: {{ label }}",
+      "qty": "Quantity: {{ label }}",
+      "sold_out": "Sold out",
+      "sizes_link": "Not sure of the sizes? Size chart",
+      "pcs": "pcs",
+      "hint_start": "Add at least {{ min }} pcs.",
+      "hint_more": "Add [n] more pcs to get the team price.",
+      "hint_ready": "[price] each, team price applies.",
+      "hint_ready_free": "[price] each + free shipping, team price applies.",
+      "hint_noprice": "The team price isn't set yet.",
+      "total": "Total [total]",
+      "error": "Couldn't add to cart.",
+      "add": "Add team to cart",
+      "note": "You'll see the team discount in the cart. Shipping and returns work the same as for any order."
+    },
+    "size": {
+      "link": "Not sure of your size? Size chart",
+      "calc_label": "Find your size",
+      "calc_placeholder": "e.g. 34",
+      "calc_hint": "Knee circumference across the middle of the kneecap",
+      "calc_invalid": "Enter the circumference in centimetres, e.g. 34",
+      "calc_below_html": "Below [low] cm even size [size] will be loose. <a href=\"[contact]\">Message us</a> and we'll help.",
+      "calc_above_html": "Above [high] cm even size [size] will be tight. <a href=\"[contact]\">Message us</a> and we'll help.",
+      "calc_missing_html": "This measurement isn't in our chart. <a href=\"[contact]\">Message us</a> and we'll help.",
+      "calc_done": "selected",
+      "calc_edge": "You're between [a] and [b]. [a] fits firmer, [b] is looser for long wear.",
+      "calc_range": "Circumference [low]–[high] cm",
+      "close": "Close",
+      "title": "Size chart",
+      "step1": "Bend your leg slightly, like you're standing in defence.",
+      "step2": "Use a tape measure around the knee, across the middle of the kneecap.",
+      "step3": "Find your measurement in the table.",
+      "col_size": "Size",
+      "col_circumference": "Knee circumference",
+      "col_fits": "Usually fits",
+      "tip": "Between two sizes? Take the smaller one for a firmer fit. You can fine-tune it with the Velcro strap.",
+      "more": "Full measuring guide",
+      "list": "S:30–33 cm:younger, slimmer players|M:33–36 cm:most common for ages 13–16|L:36–40 cm:older, stronger players|XL:40–44 cm:adult players"
+    },
+    "assure": {
+      "delivery": "Delivery within 14 days",
+      "delivery_sub": "Shipping 72 Kč",
+      "returns": "14-day returns",
+      "returns_sub": "No reason needed",
+      "brand": "Czech brand from Brno",
+      "secure": "Secure payment",
+      "payments": "Payment methods",
+      "link": "Shipping and returns in detail"
+    },
+    "selection": {
+      "label": "Your choice",
+      "size_fit": "Size [size] fits a knee circumference of [range]"
+    },
+    "share": {
+      "text": "Please take a look at this football knee support. Everything about sizing and safety is there too:",
+      "subject": "Football knee support",
+      "title": "Parents paying?",
+      "lead": "Send them the link. They'll find everything about sizing, safety and returns.",
+      "button": "Send to parents",
+      "copy": "Copy link",
+      "copied": "Link copied"
+    },
+    "rating": {
+      "title": "Selected pro footballers rated our knee support:",
+      "label": "from [pocet] tests at clubs",
+      "balls": "Rated [value] out of 5 balls"
+    },
+    "reviews": {
+      "carousel": "carousel",
+      "label": "Player reviews",
+      "photo": "Photo:",
+      "prev": "Previous player",
+      "next": "Next player",
+      "go_to": "Go to player [n]"
+    },
+    "compare": {
+      "feature": "Feature",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "sticky": {
+      "from": "from {{ price }}",
+      "deal_html": "2nd&nbsp;pc −{{ pct }}&nbsp;%"
+    },
+    "popup": {
+      "close": "Close",
+      "copy": "Copy",
+      "copied": "Copied",
+      "email": "Your email"
+    },
+    "tabs": {
+      "fit_title": "How to put it on",
+      "fit_html": "<ol><li><strong>Pull it on</strong> – centred over the kneecap.</li><li><strong>Tighten</strong> – Velcro firm, but you must still be able to bend your knee normally.</li><li><strong>Play</strong> – do a few test squats. If you feel tingling, loosen it.</li></ol>",
+      "material_title": "Material and care",
+      "material_html": "<p><strong>Material:</strong> polyester fibre, Velcro, anti-slip strip.<br/><strong>Weight:</strong> about 70 g each.<br/><strong>Colours:</strong> black-grey, black-red.<br/><strong>Sizes:</strong> S, M, L, XL.</p><p><strong>Care:</strong> hand wash in lukewarm water with a mild detergent, fasten the Velcro before washing. Air dry – no tumble dryer or radiator.</p>",
+      "shipping_title": "Shipping and returns",
+      "shipping_html": "<p>Delivery within 14 days of ordering. Shipping costs 72 Kč and is free from 1 500 Kč. Once shipped, you'll get a tracking link.</p><p>You have 14 days from delivery to return it, no reason needed. Details are on the <a href=\"[root]pages/doprava-a-vraceni\">Shipping and returns</a> page.</p>",
+      "safety_title": "Safety",
+      "safety_html": "<p>This knee support is not a medical device and does not replace examination or treatment.</p><ul><li>Don't overtighten it – you must be able to bend your knee normally.</li><li>If you feel tingling, swelling or your skin changes colour, loosen it or take it off.</li><li>Don't wear it all day or overnight.</li><li>Don't wear it on injured or irritated skin.</li><li>If the pain doesn't go away, see a doctor.</li></ul>"
+    },
+    "bullets": {
+      "items": "Confidence in every cut and landing|Velcro strap tightens exactly to your fit|Stays put even when you sprint|Thin and breathable – fits under your football socks"
+    }
   }
 }

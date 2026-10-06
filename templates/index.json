@@ -563,7 +563,7 @@
           "type": "question",
           "settings": {
             "question": "Jak dlouho trvá doručení?",
-            "answer": "<p>Do 14 dnů od objednávky. Doprava stojí 72 Kč, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p>"
+            "answer": "<p>Do 14 dnů od objednávky. Cenu dopravy uvidíš v pokladně, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p>"
           }
         },
         "q7": {

@@ -140,7 +140,7 @@
         "note": "Zobrazit pravidla množství",
         "min_of": "Minimum {{ quantity }}",
         "max_of": "Maximum {{ quantity }}",
-        "in_cart_aria_label": "Množství ({{ quantity }} v košíku)"
+        "in_cart_aria_label": "Množství ({{ quantity }} v košíku)"
       },
       "price": {
         "from_price_html": "Od {{ price }}",
@@ -191,7 +191,7 @@
       "product_variants": "Varianty produktu",
       "taxes_included": "Včetně daní.",
       "duties_included": "Včetně cla.",
-      "duties_and_taxes_included": "Včetně cla a daní."
+      "duties_and_taxes_included": "Včetně cla a daní."
     },
     "modal": {
       "label": "Galerie multimédií"
@@ -330,14 +330,14 @@
       },
       "estimated_total": "Odhadovaný součet",
       "new_estimated_total": "Nový odhadovaný součet",
-      "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Včetně cla a daní. Slevy a <a href=\"{{ link }}\">poštovné</a> se vypočítají na pokladně.",
-      "duties_and_taxes_included_shipping_at_checkout_without_policy": "Včetně cla a daní. Slevy a poštovné se vypočítají na pokladně.",
-      "taxes_included_shipping_at_checkout_with_policy_html": "Včetně daní. Slevy a <a href=\"{{ link }}\">poštovné</a> se vypočítají na pokladně.",
-      "taxes_included_shipping_at_checkout_without_policy": "Včetně daní. Slevy a poštovné se vypočítají na pokladně.",
-      "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Včetně cla. Daně, slevy a <a href=\"{{ link }}\">poštovné</a> se vypočítají na pokladně.",
-      "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Včetně cla. Daně, slevy a poštovné se vypočítají na pokladně.",
-      "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Daně, slevy a <a href=\"{{ link }}\">poštovné</a> se vypočítají na pokladně.",
-      "taxes_at_checkout_shipping_at_checkout_without_policy": "Daně, slevy a poštovné se vypočítají na pokladně."
+      "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Včetně cla a daní. Slevy a <a href=\"{{ link }}\">poštovné</a> se vypočítají na pokladně.",
+      "duties_and_taxes_included_shipping_at_checkout_without_policy": "Včetně cla a daní. Slevy a poštovné se vypočítají na pokladně.",
+      "taxes_included_shipping_at_checkout_with_policy_html": "Včetně daní. Slevy a <a href=\"{{ link }}\">poštovné</a> se vypočítají na pokladně.",
+      "taxes_included_shipping_at_checkout_without_policy": "Včetně daní. Slevy a poštovné se vypočítají na pokladně.",
+      "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Včetně cla. Daně, slevy a <a href=\"{{ link }}\">poštovné</a> se vypočítají na pokladně.",
+      "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Včetně cla. Daně, slevy a poštovné se vypočítají na pokladně.",
+      "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Daně, slevy a <a href=\"{{ link }}\">poštovné</a> se vypočítají na pokladně.",
+      "taxes_at_checkout_shipping_at_checkout_without_policy": "Daně, slevy a poštovné se vypočítají na pokladně."
     },
     "footer": {
       "payment": "Platební metody"
@@ -560,6 +560,139 @@
       "send_on_label": "Datum odeslání (volitelné)",
       "expanded": "Formulář pro příjemce dárkové karty se rozbalil.",
       "collapsed": "Formulář pro příjemce dárkové karty se sbalil."
+    }
+  },
+  "kneetech": {
+    "offers": {
+      "choose": "Vyber {{ option }}",
+      "tip": "Fotbal zatěžuje obě kolena",
+      "recommend": "Doporučujeme",
+      "reasons": "Stejná opora pro obě kolena|Začne zlobit i druhé koleno? Máš ji hned po ruce|Jedna se pere, druhá je připravená na trénink",
+      "second_html": "2.&nbsp;kus",
+      "both_knees": "Na obě kolena",
+      "one_knee": "Na jedno koleno",
+      "one_knee_upsell": "Na jedno koleno · za +{{ extra }} máš {{ best }}",
+      "compare_label": "Po kusech by stály",
+      "only": "jen",
+      "per_piece": "/ ks",
+      "savebar_html": "Druhá bandáž o <strong>{{ pct }}&nbsp;% levněji</strong> – ušetříš {{ saving }}",
+      "upsell_html": "Co druhé koleno? <strong>Druhý kus jen za +{{ extra }}</strong> – o {{ pct }}&nbsp;% levněji, ušetříš {{ saving }}.",
+      "upsell_button": "Chci {{ best }}"
+    },
+    "team": {
+      "title": "Pro celý tým",
+      "from": "Od {{ min }} ks",
+      "free_html": "<strong>doprava zdarma</strong>",
+      "mix": "různé velikosti a barvy v jedné objednávce",
+      "price_soon": "cena brzy",
+      "per_piece": "/ ks",
+      "intro": "Vyplň, kolik kusů potřebuješ v každé velikosti a barvě.",
+      "intro_price_html": "Od {{ min }} ks platí týmová cena <strong>{{ price }} za kus</strong>",
+      "intro_free": " a doprava je zdarma",
+      "size": "Velikost",
+      "minus": "Ubrat: {{ label }}",
+      "plus": "Přidat: {{ label }}",
+      "qty": "Počet kusů: {{ label }}",
+      "sold_out": "Vyprodáno",
+      "sizes_link": "Nevíš velikosti? Tabulka velikostí",
+      "pcs": "ks",
+      "hint_start": "Přidej aspoň {{ min }} ks.",
+      "hint_more": "Přidej ještě [n] ks a platí týmová cena.",
+      "hint_ready": "[price] za kus, týmová cena platí.",
+      "hint_ready_free": "[price] za kus + doprava zdarma, týmová cena platí.",
+      "hint_noprice": "Týmová cena zatím není nastavená.",
+      "total": "Celkem [total]",
+      "error": "Nepodařilo se přidat do košíku.",
+      "add": "Přidat tým do košíku",
+      "note": "Týmovou slevu uvidíš v košíku. Doprava a vrácení platí stejně jako u běžné objednávky."
+    },
+    "size": {
+      "link": "Nevíš velikost? Tabulka velikostí",
+      "calc_label": "Spočítej si velikost",
+      "calc_placeholder": "např. 34",
+      "calc_hint": "Obvod kolena přes střed čéšky",
+      "calc_invalid": "Zadej obvod v centimetrech, třeba 34",
+      "calc_below_html": "Pod [low] cm bude i velikost [size] volná. <a href=\"[contact]\">Napiš nám</a>, poradíme.",
+      "calc_above_html": "Nad [high] cm bude i velikost [size] těsná. <a href=\"[contact]\">Napiš nám</a>, poradíme.",
+      "calc_missing_html": "Tenhle obvod v tabulce nemáme. <a href=\"[contact]\">Napiš nám</a>, poradíme.",
+      "calc_done": "vybráno",
+      "calc_edge": "Jsi na hranici [a] a [b]. [a] drží pevněji, [b] je volnější na dlouhé nošení.",
+      "calc_range": "Obvod [low]–[high] cm",
+      "close": "Zavřít",
+      "title": "Tabulka velikostí",
+      "step1": "Nohu lehce pokrč, jako když stojíš v obraně.",
+      "step2": "Krejčovským metrem změř obvod kolena přes střed čéšky.",
+      "step3": "Najdi obvod v tabulce.",
+      "col_size": "Velikost",
+      "col_circumference": "Obvod kolena",
+      "col_fits": "Obvykle sedí",
+      "tip": "Jsi mezi dvěma velikostmi? Pro pevnější stisk vezmi menší. Suchým zipem si bandáž ještě dotáhneš.",
+      "more": "Celý návod k měření",
+      "list": "S:30–33 cm:mladší a štíhlejší hráči|M:33–36 cm:nejčastější pro 13–16 let|L:36–40 cm:starší a silnější hráči|XL:40–44 cm:dospělí hráči"
+    },
+    "assure": {
+      "delivery": "Doručení do 14 dnů",
+      "delivery_sub": "Doprava 72 Kč",
+      "returns": "14 dní na vrácení",
+      "returns_sub": "Bez udání důvodu",
+      "brand": "Česká značka z Brna",
+      "secure": "Zabezpečená platba",
+      "payments": "Způsoby platby",
+      "link": "Doprava a vrácení podrobně"
+    },
+    "selection": {
+      "label": "Tvoje volba",
+      "size_fit": "Velikost [size] sedí na obvod kolena [range]"
+    },
+    "share": {
+      "text": "Mrkni prosím na tuhle bandáž na koleno na fotbal. Je tam i všechno o velikosti a bezpečnosti:",
+      "subject": "Bandáž na koleno na fotbal",
+      "title": "Platí rodiče?",
+      "lead": "Pošli jim odkaz. Najdou tam všechno o velikosti, bezpečnosti a vrácení.",
+      "button": "Poslat rodičům",
+      "copy": "Zkopírovat odkaz",
+      "copied": "Odkaz zkopírován"
+    },
+    "rating": {
+      "title": "Vybraní profi fotbalisti zhodnotili naši bandáž:",
+      "label": "z [pocet] testování v klubech",
+      "balls": "Hodnocení [value] z 5 míčů"
+    },
+    "reviews": {
+      "carousel": "karusel",
+      "label": "Recenze hráčů",
+      "photo": "Foto:",
+      "prev": "Předchozí hráč",
+      "next": "Další hráč",
+      "go_to": "Přejít na hráče [n]"
+    },
+    "compare": {
+      "feature": "Vlastnost",
+      "yes": "Ano",
+      "no": "Ne"
+    },
+    "sticky": {
+      "from": "od {{ price }}",
+      "deal_html": "2.&nbsp;kus −{{ pct }}&nbsp;%"
+    },
+    "popup": {
+      "close": "Zavřít",
+      "copy": "Zkopírovat",
+      "copied": "Zkopírováno",
+      "email": "Tvůj e-mail"
+    },
+    "tabs": {
+      "fit_title": "Jak ji nasadit",
+      "fit_html": "<ol><li><strong>Natáhni</strong> – středem přes čéšku.</li><li><strong>Utáhni</strong> – suchý zip pevně, ale koleno musí jít normálně ohnout.</li><li><strong>Hraj</strong> – pár dřepů na zkoušku. Když cítíš brnění, povol.</li></ol>",
+      "material_title": "Materiál a péče",
+      "material_html": "<p><strong>Materiál:</strong> polyesterové vlákno, suchý zip, protiskluzový pásek.<br/><strong>Hmotnost:</strong> asi 70 g na kus.<br/><strong>Barvy:</strong> černo-šedá, černo-červená.<br/><strong>Velikosti:</strong> S, M, L, XL.</p><p><strong>Péče:</strong> perte ručně ve vlažné vodě s jemným prostředkem, suchý zip před praním zapněte. Sušte volně na vzduchu, ne v sušičce ani na topení.</p>",
+      "shipping_title": "Doprava a vrácení",
+      "shipping_html": "<p>Doručení do 14 dnů od objednávky. Doprava stojí 72 Kč, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p><p>Na vrácení máš 14 dní od převzetí, bez udání důvodu. Podrobnosti najdeš na stránce <a href=\"[root]pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>",
+      "safety_title": "Bezpečnost",
+      "safety_html": "<p>Bandáž není zdravotnický prostředek a nenahrazuje vyšetření ani léčbu.</p><ul><li>Nepřetahuj ji – koleno musíš v bandáži normálně ohnout.</li><li>Když cítíš brnění, otok nebo se změní barva kůže, povol ji nebo sundej.</li><li>Nenos ji celý den ani přes noc.</li><li>Nenos ji na poraněnou nebo podrážděnou kůži.</li><li>Při bolesti, která neustupuje, navštiv lékaře.</li></ul>"
+    },
+    "bullets": {
+      "items": "Jistota v kličkách i při doskoku|Utáhneš suchým zipem přesně podle sebe|Nesjíždí ani při sprintu|Tenká a prodyšná – vejde se pod štulpnu"
     }
   }
 }

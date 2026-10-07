@@ -112,7 +112,7 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
           }
         },
@@ -364,7 +364,6 @@
         "z3",
         "z4"
       ],
-      "disabled": true,
       "settings": {
         "eyebrow": "Velikost",
         "heading": "Změř se za minutu",
@@ -422,7 +421,7 @@
       "settings": {
         "eyebrow": "Pro rodiče",
         "heading": "Co potřebujete vědět",
-        "text": "<p>Nákup platíte vy, tak chcete mít jistotu. Tady je všechno podstatné na jednom místě. Bez přehánění a bez slibů, jen fakta.</p>",
+        "text": "<p>Nákup platíte vy, tak chcete mít jistotu. Tady je všechno podstatné na jednom místě. Bez přehánění a bez slibů, které nejde doložit.</p>",
         "button_label": "Napsat nám",
         "button_link": "shopify://pages/contact",
         "button_label_2": "Tabulka velikostí",

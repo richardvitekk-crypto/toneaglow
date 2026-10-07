@@ -376,7 +376,16 @@
         {%- render 'kt-back' -%}
       {%- endunless -%}
 
+      {%- comment -%} Společný obsah pro úvod i produkt – upravuje se jednou, platí všude (skupiny sekcí) {%- endcomment -%}
+      {%- if template.name == 'index' or template.name == 'product' -%}
+        {% sections 'kt-uvod-group' %}
+      {%- endif -%}
+
       {{ content_for_layout }}
+
+      {%- if template.name == 'index' or template.name == 'product' -%}
+        {% sections 'kt-obsah-group' %}
+      {%- endif -%}
 
       {%- comment -%} Recenze z terénu – jedna sada hráčů pro úvod i produkt (skupina sekcí) {%- endcomment -%}
       {%- if template.name == 'index' or template.name == 'product' -%}

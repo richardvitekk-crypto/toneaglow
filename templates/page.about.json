@@ -1,13 +1,72 @@
 /*
- * KNEETECH – šablona. Upravuj přes editor motivu v Shopify.
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
  */
 {
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 64,
         "padding_bottom": 56
+      }
+    },
+    "hero": {
+      "type": "kt-about-hero",
+      "blocks": {
+        "p1": {
+          "type": "pillar",
+          "settings": {
+            "icon": "ball",
+            "title": "Ověřeno na trávě",
+            "text": "Tréninky a zápasy, žádné studio. Testovali ji hráči a hráčky z profesionálních fotbalových akademií."
+          }
+        },
+        "p2": {
+          "type": "pillar",
+          "settings": {
+            "icon": "knee",
+            "title": "Pro každý sport",
+            "text": "Florbal, basket, volejbal, běh i posilovna. Kde koleno dostává zabrat, tam se hodí opora."
+          }
+        },
+        "p3": {
+          "type": "pillar",
+          "settings": {
+            "icon": "shield",
+            "title": "Pravda místo keců",
+            "text": "Nepíšeme, že bandáž léčí. Píšeme, co opravdu umí: kompresi, oporu a pocit jistoty."
+          }
+        },
+        "p4": {
+          "type": "pillar",
+          "settings": {
+            "icon": "chat",
+            "title": "Česká značka z Brna",
+            "text": "Píšeš přímo nám, odpovídáme obvykle do 24 hodin. Na vrácení máš 14 dní."
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "settings": {
+        "eyebrow": "O nás",
+        "heading": "Postaveno na hřišti.",
+        "heading_accent": "Pro každý sport.",
+        "text": "<p><strong>KNEETECH je česká značka z Brna.</strong> Bandáž jsme ladili a testovali hlavně s fotbalisty a fotbalistkami – tam máme nejvíc zkušeností a tam jsme si ji ověřili v trénincích i zápasech.</p><p>Kolena ale dostávají zabrat v každém sportu. Kde se běhá, skáče a mění směr, tam se opora kolene hodí. Ať hraješ florbal, basket, volejbal, nebo běháš – bandáž je i pro tebe.</p>",
+        "color_scheme": "scheme-3",
+        "padding_top": 80,
+        "padding_bottom": 72
       }
     },
     "marquee": {
@@ -46,7 +105,7 @@
         "m5": {
           "type": "item",
           "settings": {
-            "text": "Pro fotbalisty"
+            "text": "Pro každý sport"
           }
         }
       },
@@ -63,6 +122,160 @@
         "color_scheme": "scheme-3",
         "padding_top": 0,
         "padding_bottom": 0
+      }
+    },
+    "sports": {
+      "type": "kt-sports",
+      "blocks": {
+        "s1": {
+          "type": "sport",
+          "settings": {
+            "name": "Fotbal",
+            "main": true,
+            "badge": "Ověřeno"
+          }
+        },
+        "s2": {
+          "type": "sport",
+          "settings": {
+            "name": "Futsal",
+            "main": false,
+            "badge": "Ověřeno"
+          }
+        },
+        "s3": {
+          "type": "sport",
+          "settings": {
+            "name": "Florbal",
+            "main": false,
+            "badge": "Ověřeno"
+          }
+        },
+        "s4": {
+          "type": "sport",
+          "settings": {
+            "name": "Basketbal",
+            "main": false,
+            "badge": "Ověřeno"
+          }
+        },
+        "s5": {
+          "type": "sport",
+          "settings": {
+            "name": "Volejbal",
+            "main": false,
+            "badge": "Ověřeno"
+          }
+        },
+        "s6": {
+          "type": "sport",
+          "settings": {
+            "name": "Házená",
+            "main": false,
+            "badge": "Ověřeno"
+          }
+        },
+        "s7": {
+          "type": "sport",
+          "settings": {
+            "name": "Hokejbal",
+            "main": false,
+            "badge": "Ověřeno"
+          }
+        },
+        "s8": {
+          "type": "sport",
+          "settings": {
+            "name": "Tenis",
+            "main": false,
+            "badge": "Ověřeno"
+          }
+        },
+        "s9": {
+          "type": "sport",
+          "settings": {
+            "name": "Běh",
+            "main": false,
+            "badge": "Ověřeno"
+          }
+        },
+        "s10": {
+          "type": "sport",
+          "settings": {
+            "name": "Posilovna",
+            "main": false,
+            "badge": "Ověřeno"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "s7",
+        "s8",
+        "s9",
+        "s10"
+      ],
+      "settings": {
+        "compact": false,
+        "eyebrow": "Pro každý sport",
+        "heading": "Ověřeno na fotbale. Funguje všude.",
+        "text": "<p>Fotbal je náš domácí trávník – tam máme nejvíc zkušeností. Bandáž ale není jen pro fotbal. Hodí se všude, kde koleno dostává zabrat.</p>",
+        "note": "Nevidíš tu svůj sport? Napiš nám, poradíme ti.",
+        "color_scheme": "scheme-1",
+        "padding_top": 88,
+        "padding_bottom": 72
+      }
+    },
+    "pros": {
+      "type": "kt-pros",
+      "settings": {
+        "badge": "Testováno profíky",
+        "heading": "Nosí ji hráči a hráčky",
+        "heading_accent": "z profesionálních akademií.",
+        "text": "<p>Ne jen tak někdo. Bandáž prošla tréninky a zápasy hráčů a hráček z profesionálních fotbalových akademií v Česku – tam, kde se hraje naplno každý den.</p><p>Co na ni říkají, najdeš v jejich recenzích na hlavní stránce.</p>",
+        "question": "Chceš být úspěšný jako oni?",
+        "button_label": "Podívej se, kdo ji nosí",
+        "button_link": "",
+        "fine": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 88
+      }
+    },
+    "social": {
+      "type": "kt-social",
+      "blocks": {
+        "tiktok": {
+          "type": "network",
+          "settings": {
+            "platform": "tiktok"
+          }
+        },
+        "instagram": {
+          "type": "network",
+          "settings": {
+            "platform": "instagram"
+          }
+        }
+      },
+      "block_order": [
+        "tiktok",
+        "instagram"
+      ],
+      "settings": {
+        "eyebrow": "Sociální sítě",
+        "heading": "Sleduj nás",
+        "text": "<p>Videa z tréninků, tipy pro kolena a hráči, kteří ji nosí.</p>",
+        "follow_label": "Sledovat",
+        "empty_text": "Video brzy. Mezitím nás sleduj.",
+        "color_scheme": "scheme-3",
+        "padding_top": 88,
+        "padding_bottom": 88
       }
     },
     "facts": {
@@ -103,7 +316,7 @@
         "heading": "Žádná magie. Fakta.",
         "text": "<p>Píšeme jen to, co se dá doložit.</p>",
         "disclaimer": "<p>KNEETECH není zdravotnický prostředek a nenahrazuje vyšetření ani léčbu. Při bolesti, která neustupuje, navštiv lékaře.</p>",
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-2",
         "padding_top": 96,
         "padding_bottom": 96
       }
@@ -124,7 +337,11 @@
   },
   "order": [
     "main",
+    "hero",
     "marquee",
+    "sports",
+    "pros",
+    "social",
     "facts",
     "cta"
   ]

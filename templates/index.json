@@ -301,7 +301,7 @@
       ],
       "settings": {
         "eyebrow": "Co umí",
-        "heading": "Není to jen kus látky",
+        "heading": "promyšlená technologie",
         "text": "",
         "center": false,
         "show_numbers": true,
@@ -482,6 +482,49 @@
         "padding_bottom": 96
       }
     },
+    "facts": {
+      "type": "kt-facts",
+      "blocks": {
+        "f1": {
+          "type": "fact",
+          "settings": {
+            "big": "Komprese",
+            "text": "<p>Bandáž rovnoměrně obepne tkáně kolem kolene. Koleno víc cítíš a máš pocit opory – proto se kompresní bandáže ve sportu používají.</p>",
+            "source": ""
+          }
+        },
+        "f2": {
+          "type": "fact",
+          "settings": {
+            "big": "Vnímání kolene",
+            "text": "<p>Výzkumy ukazují, že kolenní návleky a ortézy mohou zlepšit vnímání polohy kolene (tzv. propriocepci) – tedy jak přesně tvůj mozek ví, kde se koleno právě nachází.</p>",
+            "source": "Ghai, Driller, Ghai: Effects of joint stabilizers on proprioception and stability: A systematic review and meta-analysis. Physical Therapy in Sport, 2017."
+          }
+        },
+        "f3": {
+          "type": "fact",
+          "settings": {
+            "big": "Rosteš",
+            "text": "<p>U hráčů a hráček v růstu, kteří hodně sportují, bolí kolena docela často – kosti rostou rychle a svaly se šlachami to chvíli dohánějí. Většinou to s růstem přejde. Když bolest trvá, patří to k doktorovi.</p>",
+            "source": ""
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "settings": {
+        "eyebrow": "Jak to funguje",
+        "heading": "Žádná magie. Fakta.",
+        "text": "<p>Píšeme jen to, co se dá doložit.</p>",
+        "disclaimer": "<p>KNEETECH není zdravotnický prostředek a nenahrazuje vyšetření ani léčbu. Při bolesti, která neustupuje, navštiv lékaře.</p>",
+        "color_scheme": "scheme-3",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
     "compare": {
       "type": "kt-compare",
       "blocks": {
@@ -540,49 +583,6 @@
         "us_label": "KNEETECH",
         "them_label": "Obyčejný návlek",
         "color_scheme": "scheme-1",
-        "padding_top": 96,
-        "padding_bottom": 96
-      }
-    },
-    "facts": {
-      "type": "kt-facts",
-      "blocks": {
-        "f1": {
-          "type": "fact",
-          "settings": {
-            "big": "Komprese",
-            "text": "<p>Bandáž rovnoměrně obepne tkáně kolem kolene. Koleno víc cítíš a máš pocit opory – proto se kompresní bandáže ve sportu používají.</p>",
-            "source": ""
-          }
-        },
-        "f2": {
-          "type": "fact",
-          "settings": {
-            "big": "Vnímání kolene",
-            "text": "<p>Výzkumy ukazují, že kolenní návleky a ortézy mohou zlepšit vnímání polohy kolene (tzv. propriocepci) – tedy jak přesně tvůj mozek ví, kde se koleno právě nachází.</p>",
-            "source": "Ghai, Driller, Ghai: Effects of joint stabilizers on proprioception and stability: A systematic review and meta-analysis. Physical Therapy in Sport, 2017."
-          }
-        },
-        "f3": {
-          "type": "fact",
-          "settings": {
-            "big": "Rosteš",
-            "text": "<p>U hráčů a hráček v růstu, kteří hodně sportují, bolí kolena docela často – kosti rostou rychle a svaly se šlachami to chvíli dohánějí. Většinou to s růstem přejde. Když bolest trvá, patří to k doktorovi.</p>",
-            "source": ""
-          }
-        }
-      },
-      "block_order": [
-        "f1",
-        "f2",
-        "f3"
-      ],
-      "settings": {
-        "eyebrow": "Jak to funguje",
-        "heading": "Žádná magie. Fakta.",
-        "text": "<p>Píšeme jen to, co se dá doložit.</p>",
-        "disclaimer": "<p>KNEETECH není zdravotnický prostředek a nenahrazuje vyšetření ani léčbu. Při bolesti, která neustupuje, navštiv lékaře.</p>",
-        "color_scheme": "scheme-3",
         "padding_top": 96,
         "padding_bottom": 96
       }
@@ -700,8 +700,8 @@
     "videos",
     "size",
     "parents",
-    "compare",
     "facts",
+    "compare",
     "faq",
     "reviews",
     "cta",

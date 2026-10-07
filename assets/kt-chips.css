@@ -54,3 +54,19 @@
     transition: none;
   }
 }
+
+/* Velké nadpisy verzálkami: větší řádkování, aby se háčky a čárky (Č, Ý, Á)
+   nepřekrývaly s řádkem nad nimi. */
+.kt-heading,
+.kt-hl__title {
+  line-height: 1.14;
+}
+
+.kt-hl__title em {
+  margin-top: 0.06em;
+}
+
+/* Úvodní stránka: odkaz „Zobrazit veškeré podrobnosti“ vede jen na stejný obsah – skrýt. */
+.product__view-details {
+  display: none;
+}

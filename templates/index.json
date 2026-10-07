@@ -37,9 +37,9 @@
         "c3"
       ],
       "settings": {
-        "kicker": "Kompresní bandáž na koleno pro fotbalisty",
+        "kicker": "",
         "heading": "Hraj naplno.",
-        "heading_accent": "Jistota v každé kličce.",
+        "heading_accent": "Jistota v každém kroku",
         "color_scheme": "scheme-3"
       }
     },
@@ -82,12 +82,6 @@
             "custom_liquid": "{%- assign kt_product = all_products['kneetech-bandaz-na-koleno'] -%}{% render 'kt-offers', product: kt_product, option_name: 'Balení', badge: 'Nejvýhodnější' %}"
           }
         },
-        "size_dialog": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'kt-size-dialog' %}"
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -95,12 +89,18 @@
             "swatch_shape": "none"
           }
         },
-        "selection": {
+        "size_dialog": {
           "type": "custom_liquid",
           "settings": {
+            "custom_liquid": "{% render 'kt-size-dialog' %}"
+          }
+        },
+        "selection": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
             "custom_liquid": "{%- assign kt_product = all_products['kneetech-bandaz-na-koleno'] -%}{% render 'kt-selection', product: kt_product, sizes: 'S:30–33 cm|M:33–36 cm|L:36–40 cm|XL:40–44 cm' %}"
-          },
-          "disabled": true
+          }
         },
         "buy_buttons": {
           "type": "buy_buttons",

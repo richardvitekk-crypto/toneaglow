@@ -1,5 +1,11 @@
 /*
- * KNEETECH – šablona. Upravuj přes editor motivu v Shopify.
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
  */
 {
   "sections": {
@@ -14,7 +20,7 @@
       "type": "kt-cta",
       "settings": {
         "heading": "Nenašel jsi odpověď?",
-        "text": "<p>Napiš nám na <a href=\"mailto:richard.vitekk@gmail.com\">richard.vitekk@gmail.com</a>. Odpovídáme obvykle do 24 hodin.</p>",
+        "text": "<p>Napiš nám na <a href=\"mailto:kneetechsupport@gmail.com\">kneetechsupport@gmail.com</a>. Odpovídáme obvykle do 24 hodin.</p>",
         "button_label": "Zpět k bandáži",
         "button_link": "",
         "product": "kneetech-bandaz-na-koleno",

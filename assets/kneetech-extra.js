@@ -84,8 +84,8 @@ if (!customElements.get('kt-share')) {
     : { gmail: 'Napsat v Gmailu', copy: 'Zkopírovat', copied: 'Zkopírováno' };
 
   const css = `
-    .kt-mail{display:inline-block;margin:.2rem 0 .4rem;font-size:1.8rem;font-weight:700;letter-spacing:.01em;
-      color:var(--kt-lime,#d8ff3e)!important;text-decoration:none!important;word-break:break-all}
+    .kt-mail{display:inline-block;margin:.2rem 0 .4rem;font-size:clamp(1.4rem,1.1vw + .6rem,1.6rem);font-weight:700;letter-spacing:0;
+      color:var(--kt-lime,#d8ff3e)!important;text-decoration:none!important;overflow-wrap:normal;word-break:normal}
     .kt-mail:hover{text-decoration:underline!important;text-underline-offset:.3rem}
     .kt-mail-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin:.6rem 0 1.4rem}
     .kt-mail-btn{display:inline-flex;align-items:center;gap:.6rem;min-height:4rem;padding:0 1.4rem;border-radius:99rem;
@@ -131,6 +131,11 @@ if (!customElements.get('kt-share')) {
       link.dataset.ktMail = '1';
       const email = decodeURIComponent(link.getAttribute('href').replace(/^mailto:/i, '').split('?')[0]);
       link.classList.add('kt-mail');
+      if (link.textContent.trim() === email) {
+        link.textContent = '';
+        const [user, domain] = email.split('@');
+        link.append(user, document.createElement('wbr'), '@' + (domain || ''));
+      }
 
       const actions = document.createElement('span');
       actions.className = 'kt-mail-actions';

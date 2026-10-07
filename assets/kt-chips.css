@@ -55,6 +55,60 @@
   }
 }
 
+/* Štítek „Vyzkoušeno v profesionálních akademiích ČR“ (štítek s odkazem) – hlavní důkaz,
+   proto limetkový, tučný a se zářícím okrajem. Na mobilu přes celou šířku. */
+.kt-hl__chips li.kt-hl__chip--link {
+  position: relative;
+  border-color: var(--kt-lime, #d8ff3e);
+  background: var(--kt-lime, #d8ff3e);
+  color: #0a0a0a;
+  font-weight: 700;
+  font-size: 1.35rem;
+  box-shadow: 0 0 0 0 rgba(216, 255, 62, 0.45), 0 0.8rem 2.4rem rgba(216, 255, 62, 0.18);
+  animation: kt-chip-glow 2.8s ease-out infinite;
+}
+
+.kt-hl__chips li.kt-hl__chip--link a {
+  padding: 0.85rem 1.4rem;
+  color: #0a0a0a;
+}
+
+.kt-hl__chips li.kt-hl__chip--link .kt-hl__chip-icon {
+  color: #0a0a0a;
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+.kt-hl__chips li.kt-hl__chip--link:hover {
+  border-color: var(--kt-lime-dark, #c4ec22);
+  background: var(--kt-lime-dark, #c4ec22);
+}
+
+@keyframes kt-chip-glow {
+  0% { box-shadow: 0 0 0 0 rgba(216, 255, 62, 0.45), 0 0.8rem 2.4rem rgba(216, 255, 62, 0.18); }
+  70% { box-shadow: 0 0 0 1rem rgba(216, 255, 62, 0), 0 0.8rem 2.4rem rgba(216, 255, 62, 0.18); }
+  100% { box-shadow: 0 0 0 0 rgba(216, 255, 62, 0), 0 0.8rem 2.4rem rgba(216, 255, 62, 0.18); }
+}
+
+@media screen and (max-width: 749px) {
+  .kt-hl__chips li.kt-hl__chip--link {
+    order: -1;
+    flex-basis: 100%;
+    justify-content: center;
+  }
+
+  .kt-hl__chips li.kt-hl__chip--link a {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kt-hl__chips li.kt-hl__chip--link {
+    animation: none;
+  }
+}
+
 /* Velké nadpisy verzálkami: větší řádkování, aby se háčky a čárky (Č, Ý, Á)
    nepřekrývaly s řádkem nad nimi. */
 .kt-heading,

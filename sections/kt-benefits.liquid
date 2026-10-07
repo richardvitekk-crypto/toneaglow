@@ -45,12 +45,6 @@
           {%- if section.settings.safety_text != blank -%}
             <div class="kt-safety__text">{{ section.settings.safety_text }}</div>
           {%- endif -%}
-          {%- if section.settings.safety_doctor != blank -%}
-            <div class="kt-safety__doctor">
-              {%- render 'kt-icon', name: 'medical', class: 'kt-safety__doctor-icon' -%}
-              <div>{{ section.settings.safety_doctor }}</div>
-            </div>
-          {%- endif -%}
         </div>
         {%- if section.settings.safety_cta_label != blank -%}
           <a class="kt-safety__cta" data-kt-physio-open href="{{ section.settings.safety_cta_link | default: '#fyzioterapeut' | escape }}">
@@ -95,7 +89,7 @@
     { "type": "text", "id": "safety_eyebrow", "label": "Malý nadpis karty", "default": "Pro hráče i rodiče" },
     { "type": "text", "id": "safety_title", "label": "Nadpis karty", "default": "Bezpečné nošení" },
     { "type": "richtext", "id": "safety_text", "label": "Text karty" },
-    { "type": "richtext", "id": "safety_doctor", "label": "Kdy k lékaři (zvýrazněný řádek)" },
+    { "type": "richtext", "id": "safety_doctor", "label": "Kdy k lékaři (nezobrazuje se)", "info": "Tmavý box „Bolest neodchází?“ je vypnutý. Pole zůstává jen kvůli kompatibilitě." },
     { "type": "text", "id": "safety_cta_text", "label": "Výzva k fyzioterapeutovi", "default": "Chceš doporučit fyzioterapeuta?" },
     { "type": "text", "id": "safety_cta_label", "label": "Text odkazu", "default": "Doporučíme ti ho" },
     { "type": "text", "id": "safety_cta_link", "label": "Odkaz", "default": "#fyzioterapeut", "info": "Kotva sekce KT – Fyzioterapeut." },

@@ -37,9 +37,9 @@
         "c3"
       ],
       "settings": {
-        "kicker": "",
+        "kicker": "Kompresní bandáž na koleno pro fotbalisty",
         "heading": "Hraj naplno.",
-        "heading_accent": "Jistota v každém kroku",
+        "heading_accent": "Jistota v každé kličce.",
         "color_scheme": "scheme-3"
       }
     },
@@ -74,12 +74,19 @@
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "{% render 'kt-bullets' %}"
-          }
+          },
+          "disabled": true
         },
         "offers": {
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "{%- assign kt_product = all_products['kneetech-bandaz-na-koleno'] -%}{% render 'kt-offers', product: kt_product, option_name: 'Balení', badge: 'Nejvýhodnější' %}"
+          }
+        },
+        "size_dialog": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'kt-size-dialog' %}"
           }
         },
         "variant_picker": {
@@ -89,18 +96,12 @@
             "swatch_shape": "none"
           }
         },
-        "size_dialog": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'kt-size-dialog' %}"
-          }
-        },
         "selection": {
           "type": "custom_liquid",
-          "disabled": true,
           "settings": {
             "custom_liquid": "{%- assign kt_product = all_products['kneetech-bandaz-na-koleno'] -%}{% render 'kt-selection', product: kt_product, sizes: 'S:30–33 cm|M:33–36 cm|L:36–40 cm|XL:40–44 cm' %}"
-          }
+          },
+          "disabled": true
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -125,7 +126,8 @@
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "{%- assign kt_product = all_products['kneetech-bandaz-na-koleno'] -%}{%- if kt_product.description != blank -%}<div class=\"product__description rte quick-add-hidden\">{{ kt_product.description }}</div>{%- endif -%}"
-          }
+          },
+          "disabled": true
         },
         "tab_fit": {
           "type": "custom_liquid",

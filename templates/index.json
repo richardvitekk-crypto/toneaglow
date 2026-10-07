@@ -15,26 +15,30 @@
         "c1": {
           "type": "chip",
           "settings": {
-            "text": "Pro mladé fotbalisty"
+            "text": "Vyzkoušeno v profi mládežích ČR",
+            "icon": "ball",
+            "link": "#recenze-z-terenu"
           }
         },
         "c2": {
           "type": "chip",
           "settings": {
-            "text": "Doručení do 14 dnů"
+            "text": "Doručení do 14 dnů",
+            "icon": "truck"
           }
         },
         "c3": {
           "type": "chip",
           "settings": {
-            "text": "14 dní na vrácení"
+            "text": "14 dní na vrácení",
+            "icon": "return-circle"
           }
         }
       },
       "block_order": [
-        "c1",
         "c2",
-        "c3"
+        "c3",
+        "c1"
       ],
       "settings": {
         "kicker": "Kompresní bandáž na koleno pro fotbalisty",

@@ -124,113 +124,6 @@
         "padding_bottom": 0
       }
     },
-    "sports": {
-      "type": "kt-sports",
-      "blocks": {
-        "s1": {
-          "type": "sport",
-          "settings": {
-            "name": "Fotbal",
-            "main": true,
-            "badge": "Ověřeno"
-          }
-        },
-        "s2": {
-          "type": "sport",
-          "settings": {
-            "name": "Futsal",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        },
-        "s3": {
-          "type": "sport",
-          "settings": {
-            "name": "Florbal",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        },
-        "s4": {
-          "type": "sport",
-          "settings": {
-            "name": "Basketbal",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        },
-        "s5": {
-          "type": "sport",
-          "settings": {
-            "name": "Volejbal",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        },
-        "s6": {
-          "type": "sport",
-          "settings": {
-            "name": "Házená",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        },
-        "s7": {
-          "type": "sport",
-          "settings": {
-            "name": "Hokejbal",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        },
-        "s8": {
-          "type": "sport",
-          "settings": {
-            "name": "Tenis",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        },
-        "s9": {
-          "type": "sport",
-          "settings": {
-            "name": "Běh",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        },
-        "s10": {
-          "type": "sport",
-          "settings": {
-            "name": "Posilovna",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        }
-      },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3",
-        "s4",
-        "s5",
-        "s6",
-        "s7",
-        "s8",
-        "s9",
-        "s10"
-      ],
-      "settings": {
-        "compact": false,
-        "eyebrow": "Pro každý sport",
-        "heading": "Ověřeno na fotbale. Funguje všude.",
-        "text": "<p>Fotbal je náš domácí trávník – tam máme nejvíc zkušeností. Bandáž ale není jen pro fotbal. Hodí se všude, kde koleno dostává zabrat.</p>",
-        "note": "Nevidíš tu svůj sport? Napiš nám, poradíme ti.",
-        "color_scheme": "scheme-1",
-        "padding_top": 88,
-        "padding_bottom": 72
-      }
-    },
     "pros": {
       "type": "kt-pros",
       "settings": {
@@ -319,7 +212,8 @@
         "color_scheme": "scheme-2",
         "padding_top": 96,
         "padding_bottom": 96
-      }
+      },
+      "disabled": true
     },
     "cta": {
       "type": "kt-cta",
@@ -332,14 +226,14 @@
         "color_scheme": "scheme-1",
         "padding_top": 16,
         "padding_bottom": 96
-      }
+      },
+      "disabled": true
     }
   },
   "order": [
     "main",
     "hero",
     "marquee",
-    "sports",
     "pros",
     "social",
     "facts",

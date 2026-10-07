@@ -326,7 +326,8 @@
         "color_scheme": "scheme-3",
         "padding_top": 96,
         "padding_bottom": 96
-      }
+      },
+      "disabled": true
     },
     "compare": {
       "type": "kt-compare",
@@ -482,101 +483,11 @@
         "padding_top": 24,
         "padding_bottom": 96
       }
-    },
-    "sports": {
-      "type": "kt-sports",
-      "blocks": {
-        "s1": {
-          "type": "sport",
-          "settings": {
-            "name": "Fotbal",
-            "main": true,
-            "badge": "Ověřeno"
-          }
-        },
-        "s2": {
-          "type": "sport",
-          "settings": {
-            "name": "Florbal",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        },
-        "s3": {
-          "type": "sport",
-          "settings": {
-            "name": "Basketbal",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        },
-        "s4": {
-          "type": "sport",
-          "settings": {
-            "name": "Volejbal",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        },
-        "s5": {
-          "type": "sport",
-          "settings": {
-            "name": "Házená",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        },
-        "s6": {
-          "type": "sport",
-          "settings": {
-            "name": "Běh",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        },
-        "s7": {
-          "type": "sport",
-          "settings": {
-            "name": "Tenis",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        },
-        "s8": {
-          "type": "sport",
-          "settings": {
-            "name": "Posilovna",
-            "main": false,
-            "badge": "Ověřeno"
-          }
-        }
-      },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3",
-        "s4",
-        "s5",
-        "s6",
-        "s7",
-        "s8"
-      ],
-      "settings": {
-        "compact": true,
-        "eyebrow": "Pro každý sport",
-        "heading": "Ověřeno na fotbale. Funguje všude.",
-        "text": "<p>Bandáž jsme testovali hlavně s fotbalisty a fotbalistkami – tam máme nejvíc zkušeností. Hodí se ale do každého sportu, kde koleno dostává zabrat.</p>",
-        "note": "",
-        "color_scheme": "scheme-2",
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
     }
   },
   "order": [
     "marquee",
     "benefits",
-    "sports",
     "physio",
     "videos",
     "size",

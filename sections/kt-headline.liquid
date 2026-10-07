@@ -2,8 +2,10 @@
   Hřištní pruh s hlavním sdělením nad nákupním boxem (úvod i produkt).
   Na mobilu je první, co návštěvník z TikToku/Instagramu uvidí – hned pod ním
   je fotka produktu a výběr balení. Záměrně krátký, aby netlačil nákup dolů.
+  Štítky mají volitelnou ikonu (místo tečky) a odkaz (např. #recenze-z-terenu).
 {%- endcomment -%}
 {{ 'kt-landing.css' | asset_url | stylesheet_tag }}
+{{ 'kt-chips.css' | asset_url | stylesheet_tag }}
 {%- comment -%} posuvník galerie produktu – na úvodu ho sekce „Vybraný produkt“ sama nenačítá {%- endcomment -%}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
@@ -23,7 +25,28 @@
     {%- if section.blocks.size > 0 -%}
       <ul class="kt-hl__chips">
         {%- for block in section.blocks -%}
-          <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+          {%- liquid
+            assign chip_icon = block.settings.icon | default: 'none'
+            assign chip_link = block.settings.link | strip
+            assign chip_class = ''
+            if chip_icon != 'none'
+              assign chip_class = 'kt-hl__chip--icon'
+            endif
+            if chip_link != blank
+              assign chip_class = chip_class | append: ' kt-hl__chip--link'
+            endif
+          -%}
+          <li class="{{ chip_class | strip }}" {{ block.shopify_attributes }}>
+            {%- if chip_link != blank -%}<a href="{{ chip_link | escape }}">{%- endif -%}
+            {%- if chip_icon != 'none' -%}
+              {%- render 'kt-icon', name: chip_icon, class: 'kt-hl__chip-icon' -%}
+            {%- endif -%}
+            <span>{{ block.settings.text }}</span>
+            {%- if chip_link != blank -%}
+              {%- render 'kt-icon', name: 'arrow', class: 'kt-hl__chip-arrow' -%}
+              </a>
+            {%- endif -%}
+          </li>
         {%- endfor -%}
       </ul>
     {%- endif -%}
@@ -46,16 +69,34 @@
     {
       "type": "chip",
       "name": "Štítek",
-      "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Doručení do 14 dnů" }]
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Doručení do 14 dnů" },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Ikona",
+          "default": "none",
+          "options": [
+            { "value": "none", "label": "Žádná (tečka)" },
+            { "value": "truck", "label": "Auto / doprava" },
+            { "value": "return-circle", "label": "Kolečko / vrácení" },
+            { "value": "ball", "label": "Míč" },
+            { "value": "shield", "label": "Štít" },
+            { "value": "trophy", "label": "Pohár" },
+            { "value": "check", "label": "Fajfka" }
+          ]
+        },
+        { "type": "text", "id": "link", "label": "Odkaz (nepovinné)", "info": "Např. #recenze-z-terenu (sjede na recenze hráčů) nebo /pages/velikosti." }
+      ]
     }
   ],
   "presets": [
     {
       "name": "KT – Hlavní sdělení",
       "blocks": [
-        { "type": "chip", "settings": { "text": "Pro hráče 13–17 let" } },
-        { "type": "chip", "settings": { "text": "Doručení do 14 dnů" } },
-        { "type": "chip", "settings": { "text": "14 dní na vrácení" } }
+        { "type": "chip", "settings": { "text": "Doručení do 14 dnů", "icon": "truck" } },
+        { "type": "chip", "settings": { "text": "14 dní na vrácení", "icon": "return-circle" } },
+        { "type": "chip", "settings": { "text": "Vyzkoušeno v profi mládežích ČR", "icon": "ball", "link": "#recenze-z-terenu" } }
       ]
     }
   ]

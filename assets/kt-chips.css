@@ -1,0 +1,56 @@
+/* KNEETECH – štítky v horním pruhu: ikona místo tečky, odkaz na recenze */
+.kt-hl__chips li.kt-hl__chip--icon::before {
+  display: none;
+}
+
+.kt-hl__chip-icon {
+  width: 1.7rem;
+  height: 1.7rem;
+  flex-shrink: 0;
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-hl__chips a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.kt-hl__chips li.kt-hl__chip--link {
+  border-color: rgba(216, 255, 62, 0.45);
+  background: rgba(216, 255, 62, 0.08);
+  padding: 0;
+}
+
+.kt-hl__chips li.kt-hl__chip--link a {
+  padding: 0.6rem 1.1rem;
+}
+
+.kt-hl__chip-arrow {
+  width: 1.3rem;
+  height: 1.3rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.kt-hl__chips li.kt-hl__chip--link:hover {
+  border-color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-hl__chips li.kt-hl__chip--link:hover .kt-hl__chip-arrow {
+  transform: translateX(2px);
+}
+
+.kt-hl__chips a:focus-visible {
+  outline: 2px solid var(--kt-lime, #d8ff3e);
+  outline-offset: 2px;
+  border-radius: 99rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kt-hl__chip-arrow {
+    transition: none;
+  }
+}

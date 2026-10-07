@@ -43,9 +43,9 @@
         "c1"
       ],
       "settings": {
-        "kicker": "Kompresní bandáž na koleno pro fotbalisty",
+        "kicker": "Kompresní bandáž na koleno pro sportovce",
         "heading": "Hraj naplno.",
-        "heading_accent": "Jistota v každé kličce.",
+        "heading_accent": "Jistota v každém kroku",
         "color_scheme": "scheme-3"
       }
     },
@@ -315,6 +315,14 @@
         "center": false,
         "show_numbers": true,
         "columns": "4",
+        "safety_show": true,
+        "safety_eyebrow": "Pro hráče i rodiče",
+        "safety_title": "Bezpečné nošení",
+        "safety_text": "<p>Bandáž má být pevná, ale koleno v ní musí jít normálně ohnout. Když se objeví brnění, otok nebo změna barvy kůže, stačí pásek povolit. Nos ji na trénink a zápas, ne celý den ani přes noc.</p>",
+        "safety_doctor": "<p><strong>Bolest neodchází?</strong> Když koleno bolí déle než pár dní, bolest se zhoršuje, koleno otéká nebo bolí i v klidu, zajdi k lékaři nebo fyzioterapeutovi. Bandáž je opora při sportu, ne léčba.</p>",
+        "safety_cta_text": "Chceš doporučit fyzioterapeuta?",
+        "safety_cta_label": "Doporučíme ti ho",
+        "safety_cta_link": "#fyzioterapeut",
         "color_scheme": "scheme-1",
         "padding_top": 96,
         "padding_bottom": 96
@@ -428,6 +436,7 @@
         "p3",
         "p4"
       ],
+      "disabled": true,
       "settings": {
         "eyebrow": "Pro rodiče",
         "heading": "Co potřebujete vědět",
@@ -634,6 +643,24 @@
         "product": "",
         "color_scheme": "scheme-1"
       }
+    },
+    "physio": {
+      "type": "kt-physio",
+      "settings": {
+        "eyebrow": "Doporučený odborník",
+        "heading": "Fyzioterapeut, kterému věříme",
+        "text": "<p>Bandáž kolenu pomůže při sportu. Bolest, která neodchází, ale patří do rukou odborníka – a my víme, za kým tě poslat.</p>",
+        "show_cta": true,
+        "cta_title": "Hledáš fyzioterapeuta?",
+        "cta_text": "<p>Napiš nám, odkud jsi a co tě trápí. Doporučíme ti fyzioterapeuta, kterému věříme.</p>",
+        "cta_label": "Chci doporučit",
+        "cta_link": "shopify://pages/contact",
+        "note": "",
+        "anchor": "fyzioterapeut",
+        "color_scheme": "scheme-3",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
     }
   },
   "order": [
@@ -641,6 +668,7 @@
     "main",
     "marquee",
     "benefits",
+    "physio",
     "videos",
     "size",
     "parents",

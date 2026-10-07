@@ -364,6 +364,7 @@
         "z3",
         "z4"
       ],
+      "disabled": true,
       "settings": {
         "eyebrow": "Velikost",
         "heading": "Změř se za minutu",

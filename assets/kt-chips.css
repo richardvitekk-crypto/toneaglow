@@ -70,3 +70,28 @@
 .product__view-details {
   display: none;
 }
+
+/* Fotky na počítači: všechny fotky ve 2 sloupcích pod sebou (první přes celou šířku),
+   ať vedle dlouhého textu nezůstává prázdné místo. Na mobilu zůstává posuvník. */
+@media screen and (min-width: 990px) {
+  .product__media-wrapper media-gallery .product__media-list {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin: 0;
+  }
+  .product__media-wrapper media-gallery .product__media-list > .product__media-item {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+  .product__media-wrapper media-gallery .product__media-list > .product__media-item:first-child {
+    grid-column: 1 / -1;
+  }
+  .product__media-wrapper media-gallery .thumbnail-slider,
+  .product__media-wrapper media-gallery .slider-buttons {
+    display: none !important;
+  }
+}

@@ -53,7 +53,7 @@
           {%- endif -%}
         </div>
         {%- if section.settings.safety_cta_label != blank -%}
-          <a class="kt-safety__cta" href="{{ section.settings.safety_cta_link | default: '#fyzioterapeut' | escape }}">
+          <a class="kt-safety__cta" data-kt-physio-open href="{{ section.settings.safety_cta_link | default: '#fyzioterapeut' | escape }}">
             {%- if section.settings.safety_cta_text != blank -%}
               <span class="kt-safety__cta-text">{{ section.settings.safety_cta_text }}</span>
             {%- endif -%}

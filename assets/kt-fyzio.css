@@ -495,3 +495,136 @@
     transition: none;
   }
 }
+
+/* ---------- Fyzioterapeut v okně (jako tabulka velikostí) ---------- */
+.kt-physio-anchor {
+  scroll-margin-top: 10rem;
+}
+
+.kt-physio__editor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 2rem auto;
+  padding: 1.6rem 2rem;
+  border: 1px dashed rgba(216, 255, 62, 0.5);
+  border-radius: 1.2rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: rgba(var(--color-foreground), 0.85);
+}
+
+.kt-physio-dialog {
+  width: min(92rem, calc(100vw - 2.4rem));
+  max-width: none;
+  max-height: calc(100dvh - 3.2rem);
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--kt-card-border, rgba(255, 255, 255, 0.08));
+  border-radius: var(--kt-radius, 1.6rem);
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8);
+}
+
+.kt-physio-dialog[open] {
+  animation: kt-physio-in 0.28s var(--kt-ease, ease) both;
+}
+
+.kt-physio-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+@keyframes kt-physio-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}
+
+.kt-physio-dialog__inner {
+  padding: 2.4rem 1.6rem 2rem;
+}
+
+.kt-physio-dialog .kt-physio__head {
+  margin-bottom: 2rem;
+  padding-right: 4.8rem;
+}
+
+.kt-physio-dialog .kt-heading {
+  margin-bottom: 1rem;
+}
+
+.kt-physio-dialog .kt-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.kt-physio-dialog__close {
+  position: sticky;
+  top: 1.2rem;
+  float: right;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  margin: 1.2rem 1.2rem 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+}
+
+.kt-physio-dialog__close:hover {
+  border-color: var(--kt-lime, #d8ff3e);
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-physio-dialog__close:focus-visible {
+  outline: 2px solid var(--kt-lime, #d8ff3e);
+  outline-offset: 2px;
+}
+
+.kt-physio-dialog__close svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.kt-physio-dialog .kt-physio__media {
+  max-height: 38dvh;
+  aspect-ratio: 4 / 3;
+}
+
+@media screen and (min-width: 750px) {
+  .kt-physio-dialog__inner {
+    padding: 4rem;
+  }
+
+  .kt-physio-dialog .kt-physio__media {
+    max-height: none;
+    aspect-ratio: auto;
+    min-height: 40rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .kt-physio-dialog .kt-physio__list--single .kt-physio__card {
+    grid-template-columns: 36rem 1fr;
+  }
+
+  .kt-physio-dialog .kt-physio__list--single .kt-physio__body {
+    padding: 4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kt-physio-dialog[open] {
+    animation: none;
+  }
+}

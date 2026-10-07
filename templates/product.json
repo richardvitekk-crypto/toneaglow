@@ -373,6 +373,7 @@
         "z3",
         "z4"
       ],
+      "disabled": true,
       "settings": {
         "eyebrow": "Velikost",
         "heading": "Změř se za minutu",
@@ -493,7 +494,7 @@
       ],
       "settings": {
         "eyebrow": "Srovnání",
-        "heading": "Proč ne obyčejný návlek",
+        "heading": "Proč si nemám koupit obyčejný návlek?",
         "text": "<p>Obyčejný návlek je fajn. Jenže ho neutáhneš podle sebe a pevnost si nenastavíš.</p>",
         "us_label": "KNEETECH",
         "them_label": "Obyčejný návlek",

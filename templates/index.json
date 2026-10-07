@@ -264,7 +264,7 @@
           "type": "benefit",
           "settings": {
             "icon": "compression",
-            "title": "Jistota v kličkách",
+            "title": "podpora v každém kroku",
             "text": "<p>Komprese a křížový pásek dávají kolenu pocit opory při změně směru i doskoku.</p>"
           }
         },
@@ -306,9 +306,6 @@
         "center": false,
         "show_numbers": true,
         "columns": "4",
-        "color_scheme": "scheme-1",
-        "padding_top": 96,
-        "padding_bottom": 96,
         "safety_show": true,
         "safety_eyebrow": "Pro hráče i rodiče",
         "safety_title": "Bezpečné nošení",
@@ -316,7 +313,10 @@
         "safety_doctor": "<p><strong>Bolest neodchází?</strong> Když koleno bolí déle než pár dní, bolest se zhoršuje, koleno otéká nebo bolí i v klidu, zajdi k lékaři nebo fyzioterapeutovi. Bandáž je opora při sportu, ne léčba.</p>",
         "safety_cta_text": "Koleno bolí i s bandáží? Zajdi k našemu doporučenému fyzioterapeutovi, poradí ti, co dál.",
         "safety_cta_label": "Ukázat fyzioterapeuta",
-        "safety_cta_link": "#fyzioterapeut"
+        "safety_cta_link": "#fyzioterapeut",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96
       }
     },
     "physio": {
@@ -329,7 +329,14 @@
             "badge": "Doporučujeme",
             "name": "VIT",
             "role": "Sportovní fyzioterapeut",
-            "book_label": "Objednat se"
+            "clinic": "",
+            "city": "",
+            "tags": "",
+            "bio": "",
+            "quote": "",
+            "book_link": "",
+            "book_label": "Objednat se",
+            "phone": ""
           }
         }
       },

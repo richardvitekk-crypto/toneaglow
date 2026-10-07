@@ -371,6 +371,11 @@
       tabindex="-1"
       data-template="{{ template.name }}"
     >
+      {%- comment -%} Tlačítko „Zpět na bandáž“ na vedlejších stránkách {%- endcomment -%}
+      {%- unless template.name == 'index' or template.name == 'product' or template.name == 'cart' or template.name == 'password' or template.name == 'gift_card' -%}
+        {%- render 'kt-back' -%}
+      {%- endunless -%}
+
       {{ content_for_layout }}
 
       {%- comment -%} Recenze z terénu – jedna sada hráčů pro úvod i produkt (skupina sekcí) {%- endcomment -%}

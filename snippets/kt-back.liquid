@@ -1,0 +1,74 @@
+{%- comment -%}
+  Tlačítko „Zpět na bandáž“ nahoře na vedlejších stránkách (Velikosti, FAQ,
+  Doprava, Kontakt, podmínky, vyhledávání…). Vede na úvodní stránku = produkt.
+  Vykresluje se z layout/theme.liquid, kromě úvodu, produktu, košíku a hesla.
+{%- endcomment -%}
+{%- liquid
+  if request.locale.iso_code == 'en'
+    assign back_label = 'Back to the knee support'
+  else
+    assign back_label = 'Zpět na bandáž'
+  endif
+-%}
+<style>
+  .kt-back {
+    padding-top: 2.4rem;
+  }
+  .kt-back__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 1.6rem 0.6rem 0.6rem;
+    border: 1px solid rgba(var(--color-foreground), 0.16);
+    border-radius: 99rem;
+    background: rgba(var(--color-foreground), 0.04);
+    color: rgb(var(--color-foreground));
+    font-family: var(--font-heading-family);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .kt-back__icon {
+    display: grid;
+    place-items: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    background: var(--kt-lime, #d8ff3e);
+    color: #0a0a0a;
+    transition: transform 0.2s ease;
+  }
+  .kt-back__icon svg {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+  .kt-back__link:hover {
+    border-color: var(--kt-lime, #d8ff3e);
+    background: rgba(216, 255, 62, 0.08);
+  }
+  .kt-back__link:hover .kt-back__icon {
+    transform: translateX(-3px);
+  }
+  .kt-back__link:focus-visible {
+    outline: 2px solid var(--kt-lime, #d8ff3e);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .kt-back__link,
+    .kt-back__icon {
+      transition: none;
+    }
+  }
+</style>
+<nav class="kt-back page-width" aria-label="{{ back_label | escape }}">
+  <a class="kt-back__link" href="{{ routes.root_url }}">
+    <span class="kt-back__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+    </span>
+    {{ back_label }}
+  </a>
+</nav>

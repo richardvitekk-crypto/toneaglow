@@ -1,0 +1,497 @@
+/* ==========================================================================
+   KNEETECH – karta „Bezpečné nošení“ (pod výhodami) a sekce „Fyzioterapeut“
+   ========================================================================== */
+
+/* ---------- Bezpečné nošení ---------- */
+.kt-safety {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 1.6rem;
+  padding: 2.8rem 2.4rem;
+  border: 1px solid var(--kt-card-border, rgba(255, 255, 255, 0.08));
+  border-left: 3px solid var(--kt-lime, #d8ff3e);
+  border-radius: var(--kt-radius, 1.6rem);
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(216, 255, 62, 0.07), transparent 55%),
+    var(--kt-card-bg, rgba(255, 255, 255, 0.03));
+  scroll-margin-top: 10rem;
+}
+
+.kt-safety__icon {
+  display: grid;
+  place-items: center;
+  width: 5.6rem;
+  height: 5.6rem;
+  border-radius: 1.4rem;
+  background: rgba(216, 255, 62, 0.1);
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-safety__svg {
+  width: 3rem;
+  height: 3rem;
+}
+
+.kt-safety__eyebrow {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-heading-family);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-safety__title {
+  margin: 0 0 1.2rem;
+  font-size: clamp(2.2rem, 3vw, 2.8rem);
+  line-height: 1.14;
+}
+
+.kt-safety__text {
+  font-size: 1.55rem;
+  line-height: 1.65;
+  color: rgba(var(--color-foreground), 0.85);
+}
+
+.kt-safety__text p {
+  margin: 0 0 1rem;
+}
+
+.kt-safety__text p:last-child {
+  margin-bottom: 0;
+}
+
+.kt-safety__doctor {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  margin-top: 1.6rem;
+  padding: 1.4rem 1.6rem;
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: rgb(var(--color-foreground));
+}
+
+.kt-safety__doctor p {
+  margin: 0;
+}
+
+.kt-safety__doctor-icon {
+  flex-shrink: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-top: 0.2rem;
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-safety__cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: 1.4rem;
+  background: var(--kt-lime, #d8ff3e);
+  color: #0a0a0a;
+  text-decoration: none;
+  transition: transform 0.25s var(--kt-ease, ease), box-shadow 0.25s var(--kt-ease, ease);
+}
+
+.kt-safety__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -14px rgba(216, 255, 62, 0.7);
+}
+
+.kt-safety__cta:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.kt-safety__cta-text {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.kt-safety__cta-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-heading-family);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.kt-safety__cta-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  transition: transform 0.25s var(--kt-ease, ease);
+}
+
+.kt-safety__cta:hover .kt-safety__cta-icon {
+  transform: translateX(3px);
+}
+
+@media screen and (min-width: 990px) {
+  .kt-safety {
+    grid-template-columns: 5.6rem 1fr 26rem;
+    gap: 3.2rem;
+    align-items: start;
+    padding: 3.6rem 3.2rem;
+  }
+
+  .kt-safety__cta {
+    align-self: stretch;
+  }
+}
+
+/* ---------- Sekce Fyzioterapeut ---------- */
+.kt-physio {
+  scroll-margin-top: 8rem;
+}
+
+.kt-physio__head {
+  max-width: 68rem;
+  margin-bottom: 4rem;
+}
+
+.kt-physio__list {
+  display: grid;
+  gap: 2rem;
+}
+
+.kt-physio__card {
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  border: 1px solid var(--kt-card-border, rgba(255, 255, 255, 0.08));
+  border-radius: var(--kt-radius, 1.6rem);
+  background: var(--kt-card-bg, rgba(255, 255, 255, 0.03));
+  transition: border-color 0.35s var(--kt-ease, ease);
+}
+
+.kt-physio__card:hover {
+  border-color: rgba(216, 255, 62, 0.35);
+}
+
+.kt-physio__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-height: 52rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.kt-physio__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kt-physio__img--empty {
+  display: grid;
+  place-items: center;
+}
+
+.kt-physio__placeholder {
+  width: 9rem;
+  height: 9rem;
+  color: rgba(216, 255, 62, 0.35);
+}
+
+.kt-physio__badge {
+  position: absolute;
+  top: 1.6rem;
+  left: 1.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 99rem;
+  background: var(--kt-lime, #d8ff3e);
+  color: #0a0a0a;
+  font-family: var(--font-heading-family);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.kt-physio__badge-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.kt-physio__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding: 2.8rem 2.4rem 3.2rem;
+}
+
+.kt-physio__name {
+  margin: 0;
+  font-size: clamp(2.6rem, 3.4vw, 3.4rem);
+  line-height: 1.12;
+}
+
+.kt-physio__role {
+  margin: -0.6rem 0 0;
+  font-family: var(--font-heading-family);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-physio__place {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0;
+  font-size: 1.5rem;
+  color: rgba(var(--color-foreground), 0.85);
+}
+
+.kt-physio__place svg {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-physio__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kt-physio__tags li {
+  padding: 0.6rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 99rem;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.kt-physio__bio {
+  font-size: 1.55rem;
+  line-height: 1.65;
+  color: rgba(var(--color-foreground), 0.85);
+}
+
+.kt-physio__bio p {
+  margin: 0 0 1rem;
+}
+
+.kt-physio__bio p:last-child {
+  margin-bottom: 0;
+}
+
+.kt-physio__quote {
+  position: relative;
+  margin: 0.4rem 0 0;
+  padding: 1.6rem 1.8rem 1.6rem 4.4rem;
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 1.6rem;
+  line-height: 1.55;
+  font-style: italic;
+  color: rgb(var(--color-foreground));
+}
+
+.kt-physio__quote::before {
+  content: '„';
+  position: absolute;
+  top: 1.8rem;
+  left: 1.4rem;
+  font-family: var(--font-heading-family);
+  font-size: 4.4rem;
+  font-style: normal;
+  line-height: 0;
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-physio__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.6rem;
+}
+
+.kt-physio__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  min-height: 4.8rem;
+  padding: 0 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 1.2rem;
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-heading-family);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.2s var(--kt-ease, ease), border-color 0.2s, box-shadow 0.2s;
+}
+
+.kt-physio__btn svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.kt-physio__btn:hover {
+  border-color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-physio__btn--primary {
+  border-color: transparent;
+  background: var(--kt-lime, #d8ff3e);
+  color: #0a0a0a;
+}
+
+.kt-physio__btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px -10px rgba(216, 255, 62, 0.6);
+}
+
+.kt-physio__btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.kt-physio__btn-icon {
+  transition: transform 0.2s var(--kt-ease, ease);
+}
+
+.kt-physio__btn:hover .kt-physio__btn-icon {
+  transform: translateX(3px);
+}
+
+.kt-physio__cta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.4rem 1.6rem;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 2.2rem 2.4rem;
+  border: 1.5px dashed rgba(var(--color-foreground), 0.25);
+  border-radius: var(--kt-radius, 1.6rem);
+}
+
+.kt-physio__cta-icon {
+  width: 4rem;
+  height: 4rem;
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-physio__cta-title {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-heading-family);
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: rgb(var(--color-foreground));
+}
+
+.kt-physio__cta-sub {
+  font-size: 1.45rem;
+  line-height: 1.55;
+  color: rgba(var(--color-foreground), 0.8);
+}
+
+.kt-physio__cta-sub p {
+  margin: 0;
+}
+
+.kt-physio__cta .kt-physio__btn {
+  grid-column: 1 / -1;
+}
+
+.kt-physio__note {
+  margin: 1.6rem 0 0;
+  font-size: 1.25rem;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.kt-physio__empty {
+  padding: 2.4rem;
+  border: 1px dashed #f66;
+  border-radius: 1.2rem;
+  color: #f88;
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+@media screen and (min-width: 750px) {
+  .kt-physio__card {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .kt-physio__media {
+    aspect-ratio: auto;
+    min-height: 44rem;
+    max-height: none;
+  }
+
+  .kt-physio__body {
+    justify-content: center;
+    padding: 4rem;
+  }
+
+  .kt-physio__cta {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .kt-physio__cta .kt-physio__btn {
+    grid-column: auto;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .kt-physio__list:not(.kt-physio__list--single) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kt-physio__list:not(.kt-physio__list--single) .kt-physio__card {
+    grid-template-columns: 1fr;
+  }
+
+  .kt-physio__list:not(.kt-physio__list--single) .kt-physio__media {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+  }
+
+  .kt-physio__list--single .kt-physio__card {
+    grid-template-columns: 42rem 1fr;
+  }
+
+  .kt-physio__list--single .kt-physio__body {
+    padding: 5.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kt-safety__cta,
+  .kt-safety__cta-icon,
+  .kt-physio__btn,
+  .kt-physio__btn-icon,
+  .kt-physio__card {
+    transition: none;
+  }
+}

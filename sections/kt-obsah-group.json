@@ -499,6 +499,62 @@
         "padding_top": 24,
         "padding_bottom": 72
       }
+    },
+    "anatomy": {
+      "type": "kt-anatomy",
+      "blocks": {
+        "a1": {
+          "type": "point",
+          "settings": {
+            "title": "Suchý zip",
+            "text": "<p>Utáhneš ji podle sebe: na zápas pevněji, na rozcvičku volněji.</p>",
+            "x": 57,
+            "y": 19
+          }
+        },
+        "a2": {
+          "type": "point",
+          "settings": {
+            "title": "Křížový pásek přes koleno",
+            "text": "<p>Komprese a křížový pásek dávají kolenu pocit opory při změně směru i doskoku.</p>",
+            "x": 40,
+            "y": 47
+          }
+        },
+        "a3": {
+          "type": "point",
+          "settings": {
+            "title": "Hustý kompresní úplet",
+            "text": "<p>Obepne celý kloub. Prodyšný a lehký, takže v běhu nepřekáží.</p>",
+            "x": 63,
+            "y": 38
+          }
+        },
+        "a4": {
+          "type": "point",
+          "settings": {
+            "title": "Poutko pásku",
+            "text": "<p>Pásek provlečeš poutkem a přitáhneš. Natáhni, utáhni, hraj.</p>",
+            "x": 36,
+            "y": 72
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "a2",
+        "a3",
+        "a4"
+      ],
+      "settings": {
+        "eyebrow": "Jak funguje",
+        "heading": "Každý kousek má svou práci",
+        "text": "<p>Najeď nebo ťukni na čísla na fotce.</p>",
+        "specs": "Asi 70 g\nPolyesterové vlákno\nProtiskluzový pásek\nNa levé i pravé koleno\nV balení návlek + pásek na suchý zip",
+        "color_scheme": "scheme-1",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
     }
   },
   "order": [
@@ -507,6 +563,7 @@
     "benefits",
     "physio",
     "videos",
+    "anatomy",
     "size",
     "parents",
     "facts",

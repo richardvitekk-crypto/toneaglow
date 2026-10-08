@@ -1,0 +1,103 @@
+/* KNEETECH – košík: výrazné tlačítko k platbě se zámkem, rekapitulace a prvky důvěry */
+
+.cart__ctas .cart__checkout-button {
+  width: 100%;
+  min-height: 5.6rem;
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  gap: 1rem;
+}
+
+.cart__ctas .cart__checkout-button::before {
+  content: '';
+  width: 1.8rem;
+  height: 1.8rem;
+  flex-shrink: 0;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4.5' y='10.5' width='15' height='10.5' rx='2'/%3E%3Cpath d='M8 10.5V7.5a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4.5' y='10.5' width='15' height='10.5' rx='2'/%3E%3Cpath d='M8 10.5V7.5a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+/* Rekapitulace: mezisoučet výrazně, poznámka o dopravě a slevovém kódu čitelně */
+.cart-drawer__footer .totals,
+.cart__footer .totals {
+  align-items: baseline;
+}
+
+.cart-drawer__footer .tax-note,
+.cart__footer .tax-note {
+  display: block;
+  margin: 0.6rem 0 1.2rem;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+/* Prvky důvěry pod tlačítkem */
+.kt-cart-trust {
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(var(--color-foreground), 0.1);
+}
+
+.kt-cart-trust__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.8rem 1.6rem;
+  grid-template-columns: 1fr;
+  text-align: left;
+}
+
+.kt-cart-trust__list li {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 1.3rem;
+  line-height: 1.35;
+  color: rgba(var(--color-foreground), 0.8);
+}
+
+.kt-cart-trust__list strong {
+  color: rgb(var(--color-foreground));
+  font-weight: 700;
+}
+
+.kt-cart-trust__icon {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-cart-trust__pay {
+  list-style: none;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: flex-start;
+}
+
+.kt-cart-trust__pay .icon {
+  width: 3.8rem;
+  height: 2.4rem;
+}
+
+@media screen and (min-width: 750px) {
+  .cart__footer .kt-cart-trust__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Stránka košíku: „Pokračovat v nákupu“ u nadpisu odvádí od platby – skrýt, když v košíku něco je */
+cart-items:not(.is-empty) .title-wrapper-with-link > a {
+  display: none;
+}
+
+/* Rychlé platby (Apple Pay / Google Pay) až pod hlavním tlačítkem, s odstupem */
+.cart__dynamic-checkout-buttons {
+  margin-top: 1.2rem;
+}

@@ -3,7 +3,7 @@
   E-mail se uloží jako zákazník Shopify se souhlasem s marketingem (štítky newsletter, popup),
   takže ho převezme i Klaviyo po propojení se Shopify.
 {%- endcomment -%}
-{%- if section.settings.enabled -%}
+{%- if section.settings.enabled and template.name != 'cart' -%}
   {%- liquid
     assign form_id = 'KtPopupForm-' | append: section.id
   -%}

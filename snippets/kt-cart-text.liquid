@@ -1,0 +1,61 @@
+{%- comment -%}
+  Texty košíku KNEETECH (čeština + angličtina). Použití: {% render 'kt-cart-text', key: 'checkout' %}
+  Klíče: checkout, total, note, secure, return, delivery, support, payments
+{%- endcomment -%}
+{%- liquid
+  assign en = false
+  if request.locale.iso_code == 'en'
+    assign en = true
+  endif
+  assign ship_url = routes.root_url | append: '/pages/doprava-a-vraceni' | replace: '//', '/'
+  case key
+    when 'checkout'
+      if en
+        echo 'Continue to secure checkout'
+      else
+        echo 'Přejít k bezpečné platbě'
+      endif
+    when 'total'
+      if en
+        echo 'Subtotal'
+      else
+        echo 'Mezisoučet'
+      endif
+    when 'note'
+      if en
+        echo 'Final price. <a href="' | append: ship_url | append: '">Shipping</a> (free from 1,500 CZK) and any discount code are added in the next step.'
+      else
+        echo 'Cena je konečná. <a href="' | append: ship_url | append: '">Doprava</a> (od 1 500 Kč zdarma) a případný slevový kód se započítají v dalším kroku.'
+      endif
+    when 'secure'
+      if en
+        echo '<strong>Secure payment</strong> – encrypted connection, processed by Shopify'
+      else
+        echo '<strong>Bezpečná platba</strong> – šifrované spojení, platby zpracovává Shopify'
+      endif
+    when 'return'
+      if en
+        echo '<strong>14-day returns</strong>, no reason needed'
+      else
+        echo '<strong>14 dní na vrácení</strong> bez udání důvodu'
+      endif
+    when 'delivery'
+      if en
+        echo '<strong>Delivery within 14 days</strong> with tracking'
+      else
+        echo '<strong>Doručení do 14 dnů</strong> se sledováním zásilky'
+      endif
+    when 'support'
+      if en
+        echo '<strong>Czech support</strong> – we reply within 24 hours'
+      else
+        echo '<strong>Česká podpora</strong> – odpovídáme do 24 hodin'
+      endif
+    when 'payments'
+      if en
+        echo 'Payment methods'
+      else
+        echo 'Platební metody'
+      endif
+  endcase
+-%}

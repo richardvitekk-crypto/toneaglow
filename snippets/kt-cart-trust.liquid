@@ -1,18 +1,19 @@
 {%- comment -%}
   Prvky důvěry u tlačítka k platbě (výsuvný košík i stránka košíku):
   bezpečná platba, vrácení, doručení, česká podpora + ikony platebních metod obchodu.
-  Texty jsou v jazykových souborech (kneetech.cart.*).
+  Texty jsou ve snippetu kt-cart-text.
 {%- endcomment -%}
 {{ 'kt-cart.css' | asset_url | stylesheet_tag }}
 <div class="kt-cart-trust">
   <ul class="kt-cart-trust__list" role="list">
-    <li>{%- render 'kt-icon', name: 'lock', class: 'kt-cart-trust__icon' -%}<span>{{ 'kneetech.cart.trust_secure_html' | t }}</span></li>
-    <li>{%- render 'kt-icon', name: 'return-circle', class: 'kt-cart-trust__icon' -%}<span>{{ 'kneetech.cart.trust_return_html' | t }}</span></li>
-    <li>{%- render 'kt-icon', name: 'truck', class: 'kt-cart-trust__icon' -%}<span>{{ 'kneetech.cart.trust_delivery_html' | t }}</span></li>
-    <li>{%- render 'kt-icon', name: 'chat', class: 'kt-cart-trust__icon' -%}<span>{{ 'kneetech.cart.trust_support_html' | t }}</span></li>
+    <li>{%- render 'kt-icon', name: 'lock', class: 'kt-cart-trust__icon' -%}<span>{% render 'kt-cart-text', key: 'secure' %}</span></li>
+    <li>{%- render 'kt-icon', name: 'return-circle', class: 'kt-cart-trust__icon' -%}<span>{% render 'kt-cart-text', key: 'return' %}</span></li>
+    <li>{%- render 'kt-icon', name: 'truck', class: 'kt-cart-trust__icon' -%}<span>{% render 'kt-cart-text', key: 'delivery' %}</span></li>
+    <li>{%- render 'kt-icon', name: 'chat', class: 'kt-cart-trust__icon' -%}<span>{% render 'kt-cart-text', key: 'support' %}</span></li>
   </ul>
   {%- if shop.enabled_payment_types.size > 0 -%}
-    <ul class="kt-cart-trust__pay" role="list" aria-label="{{ 'kneetech.cart.payment_methods' | t | escape }}">
+    {%- capture pay_label -%}{% render 'kt-cart-text', key: 'payments' %}{%- endcapture -%}
+    <ul class="kt-cart-trust__pay" role="list" aria-label="{{ pay_label | escape }}">
       {%- for type in shop.enabled_payment_types limit: 8 -%}
         <li>{{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}</li>
       {%- endfor -%}

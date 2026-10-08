@@ -196,7 +196,7 @@ if (!customElements.get('kt-popup')) {
         }
         if (!this.shouldShow()) return;
         const delay = Math.max(0, parseInt(this.dataset.delay || '2', 10)) * 1000;
-        this.timer = window.setTimeout(() => this.open(), delay);
+        this.timer = window.setTimeout(() => this.autoOpen(), delay);
       }
 
       read() {
@@ -219,6 +219,16 @@ if (!customElements.get('kt-popup')) {
         if (saved.state === 'subscribed') return false;
         const days = parseInt(this.dataset.days || '7', 10);
         return Date.now() - saved.at > days * 86400000;
+      }
+
+      autoOpen() {
+        /* Nerušit zákazníka, který má otevřený košík a jde platit – zkusíme to znovu za 20 s */
+        const drawer = document.querySelector('cart-drawer');
+        if (drawer && drawer.classList.contains('active')) {
+          this.timer = window.setTimeout(() => this.autoOpen(), 20000);
+          return;
+        }
+        this.open();
       }
 
       open() {

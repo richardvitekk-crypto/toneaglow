@@ -1,0 +1,28 @@
+/* KNEETECH – velikost ještě nezvolená: předvybrané S nevypadá jako zvolené */
+fieldset.kt-size-pending.product-form__input input[type='radio']:checked + label {
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  border-color: rgba(var(--color-foreground), 0.55);
+}
+
+fieldset.kt-size-pending legend::after {
+  content: attr(data-kt-hint);
+  margin-left: 0.8rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-size-need {
+  flex-basis: 100%;
+  width: 100%;
+  margin: 1rem 0 0;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--kt-lime, #d8ff3e);
+  border-radius: 1rem;
+  background: rgba(216, 255, 62, 0.08);
+  font-size: 1.35rem;
+  line-height: 1.4;
+  color: rgb(var(--color-foreground));
+}

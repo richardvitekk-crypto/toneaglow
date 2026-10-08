@@ -555,6 +555,38 @@
         "padding_top": 96,
         "padding_bottom": 96
       }
+    },
+    "social": {
+      "type": "kt-social",
+      "blocks": {
+        "tiktok": {
+          "type": "network",
+          "settings": {
+            "platform": "tiktok"
+          }
+        },
+        "instagram": {
+          "type": "network",
+          "settings": {
+            "platform": "instagram"
+          }
+        }
+      },
+      "block_order": [
+        "tiktok",
+        "instagram"
+      ],
+      "settings": {
+        "eyebrow": "Sociální sítě",
+        "heading": "Hráči v akci",
+        "text": "<p>Videa z tréninků a zápasů, tipy pro kolena a hráči, kteří ji nosí.</p>",
+        "follow_label": "Sledovat",
+        "empty_text": "Video brzy. Mezitím nás sleduj.",
+        "hide_when_empty": true,
+        "color_scheme": "scheme-3",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
     }
   },
   "order": [
@@ -570,6 +602,7 @@
     "compare",
     "faq",
     "reviews",
+    "social",
     "cta"
   ]
 }

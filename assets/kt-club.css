@@ -346,3 +346,8 @@
     gap: 6.4rem;
   }
 }
+
+/* tabulka velikostí je odkazem už v týmové objednávce – samostatný odkaz pod ní je navíc */
+.kt-club__order > .kt-size-open {
+  display: none;
+}

@@ -3,9 +3,29 @@
   Do okénka jde buď nahrané video (má přednost), nebo odkaz na příspěvek – TikTok video,
   Instagram reel/příspěvek nebo YouTube Shorts se vloží přímo do stránky.
   Odkaz na profil: když ho necháš prázdný, vezme se z Nastavení motivu → Sociální sítě.
+  Volba „Skrýt, dokud není video“ (hlavní stránka): sekce se zákazníkům ukáže, až má aspoň jedno
+  okénko nahrané video nebo odkaz na příspěvek – prázdná okénka „Video brzy“ by odrazovala.
 {%- endcomment -%}
 {{ 'kt-about.css' | asset_url | stylesheet_tag }}
 {%- render 'kt-section-padding', section: section -%}
+
+{%- liquid
+  assign has_media = false
+  for block in section.blocks
+    assign b_post = block.settings.post_url | strip
+    if block.settings.video != blank
+      assign has_media = true
+    elsif b_post contains '/video/' or b_post contains '/reel/' or b_post contains '/p/' or b_post contains '/shorts/'
+      assign has_media = true
+    endif
+  endfor
+  assign hide_section = false
+  if section.settings.hide_when_empty and has_media == false
+    assign hide_section = true
+  endif
+-%}
+
+{%- if hide_section == false or request.design_mode -%}
 
 <div class="kt-section kt-ab kt-social color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width section-{{ section.id }}-padding">
@@ -143,8 +163,12 @@
         </article>
       {%- endfor -%}
     </div>
+    {%- if hide_section and request.design_mode -%}
+      <p class="kt-social-card__editor">Zákazníci tuhle sekci zatím nevidí – ukáže se, až doplníš video nebo odkaz na příspěvek.</p>
+    {%- endif -%}
   </div>
 </div>
+{%- endif -%}
 
 {% schema %}
 {
@@ -158,6 +182,7 @@
     { "type": "richtext", "id": "text", "label": "Text" },
     { "type": "text", "id": "follow_label", "label": "Text tlačítka na profil", "default": "Sledovat" },
     { "type": "text", "id": "empty_text", "label": "Text v prázdném okénku", "default": "Video brzy. Mezitím nás sleduj." },
+    { "type": "checkbox", "id": "hide_when_empty", "label": "Skrýt, dokud není video", "info": "Zákazníci sekci uvidí, až bude aspoň v jednom okénku video nebo odkaz na příspěvek.", "default": false },
     { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-3" },
     { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 80 },
     { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 80 }

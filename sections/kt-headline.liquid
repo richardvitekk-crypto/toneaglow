@@ -14,7 +14,11 @@
   <div class="page-width kt-hl__inner">
     {%- assign kicker = section.settings.kicker | default: 'Kompresní bandáž na koleno pro fotbalisty' -%}
     {%- if kicker != '-' -%}
-      <p class="kt-hl__kicker">{{ kicker }}</p>
+      {%- if template.name == 'index' -%}
+        <h1 class="kt-hl__kicker">{{ kicker }}</h1>
+      {%- else -%}
+        <p class="kt-hl__kicker">{{ kicker }}</p>
+      {%- endif -%}
     {%- endif -%}
     <p class="kt-hl__title">
       {{- section.settings.heading -}}

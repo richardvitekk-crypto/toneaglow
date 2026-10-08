@@ -182,3 +182,9 @@
     margin-top: 0;
   }
 }
+
+/* Úvodní stránka: malý text nad nadpisem je kvůli SEO hlavní nadpis H1 – vzhled zůstává stejný */
+h1.kt-hl__kicker {
+  line-height: inherit;
+  word-break: normal;
+}

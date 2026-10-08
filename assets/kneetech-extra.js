@@ -176,3 +176,53 @@ if (!customElements.get('kt-share')) {
   }
   document.addEventListener('shopify:section:load', init);
 })();
+
+/* Košík: „Chci 2 kusy“ / „Vyměnit a ušetřit“ – výměna za balení 2 kusů (snippet kt-cart-upsell) */
+(() => {
+  document.addEventListener('click', async (event) => {
+    const button = event.target.closest && event.target.closest('[data-kt-upsell]');
+    if (!button) return;
+    event.preventDefault();
+    if (button.disabled) return;
+    button.disabled = true;
+    button.classList.add('is-loading');
+
+    let updates;
+    try {
+      updates = JSON.parse(button.dataset.updates || '{}');
+    } catch (e) {
+      button.disabled = false;
+      button.classList.remove('is-loading');
+      return;
+    }
+
+    const drawer = document.querySelector('cart-drawer');
+    const inDrawer = !!(drawer && button.closest('cart-drawer'));
+    const body = { updates };
+    if (inDrawer && typeof drawer.getSectionsToRender === 'function') {
+      body.sections = drawer.getSectionsToRender().map((section) => section.id);
+      body.sections_url = window.location.pathname;
+    }
+
+    const base = (window.routes && window.routes.cart_update_url) || '/cart/update';
+    try {
+      const response = await fetch(`${base}.js`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(body),
+      });
+      if (!response.ok) throw new Error(String(response.status));
+      const state = await response.json();
+      if (inDrawer && state.sections && typeof drawer.renderContents === 'function') {
+        drawer.renderContents(state);
+        if (typeof publish === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
+          publish(PUB_SUB_EVENTS.cartUpdate, { source: 'kt-upsell', cartData: state });
+        }
+      } else {
+        window.location.reload();
+      }
+    } catch (e) {
+      window.location.reload();
+    }
+  });
+})();

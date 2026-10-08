@@ -12,6 +12,12 @@
 
   Ikony plateb se berou ze skutečně zapnutých plateb v Shopify (shop.enabled_payment_types),
   takže ukazují jen to, co jde opravdu zaplatit.
+
+  Termín nad seznamem („odešleme do …, doručíme nejpozději …“) počítá prohlížeč z dnešního data:
+  odeslání do 3 pracovních dnů, doručení do 14 pracovních dnů od objednávky. Víkendy a české
+  státní svátky (i Velikonoce) se nepočítají. Bez JavaScriptu se řádek neukáže.
+  - ship_days {Number}     – pracovní dny do odeslání (výchozí 3)
+  - delivery_days {Number} – pracovní dny do doručení (výchozí 14)
 {%- endcomment -%}
 {{ 'kt-landing.css' | asset_url | stylesheet_tag }}
 {{ 'kt-popis.css' | asset_url | stylesheet_tag }}
@@ -29,8 +35,43 @@
   assign returns_sub = returns_sub | default: d_returns_sub
   assign link = link | default: d_link
   assign brand = brand | default: d_brand
+  assign ship_days = ship_days | default: 3
+  assign delivery_days = delivery_days | default: 14
 -%}
+{%- style -%}
+  .kt-eta {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin: 0 0 1.2rem;
+    padding: 0 0 1.2rem;
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.1);
+    font-size: 1.35rem;
+    line-height: 1.45;
+    color: rgba(var(--color-foreground), 0.85);
+  }
+  .kt-eta[hidden] {
+    display: none;
+  }
+  .kt-eta strong {
+    color: rgb(var(--color-foreground));
+    white-space: nowrap;
+  }
+  .kt-eta__dot {
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-top: 0.6rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--kt-lime, #d8ff3e);
+    box-shadow: 0 0 0 0.4rem rgba(216, 255, 62, 0.18);
+  }
+{%- endstyle -%}
 <div class="kt-assure">
+  <p class="kt-eta" data-kt-eta data-ship="{{ ship_days }}" data-delivery="{{ delivery_days }}" hidden>
+    <span class="kt-eta__dot" aria-hidden="true"></span>
+    <span data-kt-eta-text></span>
+  </p>
   <ul class="kt-assure__list">
     <li>
       {% render 'kt-icon', name: 'truck', class: 'kt-assure__icon' %}
@@ -66,3 +107,58 @@
 
   <a class="kt-assure__link" href="{{ link }}">{{ 'kneetech.assure.link' | t }}</a>
 </div>
+<script>
+  (() => {
+    const lang = document.documentElement.lang || 'cs';
+    const en = lang.toLowerCase().startsWith('en');
+    const pad = (n) => String(n).padStart(2, '0');
+    const key = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+    const easter = (y) => {
+      const a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4;
+      const f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3);
+      const h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4;
+      const l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451);
+      return new Date(y, Math.floor((h + l - 7 * m + 114) / 31) - 1, ((h + l - 7 * m + 114) % 31) + 1);
+    };
+    const holidays = new Set();
+    const addYear = (y) => {
+      ['01-01', '05-01', '05-08', '07-05', '07-06', '09-28', '10-28', '11-17', '12-24', '12-25', '12-26'].forEach((md) =>
+        holidays.add(`${y}-${md}`)
+      );
+      const ea = easter(y);
+      holidays.add(key(new Date(y, ea.getMonth(), ea.getDate() - 2)));
+      holidays.add(key(new Date(y, ea.getMonth(), ea.getDate() + 1)));
+    };
+    const workday = (d) => d.getDay() !== 0 && d.getDay() !== 6 && !holidays.has(key(d));
+    const addWorkdays = (from, n) => {
+      const d = new Date(from);
+      while (n > 0) {
+        d.setDate(d.getDate() + 1);
+        if (workday(d)) n -= 1;
+      }
+      return d;
+    };
+    const today = (() => {
+      try {
+        const p = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Prague', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()).split('-');
+        return new Date(+p[0], +p[1] - 1, +p[2]);
+      } catch (e) {
+        const n = new Date();
+        return new Date(n.getFullYear(), n.getMonth(), n.getDate());
+      }
+    })();
+    [today.getFullYear(), today.getFullYear() + 1].forEach(addYear);
+    const fmt = (d) =>
+      d.toLocaleDateString(en ? 'en-GB' : 'cs-CZ', { weekday: 'short', day: 'numeric', month: en ? 'short' : 'numeric' });
+
+    document.querySelectorAll('[data-kt-eta]:not([data-done])').forEach((el) => {
+      el.dataset.done = '1';
+      const ship = fmt(addWorkdays(today, parseInt(el.dataset.ship, 10) || 3));
+      const arrive = fmt(addWorkdays(today, parseInt(el.dataset.delivery, 10) || 14));
+      el.querySelector('[data-kt-eta-text]').innerHTML = en
+        ? `Order today – ships by <strong>${ship}</strong>, arrives by <strong>${arrive}</strong> at the latest.`
+        : `Objednej dnes – odešleme do <strong>${ship}</strong>, doručíme nejpozději <strong>${arrive}</strong>.`;
+      el.hidden = false;
+    });
+  })();
+</script>

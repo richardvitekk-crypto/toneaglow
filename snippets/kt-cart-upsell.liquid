@@ -1,0 +1,96 @@
+{%- comment -%}
+  Nabídka v košíku: 1 kus → balení 2 kusů (na obě kolena), nebo 2–4 jednotlivé kusy → výhodnější balení.
+  Hledá variantu stejného produktu, která se liší jen v jedné volbě (Balení) a je dražší, ale levnější
+  než dva samostatné kusy. Od 5 kusů se nenabízí – tam platí týmová cena. Kliknutí obslouží kneetech-extra.js.
+{%- endcomment -%}
+{%- liquid
+  assign up_item = nil
+  assign up_pair = nil
+  for item in cart.items
+    if up_pair != nil
+      break
+    endif
+    if item.product.has_only_default_variant or item.quantity >= 5
+      continue
+    endif
+    assign double_price = item.variant.price | times: 2
+    for v in item.product.variants
+      if v.id == item.variant.id or v.available == false
+        continue
+      endif
+      if v.price <= item.variant.price or v.price >= double_price
+        continue
+      endif
+      assign diff = 0
+      for opt in v.options
+        assign oi = forloop.index0
+        if opt != item.variant.options[oi]
+          assign diff = diff | plus: 1
+        endif
+      endfor
+      if diff == 1
+        assign up_item = item
+        assign up_pair = v
+        break
+      endif
+    endfor
+  endfor
+-%}
+{%- if up_pair != nil -%}
+  {%- liquid
+    assign en = false
+    if request.locale.iso_code == 'en'
+      assign en = true
+    endif
+    assign q = up_item.quantity
+    assign pair_in_cart = cart | item_count_for_variant: up_pair.id
+    assign per_piece = up_pair.price | divided_by: 2
+    if q == 1
+      assign extra = up_pair.price | minus: up_item.variant.price
+      assign new_single = 0
+      assign new_pair = pair_in_cart | plus: 1
+    else
+      assign pairs = q | divided_by: 2
+      assign new_single = q | modulo: 2
+      assign new_pair = pair_in_cart | plus: pairs
+      assign save = up_item.variant.price | times: 2 | minus: up_pair.price | times: pairs
+    endif
+  -%}
+  {{ 'kt-cart.css' | asset_url | stylesheet_tag }}
+  <div class="kt-upsell">
+    <span class="kt-upsell__icon" aria-hidden="true">{%- render 'kt-icon', name: 'knee' -%}</span>
+    <div class="kt-upsell__body">
+      {%- if q == 1 -%}
+        <p class="kt-upsell__title">{% if en %}Both knees?{% else %}Na obě kolena?{% endif %}</p>
+        <p class="kt-upsell__text">
+          {%- if en -%}
+            Switch to the 2-piece pack – {{ per_piece | money_without_trailing_zeros }} per piece.
+          {%- else -%}
+            Vyměň za balení 2 kusů – vyjde {{ per_piece | money_without_trailing_zeros }} za kus.
+          {%- endif -%}
+        </p>
+      {%- else -%}
+        <p class="kt-upsell__title">{% if en %}Save {{ save | money_without_trailing_zeros }}{% else %}Ušetři {{ save | money_without_trailing_zeros }}{% endif %}</p>
+        <p class="kt-upsell__text">
+          {%- if en -%}
+            Swap single pieces for the 2-piece pack – same sizes and colour.
+          {%- else -%}
+            Vyměň jednotlivé kusy za výhodnější balení 2 kusů – stejná velikost i barva.
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+    </div>
+    <button
+      type="button"
+      class="kt-upsell__btn"
+      data-kt-upsell
+      data-updates='{"{{ up_item.variant.id }}":{{ new_single }},"{{ up_pair.id }}":{{ new_pair }}}'
+    >
+      {%- if q == 1 -%}
+        {% if en %}Make it 2 · +{{ extra | money_without_trailing_zeros }}{% else %}Chci 2 kusy · +{{ extra | money_without_trailing_zeros }}{% endif %}
+      {%- else -%}
+        {% if en %}Swap and save{% else %}Vyměnit a ušetřit{% endif %}
+      {%- endif -%}
+    </button>
+  </div>
+{%- endif -%}

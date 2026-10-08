@@ -119,7 +119,6 @@
     },
     "sticky": {
       "type": "kt-sticky-atc",
-      "disabled": true,
       "settings": {
         "button_label": "Vybrat velikost",
         "price_text": "1 ks 590 Kč · 2 ks 790 Kč",

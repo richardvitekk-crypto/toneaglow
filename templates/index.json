@@ -82,47 +82,11 @@
             "custom_liquid": "{% render 'kt-assurance' %}"
           }
         },
-        "share": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{%- assign kt_product = all_products['kneetech-bandaz-na-koleno'] -%}{% render 'kt-share', product: kt_product %}"
-          }
-        },
         "description": {
           "type": "custom_liquid",
           "disabled": true,
           "settings": {
             "custom_liquid": "{%- assign kt_product = all_products['kneetech-bandaz-na-koleno'] -%}{%- if kt_product.description != blank -%}<div class=\"product__description rte quick-add-hidden\">{{ kt_product.description }}</div>{%- endif -%}"
-          }
-        },
-        "tab_fit": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{%- assign kt_root = routes.root_url | append: '/' | replace: '//', '/' -%}{%- capture c -%}{{ 'kneetech.tabs.fit_html' | t | replace: '[root]', kt_root }}{%- endcapture -%}{%- assign h = 'kneetech.tabs.fit_title' | t -%}{% render 'kt-accordion', id: 'fit', icon: 'check_mark', heading: h, content: c %}"
-          }
-        },
-        "tab_material": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{%- assign kt_root = routes.root_url | append: '/' | replace: '//', '/' -%}{%- capture c -%}{{ 'kneetech.tabs.material_html' | t | replace: '[root]', kt_root }}{%- endcapture -%}{%- assign h = 'kneetech.tabs.material_title' | t -%}{% render 'kt-accordion', id: 'material', icon: 'washing', heading: h, content: c %}"
-          }
-        },
-        "tab_shipping": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{%- assign kt_root = routes.root_url | append: '/' | replace: '//', '/' -%}{%- capture c -%}{{ 'kneetech.tabs.shipping_html' | t | replace: '[root]', kt_root }}{%- endcapture -%}{%- assign h = 'kneetech.tabs.shipping_title' | t -%}{% render 'kt-accordion', id: 'shipping', icon: 'truck', heading: h, content: c %}"
-          }
-        },
-        "tab_safety": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{%- assign kt_root = routes.root_url | append: '/' | replace: '//', '/' -%}{%- capture c -%}{{ 'kneetech.tabs.safety_html' | t | replace: '[root]', kt_root }}{%- endcapture -%}{%- assign h = 'kneetech.tabs.safety_title' | t -%}{% render 'kt-accordion', id: 'safety', icon: 'check_mark', heading: h, content: c %}"
-          }
-        },
-        "manufacturer": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{%- assign kt_product = all_products['kneetech-bandaz-na-koleno'] -%}{%- if kt_product.metafields.custom.vyrobce != blank -%}<p class=\"kt-note\">{{ kt_product.metafields.custom.vyrobce | newline_to_br }}</p>{%- endif -%}"
           }
         }
       },
@@ -138,13 +102,7 @@
         "selection",
         "buy_buttons",
         "assurance",
-        "share",
-        "description",
-        "tab_fit",
-        "tab_material",
-        "tab_shipping",
-        "tab_safety",
-        "manufacturer"
+        "description"
       ],
       "settings": {
         "product": "kneetech-bandaz-na-koleno",

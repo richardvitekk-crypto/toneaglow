@@ -80,58 +80,10 @@
             "custom_liquid": "{% render 'kt-assurance' %}"
           }
         },
-        "share": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'kt-share', product: product %}"
-          }
-        },
         "description": {
           "type": "description",
           "disabled": true,
           "settings": {}
-        },
-        "tab_fit": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Jak ji nasadit",
-            "icon": "check_mark",
-            "content": "<ol><li><strong>Natáhni</strong> – středem přes čéšku.</li><li><strong>Utáhni</strong> – suchý zip pevně, ale koleno musí jít normálně ohnout.</li><li><strong>Hraj</strong> – pár dřepů na zkoušku. Když cítíš brnění, povol.</li></ol>",
-            "page": ""
-          }
-        },
-        "tab_material": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materiál a péče",
-            "icon": "washing",
-            "content": "<p><strong>Konstrukce:</strong> komprese kolem celého kloubu, křížový pásek přes koleno, utažení suchým zipem, protiskluzový pásek proti sjíždění.<br/><strong>Materiál:</strong> polyesterové vlákno.<br/><strong>Hmotnost:</strong> asi 70 g na kus.<br/><strong>Barvy:</strong> černo-šedá, černo-červená.<br/><strong>Velikosti:</strong> S, M, L, XL.</p><p><strong>Péče:</strong> perte ručně ve vlažné vodě s jemným prostředkem, suchý zip před praním zapněte. Sušte volně na vzduchu, ne v sušičce ani na topení.</p>",
-            "page": ""
-          }
-        },
-        "tab_shipping": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Doprava a vrácení",
-            "icon": "truck",
-            "content": "<p>Doručení do 14 dnů od objednávky. Cenu dopravy uvidíš v pokladně, od 1 500 Kč je zdarma. Po odeslání ti přijde odkaz na sledování zásilky.</p><p>Na vrácení máš 14 dní od převzetí, bez udání důvodu. Podrobnosti najdeš na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>",
-            "page": ""
-          }
-        },
-        "tab_safety": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Bezpečnost",
-            "icon": "check_mark",
-            "content": "<p>Bandáž není zdravotnický prostředek a nenahrazuje vyšetření ani léčbu.</p><ul><li>Nepřetahuj ji – koleno musíš v bandáži normálně ohnout.</li><li>Když cítíš brnění, otok nebo se změní barva kůže, povol ji nebo sundej.</li><li>Nenos ji celý den ani přes noc.</li><li>Nenos ji na poraněnou nebo podrážděnou kůži.</li><li>Při bolesti, která neustupuje, navštiv lékaře.</li></ul>",
-            "page": ""
-          }
-        },
-        "manufacturer": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{%- if product.metafields.custom.vyrobce != blank -%}<p class=\"kt-note\">{{ product.metafields.custom.vyrobce | newline_to_br }}</p>{%- endif -%}"
-          }
         }
       },
       "block_order": [
@@ -146,13 +98,7 @@
         "selection",
         "buy_buttons",
         "assurance",
-        "share",
-        "description",
-        "tab_fit",
-        "tab_material",
-        "tab_shipping",
-        "tab_safety",
-        "manufacturer"
+        "description"
       ],
       "settings": {
         "enable_sticky_info": true,

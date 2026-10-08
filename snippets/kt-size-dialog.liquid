@@ -25,6 +25,8 @@
 -%}
 {{ 'kt-landing.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'kt-landing.js' | asset_url }}" defer="defer"></script>
+{{ 'kt-size-guard.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'kt-size-guard.js' | asset_url }}" defer="defer"></script>
 
 <a class="kt-size-link kt-size-open" href="{{ page }}" data-kt-size-open aria-controls="{{ dialog_id }}" aria-haspopup="dialog">
   {%- render 'kt-icon', name: 'ruler' -%}

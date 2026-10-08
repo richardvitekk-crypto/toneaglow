@@ -1,0 +1,140 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "club": {
+      "type": "kt-club",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Změřte kolena",
+            "text": "<p>Krejčovským metrem obvod kolena přes střed čéšky, nohu lehce pokrčenou. Pomůže <a href=\"/pages/velikosti\">tabulka velikostí</a>.</p>"
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Vyplňte počty",
+            "text": "<p>V tabulce níž zadejte, kolik kusů chcete v jaké velikosti a barvě. Od 5 kusů se týmová cena odečte v košíku sama.</p>"
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Hrajte",
+            "text": "<p>Odešleme do 3 pracovních dnů, doručíme nejpozději do 14 pracovních dnů. Na vrácení máte 14 dní.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "product": "kneetech-bandaz-na-koleno",
+        "eyebrow": "Pro kluby a trenéry",
+        "heading": "Celý tým v bandážích",
+        "heading_accent": "za týmovou cenu.",
+        "text": "<p>Bandáž, kterou nosí hráči a hráčky z profesionálních akademií. Od 5 kusů za týmovou cenu – velikosti i barvy můžete v jedné objednávce kombinovat.</p>",
+        "button_label": "Sestavit objednávku",
+        "button_label_2": "Chci nabídku",
+        "calc_default": 11,
+        "free_from": 1500,
+        "order_heading": "Sestavte objednávku pro tým",
+        "show_form": true,
+        "form_heading": "Chcete nabídku nebo poradit?",
+        "form_text": "<p>Objednáváte pro víc týmů, nevíte si rady s velikostmi nebo máte jiný dotaz? Napište nám a ozveme se.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 80
+      }
+    },
+    "pros": {
+      "type": "kt-pros",
+      "settings": {
+        "badge": "Testováno profíky",
+        "heading": "Nosí ji hráči a hráčky",
+        "heading_accent": "z profesionálních akademií.",
+        "text": "<p>Bandáž prošla tréninky a zápasy hráčů a hráček z profesionálních fotbalových akademií v Česku. Co na ni říkají, najdete v jejich recenzích.</p>",
+        "question": "Chcete pro svůj tým to samé?",
+        "button_label": "Podívat se na recenze",
+        "button_link": "",
+        "fine": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 72
+      }
+    },
+    "faq": {
+      "type": "kt-faq",
+      "blocks": {
+        "t1": {
+          "type": "question",
+          "settings": {
+            "question": "Od kolika kusů platí týmová cena?",
+            "answer": "<p>Od 5 kusů. Cena 349 Kč za kus se v košíku odečte automaticky, nemusíte zadávat žádný kód.</p>"
+          }
+        },
+        "t2": {
+          "type": "question",
+          "settings": {
+            "question": "Můžu v jedné objednávce kombinovat velikosti a barvy?",
+            "answer": "<p>Ano. V tabulce zadáte počty pro každou velikost a barvu zvlášť a do týmové ceny se počítají všechny kusy dohromady.</p>"
+          }
+        },
+        "t3": {
+          "type": "question",
+          "settings": {
+            "question": "Je doprava zdarma?",
+            "answer": "<p>Od 1 500 Kč ano. Už 5 kusů za týmovou cenu vyjde na 1 745 Kč, takže dopravu neplatíte.</p>"
+          }
+        },
+        "t4": {
+          "type": "question",
+          "settings": {
+            "question": "Jak dlouho trvá doručení?",
+            "answer": "<p>Odesíláme do 3 pracovních dnů, doručení je nejpozději do 14 pracovních dnů od objednávky. Po odeslání přijde odkaz na sledování zásilky.</p>"
+          }
+        },
+        "t5": {
+          "type": "question",
+          "settings": {
+            "question": "Co když někomu velikost nesedí?",
+            "answer": "<p>Na vrácení máte 14 dní od převzetí, bez udání důvodu. Podrobnosti najdete na stránce <a href=\"/pages/doprava-a-vraceni\">Doprava a vrácení</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5"
+      ],
+      "settings": {
+        "eyebrow": "FAQ pro trenéry",
+        "heading": "Časté dotazy",
+        "button_label": "Všechny dotazy",
+        "button_link": "shopify://pages/faq",
+        "schema_markup": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 88
+      }
+    }
+  },
+  "order": [
+    "club",
+    "pros",
+    "faq"
+  ]
+}

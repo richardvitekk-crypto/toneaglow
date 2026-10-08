@@ -57,12 +57,12 @@
     endif
   -%}
   {{ 'kt-cart.css' | asset_url | stylesheet_tag }}
-  <div class="kt-upsell">
-    <span class="kt-upsell__icon" aria-hidden="true">{%- render 'kt-icon', name: 'knee' -%}</span>
-    <div class="kt-upsell__body">
+  <div class="kt-cupsell">
+    <span class="kt-cupsell__icon" aria-hidden="true">{%- render 'kt-icon', name: 'knee' -%}</span>
+    <div class="kt-cupsell__body">
       {%- if q == 1 -%}
-        <p class="kt-upsell__title">{% if en %}Both knees?{% else %}Na obě kolena?{% endif %}</p>
-        <p class="kt-upsell__text">
+        <p class="kt-cupsell__title">{% if en %}Both knees?{% else %}Na obě kolena?{% endif %}</p>
+        <p class="kt-cupsell__text">
           {%- if en -%}
             Switch to the 2-piece pack – {{ per_piece | money_without_trailing_zeros }} per piece.
           {%- else -%}
@@ -70,8 +70,8 @@
           {%- endif -%}
         </p>
       {%- else -%}
-        <p class="kt-upsell__title">{% if en %}Save {{ save | money_without_trailing_zeros }}{% else %}Ušetři {{ save | money_without_trailing_zeros }}{% endif %}</p>
-        <p class="kt-upsell__text">
+        <p class="kt-cupsell__title">{% if en %}Save {{ save | money_without_trailing_zeros }}{% else %}Ušetři {{ save | money_without_trailing_zeros }}{% endif %}</p>
+        <p class="kt-cupsell__text">
           {%- if en -%}
             Swap single pieces for the 2-piece pack – same sizes and colour.
           {%- else -%}
@@ -82,7 +82,7 @@
     </div>
     <button
       type="button"
-      class="kt-upsell__btn"
+      class="kt-cupsell__btn"
       data-kt-upsell
       data-updates='{"{{ up_item.variant.id }}":{{ new_single }},"{{ up_pair.id }}":{{ new_pair }}}'
     >

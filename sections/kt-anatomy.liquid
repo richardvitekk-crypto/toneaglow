@@ -1,0 +1,162 @@
+{%- comment -%}
+  Jak bandáž funguje: fotka bandáže s očíslovanými body a vedle popis, co který kousek dělá.
+  Najetí / ťuknutí na číslo zvýrazní jeho popis a naopak. Pozice bodů (X, Y v %) sedí na první
+  fotku produktu (černo-šedá zepředu) – když nahraješ jinou, posuň body v nastavení bloků.
+  Parametry dole (Parametry) = jeden řádek na štítek.
+{%- endcomment -%}
+{{ 'kt-anatomy.css' | asset_url | stylesheet_tag }}
+{%- render 'kt-section-padding', section: section -%}
+
+{%- liquid
+  assign kt_p = section.settings.product
+  if kt_p == blank
+    assign kt_p = all_products['kneetech-bandaz-na-koleno']
+  endif
+  assign kt_img = section.settings.image
+  if kt_img == blank and kt_p != blank
+    assign kt_img = kt_p.featured_media.preview_image
+  endif
+  assign specs = section.settings.specs | newline_to_br | split: '<br />'
+-%}
+
+<div class="kt-section kt-anat color-{{ section.settings.color_scheme }} gradient" data-kt-anat>
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="kt-anat__grid">
+      <div class="kt-anat__media kt-reveal">
+        {%- if kt_img != blank -%}
+          {{
+            kt_img
+            | image_url: width: 1200
+            | image_tag:
+              class: 'kt-anat__img',
+              loading: 'lazy',
+              widths: '400, 600, 800, 1000, 1200',
+              sizes: '(min-width: 990px) 50vw, 100vw',
+              alt: kt_img.alt
+          }}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'kt-anat__img' }}
+        {%- endif -%}
+
+        {%- for block in section.blocks -%}
+          <button
+            type="button"
+            class="kt-anat__dot"
+            style="--x: {{ block.settings.x }}%; --y: {{ block.settings.y }}%;"
+            data-kt-anat-key="{{ forloop.index }}"
+            aria-label="{{ forloop.index }}. {{ block.settings.title | escape }}"
+            aria-describedby="KtAnat-{{ section.id }}-{{ forloop.index }}"
+          >
+            {{- forloop.index -}}
+          </button>
+        {%- endfor -%}
+      </div>
+
+      <div class="kt-anat__body">
+        <div class="kt-reveal">
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="kt-eyebrow">{{ section.settings.eyebrow }}</p>
+          {%- endif -%}
+          {%- if section.settings.heading != blank -%}
+            <h2 class="kt-heading">{{ section.settings.heading }}</h2>
+          {%- endif -%}
+          {%- if section.settings.text != blank -%}
+            <div class="kt-lead-text">{{ section.settings.text }}</div>
+          {%- endif -%}
+        </div>
+
+        {%- if section.blocks.size > 0 -%}
+          <ol class="kt-anat__list kt-reveal" role="list">
+            {%- for block in section.blocks -%}
+              <li
+                class="kt-anat__item"
+                id="KtAnat-{{ section.id }}-{{ forloop.index }}"
+                data-kt-anat-key="{{ forloop.index }}"
+                tabindex="0"
+                {{ block.shopify_attributes }}
+              >
+                <span class="kt-anat__num" aria-hidden="true">{{ forloop.index }}</span>
+                <div>
+                  <h3 class="kt-anat__title">{{ block.settings.title }}</h3>
+                  {%- if block.settings.text != blank -%}
+                    <div class="kt-anat__text">{{ block.settings.text }}</div>
+                  {%- endif -%}
+                </div>
+              </li>
+            {%- endfor -%}
+          </ol>
+        {%- endif -%}
+
+        {%- if section.settings.specs != blank -%}
+          <ul class="kt-anat__specs kt-reveal" role="list">
+            {%- for spec in specs -%}
+              {%- assign spec = spec | strip -%}
+              {%- if spec != blank -%}
+                <li>{{ spec }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    document.querySelectorAll('[data-kt-anat]:not([data-ready])').forEach((root) => {
+      root.dataset.ready = '1';
+      const parts = root.querySelectorAll('[data-kt-anat-key]');
+      const set = (key) =>
+        parts.forEach((el) => el.classList.toggle('is-active', key !== null && el.dataset.ktAnatKey === key));
+      parts.forEach((el) => {
+        el.addEventListener('mouseenter', () => set(el.dataset.ktAnatKey));
+        el.addEventListener('mouseleave', () => set(null));
+        el.addEventListener('focus', () => set(el.dataset.ktAnatKey));
+        el.addEventListener('blur', () => set(null));
+        el.addEventListener('click', () => set(el.dataset.ktAnatKey));
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "KT – Jak bandáž funguje",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Malý nadpis", "default": "Jak funguje" },
+    { "type": "text", "id": "heading", "label": "Nadpis", "default": "Každý kousek má svou práci" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "image_picker", "id": "image", "label": "Fotka", "info": "Prázdné = první fotka produktu (černo-šedá zepředu). Jiná fotka = posuň body." },
+    { "type": "product", "id": "product", "label": "Produkt", "info": "Prázdné = KNEETECH bandáž." },
+    { "type": "textarea", "id": "specs", "label": "Parametry", "info": "Jeden řádek = jeden štítek." },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 96 }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Bod na fotce",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Název", "default": "Suchý zip" },
+        { "type": "richtext", "id": "text", "label": "Popis" },
+        { "type": "range", "id": "x", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Vodorovně (zleva)", "default": 50 },
+        { "type": "range", "id": "y", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Svisle (shora)", "default": 50 }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KT – Jak bandáž funguje",
+      "blocks": [
+        { "type": "point", "settings": { "title": "Suchý zip", "x": 56, "y": 20 } },
+        { "type": "point", "settings": { "title": "Křížový pásek přes koleno", "x": 46, "y": 47 } }
+      ]
+    }
+  ]
+}
+{% endschema %}

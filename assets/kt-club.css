@@ -1,0 +1,348 @@
+/* KNEETECH – stránka Pro kluby a trenéry */
+.kt-club__hero {
+  display: grid;
+  gap: 3.2rem;
+  align-items: center;
+}
+
+.kt-club__title {
+  font-size: clamp(3.4rem, 7vw, 6rem);
+  line-height: 1;
+}
+
+.kt-club__title em {
+  display: block;
+  font-style: normal;
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-club__stats {
+  list-style: none;
+  margin: 2.4rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.kt-club__stats li {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 12rem;
+  padding: 1.2rem 1.6rem;
+  border: 1px solid rgba(var(--color-foreground), 0.12);
+  border-radius: 1.4rem;
+  background: rgba(var(--color-foreground), 0.03);
+}
+
+.kt-club__stats strong {
+  font-family: var(--font-heading-family);
+  font-size: 2.2rem;
+  line-height: 1.1;
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-club__stats span {
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.kt-club__btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.4rem;
+}
+
+.kt-club__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  min-height: 5rem;
+  padding: 0 2.4rem;
+  border: 1.5px solid rgba(var(--color-foreground), 0.5);
+  border-radius: 99rem;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-heading-family);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s var(--kt-ease, ease), box-shadow 0.2s;
+}
+
+.kt-club__btn--primary {
+  border-color: var(--kt-lime, #d8ff3e);
+  background: var(--kt-lime, #d8ff3e);
+  color: #0a0a0a;
+}
+
+.kt-club__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px -8px rgba(216, 255, 62, 0.6);
+}
+
+.kt-club__btn .kt-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+/* Kalkulačka */
+.kt-club__calc {
+  padding: 2.4rem;
+  border: 1px solid rgba(216, 255, 62, 0.35);
+  border-radius: 2rem;
+  background: rgba(216, 255, 62, 0.06);
+}
+
+.kt-club__calc-label {
+  display: block;
+  margin-bottom: 1.2rem;
+  font-family: var(--font-heading-family);
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.kt-club__calc-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.kt-club__calc-row button {
+  width: 4.4rem;
+  height: 4.4rem;
+  border: 1px solid rgba(var(--color-foreground), 0.3);
+  border-radius: 50%;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.kt-club__calc-row input {
+  width: 8rem;
+  height: 4.8rem;
+  border: 1px solid rgba(var(--color-foreground), 0.3);
+  border-radius: 1rem;
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-heading-family);
+  font-size: 2.4rem;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+.kt-club__calc-row input::-webkit-outer-spin-button,
+.kt-club__calc-row input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.kt-club__calc-row span {
+  font-size: 1.4rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.kt-club__calc-out {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0 0;
+}
+
+.kt-club__calc-out div {
+  padding: 1.2rem 1.4rem;
+  border-radius: 1.2rem;
+  background: rgba(var(--color-foreground), 0.05);
+}
+
+.kt-club__calc-out dt {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(var(--color-foreground), 0.65);
+}
+
+.kt-club__calc-out dd {
+  margin: 0.4rem 0 0;
+  font-family: var(--font-heading-family);
+  font-size: 2.6rem;
+  line-height: 1.1;
+}
+
+.kt-club__calc-out div:last-child dd {
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-club__calc-note {
+  margin: 1.4rem 0 0;
+  font-size: 1.35rem;
+  line-height: 1.45;
+  color: rgba(var(--color-foreground), 0.85);
+}
+
+/* Kroky */
+.kt-club__steps {
+  list-style: none;
+  margin: 6.4rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.kt-club__step {
+  position: relative;
+  padding: 2.4rem 2rem 2rem;
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+  border-radius: 1.6rem;
+  background: rgba(var(--color-foreground), 0.03);
+}
+
+.kt-club__step-num {
+  display: grid;
+  place-items: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  margin-bottom: 1.2rem;
+  border-radius: 50%;
+  background: var(--kt-lime, #d8ff3e);
+  color: #0a0a0a;
+  font-family: var(--font-heading-family);
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.kt-club__step-title {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+}
+
+.kt-club__step-text {
+  margin-top: 0.6rem;
+  font-size: 1.45rem;
+  line-height: 1.5;
+  color: rgba(var(--color-foreground), 0.78);
+}
+
+.kt-club__step-text p {
+  margin: 0;
+}
+
+.kt-club__step-text a {
+  color: var(--kt-lime, #d8ff3e);
+}
+
+/* Objednávka a formulář */
+.kt-club__order,
+.kt-club__form-wrap {
+  margin-top: 6.4rem;
+  scroll-margin-top: 10rem;
+}
+
+.kt-club__h2 {
+  margin-bottom: 2rem;
+}
+
+.kt-club__order .kt-team {
+  max-width: 72rem;
+}
+
+.kt-club__form {
+  max-width: 72rem;
+  margin-top: 2.4rem;
+}
+
+.kt-club__fields {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.kt-club__fields label {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.kt-club__fields span {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: rgba(var(--color-foreground), 0.85);
+}
+
+.kt-club__fields input,
+.kt-club__fields textarea {
+  width: 100%;
+  min-height: 4.8rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid rgba(var(--color-foreground), 0.25);
+  border-radius: 1rem;
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  font: inherit;
+  font-size: 1.6rem;
+}
+
+.kt-club__fields input:focus-visible,
+.kt-club__fields textarea:focus-visible {
+  outline: 2px solid var(--kt-lime, #d8ff3e);
+  outline-offset: 1px;
+}
+
+.kt-club__form .kt-club__btn {
+  margin-top: 2rem;
+}
+
+.kt-club__fine {
+  margin: 1.2rem 0 0;
+  font-size: 1.25rem;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.kt-club__ok,
+.kt-club__err {
+  margin: 0 0 2rem;
+  padding: 1.4rem 1.6rem;
+  border-radius: 1.2rem;
+  font-size: 1.5rem;
+}
+
+.kt-club__ok {
+  border: 1px solid var(--kt-lime, #d8ff3e);
+  background: rgba(216, 255, 62, 0.08);
+}
+
+.kt-club__err {
+  border: 1px solid #ff6b6b;
+  background: rgba(255, 107, 107, 0.08);
+}
+
+@media screen and (min-width: 750px) {
+  .kt-club__steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .kt-club__fields {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .kt-club__full {
+    grid-column: 1 / -1;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .kt-club__hero {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 6.4rem;
+  }
+}

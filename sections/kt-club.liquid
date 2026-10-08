@@ -1,0 +1,281 @@
+{%- comment -%}
+  Stránka Pro kluby a trenéry: úvod s týmovou cenou a kalkulačkou, 3 kroky (bloky),
+  rovnou otevřená týmová objednávka (snippet kt-team) a formulář „Chci nabídku pro tým“.
+  Ceny se berou z produktu: týmová cena = metapole custom.tymova_cena, minimum = custom.tym_od_ks,
+  běžná cena = varianta „1 kus“. Skutečnou slevu v košíku dělá automatická sleva v Shopify (Slevy).
+  Formulář odchází na kontaktní e-mail obchodu (Nastavení → Obecné).
+{%- endcomment -%}
+{{ 'kt-club.css' | asset_url | stylesheet_tag }}
+{%- render 'kt-section-padding', section: section -%}
+
+{%- liquid
+  assign kt_p = section.settings.product
+  if kt_p == blank
+    assign kt_p = all_products['kneetech-bandaz-na-koleno']
+  endif
+  assign en = false
+  if request.locale.iso_code == 'en'
+    assign en = true
+  endif
+  assign root = routes.root_url | append: '/' | replace: '//', '/'
+
+  assign team_price = kt_p.metafields.custom.tymova_cena.value | default: 0 | plus: 0
+  assign team_min = kt_p.metafields.custom.tym_od_ks.value | default: 5 | plus: 0
+  if team_min < 2
+    assign team_min = 5
+  endif
+  assign single_price = 0
+  for v in kt_p.variants
+    assign q = v.option1 | split: ' ' | first | plus: 0
+    if q == 1
+      if single_price == 0 or v.price < single_price
+        assign single_price = v.price
+      endif
+    endif
+  endfor
+  assign single_kc = single_price | divided_by: 100
+  assign free_from = section.settings.free_from
+  assign min_total = team_min | times: team_price
+  assign start_n = section.settings.calc_default | at_least: team_min
+-%}
+
+<div class="kt-section kt-club color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="kt-club__hero">
+      <div class="kt-reveal">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="kt-eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h1 class="kt-heading kt-club__title">
+          {{- section.settings.heading -}}
+          {%- if section.settings.heading_accent != blank -%}
+            {{ ' ' }}<em>{{ section.settings.heading_accent }}</em>
+          {%- endif -%}
+        </h1>
+        {%- if section.settings.text != blank -%}
+          <div class="kt-lead-text">{{ section.settings.text }}</div>
+        {%- endif -%}
+
+        {%- if team_price > 0 -%}
+          <ul class="kt-club__stats" role="list">
+            <li><strong>{{ team_price }} Kč</strong><span>{% if en %}per piece{% else %}za kus{% endif %}</span></li>
+            <li><strong>{% if en %}from {{ team_min }} pcs{% else %}od {{ team_min }} ks{% endif %}</strong><span>{% if en %}sizes &amp; colours mixed{% else %}velikosti i barvy mixuj{% endif %}</span></li>
+            {%- if free_from > 0 and min_total >= free_from -%}
+              <li><strong>{% if en %}Free{% else %}Zdarma{% endif %}</strong><span>{% if en %}shipping{% else %}doprava{% endif %}</span></li>
+            {%- endif -%}
+          </ul>
+        {%- endif -%}
+
+        <div class="kt-club__btns">
+          <a class="kt-club__btn kt-club__btn--primary" href="#tymova-objednavka">
+            {{- section.settings.button_label -}}
+            {%- render 'kt-icon', name: 'arrow' -%}
+          </a>
+          {%- if section.settings.show_form -%}
+            <a class="kt-club__btn" href="#nabidka">{{ section.settings.button_label_2 }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- if team_price > 0 and single_price > 0 -%}
+        <div
+          class="kt-club__calc kt-reveal"
+          data-kt-club-calc
+          data-team="{{ team_price }}"
+          data-single="{{ single_kc }}"
+          data-min="{{ team_min }}"
+          data-free="{{ free_from }}"
+          data-en="{{ en }}"
+        >
+          <label class="kt-club__calc-label" for="KtClubN-{{ section.id }}">
+            {%- if en %}How many players?{% else %}Kolik vás je?{% endif -%}
+          </label>
+          <div class="kt-club__calc-row">
+            <button type="button" data-kt-club-step="-1" aria-label="{% if en %}Fewer{% else %}Méně{% endif %}">−</button>
+            <input id="KtClubN-{{ section.id }}" type="number" inputmode="numeric" min="1" max="200" value="{{ start_n }}">
+            <button type="button" data-kt-club-step="1" aria-label="{% if en %}More{% else %}Více{% endif %}">+</button>
+            <span>{% if en %}players{% else %}hráčů{% endif %}</span>
+          </div>
+          <dl class="kt-club__calc-out">
+            <div><dt>{% if en %}Team total{% else %}Celkem za tým{% endif %}</dt><dd data-kt-club-total>–</dd></div>
+            <div><dt>{% if en %}You save{% else %}Ušetříte{% endif %}</dt><dd data-kt-club-save>–</dd></div>
+          </dl>
+          <p class="kt-club__calc-note" data-kt-club-note aria-live="polite"></p>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <ol class="kt-club__steps" role="list">
+        {%- for block in section.blocks -%}
+          <li class="kt-club__step kt-reveal" {{ block.shopify_attributes }}>
+            <span class="kt-club__step-num" aria-hidden="true">{{ forloop.index }}</span>
+            <h2 class="kt-club__step-title">{{ block.settings.title }}</h2>
+            {%- if block.settings.text != blank -%}
+              <div class="kt-club__step-text">{{ block.settings.text }}</div>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ol>
+    {%- endif -%}
+
+    <div class="kt-club__order" id="tymova-objednavka">
+      {%- if section.settings.order_heading != blank -%}
+        <h2 class="kt-heading kt-club__h2">{{ section.settings.order_heading }}</h2>
+      {%- endif -%}
+      {%- render 'kt-team', product: kt_p -%}
+      {%- render 'kt-size-dialog', calc: false -%}
+    </div>
+
+    {%- if section.settings.show_form -%}
+      <div class="kt-club__form-wrap" id="nabidka">
+        <div class="kt-reveal">
+          {%- if section.settings.form_heading != blank -%}
+            <h2 class="kt-heading kt-club__h2">{{ section.settings.form_heading }}</h2>
+          {%- endif -%}
+          {%- if section.settings.form_text != blank -%}
+            <div class="kt-lead-text">{{ section.settings.form_text }}</div>
+          {%- endif -%}
+        </div>
+
+        {%- form 'contact', id: 'KtClubForm', class: 'kt-club__form' -%}
+          {%- if form.posted_successfully? -%}
+            <p class="kt-club__ok" role="status">
+              {%- if en %}Thanks! We'll get back to you soon.{% else %}Díky! Ozveme se vám co nejdřív.{% endif -%}
+            </p>
+          {%- elsif form.errors -%}
+            <div class="kt-club__err" role="alert">{{ form.errors | default_errors }}</div>
+          {%- endif -%}
+          <input type="hidden" name="contact[Typ]" value="Nabídka pro tým">
+          <div class="kt-club__fields">
+            <label>
+              <span>{% if en %}Club / team{% else %}Klub / tým{% endif %} *</span>
+              <input type="text" name="contact[Klub]" required autocomplete="organization">
+            </label>
+            <label>
+              <span>{% if en %}Your name{% else %}Jméno{% endif %} *</span>
+              <input type="text" name="contact[name]" required autocomplete="name" value="{{ form.name }}">
+            </label>
+            <label>
+              <span>E-mail *</span>
+              <input type="email" name="contact[email]" required autocomplete="email" spellcheck="false" value="{{ form.email }}">
+            </label>
+            <label>
+              <span>{% if en %}Phone{% else %}Telefon{% endif %}</span>
+              <input type="tel" name="contact[phone]" autocomplete="tel" value="{{ form.phone }}">
+            </label>
+            <label>
+              <span>{% if en %}Number of players{% else %}Počet hráčů{% endif %}</span>
+              <input type="number" name="contact[Počet hráčů]" min="1" max="500" inputmode="numeric">
+            </label>
+            <label class="kt-club__full">
+              <span>{% if en %}Message{% else %}Zpráva{% endif %}</span>
+              <textarea name="contact[body]" rows="4" placeholder="{% if en %}Age group, sizes if you know them, anything else…{% else %}Kategorie, velikosti (jestli je znáte), cokoliv dalšího…{% endif %}">{{ form.body }}</textarea>
+            </label>
+          </div>
+          <button type="submit" class="kt-club__btn kt-club__btn--primary">
+            {%- if en %}Send{% else %}Odeslat{% endif -%}
+          </button>
+          <p class="kt-club__fine">
+            {%- if en -%}
+              We only use your details to reply to you.
+            {%- else -%}
+              Údaje použijeme jen k odpovědi na vaši zprávu.
+            {%- endif -%}
+          </p>
+        {%- endform -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (() => {
+    document.querySelectorAll('.kt-club .kt-club__order kt-team').forEach((team) => {
+      customElements.whenDefined('kt-team').then(() => {
+        const panel = team.querySelector('.kt-team__panel');
+        const toggle = team.querySelector('.kt-team__toggle');
+        if (!panel || !toggle) return;
+        panel.hidden = false;
+        toggle.setAttribute('aria-expanded', 'true');
+        team.classList.add('is-open');
+      });
+    });
+
+    document.querySelectorAll('[data-kt-club-calc]:not([data-ready])').forEach((calc) => {
+      calc.dataset.ready = '1';
+      const input = calc.querySelector('input');
+      const team = parseInt(calc.dataset.team, 10);
+      const single = parseInt(calc.dataset.single, 10);
+      const min = parseInt(calc.dataset.min, 10);
+      const free = parseInt(calc.dataset.free, 10) || 0;
+      const en = calc.dataset.en === 'true';
+      const kc = (n) => `${n.toLocaleString(en ? 'en-GB' : 'cs-CZ')} Kč`;
+      const out = () => {
+        let n = parseInt(input.value, 10);
+        if (!Number.isFinite(n) || n < 1) n = 1;
+        if (n > 200) n = 200;
+        const unit = n >= min ? team : single;
+        const total = unit * n;
+        calc.querySelector('[data-kt-club-total]').textContent = kc(total);
+        calc.querySelector('[data-kt-club-save]').textContent = kc(single * n - total);
+        let note;
+        if (n < min) {
+          note = en
+            ? `The team price starts at ${min} pieces – add ${min - n} more.`
+            : `Týmová cena platí od ${min} kusů – přidejte ještě ${min - n}.`;
+        } else {
+          note = en ? `${kc(team)} per piece instead of ${kc(single)}.` : `${kc(team)} za kus místo ${kc(single)}.`;
+          if (free > 0 && total >= free) note += en ? ' Free shipping.' : ' Doprava zdarma.';
+        }
+        calc.querySelector('[data-kt-club-note]').textContent = note;
+      };
+      calc.addEventListener('click', (event) => {
+        const step = event.target.closest('[data-kt-club-step]');
+        if (!step) return;
+        input.value = Math.max(1, Math.min(200, (parseInt(input.value, 10) || 0) + parseInt(step.dataset.ktClubStep, 10)));
+        out();
+      });
+      input.addEventListener('input', out);
+      out();
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "KT – Pro kluby",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "product", "id": "product", "label": "Produkt", "info": "Prázdné = KNEETECH bandáž." },
+    { "type": "text", "id": "eyebrow", "label": "Malý nadpis", "default": "Pro kluby a trenéry" },
+    { "type": "text", "id": "heading", "label": "Nadpis", "default": "Celý tým v bandážích" },
+    { "type": "text", "id": "heading_accent", "label": "Nadpis – zvýrazněná část", "default": "za týmovou cenu." },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Tlačítko – objednávka", "default": "Sestavit objednávku" },
+    { "type": "text", "id": "button_label_2", "label": "Tlačítko – nabídka", "default": "Chci nabídku" },
+    { "type": "range", "id": "calc_default", "min": 1, "max": 30, "step": 1, "label": "Kalkulačka – výchozí počet hráčů", "default": 11 },
+    { "type": "number", "id": "free_from", "label": "Doprava zdarma od (Kč)", "info": "Musí sedět s Nastavení → Doprava.", "default": 1500 },
+    { "type": "text", "id": "order_heading", "label": "Nadpis nad objednávkou", "default": "Sestavte objednávku pro tým" },
+    { "type": "checkbox", "id": "show_form", "label": "Zobrazit formulář", "default": true },
+    { "type": "text", "id": "form_heading", "label": "Formulář – nadpis", "default": "Chcete nabídku nebo poradit?" },
+    { "type": "richtext", "id": "form_text", "label": "Formulář – text" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 80 }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Krok",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Nadpis", "default": "Změřte kolena" },
+        { "type": "richtext", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "KT – Pro kluby" }]
+}
+{% endschema %}

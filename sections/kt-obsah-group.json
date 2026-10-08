@@ -483,9 +483,26 @@
         "padding_top": 24,
         "padding_bottom": 96
       }
+    },
+    "details": {
+      "type": "kt-details",
+      "settings": {
+        "eyebrow": "Detaily",
+        "heading": "Vše o bandáži",
+        "show_fit": true,
+        "show_material": true,
+        "show_shipping": true,
+        "show_safety": true,
+        "show_share": true,
+        "show_manufacturer": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 72
+      }
     }
   },
   "order": [
+    "details",
     "marquee",
     "benefits",
     "physio",

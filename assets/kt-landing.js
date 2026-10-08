@@ -6,7 +6,8 @@
   const smooth = () => (window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
 
   /* ---------- Plovoucí tlačítko ----------
-     Viditelné, kdykoliv hlavní tlačítko není na obrazovce (nad i pod ní).
+     Viditelné, když hlavní tlačítko není na obrazovce (nad i pod ní) a zákazník
+     už posunul stránku – první pohled na produkt tak lišta nezakrývá.
      Klik sjede k výběru velikosti a krátce ho zvýrazní. */
   if (!customElements.get('kt-sticky-buy')) {
     customElements.define(
@@ -19,12 +20,30 @@
           if (!this.bar || !this.button || !this.target || !('IntersectionObserver' in window)) return;
 
           const rect = this.target.getBoundingClientRect();
-          this.toggle(rect.bottom < 0 || rect.top > window.innerHeight);
+          this.offscreen = rect.bottom < 0 || rect.top > window.innerHeight;
+          this.update();
 
-          this.observer = new IntersectionObserver(([entry]) => this.toggle(!entry.isIntersecting));
+          this.observer = new IntersectionObserver(([entry]) => {
+            this.offscreen = !entry.isIntersecting;
+            this.update();
+          });
           this.observer.observe(this.target);
 
+          this.onScroll = () => {
+            if (this.ticking) return;
+            this.ticking = true;
+            requestAnimationFrame(() => {
+              this.ticking = false;
+              this.update();
+            });
+          };
+          window.addEventListener('scroll', this.onScroll, { passive: true });
+
           this.button.addEventListener('click', () => this.goToPicker());
+        }
+
+        update() {
+          this.toggle(this.offscreen && window.scrollY > 240);
         }
 
         toggle(show) {
@@ -49,6 +68,7 @@
 
         disconnectedCallback() {
           if (this.observer) this.observer.disconnect();
+          if (this.onScroll) window.removeEventListener('scroll', this.onScroll);
         }
       }
     );

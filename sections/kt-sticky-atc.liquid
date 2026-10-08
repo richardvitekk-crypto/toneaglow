@@ -1,7 +1,8 @@
 {%- comment -%}
   Plovoucí lišta s tlačítkem na úvodu i produktu.
-  Je vidět vždy, když hlavní tlačítko „Přidat do košíku“ není na obrazovce –
-  na mobilu tedy hned po otevření stránky. Klik sjede k výběru velikosti.
+  Je vidět, když hlavní tlačítko „Přidat do košíku“ není na obrazovce a zákazník už
+  trochu posunul stránku (první pohled zůstane čistý). Klik sjede k výběru velikosti.
+  Volba „Jen na mobilu“ ji na počítači schová – tam je nákupní sloupec vidět stále.
   Na úvodu se produkt bere z nastavení sekce.
 {%- endcomment -%}
 {%- liquid
@@ -34,7 +35,7 @@
   {{ 'kt-landing.css' | asset_url | stylesheet_tag }}
   {{ 'kt-offers.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'kt-landing.js' | asset_url }}" defer="defer"></script>
-  <kt-sticky-buy>
+  <kt-sticky-buy{% if section.settings.mobile_only %} class="kt-sticky-buy--mobile"{% endif %}>
     <div class="kt-sticky color-{{ section.settings.color_scheme }}" aria-hidden="true">
       <div class="page-width kt-sticky__inner">
         <div class="kt-sticky__info">
@@ -77,6 +78,7 @@
   "settings": [
     { "type": "text", "id": "button_label", "label": "Tlačítko – text", "default": "Vybrat velikost" },
     { "type": "text", "id": "price_text", "label": "Text s cenou", "info": "Když necháš prázdné, ukáže se nejnižší cena." },
+    { "type": "checkbox", "id": "mobile_only", "label": "Jen na mobilu", "default": true },
     { "type": "product", "id": "product", "label": "Produkt (jen pro úvodní stránku)", "info": "Na stránce produktu se použije zobrazený produkt." },
     { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" }
   ],

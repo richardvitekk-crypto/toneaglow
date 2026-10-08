@@ -363,8 +363,21 @@ kt-sticky-buy .kt-sticky .button {
 }
 
 /* aby lišta nezakryla konec patičky */
-body:has(kt-sticky-buy) .footer {
+body:has(kt-sticky-buy:not(.kt-sticky-buy--mobile)) .footer {
   padding-bottom: 8rem;
+}
+
+/* „Jen na mobilu“: na počítači je nákupní sloupec vidět stále, lišta tam není potřeba */
+@media screen and (max-width: 749px) {
+  body:has(kt-sticky-buy.kt-sticky-buy--mobile) .footer {
+    padding-bottom: 8rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  kt-sticky-buy.kt-sticky-buy--mobile {
+    display: none;
+  }
 }
 
 /* zvýraznění výběru velikosti po kliknutí na lištu */

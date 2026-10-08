@@ -157,7 +157,7 @@
       const arrive = fmt(addWorkdays(today, parseInt(el.dataset.delivery, 10) || 14));
       el.querySelector('[data-kt-eta-text]').innerHTML = en
         ? `Order today – ships by <strong>${ship}</strong>, arrives by <strong>${arrive}</strong> at the latest.`
-        : `Objednej dnes – odešleme do <strong>${ship}</strong>, doručíme nejpozději <strong>${arrive}</strong>.`;
+        : `Objednej dnes – odešleme do <strong>${ship}</strong>, doručíme nejpozději <strong>${arrive}</strong>`;
       el.hidden = false;
     });
   })();

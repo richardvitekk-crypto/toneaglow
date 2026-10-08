@@ -2,7 +2,10 @@
   Nabídka v košíku: 1 kus → balení 2 kusů (na obě kolena), nebo 2–4 jednotlivé kusy → výhodnější balení.
   Hledá variantu stejného produktu, která se liší jen v jedné volbě (Balení) a je dražší, ale levnější
   než dva samostatné kusy. Od 5 kusů se nenabízí – tam platí týmová cena. Kliknutí obslouží kneetech-extra.js.
+  Nad nabídkou se vykreslí i ukazatel dopravy zdarma (kt-free-ship) – tenhle úryvek už stojí
+  v košíku i ve vysouvacím košíku, takže stačí jedno místo.
 {%- endcomment -%}
+{%- render 'kt-free-ship' -%}
 {%- liquid
   assign up_item = nil
   assign up_pair = nil

@@ -177,3 +177,50 @@ cart-items:not(.is-empty) .title-wrapper-with-link > a {
   opacity: 0.6;
   cursor: progress;
 }
+
+/* Ukazatel dopravy zdarma */
+.kt-ship {
+  margin: 0 0 1.4rem;
+  text-align: left;
+}
+
+.kt-ship__text {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0 0 0.8rem;
+  font-size: 1.4rem;
+  line-height: 1.35;
+  color: rgba(var(--color-foreground), 0.85);
+}
+
+.kt-ship__text strong {
+  color: rgb(var(--color-foreground));
+  font-weight: 700;
+}
+
+.kt-ship__icon {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  color: var(--kt-lime, #d8ff3e);
+}
+
+.kt-ship__bar {
+  height: 0.6rem;
+  border-radius: 99rem;
+  background: rgba(var(--color-foreground), 0.12);
+  overflow: hidden;
+}
+
+.kt-ship__bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--kt-lime, #d8ff3e);
+  transition: width 0.5s var(--kt-ease, ease);
+}
+
+.kt-ship.is-free .kt-ship__text strong {
+  color: var(--kt-lime, #d8ff3e);
+}

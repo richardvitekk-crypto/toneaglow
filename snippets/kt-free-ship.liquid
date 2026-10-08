@@ -1,0 +1,47 @@
+{%- comment -%}
+  Ukazatel dopravy zdarma v košíku: „Do dopravy zdarma ti chybí 910 Kč“ + proužek.
+  Hranice odpovídá sazbě „Standardní 0 Kč“ v Nastavení → Doprava (od 1 500 Kč, jen ČR).
+  Když ji v adminu změníš, změň i threshold níž (v haléřích: 1 500 Kč = 150000).
+  Ukazuje se jen v Kč – v jiné měně by částka neseděla.
+{%- endcomment -%}
+{%- liquid
+  assign threshold = 150000
+  assign en = false
+  if request.locale.iso_code == 'en'
+    assign en = true
+  endif
+  assign left = threshold | minus: cart.total_price
+  assign pct = cart.total_price | times: 100 | divided_by: threshold | at_most: 100
+-%}
+{%- if cart.item_count > 0 and cart.currency.iso_code == 'CZK' -%}
+  <div class="kt-ship{% if left <= 0 %} is-free{% endif %}">
+    <p class="kt-ship__text">
+      {%- render 'kt-icon', name: 'truck', class: 'kt-ship__icon' -%}
+      <span>
+        {%- if left > 0 -%}
+          {%- if en -%}
+            You're <strong>{{ left | money_without_trailing_zeros }}</strong> away from free shipping
+          {%- else -%}
+            Do dopravy zdarma ti chybí <strong>{{ left | money_without_trailing_zeros }}</strong>
+          {%- endif -%}
+        {%- else -%}
+          {%- if en -%}
+            <strong>Free shipping</strong> is yours
+          {%- else -%}
+            Máš <strong>dopravu zdarma</strong>
+          {%- endif -%}
+        {%- endif -%}
+      </span>
+    </p>
+    <div
+      class="kt-ship__bar"
+      role="progressbar"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="{{ pct }}"
+      aria-label="{% if en %}Free shipping progress{% else %}Cesta k dopravě zdarma{% endif %}"
+    >
+      <span style="width: {{ pct }}%;"></span>
+    </div>
+  </div>
+{%- endif -%}

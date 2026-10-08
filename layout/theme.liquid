@@ -15,18 +15,50 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
+    {%- comment -%}
+      Značka a SEO: dokud se obchod v adminu jmenuje „Můj obchod“, používá se KNEETECH.
+      Úvodní stránka bez vlastního titulku/popisu (Online obchod → Předvolby) dostane výchozí.
+    {%- endcomment -%}
+    {%- liquid
+      assign kt_brand = shop.name
+      if kt_brand == blank or kt_brand == 'Můj obchod'
+        assign kt_brand = 'KNEETECH'
+      endif
+      assign kt_en = false
+      if request.locale.iso_code == 'en'
+        assign kt_en = true
+      endif
+      assign kt_title = page_title
+      assign kt_desc = page_description
+      if request.page_type == 'index'
+        if kt_title == blank or kt_title == shop.name
+          if kt_en
+            assign kt_title = 'KNEETECH – compression knee support for football players and athletes'
+          else
+            assign kt_title = 'KNEETECH – kompresní bandáž na koleno pro fotbalisty a sportovce'
+          endif
+        endif
+        if kt_desc == blank
+          if kt_en
+            assign kt_desc = 'Compression knee support with a Velcro strap, tested by players from professional football academies. 1 piece 590 CZK, 2 pieces 790 CZK, 14-day returns.'
+          else
+            assign kt_desc = 'Kompresní bandáž na koleno s utažením na suchý zip, vyzkoušená hráči z profesionálních fotbalových akademií. 1 ks 590 Kč, 2 ks 790 Kč, 14 dní na vrácení.'
+          endif
+        endif
+      endif
+    -%}
     <title>
-      {{ page_title }}
+      {{ kt_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- unless kt_title contains kt_brand %} &ndash; {{ kt_brand }}{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
+    {% if kt_desc != blank %}
+      <meta name="description" content="{{ kt_desc | escape }}">
     {% endif %}
 
-    {% render 'meta-tags' %}
+    {% render 'meta-tags', kt_brand: kt_brand, kt_title: kt_title, kt_desc: kt_desc %}
 
     <script type="module">
       import * as StandardEvents from 'https://cdn.shopify.com/storefront/standard-events.js';
@@ -330,6 +362,9 @@
     {% comment %}theme-check-disable AssetPreload{% endcomment %}
     <link rel="preload" as="font" href="{{ 'kt-oswald-latin.woff2' | asset_url }}" type="font/woff2" crossorigin>
     <link rel="preload" as="font" href="{{ 'kt-inter-latin.woff2' | asset_url }}" type="font/woff2" crossorigin>
+    {%- comment -%} čeština (ě š č ř ž ů) potřebuje i latin-ext – načíst hned, ať text neposkakuje {%- endcomment -%}
+    <link rel="preload" as="font" href="{{ 'kt-oswald-latin-ext.woff2' | asset_url }}" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="{{ 'kt-inter-latin-ext.woff2' | asset_url }}" type="font/woff2" crossorigin>
     {% comment %}theme-check-enable AssetPreload{% endcomment %}
 
     {%- if localization.available_countries.size > 1 or localization.available_languages.size > 1 -%}

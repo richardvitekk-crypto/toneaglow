@@ -125,27 +125,60 @@
   display: none;
 }
 
-/* Fotky na počítači: všechny fotky ve 2 sloupcích pod sebou (první přes celou šířku),
-   ať vedle dlouhého textu nezůstává prázdné místo. Na mobilu zůstává posuvník. */
+/* Fotky na počítači: hlavní fotka + náhledy zůstávají při posouvání stát vedle textu
+   (lepivá galerie). Nákupní sloupec vpravo je krátký – podrobnosti jsou pod produktem
+   v sekci „Vše o bandáži“. Na mobilu se nic nemění. */
 @media screen and (min-width: 990px) {
-  .product__media-wrapper media-gallery .product__media-list {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.2rem;
-    margin: 0;
+  .product__media-wrapper media-gallery {
+    display: block;
+    position: sticky;
+    top: 2.4rem;
+    z-index: 2;
   }
-  .product__media-wrapper media-gallery .product__media-list > .product__media-item {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    display: block !important;
+}
+
+/* Vše o bandáži – rozbalovací řádky + „Platí rodiče?“ pod produktem */
+.kt-details__heading {
+  margin: 0.4rem 0 2.4rem;
+}
+
+.kt-details__acc {
+  border-top: 1px solid rgba(var(--color-foreground), 0.1);
+}
+
+.kt-details__acc .product__accordion {
+  margin: 0;
+}
+
+.kt-details__side {
+  display: grid;
+  gap: 1.6rem;
+  align-content: start;
+  margin-top: 3.2rem;
+}
+
+.kt-details__side .kt-share {
+  margin: 0;
+}
+
+.kt-details__note {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.55;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+@media screen and (min-width: 990px) {
+  .kt-details__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 5.6rem;
+    align-items: start;
   }
-  .product__media-wrapper media-gallery .product__media-list > .product__media-item:first-child {
-    grid-column: 1 / -1;
-  }
-  .product__media-wrapper media-gallery .thumbnail-slider,
-  .product__media-wrapper media-gallery .slider-buttons {
-    display: none !important;
+
+  .kt-details__side {
+    position: sticky;
+    top: 2.4rem;
+    margin-top: 0;
   }
 }

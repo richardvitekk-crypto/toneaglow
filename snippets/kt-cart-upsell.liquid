@@ -4,16 +4,31 @@
   než dva samostatné kusy. Od 5 kusů se nenabízí – tam platí týmová cena. Kliknutí obslouží kneetech-extra.js.
   Nad nabídkou se vykreslí i ukazatel dopravy zdarma (kt-free-ship) – tenhle úryvek už stojí
   v košíku i ve vysouvacím košíku, takže stačí jedno místo.
+  Týmová objednávka: když je v košíku aspoň tolik jednotlivých kusů, kolik chce týmová cena
+  (metapole custom.tym_od_ks, výchozí 5), nebo už na položce leží sleva, nabídka se neukáže –
+  balení 2 kusů by vyšlo dráž a výměnou by tým o týmovou cenu přišel.
 {%- endcomment -%}
 {%- render 'kt-free-ship' -%}
 {%- liquid
   assign up_item = nil
   assign up_pair = nil
+  assign singles = 0
+  assign team_min = 5
   for item in cart.items
-    if up_pair != nil
+    assign pack_qty = item.variant.option1 | split: ' ' | first | plus: 0
+    if pack_qty == 1
+      assign singles = singles | plus: item.quantity
+      assign item_min = item.product.metafields.custom.tym_od_ks.value | default: 5 | plus: 0
+      if item_min > 1
+        assign team_min = item_min
+      endif
+    endif
+  endfor
+  for item in cart.items
+    if up_pair != nil or singles >= team_min
       break
     endif
-    if item.product.has_only_default_variant or item.quantity >= 5
+    if item.product.has_only_default_variant or item.quantity >= 5 or item.line_level_discount_allocations.size > 0
       continue
     endif
     assign double_price = item.variant.price | times: 2

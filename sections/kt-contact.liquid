@@ -1,0 +1,267 @@
+{%- comment -%}
+  Kontaktní formulář KNEETECH: popisky nad políčky, v políčkách ukázka („např. …“),
+  výběr tématu jako kulatá tlačítka. Podle tématu se ukáže políčko navíc:
+  Objednávka / Vrácení → číslo objednávky, Velikost → obvod kolena v cm.
+  Zprávy chodí na kontaktní e-mail obchodu (Nastavení → Obecné), téma a doplňující
+  políčka jsou v e-mailu jako samostatné řádky.
+{%- endcomment -%}
+{{ 'kt-contact.css' | asset_url | stylesheet_tag }}
+{%- render 'kt-section-padding', section: section -%}
+
+{%- liquid
+  assign en = false
+  if request.locale.iso_code == 'en'
+    assign en = true
+  endif
+  if en
+    assign t_topic = 'What is it about?'
+    assign topics = 'size:Size|order:My order|return:Return|team:Team order|other:Something else'
+    assign t_name = 'Your name'
+    assign p_name = 'e.g. John Smith'
+    assign t_email = 'E-mail'
+    assign p_email = 'e.g. john.smith@email.com'
+    assign t_phone = 'Phone'
+    assign p_phone = 'e.g. +420 777 123 456'
+    assign h_phone = 'Optional – with country code, so we can call you back.'
+    assign t_order = 'Order number'
+    assign p_order = 'e.g. #1001'
+    assign h_order = 'You will find it in the order confirmation e-mail.'
+    assign t_knee = 'Knee circumference'
+    assign p_knee = 'e.g. 34'
+    assign h_knee = 'Measured around the middle of the kneecap, leg slightly bent.'
+    assign t_msg = 'Message'
+    assign p_msg = 'Write what you need – the more detail, the faster we can help.'
+    assign t_optional = 'optional'
+    assign t_ok = 'Thanks, your message is on its way. We usually reply within 24 hours.'
+    assign t_err = 'Please check the highlighted field:'
+  else
+    assign t_topic = 'S čím ti můžeme pomoct?'
+    assign topics = 'size:Velikost|order:Objednávka|return:Vrácení|team:Pro tým|other:Jiné'
+    assign t_name = 'Jméno a příjmení'
+    assign p_name = 'např. Jan Novák'
+    assign t_email = 'E-mail'
+    assign p_email = 'např. jan.novak@email.cz'
+    assign t_phone = 'Telefon'
+    assign p_phone = 'např. +420 777 123 456'
+    assign h_phone = 'Nepovinné – i s předvolbou, ať ti můžeme zavolat zpět.'
+    assign t_order = 'Číslo objednávky'
+    assign p_order = 'např. #1001'
+    assign h_order = 'Najdeš ho v e-mailu s potvrzením objednávky.'
+    assign t_knee = 'Obvod kolena'
+    assign p_knee = 'např. 34'
+    assign h_knee = 'Měř přes střed čéšky, nohu měj lehce pokrčenou.'
+    assign t_msg = 'Zpráva'
+    assign p_msg = 'Napiš, s čím potřebuješ pomoct – čím víc podrobností, tím rychleji poradíme.'
+    assign t_optional = 'nepovinné'
+    assign t_ok = 'Díky, zpráva je na cestě. Odpovídáme obvykle do 24 hodin.'
+    assign t_err = 'Zkontroluj prosím zvýrazněné políčko:'
+  endif
+  assign topic_list = topics | split: '|'
+  assign button_label = section.settings.button_label
+  if en
+    assign button_label = 'Send message'
+  endif
+-%}
+
+<div class="kt-section kt-cf color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="kt-cf__card">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="kt-heading kt-cf__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      {%- form 'contact', id: 'KtContactForm', class: 'kt-cf__form' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="kt-cf__ok" role="status" tabindex="-1" autofocus>
+            {%- render 'kt-icon', name: 'check', class: 'kt-cf__ok-icon' -%}
+            <span>{{ t_ok }}</span>
+          </p>
+        {%- elsif form.errors -%}
+          <div class="kt-cf__err" role="alert" tabindex="-1" autofocus>
+            {{ t_err }}
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.show_topics -%}
+          <fieldset class="kt-cf__topics">
+            <legend class="kt-cf__label">{{ t_topic }}</legend>
+            <div class="kt-cf__chips">
+              {%- for t in topic_list -%}
+                {%- assign tp = t | split: ':' -%}
+                <label class="kt-cf__chip">
+                  <input
+                    type="radio"
+                    name="contact[{% if en %}Topic{% else %}Téma{% endif %}]"
+                    value="{{ tp[1] }}"
+                    data-kt-topic="{{ tp[0] }}"
+                  >
+                  <span>{{ tp[1] }}</span>
+                </label>
+              {%- endfor -%}
+            </div>
+          </fieldset>
+        {%- endif -%}
+
+        <div class="kt-cf__grid">
+          <div class="kt-cf__field">
+            <label class="kt-cf__label" for="KtCf-name">{{ t_name }}</label>
+            <input
+              id="KtCf-name"
+              class="kt-cf__input"
+              type="text"
+              name="contact[name]"
+              autocomplete="name"
+              placeholder="{{ p_name }}"
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+            >
+          </div>
+
+          <div class="kt-cf__field">
+            <label class="kt-cf__label" for="KtCf-email">{{ t_email }} <span class="kt-cf__req" aria-hidden="true">*</span></label>
+            <input
+              id="KtCf-email"
+              class="kt-cf__input{% if form.errors contains 'email' %} is-error{% endif %}"
+              type="email"
+              name="contact[email]"
+              autocomplete="email"
+              spellcheck="false"
+              autocapitalize="off"
+              required
+              aria-required="true"
+              placeholder="{{ p_email }}"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            >
+          </div>
+
+          <div class="kt-cf__field">
+            <label class="kt-cf__label" for="KtCf-phone">{{ t_phone }} <span class="kt-cf__opt">({{ t_optional }})</span></label>
+            <input
+              id="KtCf-phone"
+              class="kt-cf__input"
+              type="tel"
+              name="contact[phone]"
+              autocomplete="tel"
+              inputmode="tel"
+              placeholder="{{ p_phone }}"
+              aria-describedby="KtCf-phone-hint"
+              value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+            >
+            <small class="kt-cf__hint" id="KtCf-phone-hint">{{ h_phone }}</small>
+          </div>
+
+          <div class="kt-cf__field" data-kt-show="order return" hidden>
+            <label class="kt-cf__label" for="KtCf-order">{{ t_order }}</label>
+            <input
+              id="KtCf-order"
+              class="kt-cf__input"
+              type="text"
+              name="contact[{% if en %}Order number{% else %}Číslo objednávky{% endif %}]"
+              placeholder="{{ p_order }}"
+              aria-describedby="KtCf-order-hint"
+              disabled
+            >
+            <small class="kt-cf__hint" id="KtCf-order-hint">{{ h_order }}</small>
+          </div>
+
+          <div class="kt-cf__field" data-kt-show="size" hidden>
+            <label class="kt-cf__label" for="KtCf-knee">{{ t_knee }}</label>
+            <div class="kt-cf__unit">
+              <input
+                id="KtCf-knee"
+                class="kt-cf__input"
+                type="text"
+                inputmode="decimal"
+                name="contact[{% if en %}Knee circumference (cm){% else %}Obvod kolena (cm){% endif %}]"
+                placeholder="{{ p_knee }}"
+                aria-describedby="KtCf-knee-hint"
+                disabled
+              >
+              <span aria-hidden="true">cm</span>
+            </div>
+            <small class="kt-cf__hint" id="KtCf-knee-hint">{{ h_knee }}</small>
+          </div>
+
+          <div class="kt-cf__field kt-cf__field--full">
+            <label class="kt-cf__label" for="KtCf-body">{{ t_msg }}</label>
+            <textarea
+              id="KtCf-body"
+              class="kt-cf__input kt-cf__textarea"
+              name="contact[body]"
+              rows="5"
+              placeholder="{{ p_msg }}"
+            >{{ form.body }}</textarea>
+          </div>
+        </div>
+
+        <div class="kt-cf__foot">
+          <button type="submit" class="kt-cf__btn">
+            {{- button_label -}}
+            {%- render 'kt-icon', name: 'arrow' -%}
+          </button>
+          {%- if section.settings.note != blank -%}
+            <p class="kt-cf__note">{{ section.settings.note }}</p>
+          {%- endif -%}
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    document.querySelectorAll('#KtContactForm:not([data-ready])').forEach((form) => {
+      form.dataset.ready = '1';
+      const extras = form.querySelectorAll('[data-kt-show]');
+      const msg = form.querySelector('textarea');
+      const en = (document.documentElement.lang || '').toLowerCase().startsWith('en');
+      const hints = en
+        ? {
+            size: 'E.g. My knee is 34 cm, I play football 3× a week – M or S?',
+            order: 'E.g. I would like to change the size in my order.',
+            return: 'E.g. I would like to return the support, it is too big.',
+            team: 'E.g. We are an U15 team, 18 players – sizes M and L.',
+            other: '',
+          }
+        : {
+            size: 'Např. Mám obvod kolena 34 cm, hraju fotbal 3× týdně – M, nebo S?',
+            order: 'Např. Chtěl bych v objednávce změnit velikost.',
+            return: 'Např. Chci bandáž vrátit, je mi velká.',
+            team: 'Např. Jsme tým U15, 18 hráčů – velikosti M a L.',
+            other: '',
+          };
+      const base = msg ? msg.getAttribute('placeholder') : '';
+      const update = (topic) => {
+        extras.forEach((box) => {
+          const show = box.dataset.ktShow.split(' ').includes(topic);
+          box.hidden = !show;
+          box.querySelectorAll('input').forEach((input) => (input.disabled = !show));
+        });
+        if (msg) msg.setAttribute('placeholder', hints[topic] || base);
+      };
+      form.addEventListener('change', (event) => {
+        if (event.target.matches('[data-kt-topic]')) update(event.target.dataset.ktTopic);
+      });
+      const checked = form.querySelector('[data-kt-topic]:checked');
+      if (checked) update(checked.dataset.ktTopic);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "KT – Kontaktní formulář",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Nadpis (nepovinné)" },
+    { "type": "checkbox", "id": "show_topics", "label": "Výběr tématu", "default": true, "info": "Velikost / Objednávka / Vrácení / Pro tým / Jiné – podle tématu se ukáže políčko navíc (číslo objednávky, obvod kolena)." },
+    { "type": "text", "id": "button_label", "label": "Tlačítko", "default": "Odeslat zprávu" },
+    { "type": "text", "id": "note", "label": "Drobný text pod tlačítkem", "default": "Odpovídáme obvykle do 24 hodin. Údaje použijeme jen k odpovědi na tvou zprávu." },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 24 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 72 }
+  ],
+  "presets": [{ "name": "KT – Kontaktní formulář" }]
+}
+{% endschema %}

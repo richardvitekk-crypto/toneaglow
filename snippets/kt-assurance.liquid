@@ -13,11 +13,13 @@
   Ikony plateb se berou ze skutečně zapnutých plateb v Shopify (shop.enabled_payment_types),
   takže ukazují jen to, co jde opravdu zaplatit.
 
-  Termín nad seznamem („odešleme do …, doručíme nejpozději …“) počítá prohlížeč z dnešního data:
-  odeslání do 3 pracovních dnů, doručení do 14 pracovních dnů od objednávky. Víkendy a české
-  státní svátky (i Velikonoce) se nepočítají. Bez JavaScriptu se řádek neukáže.
-  - ship_days {Number}     – pracovní dny do odeslání (výchozí 3)
-  - delivery_days {Number} – pracovní dny do doručení (výchozí 14)
+  Termín nad seznamem („odešleme do …, doručíme nejpozději …“) počítá prohlížeč z dnešního data
+  v kalendářních dnech: odeslání do 4 dnů, doručení nejpozději do 14 dnů od objednávky
+  (4 dny odeslání + 10 dnů doručení). Když datum vyjde na sobotu, neděli nebo český státní
+  svátek (i Velikonoce), posune se na další pracovní den – kurýři o víkendu nedoručují.
+  Bez JavaScriptu se řádek neukáže.
+  - ship_days {Number}     – dny do odeslání (výchozí 4)
+  - delivery_days {Number} – dny do doručení od objednávky (výchozí 14)
 {%- endcomment -%}
 {{ 'kt-landing.css' | asset_url | stylesheet_tag }}
 {{ 'kt-popis.css' | asset_url | stylesheet_tag }}
@@ -35,7 +37,7 @@
   assign returns_sub = returns_sub | default: d_returns_sub
   assign link = link | default: d_link
   assign brand = brand | default: d_brand
-  assign ship_days = ship_days | default: 3
+  assign ship_days = ship_days | default: 4
   assign delivery_days = delivery_days | default: 14
 -%}
 {%- style -%}
@@ -130,12 +132,10 @@
       holidays.add(key(new Date(y, ea.getMonth(), ea.getDate() + 1)));
     };
     const workday = (d) => d.getDay() !== 0 && d.getDay() !== 6 && !holidays.has(key(d));
-    const addWorkdays = (from, n) => {
+    const addDays = (from, n) => {
       const d = new Date(from);
-      while (n > 0) {
-        d.setDate(d.getDate() + 1);
-        if (workday(d)) n -= 1;
-      }
+      d.setDate(d.getDate() + n);
+      while (!workday(d)) d.setDate(d.getDate() + 1);
       return d;
     };
     const today = (() => {
@@ -153,8 +153,8 @@
 
     document.querySelectorAll('[data-kt-eta]:not([data-done])').forEach((el) => {
       el.dataset.done = '1';
-      const ship = fmt(addWorkdays(today, parseInt(el.dataset.ship, 10) || 3));
-      const arrive = fmt(addWorkdays(today, parseInt(el.dataset.delivery, 10) || 14));
+      const ship = fmt(addDays(today, parseInt(el.dataset.ship, 10) || 4));
+      const arrive = fmt(addDays(today, parseInt(el.dataset.delivery, 10) || 14));
       el.querySelector('[data-kt-eta-text]').innerHTML = en
         ? `Order today – ships by <strong>${ship}</strong>, arrives by <strong>${arrive}</strong> at the latest.`
         : `Objednej dnes – odešleme do <strong>${ship}</strong>, doručíme nejpozději <strong>${arrive}</strong>`;

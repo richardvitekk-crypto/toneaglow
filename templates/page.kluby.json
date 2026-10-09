@@ -30,7 +30,7 @@
           "type": "step",
           "settings": {
             "title": "Hrajte",
-            "text": "<p>Odešleme do 3 pracovních dnů, doručíme nejpozději do 14 pracovních dnů. Na vrácení máte 14 dní.</p>"
+            "text": "<p>Odešleme do 4 dnů, doma ji máte nejpozději do 14 dnů od objednávky. Na vrácení máte 14 dní.</p>"
           }
         }
       },
@@ -102,7 +102,7 @@
           "type": "question",
           "settings": {
             "question": "Jak dlouho trvá doručení?",
-            "answer": "<p>Odesíláme do 3 pracovních dnů, doručení je nejpozději do 14 pracovních dnů od objednávky. Po odeslání přijde odkaz na sledování zásilky.</p>"
+            "answer": "<p>Odesíláme do 4 dnů a doma ji máte nejpozději do 14 dnů od objednávky. Po odeslání přijde odkaz na sledování zásilky.</p>"
           }
         },
         "t5": {

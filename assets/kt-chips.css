@@ -188,3 +188,25 @@ h1.kt-hl__kicker {
   line-height: inherit;
   word-break: normal;
 }
+
+/* Notebooky (počítač s nízkou obrazovkou): nižší horní pruh a menší název produktu,
+   aby výběr balení s cenou byl vidět hned bez posouvání. Mobil a velké monitory beze změny. */
+@media screen and (min-width: 990px) and (max-height: 900px) {
+  .kt-hl .kt-hl__inner {
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
+  }
+
+  .kt-hl .kt-hl__title {
+    font-size: 4.2rem;
+  }
+
+  .kt-hl .kt-hl__kicker {
+    margin-bottom: 0.4rem;
+  }
+
+  .product__info-container .product__title.h1 {
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+  }
+}

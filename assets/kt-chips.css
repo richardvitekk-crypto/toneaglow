@@ -205,8 +205,12 @@ h1.kt-hl__kicker {
     margin-bottom: 0.4rem;
   }
 
-  .product__info-container .product__title.h1 {
+  .product__info-container .product__title.h1,
+  .product__info-container .product__title > h1 {
     font-size: 3.2rem;
+  }
+
+  .product__info-container .product__title {
     margin-bottom: 1rem;
   }
 }

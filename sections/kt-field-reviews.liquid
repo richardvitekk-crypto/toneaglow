@@ -5,6 +5,9 @@
   Průměr a počet se počítají z viditelných karet a předávají se odznaku
   hodnocení pod názvem produktu (snippet kt-field-rating) přes data atributy.
   [pocet] v nadpisech se nahradí skutečným počtem zobrazených karet.
+  U hráče jde vyplnit znak klubu a odkaz na jeho profil na FAČR (is.fotbal.cz) – na kartě se pak
+  ukáže „Ověřený hráč · profil na FAČR“. Pod karuselem je výzva pro trenéry se stránkou Pro kluby;
+  [cena] a [od] v jejím textu se doplní z produktu (týmová cena a minimum kusů).
 {%- endcomment -%}
 {%- render 'kt-section-padding', section: section -%}
 
@@ -36,6 +39,19 @@
   assign count_str = visible_count | append: ''
   assign heading = section.settings.heading | replace: '[pocet]', count_str
   assign subheading = section.settings.subheading | replace: '[pocet]', count_str
+
+  assign fr_en = false
+  if request.locale.iso_code == 'en'
+    assign fr_en = true
+  endif
+  assign fr_team = all_products['kneetech-bandaz-na-koleno']
+  assign fr_team_price = fr_team.metafields.custom.tymova_cena.value | default: 0 | plus: 0 | append: ''
+  assign fr_team_min = fr_team.metafields.custom.tym_od_ks.value | default: 5 | plus: 0 | append: ''
+  assign fr_club_link = section.settings.club_cta_link
+  if fr_club_link == blank
+    assign fr_club_link = routes.root_url | append: '/pages/pro-kluby' | replace: '//', '/'
+  endif
+  assign fr_club_text = section.settings.club_cta_text | replace: '[cena]', fr_team_price | replace: '[od]', fr_team_min
 -%}
 
 {%- if visible_count > 0 or request.design_mode -%}
@@ -117,7 +133,15 @@
                   {%- endif -%}
                   {%- if block.settings.club != blank -%}
                     <span class="kt-fr__badge kt-fr__badge--club">
-                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="currentColor"/></svg>
+                      {%- if block.settings.club_logo != blank -%}
+                        {{
+                          block.settings.club_logo
+                          | image_url: width: 64
+                          | image_tag: class: 'kt-fr__club-logo', loading: 'lazy', alt: '', width: 20, height: 20
+                        }}
+                      {%- else -%}
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="currentColor"/></svg>
+                      {%- endif -%}
                       {{ block.settings.club }}
                     </span>
                   {%- endif -%}
@@ -151,6 +175,14 @@
                         {{ block.settings.achievement }}
                       </p>
                     {%- endif -%}
+                    {%- if block.settings.facr_url != blank -%}
+                      <a class="kt-fr__facr" href="{{ block.settings.facr_url }}" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="currentColor"/><path d="m8.5 12 2.5 2.5 4.5-5" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span>{% if fr_en %}Verified player · <strong>FAČR profile</strong>{% else %}Ověřený hráč · <strong>profil na FAČR</strong>{% endif %}</span>
+                        <svg class="kt-fr__facr-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="visually-hidden">{% if fr_en %}(opens in a new window){% else %}(otevře se v novém okně){% endif %}</span>
+                      </a>
+                    {%- endif -%}
                   </footer>
                 </div>
               </article>
@@ -169,6 +201,26 @@
             </button>
           </div>
         </div>
+
+        {%- if section.settings.club_cta_show -%}
+          <div class="kt-fr__clubcta kt-reveal">
+            <span class="kt-fr__clubcta-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm0 2c-2.7 0-8 1.3-8 4v3h10v-3c0-1.2.5-2.2 1.3-3A11 11 0 0 0 8 13Zm8 0c-.3 0-.7 0-1.1.1A4.2 4.2 0 0 1 17 17v3h7v-3c0-2.7-5.3-4-8-4Z" fill="currentColor"/></svg>
+            </span>
+            <div class="kt-fr__clubcta-body">
+              {%- if section.settings.club_cta_title != blank -%}
+                <p class="kt-fr__clubcta-title">{{ section.settings.club_cta_title }}</p>
+              {%- endif -%}
+              {%- if fr_club_text != blank -%}
+                <p class="kt-fr__clubcta-text">{{ fr_club_text }}</p>
+              {%- endif -%}
+            </div>
+            <a class="kt-fr__clubcta-btn" href="{{ fr_club_link }}">
+              {{- section.settings.club_cta_label -}}
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        {%- endif -%}
       {%- else -%}
         <div class="kt-fr__empty">
           <strong>Zatím tu není žádný hráč.</strong>
@@ -193,6 +245,12 @@
     { "type": "textarea", "id": "subheading", "label": "Podnadpis", "default": "Osobní testování přímo na trénincích a zápasech." },
     { "type": "checkbox", "id": "show_summary", "label": "Ukázat průměrné hodnocení v záhlaví", "default": true },
     { "type": "text", "id": "summary_note", "label": "Text pod průměrem", "default": "průměr z [pocet] hodnocení hráčů" },
+    { "type": "header", "content": "Výzva pro trenéry pod recenzemi" },
+    { "type": "checkbox", "id": "club_cta_show", "label": "Zobrazit výzvu pro kluby", "default": true },
+    { "type": "text", "id": "club_cta_title", "label": "Nadpis", "default": "Trénujete tým?" },
+    { "type": "text", "id": "club_cta_text", "label": "Text", "default": "Celý tým v bandážích za [cena] Kč/ks od [od] kusů. Velikosti i barvy můžete kombinovat.", "info": "[cena] a [od] se doplní z produktu (týmová cena a minimum kusů)." },
+    { "type": "text", "id": "club_cta_label", "label": "Tlačítko – text", "default": "Pro kluby a trenéry" },
+    { "type": "url", "id": "club_cta_link", "label": "Tlačítko – odkaz", "info": "Prázdné = stránka Pro kluby a trenéry." },
     { "type": "text", "id": "anchor", "label": "Kotva (id sekce)", "default": "recenze-z-terenu", "info": "Na tuto kotvu skroluje odznak hodnocení pod produktem. Neměň, pokud nemusíš." },
     { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-3" },
     { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 96 },
@@ -208,6 +266,8 @@
         { "type": "text", "id": "name", "label": "Jméno", "placeholder": "Filip K." },
         { "type": "text", "id": "age", "label": "Věk", "placeholder": "16 let" },
         { "type": "text", "id": "club", "label": "Klub a kategorie", "placeholder": "FC Zbrojovka Brno – U17" },
+        { "type": "image_picker", "id": "club_logo", "label": "Znak klubu (nepovinné)", "info": "Malý znak vedle názvu klubu na fotce. Ideálně čtvercový, průhledné pozadí." },
+        { "type": "url", "id": "facr_url", "label": "Profil hráče na FAČR (nepovinné)", "info": "Odkaz na hráče na is.fotbal.cz nebo fotbal.cz. Na kartě se ukáže „Ověřený hráč · profil na FAČR“." },
         { "type": "text", "id": "achievement", "label": "Úspěchy / pozice (nepovinné)", "placeholder": "Záložník · Reprezentace ČR U16", "info": "Když necháš prázdné, řádek se skryje." },
         { "type": "range", "id": "rating", "label": "Hodnocení v míčích", "min": 0, "max": 5, "step": 0.5, "default": 5, "info": "0 = bez hodnocení (nezapočítá se do průměru)." },
         { "type": "textarea", "id": "quote", "label": "Citace hráče", "placeholder": "Co hráč řekl po vyzkoušení bandáže…" },

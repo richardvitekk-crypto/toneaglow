@@ -8,6 +8,7 @@
     label  – text za skóre, [pocet] = počet hráčů
     anchor – id sekce, na kterou se skroluje (výchozí recenze-z-terenu)
   Použití: {% render 'kt-field-rating', title: '…', label: 'z [pocet] testování v klubech' %}
+  Řádek s míči se nezalamuje – když je málo místa, zalomí se jen text popisku a šipka zůstane u něj.
 {%- endcomment -%}
 {%- liquid
   assign target = anchor | default: 'recenze-z-terenu'
@@ -17,6 +18,17 @@
   assign label_text = label | default: d_label
 -%}
 {{ 'kt-field-reviews.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .kt-frb__row {
+    flex-wrap: nowrap;
+  }
+  .kt-frb__label {
+    min-width: 0;
+  }
+  .kt-frb__arrow {
+    flex-shrink: 0;
+  }
+{%- endstyle -%}
 <script src="{{ 'kt-field-reviews.js' | asset_url }}" defer="defer"></script>
 {%- render 'kt-ball-sprite', id: 'kt-ball-badge' -%}
 <a

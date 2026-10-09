@@ -1,6 +1,7 @@
 /* KNEETECH – drobné interakce nad tématem Dawn */
 (() => {
-  /* Objevení prvků při scrollu */
+  /* Objevení prvků při scrollu (třída na <html> vypne pojistku v kneetech-extra.css) */
+  document.documentElement.classList.add('kt-reveal-on');
   const revealItems = document.querySelectorAll('.kt-reveal');
   if (revealItems.length) {
     if ('IntersectionObserver' in window) {

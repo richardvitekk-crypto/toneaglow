@@ -782,3 +782,16 @@ body .kt-frb {
 .footer {
   border-top: 1px solid var(--kt-card-border);
 }
+
+/* Pojistka: obsah s animací „objevení“ je skrytý, dokud ho neukáže kneetech.js.
+   Kdyby se skript nenačetl (výpadek, blokátor), ukáže se obsah po 3 s sám. */
+html:not(.kt-reveal-on) .kt-reveal {
+  animation: kt-reveal-failsafe 0s linear 3s forwards;
+}
+
+@keyframes kt-reveal-failsafe {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -167,12 +167,6 @@
                           {%- if block.settings.club != blank -%}
                             <span class="kt-fr__path-name">{{ block.settings.club }}</span>
                           {%- endif -%}
-                          {%- if block.settings.repre -%}
-                            <span class="kt-fr__repre">
-                              <svg viewBox="0 0 24 24" aria-hidden="true"><defs><clipPath id="kt-cz-{{ block.id }}"><circle cx="12" cy="12" r="12"/></clipPath></defs><g clip-path="url(#kt-cz-{{ block.id }})"><rect width="24" height="12" fill="#fff"/><rect y="12" width="24" height="12" fill="#d7141a"/><path d="M0 0 13 12 0 24Z" fill="#11457e"/></g></svg>
-                              <span>{% if fr_en %}Czech NT{% else %}Repre{% endif %}{% if block.settings.repre_label != blank %} {{ block.settings.repre_label }}{% endif %}</span>
-                            </span>
-                          {%- endif -%}
                         </div>
                       {%- endif -%}
                     </div>
@@ -300,8 +294,6 @@
         { "type": "text", "id": "age", "label": "Ročník (rok narození)", "placeholder": "2010", "info": "Zobrazí se pod jménem jako „Ročník 2010“." },
         { "type": "text", "id": "club", "label": "Klub a kategorie", "placeholder": "FC Zbrojovka Brno – U17" },
         { "type": "image_picker", "id": "club_logo", "label": "Znak klubu (nepovinné)", "info": "Znak současného klubu – nahoře na fotce v liště cesty hráče. Ideálně čtvercový." },
-        { "type": "checkbox", "id": "repre", "label": "Aktuálně v reprezentaci ČR", "default": false, "info": "Vedle klubu se ukáže odznak s vlajkou a nápisem Repre." },
-        { "type": "text", "id": "repre_label", "label": "Reprezentace – kategorie", "placeholder": "U16" },
         { "type": "header", "content": "Pozice na hřišti" },
         { "type": "select", "id": "formation", "label": "Rozestavení", "default": "auto", "options": [
           { "value": "auto", "label": "Automaticky (Olomouc 3-5-2, ostatní 4-3-3)" },

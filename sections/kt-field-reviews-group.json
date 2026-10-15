@@ -103,6 +103,81 @@
             "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
             "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/c35a3bdc-cb6d-4679-bf96-7c3a4c7a6986"
           }
+        },
+        "player_denca": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "name": "Denis „Denca“ Mlčák",
+            "age": "",
+            "club": "FC Zbrojovka Brno – U17",
+            "achievement": "",
+            "rating": 0,
+            "quote": "Zkoušel jsem ji hlavně kvůli stabilitě. Dřív jsem malý problém s meniskem měl, tak je to na těžké sprinty a běhové tréninky super prevence a zpevnění. Určitě doporučuju klukům, kteří problémy s koleny měli nebo mají, děkuju.",
+            "photo_credit": "",
+            "club_logo": "shopify://shop_images/klub-zbrojovka-brno.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/f0b3ceec-47bf-494e-98e4-832223492c74"
+          }
+        },
+        "player_nade": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "name": "Jakub „Nade“ Nádeníček",
+            "age": "",
+            "club": "SK Sigma Olomouc – U17",
+            "achievement": "",
+            "rating": 0,
+            "quote": "Kolena mám víceméně v pohodě, ale bral jsem si ji preventivně na těžší fotbalové tréninky na umělce, kdy mě někdy bolel Osgood. Drží na místě, nesjíždí a celkově mám na hřišti lepší pocit a to utažení páskou je skvělý.",
+            "photo_credit": "",
+            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/c35a3bdc-cb6d-4679-bf96-7c3a4c7a6986"
+          }
+        },
+        "player_johny": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "name": "Jan „Johny“ Třetina",
+            "age": "",
+            "club": "SK Sigma Olomouc – U17",
+            "achievement": "",
+            "rating": 0,
+            "quote": "Testoval jsem tu bandáž v gymu na dřepy a na sprintech. Bolestí kolen netrpím, chtěl jsem jen poctivé zpevnění při zátěži (hlavně ve fitku). Účel to splnilo na jedničku, kloub je pevně stažený a při odrazu cítím větší sílu. Díky.",
+            "photo_credit": "",
+            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/16ae4ae2-b27f-4893-a3f8-a956b157790b"
+          }
+        },
+        "player_bratic": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "name": "Luka Bratić",
+            "age": "",
+            "club": "1. SK Prostějov – U19",
+            "achievement": "",
+            "rating": 0,
+            "quote": "Zpevnění jde fakt cítit. Moc jsem ji na tréninky nenosil, spíš jen na ty silové – u dřepů skvělá podpora, na to fakt můžu doporučit. Díky.",
+            "photo_credit": "",
+            "club_logo": "shopify://shop_images/klub-1sk-prostejov.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/f5dad2a9-db73-4f02-ad93-d07f1640d21b"
+          }
+        },
+        "player_vsete": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "name": "Adam „Vsete“ Všetýček",
+            "age": "",
+            "club": "SK Sigma Olomouc – U19",
+            "achievement": "",
+            "rating": 0,
+            "quote": "Koleno mám zdravé, tak jsem byl zvědavý hlavně na zpevnění. Bandáž kloub fakt dobře obejme a ten stahovací pásek tomu dává strašně velkou stabilitu, klukům s bolestmi rozhodně doporučuju, díky.",
+            "photo_credit": "",
+            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/663ddec9-be91-41dd-a7ec-38f0c5fb0ee9"
+          }
         }
       },
       "block_order": [
@@ -111,7 +186,12 @@
         "player_migli",
         "player_hnilda",
         "player_brumic",
-        "player_strny"
+        "player_strny",
+        "player_denca",
+        "player_nade",
+        "player_johny",
+        "player_bratic",
+        "player_vsete"
       ],
       "settings": {
         "eyebrow": "Testováno v terénu",

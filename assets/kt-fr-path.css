@@ -107,7 +107,7 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* Mini hřiště – rozestavení a pozice hráče */
+/* Mini hřiště – 11 bílých teček, pozice hráče zeleně */
 .kt-fr__pos {
   display: flex;
   align-items: center;
@@ -120,20 +120,21 @@
   height: auto;
   flex-shrink: 0;
   overflow: visible;
-  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.45));
 }
 
 .kt-fr__pitch-bg {
-  fill: #163b1d;
+  fill: rgba(255, 255, 255, 0.06);
+  stroke: rgba(255, 255, 255, 0.55);
+  stroke-width: 0.9;
 }
 
 .kt-fr__pitch-lines > * {
-  stroke: rgba(255, 255, 255, 0.32);
+  stroke: rgba(255, 255, 255, 0.45);
   stroke-width: 0.9;
 }
 
 .kt-fr__dot {
-  fill: rgba(255, 255, 255, 0.55);
+  fill: #fff;
 }
 
 .kt-fr__dot--on {
@@ -187,9 +188,4 @@
   font-size: 1.5rem;
   line-height: 1.2;
   color: var(--kt-lime, #d8ff3e);
-}
-
-.kt-fr__pos-form {
-  font-size: 1.15rem;
-  color: rgba(255, 255, 255, 0.6);
 }

@@ -110,7 +110,7 @@
   endif
 -%}
 <div class="kt-fr__pos">
-  <svg class="kt-fr__pitch" viewBox="0 0 68 100" role="img" aria-label="{% if en %}Formation{% else %}Rozestavení{% endif %} {{ f_label }}{% if p_label != '' %} – {{ p_label }}{% endif %}">
+  <svg class="kt-fr__pitch" viewBox="0 0 68 100" role="img" aria-label="{% if p_label != '' %}{% if en %}Position{% else %}Pozice{% endif %}: {{ p_label }}{% else %}{% if en %}Pitch{% else %}Hřiště{% endif %}{% endif %}">
     <rect class="kt-fr__pitch-bg" x="0" y="0" width="68" height="100" rx="5"/>
     <g class="kt-fr__pitch-lines" fill="none">
       <rect x="3" y="3" width="62" height="94" rx="1.5"/>
@@ -132,13 +132,10 @@
       {%- endif -%}
     {%- endfor -%}
   </svg>
-  <div class="kt-fr__pos-text">
-    <span class="kt-fr__pos-kicker">{% if p_label != '' %}{% if en %}Position{% else %}Pozice{% endif %}{% else %}{% if en %}Formation{% else %}Rozestavení{% endif %}{% endif %}</span>
-    {%- if p_label != '' -%}
+  {%- if p_label != '' -%}
+    <div class="kt-fr__pos-text">
+      <span class="kt-fr__pos-kicker">{% if en %}Position{% else %}Pozice{% endif %}</span>
       <strong class="kt-fr__pos-name">{{ p_label }}</strong>
-      <span class="kt-fr__pos-form">{% if en %}Formation{% else %}Rozestavení{% endif %} {{ f_label }}</span>
-    {%- else -%}
-      <strong class="kt-fr__pos-name">{{ f_label }}</strong>
-    {%- endif -%}
-  </div>
+    </div>
+  {%- endif -%}
 </div>

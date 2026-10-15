@@ -56,6 +56,7 @@
 
 {%- if visible_count > 0 or request.design_mode -%}
   {{ 'kt-field-reviews.css' | asset_url | stylesheet_tag }}
+  {{ 'kt-fr-path.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'kt-field-reviews.js' | asset_url }}" defer="defer"></script>
   {%- render 'kt-ball-sprite', id: 'kt-ball-fr' -%}
 
@@ -128,8 +129,45 @@
                     </div>
                   {%- endif -%}
 
-                  {%- if block.settings.age != blank -%}
-                    <span class="kt-fr__badge kt-fr__badge--age">{{ block.settings.age }}</span>
+                  {%- liquid
+                    assign fr_path_count = 0
+                    for i in (1..4)
+                      assign fr_key = 'career_' | append: i
+                      if block.settings[fr_key] != blank
+                        assign fr_path_count = fr_path_count | plus: 1
+                      endif
+                    endfor
+                  -%}
+                  {%- if block.settings.age != blank or fr_path_count > 0 -%}
+                    <div class="kt-fr__top">
+                      {%- if block.settings.age != blank -%}
+                        <span class="kt-fr__badge kt-fr__badge--age">{{ block.settings.age }}</span>
+                      {%- endif -%}
+                      {%- if fr_path_count > 0 -%}
+                        <div class="kt-fr__path" role="img" aria-label="{% if fr_en %}Player's path{% else %}Cesta hráče{% endif %}">
+                          {%- assign fr_step = 0 -%}
+                          {%- for i in (1..4) -%}
+                            {%- assign fr_key = 'career_' | append: i -%}
+                            {%- assign fr_logo = block.settings[fr_key] -%}
+                            {%- if fr_logo != blank -%}
+                              {%- if fr_step > 0 -%}
+                                <svg class="kt-fr__path-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                              {%- endif -%}
+                              <span class="kt-fr__path-club" style="--i: {{ fr_step }}">
+                                {{ fr_logo | image_url: width: 96 | image_tag: loading: 'lazy', alt: '', width: 48, height: 48 }}
+                              </span>
+                              {%- assign fr_step = fr_step | plus: 1 -%}
+                            {%- endif -%}
+                          {%- endfor -%}
+                          {%- if block.settings.club_logo != blank -%}
+                            <svg class="kt-fr__path-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <span class="kt-fr__path-club kt-fr__path-club--now" style="--i: {{ fr_step }}">
+                              {{ block.settings.club_logo | image_url: width: 96 | image_tag: loading: 'lazy', alt: '', width: 48, height: 48 }}
+                            </span>
+                          {%- endif -%}
+                        </div>
+                      {%- endif -%}
+                    </div>
                   {%- endif -%}
                   {%- if block.settings.club != blank -%}
                     <span class="kt-fr__badge kt-fr__badge--club">
@@ -144,9 +182,6 @@
                       {%- endif -%}
                       {{ block.settings.club }}
                     </span>
-                  {%- endif -%}
-                  {%- if block.settings.photo_credit != blank -%}
-                    <span class="kt-fr__credit">{{ 'kneetech.reviews.photo' | t }} {{ block.settings.photo_credit }}</span>
                   {%- endif -%}
                 </div>
 
@@ -182,6 +217,9 @@
                         <svg class="kt-fr__facr-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         <span class="visually-hidden">{% if fr_en %}(opens in a new window){% else %}(otevře se v novém okně){% endif %}</span>
                       </a>
+                    {%- endif -%}
+                    {%- if block.settings.photo_credit != blank -%}
+                      <p class="kt-fr__credit kt-fr__credit--body">{{ 'kneetech.reviews.photo' | t }} {{ block.settings.photo_credit }}</p>
                     {%- endif -%}
                   </footer>
                 </div>
@@ -267,6 +305,12 @@
         { "type": "text", "id": "age", "label": "Věk", "placeholder": "16 let" },
         { "type": "text", "id": "club", "label": "Klub a kategorie", "placeholder": "FC Zbrojovka Brno – U17" },
         { "type": "image_picker", "id": "club_logo", "label": "Znak klubu (nepovinné)", "info": "Malý znak vedle názvu klubu na fotce. Ideálně čtvercový, průhledné pozadí." },
+        { "type": "header", "content": "Cesta hráče (přestupy)" },
+        { "type": "paragraph", "content": "Znaky předchozích klubů od nejstaršího. Nahoře na fotce se ukážou jako klub → klub → současný klub (ten se doplní sám ze „Znak klubu“). Když necháš prázdné, lišta se neukáže." },
+        { "type": "image_picker", "id": "career_1", "label": "1. klub (nejstarší)" },
+        { "type": "image_picker", "id": "career_2", "label": "2. klub" },
+        { "type": "image_picker", "id": "career_3", "label": "3. klub" },
+        { "type": "image_picker", "id": "career_4", "label": "4. klub" },
         { "type": "url", "id": "facr_url", "label": "Odkaz na FAČR (nepovinné)", "info": "Odkaz na zápas na fotbal.cz, kde je hráč v sestavě (nebo na jeho profil). Na kartě se ukáže „Ověřený hráč · zápasy na FAČR“." },
         { "type": "text", "id": "achievement", "label": "Úspěchy / pozice (nepovinné)", "placeholder": "Záložník · Reprezentace ČR U16", "info": "Když necháš prázdné, řádek se skryje." },
         { "type": "range", "id": "rating", "label": "Hodnocení v míčích", "min": 0, "max": 5, "step": 0.5, "default": 5, "info": "0 = bez hodnocení (nezapočítá se do průměru)." },

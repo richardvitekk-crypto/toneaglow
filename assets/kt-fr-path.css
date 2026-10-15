@@ -1,0 +1,108 @@
+/* KNEETECH – Recenze z terénu: cesta hráče (přestupy) nahoře na fotce */
+.kt-fr__top {
+  position: absolute;
+  z-index: 2;
+  top: 1.2rem;
+  left: 1.2rem;
+  right: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+  pointer-events: none;
+}
+
+.kt-fr__top .kt-fr__badge--age {
+  position: static;
+}
+
+.kt-fr__path {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 99rem;
+  background: rgba(10, 10, 10, 0.38);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+  backdrop-filter: blur(10px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.6);
+}
+
+.kt-fr__path-club {
+  --kt-path-size: 3rem;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--kt-path-size);
+  height: var(--kt-path-size);
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 0 0 1.5px rgba(255, 255, 255, 0.85),
+    0 8px 16px -6px rgba(0, 0, 0, 0.55);
+  animation: kt-path-float 3.2s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i, 0) * -0.55s);
+}
+
+.kt-fr__path-club img {
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.kt-fr__path-club--now {
+  --kt-path-size: 3.4rem;
+  box-shadow:
+    0 0 0 2px var(--kt-lime, #d8ff3e),
+    0 0 18px -2px rgba(216, 255, 62, 0.55),
+    0 8px 16px -6px rgba(0, 0, 0, 0.55);
+}
+
+.kt-fr__path-arrow {
+  width: 1.3rem;
+  height: 1.3rem;
+  flex-shrink: 0;
+  color: var(--kt-lime, #d8ff3e);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6));
+  opacity: 0.95;
+}
+
+@media screen and (min-width: 990px) {
+  .kt-fr__path-club {
+    --kt-path-size: 3.2rem;
+  }
+
+  .kt-fr__path-club--now {
+    --kt-path-size: 3.6rem;
+  }
+}
+
+@keyframes kt-path-float {
+  from {
+    transform: translateY(1.5px);
+  }
+  to {
+    transform: translateY(-2.5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kt-fr__path-club {
+    animation: none;
+  }
+}
+
+/* Kredit fotky – pod citací místo přes fotku */
+.kt-fr__credit--body {
+  position: static;
+  max-width: none;
+  margin: 0.2rem 0 0;
+  padding: 0;
+  background: none;
+  text-align: left;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.5);
+}

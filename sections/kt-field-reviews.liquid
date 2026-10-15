@@ -138,11 +138,8 @@
                       endif
                     endfor
                   -%}
-                  {%- if block.settings.age != blank or fr_path_count > 0 or block.settings.club_logo != blank or block.settings.club != blank -%}
+                  {%- if fr_path_count > 0 or block.settings.club_logo != blank or block.settings.club != blank -%}
                     <div class="kt-fr__top">
-                      {%- if block.settings.age != blank -%}
-                        <span class="kt-fr__badge kt-fr__badge--age">{{ block.settings.age }}</span>
-                      {%- endif -%}
                       {%- if fr_path_count > 0 or block.settings.club_logo != blank or block.settings.club != blank -%}
                         <div class="kt-fr__path" role="img" aria-label="{% if fr_en %}Player's path{% else %}Cesta hráče{% endif %}">
                           {%- assign fr_step = 0 -%}
@@ -170,6 +167,12 @@
                           {%- if block.settings.club != blank -%}
                             <span class="kt-fr__path-name">{{ block.settings.club }}</span>
                           {%- endif -%}
+                          {%- if block.settings.repre -%}
+                            <span class="kt-fr__repre">
+                              <svg viewBox="0 0 24 24" aria-hidden="true"><defs><clipPath id="kt-cz-{{ block.id }}"><circle cx="12" cy="12" r="12"/></clipPath></defs><g clip-path="url(#kt-cz-{{ block.id }})"><rect width="24" height="12" fill="#fff"/><rect y="12" width="24" height="12" fill="#d7141a"/><path d="M0 0 13 12 0 24Z" fill="#11457e"/></g></svg>
+                              <span>{% if fr_en %}Czech NT{% else %}Repre{% endif %}{% if block.settings.repre_label != blank %} {{ block.settings.repre_label }}{% endif %}</span>
+                            </span>
+                          {%- endif -%}
                         </div>
                       {%- endif -%}
                     </div>
@@ -177,7 +180,7 @@
                   {%- if block.settings.name != blank -%}
                     <h3 class="kt-fr__name kt-fr__name--photo">
                       {{- block.settings.name -}}
-                      {%- if block.settings.age != blank -%}<span class="kt-fr__name-age">, {{ block.settings.age }}</span>{%- endif -%}
+                      {%- if block.settings.age != blank -%}<span class="kt-fr__name-year">{% if fr_en %}Born {% else %}Ročník {% endif %}{{ block.settings.age }}</span>{%- endif -%}
                     </h3>
                   {%- endif -%}
                 </div>
@@ -294,9 +297,11 @@
         { "type": "checkbox", "id": "hidden", "label": "Skrýt kartu (bez mazání)", "default": false },
         { "type": "image_picker", "id": "image", "label": "Fotka hráče", "info": "Ideálně na výšku (4:5). Používej jen fotky, ke kterým máš souhlas hráče – u nezletilých i rodiče – a autora fotky." },
         { "type": "text", "id": "name", "label": "Jméno", "placeholder": "Filip K." },
-        { "type": "text", "id": "age", "label": "Věk", "placeholder": "16 let" },
+        { "type": "text", "id": "age", "label": "Ročník (rok narození)", "placeholder": "2010", "info": "Zobrazí se pod jménem jako „Ročník 2010“." },
         { "type": "text", "id": "club", "label": "Klub a kategorie", "placeholder": "FC Zbrojovka Brno – U17" },
         { "type": "image_picker", "id": "club_logo", "label": "Znak klubu (nepovinné)", "info": "Znak současného klubu – nahoře na fotce v liště cesty hráče. Ideálně čtvercový." },
+        { "type": "checkbox", "id": "repre", "label": "Aktuálně v reprezentaci ČR", "default": false, "info": "Vedle klubu se ukáže odznak s vlajkou a nápisem Repre." },
+        { "type": "text", "id": "repre_label", "label": "Reprezentace – kategorie", "placeholder": "U16" },
         { "type": "header", "content": "Pozice na hřišti" },
         { "type": "select", "id": "formation", "label": "Rozestavení", "default": "auto", "options": [
           { "value": "auto", "label": "Automaticky (Olomouc 3-5-2, ostatní 4-3-3)" },

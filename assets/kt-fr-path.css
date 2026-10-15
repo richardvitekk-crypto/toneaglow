@@ -229,3 +229,44 @@
 .kt-fr__who {
   gap: 1rem;
 }
+
+/* Odznak reprezentace v liště + ročník pod jménem */
+.kt-fr__repre {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0.2rem 0 0.1rem;
+  padding: 0.25rem 0.65rem 0.25rem 0.25rem;
+  border-radius: 99rem;
+  background: rgba(216, 255, 62, 0.16);
+  border: 1px solid rgba(216, 255, 62, 0.55);
+}
+
+.kt-fr__repre svg {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px #fff, 0 4px 10px -4px rgba(0, 0, 0, 0.6);
+}
+
+.kt-fr__repre span {
+  font-family: var(--font-heading-family);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kt-lime, #d8ff3e);
+  white-space: nowrap;
+}
+
+.kt-fr__name-year {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--font-body-family);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+}

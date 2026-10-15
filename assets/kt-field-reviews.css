@@ -627,15 +627,20 @@
   background: rgba(255, 255, 255, 0.06);
 }
 
-/* Znak klubu v odznaku na fotce */
+/* Znak klubu v odznaku na fotce – v bílém kolečku */
 .kt-fr__club-logo {
-  width: 2rem;
-  height: 2rem;
+  width: 2.6rem;
+  height: 2.6rem;
   flex-shrink: 0;
   object-fit: contain;
-  border-radius: 0.4rem;
+  border-radius: 50%;
   background: #fff;
-  padding: 0.15rem;
+  padding: 0.2rem;
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.9);
+}
+
+.kt-fr__badge--club:has(.kt-fr__club-logo) {
+  padding-left: 0.5rem;
 }
 
 /* Ověřený hráč – odkaz na profil na FAČR */

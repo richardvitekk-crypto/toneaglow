@@ -27,13 +27,15 @@
             "photo_credit": "",
             "club_logo": "shopify://shop_images/klub-sparta-brno.jpg",
             "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/07e88e4e-68f0-4a0b-8d98-8c59366def08",
-            "career_1": "shopify://shop_images/klub-zbrojovka-brno.jpg"
+            "career_1": "shopify://shop_images/klub-zbrojovka-brno.jpg",
+            "position": "gk",
+            "formation": "352"
           }
         },
         "player_klaska": {
           "type": "player",
           "settings": {
-            "hidden": true,
+            "hidden": false,
             "name": "Vláďa Klaška",
             "age": "",
             "club": "FC Zbrojovka Brno – U17",
@@ -42,7 +44,8 @@
             "quote": "Bandáž je fakt dobrá. Na pár týdnů mi to úplně oddálilo tu nejhorší bolest (Osgood) na tréninku, abych mohl normálně hrát. Pak už jsem to musel dořešit s doktorem, ale jako rychlá úleva a zpevnění mě to zachránilo, děkuju.",
             "photo_credit": "",
             "club_logo": "shopify://shop_images/klub-zbrojovka-brno.jpg",
-            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/0850efba-d10e-4f36-afd0-279a02859295"
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/0850efba-d10e-4f36-afd0-279a02859295",
+            "position": "cm"
           }
         },
         "player_migli": {
@@ -58,7 +61,8 @@
             "photo_credit": "",
             "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
             "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/bcde3dd6-6ef1-41ac-b176-fe372c767fb6",
-            "career_1": "shopify://shop_images/klub-zbrojovka-brno.jpg"
+            "career_1": "shopify://shop_images/klub-zbrojovka-brno.jpg",
+            "position": "dm"
           }
         },
         "player_hnilda": {
@@ -77,7 +81,9 @@
             "career_1": "shopify://shop_images/klub-zbrojovka-brno.jpg",
             "career_2": "shopify://shop_images/klub-banik-ostrava.jpg",
             "career_3": "shopify://shop_images/klub-zbrojovka-brno.jpg",
-            "career_4": "shopify://shop_images/klub-start-brno.jpg"
+            "career_4": "shopify://shop_images/klub-start-brno.jpg",
+            "position": "st",
+            "formation": "352"
           }
         },
         "player_brumic": {
@@ -94,7 +100,8 @@
             "club_logo": "shopify://shop_images/klub-1sk-prostejov.jpg",
             "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/f5dad2a9-db73-4f02-ad93-d07f1640d21b",
             "career_1": "shopify://shop_images/klub-1hfk-olomouc.jpg",
-            "career_2": "shopify://shop_images/klub-sigma-olomouc.jpg"
+            "career_2": "shopify://shop_images/klub-sigma-olomouc.jpg",
+            "position": "wg"
           }
         },
         "player_strny": {
@@ -110,7 +117,8 @@
             "photo_credit": "",
             "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
             "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/c35a3bdc-cb6d-4679-bf96-7c3a4c7a6986",
-            "career_1": "shopify://shop_images/klub-banik-ostrava.jpg"
+            "career_1": "shopify://shop_images/klub-banik-ostrava.jpg",
+            "position": "fb"
           }
         },
         "player_denca": {
@@ -126,7 +134,8 @@
             "photo_credit": "",
             "club_logo": "shopify://shop_images/klub-zbrojovka-brno.jpg",
             "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/f0b3ceec-47bf-494e-98e4-832223492c74",
-            "career_1": "shopify://shop_images/klub-sparta-brno.jpg"
+            "career_1": "shopify://shop_images/klub-sparta-brno.jpg",
+            "position": "dm"
           }
         },
         "player_nade": {
@@ -143,7 +152,8 @@
             "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
             "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/c35a3bdc-cb6d-4679-bf96-7c3a4c7a6986",
             "career_1": "shopify://shop_images/klub-tesany.jpg",
-            "career_2": "shopify://shop_images/klub-sparta-brno.jpg"
+            "career_2": "shopify://shop_images/klub-sparta-brno.jpg",
+            "position": "am"
           }
         },
         "player_johny": {
@@ -159,7 +169,8 @@
             "photo_credit": "",
             "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
             "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/16ae4ae2-b27f-4893-a3f8-a956b157790b",
-            "career_1": "shopify://shop_images/klub-sk-hranice.jpg"
+            "career_1": "shopify://shop_images/klub-sk-hranice.jpg",
+            "position": "st"
           }
         },
         "player_bratic": {
@@ -176,7 +187,8 @@
             "club_logo": "shopify://shop_images/klub-1sk-prostejov.jpg",
             "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/f5dad2a9-db73-4f02-ad93-d07f1640d21b",
             "career_1": "shopify://shop_images/klub-1hfk-olomouc.jpg",
-            "career_2": "shopify://shop_images/klub-sigma-olomouc.jpg"
+            "career_2": "shopify://shop_images/klub-sigma-olomouc.jpg",
+            "position": "cm"
           }
         },
         "player_vsete": {
@@ -192,7 +204,8 @@
             "photo_credit": "",
             "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
             "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/663ddec9-be91-41dd-a7ec-38f0c5fb0ee9",
-            "career_1": "shopify://shop_images/klub-novy-malin.jpg"
+            "career_1": "shopify://shop_images/klub-novy-malin.jpg",
+            "position": "cb"
           }
         },
         "player_soused": {
@@ -207,7 +220,8 @@
             "quote": "Na tréninku jsem ji párkrát vyzkoušel. Problémy s kolenem dlouhodobě nemám, takže nemůžu posoudit, jak pomáhá při bolesti, ale materiál je super, skvěle seděla a nesjížděla mi. Za mě bomba pro kluky s nestabilními koleny.",
             "photo_credit": "",
             "club_logo": "shopify://shop_images/klub-slavia-praha.jpg",
-            "career_1": "shopify://shop_images/klub-zbrojovka-brno.jpg"
+            "career_1": "shopify://shop_images/klub-zbrojovka-brno.jpg",
+            "position": "cm"
           }
         }
       },

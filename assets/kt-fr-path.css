@@ -189,3 +189,43 @@
   line-height: 1.2;
   color: var(--kt-lime, #d8ff3e);
 }
+
+/* Karta v2: jméno dole na fotce, současný klub v liště nahoře */
+.kt-fr__path {
+  flex-wrap: wrap;
+  max-width: 100%;
+  row-gap: 0.3rem;
+}
+
+.kt-fr__path-name {
+  margin: 0 0.5rem 0 0.4rem;
+  font-family: var(--font-heading-family);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.kt-fr__name--photo {
+  position: absolute;
+  z-index: 1;
+  left: 1.6rem;
+  right: 1.6rem;
+  bottom: 1.4rem;
+  margin: 0;
+  font-size: 2.2rem;
+  line-height: 1.12;
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
+}
+
+.kt-fr__name--photo .kt-fr__name-age {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.kt-fr__who {
+  gap: 1rem;
+}

@@ -204,6 +204,7 @@
                         {%- if block.settings.age != blank -%}<span class="kt-fr__name-age">, {{ block.settings.age }}</span>{%- endif -%}
                       </h3>
                     {%- endif -%}
+                    {%- render 'kt-fr-formation', position: block.settings.position, formation: block.settings.formation, club: block.settings.club, en: fr_en -%}
                     {%- if block.settings.achievement != blank -%}
                       <p class="kt-fr__achievement">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v2h3v3a4 4 0 0 1-4 4h-.3A5 5 0 0 1 13 14.9V18h3v3H8v-3h3v-3.1A5 5 0 0 1 8.3 12H8a4 4 0 0 1-4-4V5h3V3Zm0 4H6v1a2 2 0 0 0 1 1.7V7Zm10 0v2.7A2 2 0 0 0 18 8V7h-1Z" fill="currentColor"/></svg>
@@ -305,6 +306,33 @@
         { "type": "text", "id": "age", "label": "Věk", "placeholder": "16 let" },
         { "type": "text", "id": "club", "label": "Klub a kategorie", "placeholder": "FC Zbrojovka Brno – U17" },
         { "type": "image_picker", "id": "club_logo", "label": "Znak klubu (nepovinné)", "info": "Malý znak vedle názvu klubu na fotce. Ideálně čtvercový, průhledné pozadí." },
+        { "type": "header", "content": "Pozice na hřišti" },
+        { "type": "select", "id": "formation", "label": "Rozestavení", "default": "auto", "options": [
+          { "value": "auto", "label": "Automaticky (Olomouc 3-5-2, ostatní 4-3-3)" },
+          { "value": "352", "label": "3-5-2" },
+          { "value": "433", "label": "4-3-3" }
+        ] },
+        { "type": "select", "id": "position", "label": "Pozice (zvýrazněná tečka)", "default": "none", "options": [
+          { "value": "none", "label": "– nezvýrazňovat –" },
+          { "value": "gk", "label": "Brankář" },
+          { "value": "lb", "label": "Levý obránce" },
+          { "value": "lcb", "label": "Levý stoper" },
+          { "value": "cb", "label": "Střední obránce" },
+          { "value": "rcb", "label": "Pravý stoper" },
+          { "value": "rb", "label": "Pravý obránce" },
+          { "value": "lwb", "label": "Levý wingback" },
+          { "value": "rwb", "label": "Pravý wingback" },
+          { "value": "dm", "label": "Defenzivní záložník" },
+          { "value": "lcm", "label": "Levý středopolař" },
+          { "value": "cm", "label": "Střední záložník" },
+          { "value": "rcm", "label": "Pravý středopolař" },
+          { "value": "am", "label": "Ofenzivní záložník" },
+          { "value": "lw", "label": "Levé křídlo" },
+          { "value": "rw", "label": "Pravé křídlo" },
+          { "value": "st", "label": "Hrotový útočník" },
+          { "value": "ls", "label": "Levý útočník" },
+          { "value": "rs", "label": "Pravý útočník" }
+        ] },
         { "type": "header", "content": "Cesta hráče (přestupy)" },
         { "type": "paragraph", "content": "Znaky předchozích klubů od nejstaršího. Nahoře na fotce se ukážou jako klub → klub → současný klub (ten se doplní sám ze „Znak klubu“). Když necháš prázdné, lišta se neukáže." },
         { "type": "image_picker", "id": "career_1", "label": "1. klub (nejstarší)" },

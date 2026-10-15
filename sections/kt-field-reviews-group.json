@@ -18,22 +18,92 @@
           "type": "player",
           "settings": {
             "hidden": false,
-            "name": "martin dolezal",
+            "name": "Martin „Dolyk“ Doležal",
             "age": "17",
-            "club": "sparta brno u 19",
+            "club": "FC Sparta Brno – U19",
             "achievement": "",
-            "rating": 5,
-            "quote": "dobry",
+            "rating": 0,
+            "quote": "Reálně dost pomohla. Nosil jsem ji na tréninky, když mě koleno hodně bolelo, a tu bolest to fakt znatelně zmírnilo. Jen škoda, že se nedělá ve více barvách, abych to mohl matchovat při zápasech k dresu, ale jinak pecka. Odehrál jsem v ní zápasy a stihl mezitím zranění dořešit s fyziem.",
+            "photo_credit": ""
+          }
+        },
+        "player_klaska": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "name": "Láďa Klaska",
+            "age": "",
+            "club": "FC Zbrojovka Brno",
+            "achievement": "",
+            "rating": 0,
+            "quote": "Bandáž je fakt dobrá. Na pár týdnů mi to úplně oddálilo tu nejhorší bolest (Osgood) na tréninku, abych mohl normálně hrát. Pak už jsem to musel dořešit s doktorem, ale jako rychlá úleva a zpevnění mě to zachránilo, děkuju.",
+            "photo_credit": ""
+          }
+        },
+        "player_migli": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "name": "Luca „Migli“ Migliarini",
+            "age": "",
+            "club": "SK Sigma Olomouc",
+            "achievement": "",
+            "rating": 0,
+            "quote": "Zkoušel jsem to na bolest pod kolenem (Osgood) – tím páskem jsem si vlastně stáhnul ten bod pod kolenem jako páskou, takže to uleví od bolesti a navíc to drží zpevněné celé koleno, díky.",
+            "photo_credit": ""
+          }
+        },
+        "player_hnilda": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "name": "Matěj „Hnilda“ Hnilica",
+            "age": "",
+            "club": "FC Sparta Brno",
+            "achievement": "",
+            "rating": 0,
+            "quote": "Po zranění jsem měl v hlavě blok jít do soubojů naplno. Ta bandáž mi dala hlavně jistotu, že je kloub stažený a v pohodě. Rozdíl jsem cítil hlavně u té stability, děkuji a doporučuji ostatním.",
+            "photo_credit": ""
+          }
+        },
+        "player_brumic": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "name": "Petr „Brumič“ Brumlal",
+            "age": "",
+            "club": "Prostějov",
+            "achievement": "",
+            "rating": 0,
+            "quote": "Koleno mě bolí už nějakou chvíli, ale ne nějak zásadně, spíš jen na konci tréninku. Z toho testování super – bolest pod kolenem mi při trénincích úplně odešla, a i když nebyla nějak velká, jsem za to rád.",
+            "photo_credit": ""
+          }
+        },
+        "player_strny": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "name": "Martin „Strny“ Strnad",
+            "age": "",
+            "club": "SK Sigma Olomouc",
+            "achievement": "",
+            "rating": 0,
+            "quote": "Tu bandáž jsem zkoušel hlavně kvůli stabilitě na tréninku. Dříve jsem měl problémy s koleny, tak při těžkých sprintech je to zpevnění a prevence super. Noha v tom drží skvěle. Látka je příjemná, jen po prvním vyprání trochu déle schla, ale jinak bomba věc.",
             "photo_credit": ""
           }
         }
       },
       "block_order": [
-        "player_QTkbna"
+        "player_QTkbna",
+        "player_klaska",
+        "player_migli",
+        "player_hnilda",
+        "player_brumic",
+        "player_strny"
       ],
       "settings": {
         "eyebrow": "Testováno v terénu",
-        "heading": "Dali jsme naši bandáž vyzkoušet 30+ fotbalistům. Zde jsou jejich reálné recenze.",
+        "heading": "Dali jsme naši bandáž vyzkoušet mladým fotbalistům. Tady jsou jejich reálné recenze.",
         "subheading": "Osobní testování přímo na trénincích a zápasech.",
         "show_summary": true,
         "summary_note": "průměr z [pocet] hodnocení hráčů",

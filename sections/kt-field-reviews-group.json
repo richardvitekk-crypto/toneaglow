@@ -24,7 +24,8 @@
             "achievement": "",
             "rating": 0,
             "quote": "Reálně dost pomohla. Nosil jsem ji na tréninky, když mě koleno hodně bolelo, a tu bolest to fakt znatelně zmírnilo. Jen škoda, že se nedělá ve více barvách, abych to mohl matchovat při zápasech k dresu, ale jinak pecka. Odehrál jsem v ní zápasy a stihl mezitím zranění dořešit s fyziem.",
-            "photo_credit": ""
+            "photo_credit": "",
+            "club_logo": "shopify://shop_images/klub-sparta-brno.jpg"
           }
         },
         "player_klaska": {
@@ -33,11 +34,12 @@
             "hidden": false,
             "name": "Láďa Klaska",
             "age": "",
-            "club": "FC Zbrojovka Brno",
+            "club": "FC Zbrojovka Brno – U17",
             "achievement": "",
             "rating": 0,
             "quote": "Bandáž je fakt dobrá. Na pár týdnů mi to úplně oddálilo tu nejhorší bolest (Osgood) na tréninku, abych mohl normálně hrát. Pak už jsem to musel dořešit s doktorem, ale jako rychlá úleva a zpevnění mě to zachránilo, děkuju.",
-            "photo_credit": ""
+            "photo_credit": "",
+            "club_logo": "shopify://shop_images/klub-zbrojovka-brno.jpg"
           }
         },
         "player_migli": {
@@ -46,11 +48,12 @@
             "hidden": false,
             "name": "Luca „Migli“ Migliarini",
             "age": "",
-            "club": "SK Sigma Olomouc",
+            "club": "SK Sigma Olomouc – U17",
             "achievement": "",
             "rating": 0,
             "quote": "Zkoušel jsem to na bolest pod kolenem (Osgood) – tím páskem jsem si vlastně stáhnul ten bod pod kolenem jako páskou, takže to uleví od bolesti a navíc to drží zpevněné celé koleno, díky.",
-            "photo_credit": ""
+            "photo_credit": "",
+            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg"
           }
         },
         "player_hnilda": {
@@ -59,11 +62,12 @@
             "hidden": false,
             "name": "Matěj „Hnilda“ Hnilica",
             "age": "",
-            "club": "FC Sparta Brno",
+            "club": "FC Sparta Brno – U19",
             "achievement": "",
             "rating": 0,
             "quote": "Po zranění jsem měl v hlavě blok jít do soubojů naplno. Ta bandáž mi dala hlavně jistotu, že je kloub stažený a v pohodě. Rozdíl jsem cítil hlavně u té stability, děkuji a doporučuji ostatním.",
-            "photo_credit": ""
+            "photo_credit": "",
+            "club_logo": "shopify://shop_images/klub-sparta-brno.jpg"
           }
         },
         "player_brumic": {
@@ -72,11 +76,12 @@
             "hidden": false,
             "name": "Petr „Brumič“ Brumlal",
             "age": "",
-            "club": "Prostějov",
+            "club": "1. SK Prostějov",
             "achievement": "",
             "rating": 0,
             "quote": "Koleno mě bolí už nějakou chvíli, ale ne nějak zásadně, spíš jen na konci tréninku. Z toho testování super – bolest pod kolenem mi při trénincích úplně odešla, a i když nebyla nějak velká, jsem za to rád.",
-            "photo_credit": ""
+            "photo_credit": "",
+            "club_logo": "shopify://shop_images/klub-1sk-prostejov.jpg"
           }
         },
         "player_strny": {
@@ -85,11 +90,12 @@
             "hidden": false,
             "name": "Martin „Strny“ Strnad",
             "age": "",
-            "club": "SK Sigma Olomouc",
+            "club": "SK Sigma Olomouc – U17",
             "achievement": "",
             "rating": 0,
             "quote": "Tu bandáž jsem zkoušel hlavně kvůli stabilitě na tréninku. Dříve jsem měl problémy s koleny, tak při těžkých sprintech je to zpevnění a prevence super. Noha v tom drží skvěle. Látka je příjemná, jen po prvním vyprání trochu déle schla, ale jinak bomba věc.",
-            "photo_credit": ""
+            "photo_credit": "",
+            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg"
           }
         }
       },

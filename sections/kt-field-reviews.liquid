@@ -138,12 +138,12 @@
                       endif
                     endfor
                   -%}
-                  {%- if block.settings.age != blank or fr_path_count > 0 -%}
+                  {%- if block.settings.age != blank or fr_path_count > 0 or block.settings.club_logo != blank or block.settings.club != blank -%}
                     <div class="kt-fr__top">
                       {%- if block.settings.age != blank -%}
                         <span class="kt-fr__badge kt-fr__badge--age">{{ block.settings.age }}</span>
                       {%- endif -%}
-                      {%- if fr_path_count > 0 -%}
+                      {%- if fr_path_count > 0 or block.settings.club_logo != blank or block.settings.club != blank -%}
                         <div class="kt-fr__path" role="img" aria-label="{% if fr_en %}Player's path{% else %}Cesta hráče{% endif %}">
                           {%- assign fr_step = 0 -%}
                           {%- for i in (1..4) -%}
@@ -160,28 +160,25 @@
                             {%- endif -%}
                           {%- endfor -%}
                           {%- if block.settings.club_logo != blank -%}
-                            <svg class="kt-fr__path-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            {%- if fr_step > 0 -%}
+                              <svg class="kt-fr__path-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            {%- endif -%}
                             <span class="kt-fr__path-club kt-fr__path-club--now" style="--i: {{ fr_step }}">
                               {{ block.settings.club_logo | image_url: width: 96 | image_tag: loading: 'lazy', alt: '', width: 48, height: 48 }}
                             </span>
+                          {%- endif -%}
+                          {%- if block.settings.club != blank -%}
+                            <span class="kt-fr__path-name">{{ block.settings.club }}</span>
                           {%- endif -%}
                         </div>
                       {%- endif -%}
                     </div>
                   {%- endif -%}
-                  {%- if block.settings.club != blank -%}
-                    <span class="kt-fr__badge kt-fr__badge--club">
-                      {%- if block.settings.club_logo != blank -%}
-                        {{
-                          block.settings.club_logo
-                          | image_url: width: 64
-                          | image_tag: class: 'kt-fr__club-logo', loading: 'lazy', alt: '', width: 20, height: 20
-                        }}
-                      {%- else -%}
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="currentColor"/></svg>
-                      {%- endif -%}
-                      {{ block.settings.club }}
-                    </span>
+                  {%- if block.settings.name != blank -%}
+                    <h3 class="kt-fr__name kt-fr__name--photo">
+                      {{- block.settings.name -}}
+                      {%- if block.settings.age != blank -%}<span class="kt-fr__name-age">, {{ block.settings.age }}</span>{%- endif -%}
+                    </h3>
                   {%- endif -%}
                 </div>
 
@@ -198,12 +195,6 @@
                   {%- endif -%}
 
                   <footer class="kt-fr__who">
-                    {%- if block.settings.name != blank -%}
-                      <h3 class="kt-fr__name">
-                        {{- block.settings.name -}}
-                        {%- if block.settings.age != blank -%}<span class="kt-fr__name-age">, {{ block.settings.age }}</span>{%- endif -%}
-                      </h3>
-                    {%- endif -%}
                     {%- render 'kt-fr-formation', position: block.settings.position, formation: block.settings.formation, club: block.settings.club, en: fr_en -%}
                     {%- if block.settings.achievement != blank -%}
                       <p class="kt-fr__achievement">
@@ -305,7 +296,7 @@
         { "type": "text", "id": "name", "label": "Jméno", "placeholder": "Filip K." },
         { "type": "text", "id": "age", "label": "Věk", "placeholder": "16 let" },
         { "type": "text", "id": "club", "label": "Klub a kategorie", "placeholder": "FC Zbrojovka Brno – U17" },
-        { "type": "image_picker", "id": "club_logo", "label": "Znak klubu (nepovinné)", "info": "Malý znak vedle názvu klubu na fotce. Ideálně čtvercový, průhledné pozadí." },
+        { "type": "image_picker", "id": "club_logo", "label": "Znak klubu (nepovinné)", "info": "Znak současného klubu – nahoře na fotce v liště cesty hráče. Ideálně čtvercový." },
         { "type": "header", "content": "Pozice na hřišti" },
         { "type": "select", "id": "formation", "label": "Rozestavení", "default": "auto", "options": [
           { "value": "auto", "label": "Automaticky (Olomouc 3-5-2, ostatní 4-3-3)" },
@@ -336,7 +327,7 @@
           { "value": "rs", "label": "Pravý útočník" }
         ] },
         { "type": "header", "content": "Cesta hráče (přestupy)" },
-        { "type": "paragraph", "content": "Znaky předchozích klubů od nejstaršího. Nahoře na fotce se ukážou jako klub → klub → současný klub (ten se doplní sám ze „Znak klubu“). Když necháš prázdné, lišta se neukáže." },
+        { "type": "paragraph", "content": "Znaky předchozích klubů od nejstaršího. Nahoře na fotce se ukážou jako klub → klub → současný klub (ten se doplní sám ze „Znak klubu“ a vedle něj název z „Klub a kategorie“). Když necháš prázdné, v liště bude jen současný klub." },
         { "type": "image_picker", "id": "career_1", "label": "1. klub (nejstarší)" },
         { "type": "image_picker", "id": "career_2", "label": "2. klub" },
         { "type": "image_picker", "id": "career_3", "label": "3. klub" },

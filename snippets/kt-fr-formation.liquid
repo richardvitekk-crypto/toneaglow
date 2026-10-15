@@ -1,0 +1,144 @@
+{%- comment -%}
+  Mini hřiště s 11 tečkami na kartě hráče (Recenze z terénu).
+  Parametry: position (select z bloku), formation ('auto' | '352' | '433'), club (text), en (bool).
+  auto: klub obsahuje „Olomouc“ nebo „Sigma“ → 3-5-2, jinak 4-3-3. Zvýrazní se tečka hráčovy pozice.
+{%- endcomment -%}
+{%- liquid
+  assign f = formation | default: 'auto'
+  if f == 'auto'
+    assign club_d = club | downcase
+    if club_d contains 'olomouc' or club_d contains 'sigma'
+      assign f = '352'
+    else
+      assign f = '433'
+    endif
+  endif
+
+  assign pos = position | default: 'none'
+  assign slot = pos
+  if f == '352'
+    assign slots = 'gk:34:90,lcb:20:75,cb:34:77,rcb:48:75,lwb:9:50,lcm:23:54,cm:34:58,rcm:45:54,rwb:59:50,ls:27:25,rs:41:25'
+    assign f_label = '3-5-2'
+    case pos
+      when 'lb'
+        assign slot = 'lwb'
+      when 'rb'
+        assign slot = 'rwb'
+      when 'dm', 'am'
+        assign slot = 'cm'
+      when 'lw', 'st'
+        assign slot = 'ls'
+      when 'rw'
+        assign slot = 'rs'
+    endcase
+  else
+    assign slots = 'gk:34:90,lb:11:71,lcb:26:75,rcb:42:75,rb:57:71,lcm:19:52,cm:34:56,rcm:49:52,lw:13:28,st:34:22,rw:55:28'
+    assign f_label = '4-3-3'
+    case pos
+      when 'cb'
+        assign slot = 'lcb'
+      when 'lwb'
+        assign slot = 'lb'
+      when 'rwb'
+        assign slot = 'rb'
+      when 'dm', 'am'
+        assign slot = 'cm'
+      when 'ls', 'rs'
+        assign slot = 'st'
+    endcase
+  endif
+
+  assign p_label = ''
+  case pos
+    when 'gk'
+      assign p_label = 'Brankář'
+      assign p_en = 'Goalkeeper'
+    when 'lb'
+      assign p_label = 'Levý obránce'
+      assign p_en = 'Left back'
+    when 'lcb'
+      assign p_label = 'Levý stoper'
+      assign p_en = 'Left centre-back'
+    when 'cb'
+      assign p_label = 'Střední obránce'
+      assign p_en = 'Centre-back'
+    when 'rcb'
+      assign p_label = 'Pravý stoper'
+      assign p_en = 'Right centre-back'
+    when 'rb'
+      assign p_label = 'Pravý obránce'
+      assign p_en = 'Right back'
+    when 'lwb'
+      assign p_label = 'Levý wingback'
+      assign p_en = 'Left wing-back'
+    when 'rwb'
+      assign p_label = 'Pravý wingback'
+      assign p_en = 'Right wing-back'
+    when 'dm'
+      assign p_label = 'Defenzivní záložník'
+      assign p_en = 'Defensive midfielder'
+    when 'lcm'
+      assign p_label = 'Levý středopolař'
+      assign p_en = 'Left central midfielder'
+    when 'cm'
+      assign p_label = 'Střední záložník'
+      assign p_en = 'Central midfielder'
+    when 'rcm'
+      assign p_label = 'Pravý středopolař'
+      assign p_en = 'Right central midfielder'
+    when 'am'
+      assign p_label = 'Ofenzivní záložník'
+      assign p_en = 'Attacking midfielder'
+    when 'lw'
+      assign p_label = 'Levé křídlo'
+      assign p_en = 'Left winger'
+    when 'rw'
+      assign p_label = 'Pravé křídlo'
+      assign p_en = 'Right winger'
+    when 'st'
+      assign p_label = 'Hrotový útočník'
+      assign p_en = 'Striker'
+    when 'ls'
+      assign p_label = 'Levý útočník'
+      assign p_en = 'Left forward'
+    when 'rs'
+      assign p_label = 'Pravý útočník'
+      assign p_en = 'Right forward'
+  endcase
+  if en and p_label != ''
+    assign p_label = p_en
+  endif
+-%}
+<div class="kt-fr__pos">
+  <svg class="kt-fr__pitch" viewBox="0 0 68 100" role="img" aria-label="{% if en %}Formation{% else %}Rozestavení{% endif %} {{ f_label }}{% if p_label != '' %} – {{ p_label }}{% endif %}">
+    <rect class="kt-fr__pitch-bg" x="0" y="0" width="68" height="100" rx="5"/>
+    <g class="kt-fr__pitch-lines" fill="none">
+      <rect x="3" y="3" width="62" height="94" rx="1.5"/>
+      <line x1="3" y1="50" x2="65" y2="50"/>
+      <circle cx="34" cy="50" r="8.5"/>
+      <rect x="16" y="3" width="36" height="15"/>
+      <rect x="16" y="82" width="36" height="15"/>
+      <rect x="26" y="3" width="16" height="5.5"/>
+      <rect x="26" y="91.5" width="16" height="5.5"/>
+    </g>
+    {%- assign list = slots | split: ',' -%}
+    {%- for s in list -%}
+      {%- assign p = s | split: ':' -%}
+      {%- if p[0] == slot -%}
+        <circle class="kt-fr__dot-ring" cx="{{ p[1] }}" cy="{{ p[2] }}" r="6"/>
+        <circle class="kt-fr__dot kt-fr__dot--on" cx="{{ p[1] }}" cy="{{ p[2] }}" r="4.4"/>
+      {%- else -%}
+        <circle class="kt-fr__dot" cx="{{ p[1] }}" cy="{{ p[2] }}" r="3.3"/>
+      {%- endif -%}
+    {%- endfor -%}
+  </svg>
+  <div class="kt-fr__pos-text">
+    <span class="kt-fr__pos-kicker">{% if p_label != '' %}{% if en %}Position{% else %}Pozice{% endif %}{% else %}{% if en %}Formation{% else %}Rozestavení{% endif %}{% endif %}</span>
+    {%- if p_label != '' -%}
+      <strong class="kt-fr__pos-name">{{ p_label }}</strong>
+      <span class="kt-fr__pos-form">{% if en %}Formation{% else %}Rozestavení{% endif %} {{ f_label }}</span>
+    {%- else -%}
+      <strong class="kt-fr__pos-name">{{ f_label }}</strong>
+    {%- endif -%}
+  </div>
+</div>

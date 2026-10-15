@@ -25,7 +25,8 @@
             "rating": 0,
             "quote": "Reálně dost pomohla. Nosil jsem ji na tréninky, když mě koleno hodně bolelo, a tu bolest to fakt znatelně zmírnilo. Jen škoda, že se nedělá ve více barvách, abych to mohl matchovat při zápasech k dresu, ale jinak pecka. Odehrál jsem v ní zápasy a stihl mezitím zranění dořešit s fyziem.",
             "photo_credit": "",
-            "club_logo": "shopify://shop_images/klub-sparta-brno.jpg"
+            "club_logo": "shopify://shop_images/klub-sparta-brno.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/07e88e4e-68f0-4a0b-8d98-8c59366def08"
           }
         },
         "player_klaska": {
@@ -39,7 +40,8 @@
             "rating": 0,
             "quote": "Bandáž je fakt dobrá. Na pár týdnů mi to úplně oddálilo tu nejhorší bolest (Osgood) na tréninku, abych mohl normálně hrát. Pak už jsem to musel dořešit s doktorem, ale jako rychlá úleva a zpevnění mě to zachránilo, děkuju.",
             "photo_credit": "",
-            "club_logo": "shopify://shop_images/klub-zbrojovka-brno.jpg"
+            "club_logo": "shopify://shop_images/klub-zbrojovka-brno.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/0850efba-d10e-4f36-afd0-279a02859295"
           }
         },
         "player_migli": {
@@ -53,7 +55,8 @@
             "rating": 0,
             "quote": "Zkoušel jsem to na bolest pod kolenem (Osgood) – tím páskem jsem si vlastně stáhnul ten bod pod kolenem jako páskou, takže to uleví od bolesti a navíc to drží zpevněné celé koleno, díky.",
             "photo_credit": "",
-            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg"
+            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/bcde3dd6-6ef1-41ac-b176-fe372c767fb6"
           }
         },
         "player_hnilda": {
@@ -67,21 +70,23 @@
             "rating": 0,
             "quote": "Po zranění jsem měl v hlavě blok jít do soubojů naplno. Ta bandáž mi dala hlavně jistotu, že je kloub stažený a v pohodě. Rozdíl jsem cítil hlavně u té stability, děkuji a doporučuji ostatním.",
             "photo_credit": "",
-            "club_logo": "shopify://shop_images/klub-sparta-brno.jpg"
+            "club_logo": "shopify://shop_images/klub-sparta-brno.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/07e88e4e-68f0-4a0b-8d98-8c59366def08"
           }
         },
         "player_brumic": {
           "type": "player",
           "settings": {
             "hidden": false,
-            "name": "Petr „Brumič“ Brumlal",
+            "name": "Petr „Brumič“ Brumar",
             "age": "",
-            "club": "1. SK Prostějov",
+            "club": "1. SK Prostějov – U19",
             "achievement": "",
             "rating": 0,
             "quote": "Koleno mě bolí už nějakou chvíli, ale ne nějak zásadně, spíš jen na konci tréninku. Z toho testování super – bolest pod kolenem mi při trénincích úplně odešla, a i když nebyla nějak velká, jsem za to rád.",
             "photo_credit": "",
-            "club_logo": "shopify://shop_images/klub-1sk-prostejov.jpg"
+            "club_logo": "shopify://shop_images/klub-1sk-prostejov.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/f5dad2a9-db73-4f02-ad93-d07f1640d21b"
           }
         },
         "player_strny": {
@@ -95,7 +100,8 @@
             "rating": 0,
             "quote": "Tu bandáž jsem zkoušel hlavně kvůli stabilitě na tréninku. Dříve jsem měl problémy s koleny, tak při těžkých sprintech je to zpevnění a prevence super. Noha v tom drží skvěle. Látka je příjemná, jen po prvním vyprání trochu déle schla, ale jinak bomba věc.",
             "photo_credit": "",
-            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg"
+            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/c35a3bdc-cb6d-4679-bf96-7c3a4c7a6986"
           }
         }
       },

@@ -18,6 +18,7 @@
           "type": "player",
           "settings": {
             "hidden": false,
+            "image": "shopify://shop_images/Snimek_obrazovky_2026-10-15_v_11.19.49.png",
             "name": "Martin Doležal",
             "age": "17",
             "club": "FC Sparta Brno – U19",
@@ -36,6 +37,7 @@
           "type": "player",
           "settings": {
             "hidden": false,
+            "image": "shopify://shop_images/IMG_1351.jpg",
             "name": "Vladimír Klaška",
             "age": "",
             "club": "FC Zbrojovka Brno – U17",
@@ -53,6 +55,7 @@
           "type": "player",
           "settings": {
             "hidden": false,
+            "image": "shopify://shop_images/IMG_1342.jpg",
             "name": "Luca Migliarini",
             "age": "",
             "club": "SK Sigma Olomouc – U17",
@@ -92,6 +95,7 @@
           "type": "player",
           "settings": {
             "hidden": false,
+            "image": "shopify://shop_images/18_af60ff8b-6607-4b24-945c-d8a05d180ab4.jpg",
             "name": "Petr Brumar",
             "age": "",
             "club": "1. SK Prostějov – U19",
@@ -111,6 +115,7 @@
           "type": "player",
           "settings": {
             "hidden": false,
+            "image": "shopify://shop_images/IMG_1360.jpg",
             "name": "Martin Strnad",
             "age": "",
             "club": "SK Sigma Olomouc – U17",
@@ -129,6 +134,7 @@
           "type": "player",
           "settings": {
             "hidden": false,
+            "image": "shopify://shop_images/IMG_1357.jpg",
             "name": "Denis Mlčák",
             "age": "",
             "club": "FC Zbrojovka Brno – U17",
@@ -147,6 +153,7 @@
           "type": "player",
           "settings": {
             "hidden": false,
+            "image": "shopify://shop_images/IMG_1348.jpg",
             "name": "Jakub Nádeníček",
             "age": "",
             "club": "SK Sigma Olomouc – U17",
@@ -166,6 +173,7 @@
           "type": "player",
           "settings": {
             "hidden": false,
+            "image": "shopify://shop_images/IMG_1353.jpg",
             "name": "Jan Třetina",
             "age": "",
             "club": "SK Sigma Olomouc – U17",
@@ -184,6 +192,7 @@
           "type": "player",
           "settings": {
             "hidden": false,
+            "image": "shopify://shop_images/IMG_1352.jpg",
             "name": "Luka Bratić",
             "age": "",
             "club": "1. SK Prostějov – U19",
@@ -203,6 +212,7 @@
           "type": "player",
           "settings": {
             "hidden": false,
+            "image": "shopify://shop_images/foto-17.jpg",
             "name": "Adam Všetýček",
             "age": "",
             "club": "SK Sigma Olomouc – U19",
@@ -221,6 +231,7 @@
           "type": "player",
           "settings": {
             "hidden": false,
+            "image": "shopify://shop_images/IMG_1350.jpg",
             "name": "Lukáš Soused",
             "age": "",
             "club": "SK Slavia Praha – U19",

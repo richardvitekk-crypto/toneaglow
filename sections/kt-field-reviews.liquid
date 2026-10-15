@@ -5,8 +5,8 @@
   Průměr a počet se počítají z viditelných karet a předávají se odznaku
   hodnocení pod názvem produktu (snippet kt-field-rating) přes data atributy.
   [pocet] v nadpisech se nahradí skutečným počtem zobrazených karet.
-  U hráče jde vyplnit znak klubu a odkaz na jeho profil na FAČR (is.fotbal.cz) – na kartě se pak
-  ukáže „Ověřený hráč · profil na FAČR“. Pod karuselem je výzva pro trenéry se stránkou Pro kluby;
+  U hráče jde vyplnit znak klubu a odkaz na FAČR (jeho zápas/sestava na fotbal.cz) – na kartě se pak
+  ukáže „Ověřený hráč · zápasy na FAČR“. Pod karuselem je výzva pro trenéry se stránkou Pro kluby;
   [cena] a [od] v jejím textu se doplní z produktu (týmová cena a minimum kusů).
 {%- endcomment -%}
 {%- render 'kt-section-padding', section: section -%}
@@ -178,7 +178,7 @@
                     {%- if block.settings.facr_url != blank -%}
                       <a class="kt-fr__facr" href="{{ block.settings.facr_url }}" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="currentColor"/><path d="m8.5 12 2.5 2.5 4.5-5" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        <span>{% if fr_en %}Verified player · <strong>FAČR profile</strong>{% else %}Ověřený hráč · <strong>profil na FAČR</strong>{% endif %}</span>
+                        <span>{% if fr_en %}Verified player · <strong>matches on FAČR</strong>{% else %}Ověřený hráč · <strong>zápasy na FAČR</strong>{% endif %}</span>
                         <svg class="kt-fr__facr-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         <span class="visually-hidden">{% if fr_en %}(opens in a new window){% else %}(otevře se v novém okně){% endif %}</span>
                       </a>
@@ -267,7 +267,7 @@
         { "type": "text", "id": "age", "label": "Věk", "placeholder": "16 let" },
         { "type": "text", "id": "club", "label": "Klub a kategorie", "placeholder": "FC Zbrojovka Brno – U17" },
         { "type": "image_picker", "id": "club_logo", "label": "Znak klubu (nepovinné)", "info": "Malý znak vedle názvu klubu na fotce. Ideálně čtvercový, průhledné pozadí." },
-        { "type": "url", "id": "facr_url", "label": "Profil hráče na FAČR (nepovinné)", "info": "Odkaz na hráče na is.fotbal.cz nebo fotbal.cz. Na kartě se ukáže „Ověřený hráč · profil na FAČR“." },
+        { "type": "url", "id": "facr_url", "label": "Odkaz na FAČR (nepovinné)", "info": "Odkaz na zápas na fotbal.cz, kde je hráč v sestavě (nebo na jeho profil). Na kartě se ukáže „Ověřený hráč · zápasy na FAČR“." },
         { "type": "text", "id": "achievement", "label": "Úspěchy / pozice (nepovinné)", "placeholder": "Záložník · Reprezentace ČR U16", "info": "Když necháš prázdné, řádek se skryje." },
         { "type": "range", "id": "rating", "label": "Hodnocení v míčích", "min": 0, "max": 5, "step": 0.5, "default": 5, "info": "0 = bez hodnocení (nezapočítá se do průměru)." },
         { "type": "textarea", "id": "quote", "label": "Citace hráče", "placeholder": "Co hráč řekl po vyzkoušení bandáže…" },

@@ -77,6 +77,26 @@
             "photo_credit": ""
           }
         },
+        "player_klaska": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "image": "shopify://shop_images/hrac-klaska-2.jpg",
+            "name": "Vladimír Klaška",
+            "age": "2011",
+            "repre": true,
+            "repre_label": "U16",
+            "club": "FC Zbrojovka Brno – U17",
+            "club_logo": "shopify://shop_images/klub-zbrojovka-brno.jpg",
+            "formation": "auto",
+            "position": "cm",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/0850efba-d10e-4f36-afd0-279a02859295",
+            "achievement": "Záložník · nominace do reprezentace ČR U15 · 3. nejlepší střelec 2. MSDL U17 (9 gólů v 9 zápasech) · hattrick proti Hlučínu",
+            "rating": 0,
+            "quote": "Bandáž je fakt dobrá. Na pár týdnů mi to úplně oddálilo tu nejhorší bolest (Osgood) na tréninku, abych mohl normálně hrát. Pak už jsem to musel dořešit s doktorem, ale jako rychlá úleva a zpevnění mě to zachránilo, děkuju.",
+            "photo_credit": ""
+          }
+        },
         "player_nade": {
           "type": "player",
           "settings": {
@@ -135,7 +155,7 @@
             "position": "dm",
             "career_1": "shopify://shop_images/klub-sparta-brno.jpg",
             "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/f0b3ceec-47bf-494e-98e4-832223492c74",
-            "achievement": "Záložník · reprezentant ČR U16 (2 starty) ·  Stabilní člen základní sestavy Zbrojovky Brno U17",
+            "achievement": "Záložník · reprezentant ČR U16 (6 startů) ·  Stabilní člen základní sestavy Zbrojovky Brno U17",
             "rating": 0,
             "quote": "Zkoušel jsem ji hlavně kvůli stabilitě. Dřív jsem malý problém s meniskem měl, tak je to na těžké sprinty a běhové tréninky super prevence a zpevnění. Určitě doporučuju klukům, kteří problémy s koleny měli nebo mají, děkuju.",
             "photo_credit": ""
@@ -162,23 +182,25 @@
             "photo_credit": ""
           }
         },
-        "player_klaska": {
+        "player_brumic": {
           "type": "player",
           "settings": {
             "hidden": false,
-            "image": "shopify://shop_images/hrac-klaska-2.jpg",
-            "name": "Vladimír Klaška",
-            "age": "2011",
-            "repre": true,
-            "repre_label": "U16",
-            "club": "FC Zbrojovka Brno – U17",
-            "club_logo": "shopify://shop_images/klub-zbrojovka-brno.jpg",
+            "image": "shopify://shop_images/hrac-brumar-2.jpg",
+            "name": "Petr Brumar",
+            "age": "2009",
+            "repre": false,
+            "repre_label": "",
+            "club": "1. SK Prostějov – U19",
+            "club_logo": "shopify://shop_images/klub-1sk-prostejov.jpg",
             "formation": "auto",
-            "position": "cm",
-            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/0850efba-d10e-4f36-afd0-279a02859295",
-            "achievement": "Záložník · nominace do reprezentace ČR U15 · 3. nejlepší střelec 2. MSDL U17 (9 gólů v 9 zápasech) · hattrick proti Hlučínu",
+            "position": "wg",
+            "career_1": "shopify://shop_images/klub-1hfk-olomouc.jpg",
+            "career_2": "shopify://shop_images/klub-sigma-olomouc.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/f5dad2a9-db73-4f02-ad93-d07f1640d21b",
+            "achievement": "Nejlepší střelec soutěže v sezóně 2025/26 · svými góly dovedl tým k titulu · 7. nejlepší střelec 2. MSDL U19 (6 gólů)",
             "rating": 0,
-            "quote": "Bandáž je fakt dobrá. Na pár týdnů mi to úplně oddálilo tu nejhorší bolest (Osgood) na tréninku, abych mohl normálně hrát. Pak už jsem to musel dořešit s doktorem, ale jako rychlá úleva a zpevnění mě to zachránilo, děkuju.",
+            "quote": "Koleno mě bolí už nějakou chvíli, ale ne nějak zásadně, spíš jen na konci tréninku. Z toho testování super – bolest pod kolenem mi při trénincích úplně odešla, a i když nebyla nějak velká, jsem za to rád.",
             "photo_credit": ""
           }
         },
@@ -200,28 +222,6 @@
             "achievement": "Brankář · jednička Sparty Brno U19 (9 zápasů v základu, sezóna 2026/27) · na lavičce A-týmu Sparty Brno v MOL Cupu proti FC Baník Ostrava",
             "rating": 0,
             "quote": "Reálně dost pomohla. Nosil jsem ji na tréninky, když mě koleno hodně bolelo, a tu bolest to fakt znatelně zmírnilo. Jen škoda, že se nedělá ve více barvách, abych to mohl matchovat při zápasech k dresu, ale jinak pecka. Odehrál jsem v ní zápasy a stihl mezitím zranění dořešit s fyziem.",
-            "photo_credit": ""
-          }
-        },
-        "player_brumic": {
-          "type": "player",
-          "settings": {
-            "hidden": false,
-            "image": "shopify://shop_images/hrac-brumar-2.jpg",
-            "name": "Petr Brumar",
-            "age": "2009",
-            "repre": false,
-            "repre_label": "",
-            "club": "1. SK Prostějov – U19",
-            "club_logo": "shopify://shop_images/klub-1sk-prostejov.jpg",
-            "formation": "auto",
-            "position": "wg",
-            "career_1": "shopify://shop_images/klub-1hfk-olomouc.jpg",
-            "career_2": "shopify://shop_images/klub-sigma-olomouc.jpg",
-            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/f5dad2a9-db73-4f02-ad93-d07f1640d21b",
-            "achievement": "Nejlepší střelec soutěže v sezóně 2025/26 · svými góly dovedl tým k titulu · 7. nejlepší střelec 2. MSDL U19 (6 gólů)",
-            "rating": 0,
-            "quote": "Koleno mě bolí už nějakou chvíli, ale ne nějak zásadně, spíš jen na konci tréninku. Z toho testování super – bolest pod kolenem mi při trénincích úplně odešla, a i když nebyla nějak velká, jsem za to rád.",
             "photo_credit": ""
           }
         },
@@ -276,13 +276,13 @@
         "player_soused",
         "player_vsete",
         "player_johny",
+        "player_klaska",
         "player_nade",
         "player_strny",
         "player_denca",
         "player_migli",
-        "player_klaska",
-        "player_QTkbna",
         "player_brumic",
+        "player_QTkbna",
         "player_bratic",
         "player_hnilda"
       ],

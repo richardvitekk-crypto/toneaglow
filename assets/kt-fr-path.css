@@ -241,3 +241,34 @@
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.82);
 }
+
+/* Štít reprezentace ČR – vpravo nahoře na fotce */
+.kt-fr__repre {
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  right: 1rem;
+  width: 4.4rem;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.55));
+}
+
+.kt-fr__repre img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.kt-fr__top--repre {
+  right: 6.2rem;
+}
+
+@media screen and (min-width: 990px) {
+  .kt-fr__repre {
+    width: 4.8rem;
+  }
+
+  .kt-fr__top--repre {
+    right: 6.6rem;
+  }
+}

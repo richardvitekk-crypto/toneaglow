@@ -139,7 +139,7 @@
                     endfor
                   -%}
                   {%- if fr_path_count > 0 or block.settings.club_logo != blank or block.settings.club != blank -%}
-                    <div class="kt-fr__top">
+                    <div class="kt-fr__top{% if block.settings.repre %} kt-fr__top--repre{% endif %}">
                       {%- if fr_path_count > 0 or block.settings.club_logo != blank or block.settings.club != blank -%}
                         <div class="kt-fr__path" role="img" aria-label="{% if fr_en %}Player's path{% else %}Cesta hráče{% endif %}">
                           {%- assign fr_step = 0 -%}
@@ -170,6 +170,20 @@
                         </div>
                       {%- endif -%}
                     </div>
+                  {%- endif -%}
+                  {%- if block.settings.repre -%}
+                    {%- liquid
+                      assign fr_repre_alt = 'Reprezentace ČR'
+                      if fr_en
+                        assign fr_repre_alt = 'Czech national team'
+                      endif
+                      if block.settings.repre_label != blank
+                        assign fr_repre_alt = fr_repre_alt | append: ' ' | append: block.settings.repre_label
+                      endif
+                    -%}
+                    <span class="kt-fr__repre" title="{{ fr_repre_alt | escape }}">
+                      <img src="{{ 'kt-repre-cz.png' | file_url }}" alt="{{ fr_repre_alt | escape }}" width="90" height="117" loading="lazy">
+                    </span>
                   {%- endif -%}
                   {%- if block.settings.name != blank -%}
                     <h3 class="kt-fr__name kt-fr__name--photo">
@@ -292,6 +306,8 @@
         { "type": "image_picker", "id": "image", "label": "Fotka hráče", "info": "Ideálně na výšku (4:5). Používej jen fotky, ke kterým máš souhlas hráče – u nezletilých i rodiče – a autora fotky." },
         { "type": "text", "id": "name", "label": "Jméno", "placeholder": "Filip K." },
         { "type": "text", "id": "age", "label": "Ročník (rok narození)", "placeholder": "2010", "info": "Zobrazí se pod jménem jako „Ročník 2010“." },
+        { "type": "checkbox", "id": "repre", "label": "Aktuálně v reprezentaci ČR", "default": false, "info": "Vpravo nahoře na fotce se ukáže štít s českým lvem." },
+        { "type": "text", "id": "repre_label", "label": "Reprezentace – kategorie", "placeholder": "U17", "info": "Jen do popisku štítu (alt text)." },
         { "type": "text", "id": "club", "label": "Klub a kategorie", "placeholder": "FC Zbrojovka Brno – U17" },
         { "type": "image_picker", "id": "club_logo", "label": "Znak klubu (nepovinné)", "info": "Znak současného klubu – nahoře na fotce v liště cesty hráče. Ideálně čtvercový." },
         { "type": "header", "content": "Pozice na hřišti" },

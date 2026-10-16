@@ -20,6 +20,14 @@
     "hero": {
       "type": "kt-about-hero",
       "blocks": {
+        "p4": {
+          "type": "pillar",
+          "settings": {
+            "icon": "chat",
+            "title": "Česká značka z Brna",
+            "text": "Píšeš přímo nám, odpovídáme obvykle do 24 hodin. Na vrácení máš 14 dní."
+          }
+        },
         "p1": {
           "type": "pillar",
           "settings": {
@@ -43,21 +51,13 @@
             "title": "Pravda místo keců",
             "text": "Nepíšeme, že bandáž léčí. Píšeme, co opravdu umí: kompresi, oporu a pocit jistoty."
           }
-        },
-        "p4": {
-          "type": "pillar",
-          "settings": {
-            "icon": "chat",
-            "title": "Česká značka z Brna",
-            "text": "Píšeš přímo nám, odpovídáme obvykle do 24 hodin. Na vrácení máš 14 dní."
-          }
         }
       },
       "block_order": [
+        "p4",
         "p1",
         "p2",
-        "p3",
-        "p4"
+        "p3"
       ],
       "settings": {
         "eyebrow": "O nás",
@@ -117,6 +117,7 @@
         "m4",
         "m5"
       ],
+      "disabled": true,
       "settings": {
         "speed": 40,
         "color_scheme": "scheme-3",
@@ -128,9 +129,9 @@
       "type": "kt-pros",
       "settings": {
         "badge": "Testováno profíky",
-        "heading": "Nosí ji hráči a hráčky",
-        "heading_accent": "z profesionálních akademií.",
-        "text": "<p>Ne jen tak někdo. Bandáž prošla tréninky a zápasy hráčů a hráček z profesionálních fotbalových akademií v Česku – tam, kde se hraje naplno každý den.</p><p>Co na ni říkají, najdeš v jejich recenzích na hlavní stránce.</p>",
+        "heading": "Nosí ji hráči z",
+        "heading_accent": "profesionálních akademií.",
+        "text": "<p>Ne jen tak někdo. Bandáž prošla tréninky a zápasy hráčů a z profesionálních fotbalových akademií v Česku – tam, kde se hraje naplno každý den.</p><p>Co na ni říkají, najdeš v jejich recenzích na hlavní stránce.</p>",
         "question": "Chceš být úspěšný jako oni?",
         "button_label": "Podívej se, kdo ji nosí",
         "button_link": "",
@@ -146,13 +147,23 @@
         "tiktok": {
           "type": "network",
           "settings": {
-            "platform": "tiktok"
+            "platform": "tiktok",
+            "handle": "",
+            "profile_url": "",
+            "post_url": "",
+            "caption": "",
+            "follow_label": ""
           }
         },
         "instagram": {
           "type": "network",
           "settings": {
-            "platform": "instagram"
+            "platform": "instagram",
+            "handle": "",
+            "profile_url": "",
+            "post_url": "",
+            "caption": "",
+            "follow_label": ""
           }
         }
       },
@@ -166,6 +177,7 @@
         "text": "<p>Videa z tréninků, tipy pro kolena a hráči, kteří ji nosí.</p>",
         "follow_label": "Sledovat",
         "empty_text": "Video brzy. Mezitím nás sleduj.",
+        "hide_when_empty": false,
         "color_scheme": "scheme-3",
         "padding_top": 88,
         "padding_bottom": 88
@@ -204,6 +216,7 @@
         "f2",
         "f3"
       ],
+      "disabled": true,
       "settings": {
         "eyebrow": "Jak to funguje",
         "heading": "Žádná magie. Fakta.",
@@ -212,11 +225,11 @@
         "color_scheme": "scheme-2",
         "padding_top": 96,
         "padding_bottom": 96
-      },
-      "disabled": true
+      }
     },
     "cta": {
       "type": "kt-cta",
+      "disabled": true,
       "settings": {
         "heading": "Máš vybráno?",
         "text": "<p>1 kus za 590 Kč. 2 kusy na obě kolena za 790 Kč.</p>",
@@ -226,8 +239,7 @@
         "color_scheme": "scheme-1",
         "padding_top": 16,
         "padding_bottom": 96
-      },
-      "disabled": true
+      }
     }
   },
   "order": [

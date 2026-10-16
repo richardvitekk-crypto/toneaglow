@@ -14,13 +14,183 @@
     "field_reviews": {
       "type": "kt-field-reviews",
       "blocks": {
+        "player_soused": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "image": "shopify://shop_images/hrac-soused.jpg",
+            "name": "Lukáš Soused",
+            "age": "2010",
+            "repre": true,
+            "repre_label": "U17",
+            "club": "SK Slavia Praha – U19",
+            "club_logo": "shopify://shop_images/klub-slavia-praha.jpg",
+            "formation": "auto",
+            "position": "cm",
+            "career_1": "shopify://shop_images/klub-zbrojovka-brno.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/5bed124f-3f2c-4039-bfd9-a7e60165ed71",
+            "achievement": "Profesionální smlouva se SK Slavia Praha · stálý reprezentant ČR (U15, U16, U17)· Debutant v 1. celostátní lize U19",
+            "rating": 0,
+            "quote": "Na tréninku jsem ji párkrát vyzkoušel. Problémy s kolenem dlouhodobě nemám, takže nemůžu posoudit, jak pomáhá při bolesti, ale materiál je super, skvěle seděla a nesjížděla mi. Za mě bomba pro kluky s nestabilními koleny.",
+            "photo_credit": ""
+          }
+        },
+        "player_vsete": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "image": "shopify://shop_images/hrac-vsetycek.jpg",
+            "name": "Adam Všetýček",
+            "age": "2010",
+            "repre": true,
+            "repre_label": "U17",
+            "club": "SK Sigma Olomouc – U19",
+            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
+            "formation": "auto",
+            "position": "cb",
+            "career_1": "shopify://shop_images/klub-novy-malin.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/663ddec9-be91-41dd-a7ec-38f0c5fb0ee9",
+            "achievement": "Obránce · profesionální smlouva se SK Sigma Olomouc · nejmladší debutant Sigmy v kategorii U19 · 8 zápasů v 1. celostátní lize U19 (2026/27) · reprezentant ČR U17",
+            "rating": 0,
+            "quote": "Koleno mám zdravé, tak jsem byl zvědavý hlavně na zpevnění. Bandáž kloub fakt dobře obejme a ten stahovací pásek tomu dává strašně velkou stabilitu, klukům s bolestmi rozhodně doporučuju, díky.",
+            "photo_credit": ""
+          }
+        },
+        "player_johny": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "image": "shopify://shop_images/hrac-tretina.jpg",
+            "name": "Jan Třetina",
+            "age": "2011",
+            "repre": true,
+            "repre_label": "U16",
+            "club": "SK Sigma Olomouc – U17",
+            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
+            "formation": "auto",
+            "position": "st",
+            "career_1": "shopify://shop_images/klub-sk-hranice.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/16ae4ae2-b27f-4893-a3f8-a956b157790b",
+            "achievement": "Útočník · nominace  na FIFA U-16 World Cup 2026 ČR · účastník všech srazů reprezentace ČR U15 (7 startů, 4 góly) · 3 góly v 1. celostátní lize U17",
+            "rating": 0,
+            "quote": "Testoval jsem tu bandáž v gymu na dřepy a na sprintech. Bolestí kolen netrpím, chtěl jsem jen poctivé zpevnění při zátěži (hlavně ve fitku). Účel to splnilo na jedničku, kloub je pevně stažený a při odrazu cítím větší sílu. Díky.",
+            "photo_credit": ""
+          }
+        },
+        "player_nade": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "image": "shopify://shop_images/hrac-nadenicek-2.jpg",
+            "name": "Jakub Nádeníček",
+            "age": "2010",
+            "repre": true,
+            "repre_label": "U17",
+            "club": "SK Sigma Olomouc – U17",
+            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
+            "formation": "auto",
+            "position": "am",
+            "career_1": "shopify://shop_images/klub-tesany.jpg",
+            "career_2": "shopify://shop_images/klub-sparta-brno.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/c35a3bdc-cb6d-4679-bf96-7c3a4c7a6986",
+            "achievement": "Záložník · pravidelně v nominacích reprezentace ČR (U15, U16, U17) · 5 gólů v 1. celostátní lize U17",
+            "rating": 0,
+            "quote": "Kolena mám víceméně v pohodě, ale bral jsem si ji preventivně na těžší fotbalové tréninky na umělce, kdy mě někdy bolel Osgood. Drží na místě, nesjíždí a celkově mám na hřišti lepší pocit a to utažení páskou je skvělý.",
+            "photo_credit": ""
+          }
+        },
+        "player_strny": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "image": "shopify://shop_images/hrac-strnad.jpg",
+            "name": "Martin Strnad",
+            "age": "2010",
+            "repre": true,
+            "repre_label": "U17",
+            "club": "SK Sigma Olomouc – U17",
+            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
+            "formation": "auto",
+            "position": "fb",
+            "career_1": "shopify://shop_images/klub-banik-ostrava.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/c35a3bdc-cb6d-4679-bf96-7c3a4c7a6986",
+            "achievement": "Obránce · pravidelně v nominacích reprezentace ČR (U15, U16, U17). Stabilní člen základní sestavy Sigmy v 1. celostátní lize U17",
+            "rating": 0,
+            "quote": "Tu bandáž jsem zkoušel hlavně kvůli stabilitě na tréninku. Dříve jsem měl problémy s koleny, tak při těžkých sprintech je to zpevnění a prevence super. Noha v tom drží skvěle. Látka je příjemná, jen po prvním vyprání trochu déle schla, ale jinak bomba věc.",
+            "photo_credit": ""
+          }
+        },
+        "player_denca": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "image": "shopify://shop_images/hrac-mlcak.jpg",
+            "name": "Denis Mlčák",
+            "age": "2010",
+            "repre": true,
+            "repre_label": "U16",
+            "club": "FC Zbrojovka Brno – U17",
+            "club_logo": "shopify://shop_images/klub-zbrojovka-brno.jpg",
+            "formation": "auto",
+            "position": "dm",
+            "career_1": "shopify://shop_images/klub-sparta-brno.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/f0b3ceec-47bf-494e-98e4-832223492c74",
+            "achievement": "Záložník · reprezentant ČR U16 (2 starty) ·  Stabilní člen základní sestavy Zbrojovky Brno U17",
+            "rating": 0,
+            "quote": "Zkoušel jsem ji hlavně kvůli stabilitě. Dřív jsem malý problém s meniskem měl, tak je to na těžké sprinty a běhové tréninky super prevence a zpevnění. Určitě doporučuju klukům, kteří problémy s koleny měli nebo mají, děkuju.",
+            "photo_credit": ""
+          }
+        },
+        "player_migli": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "image": "shopify://shop_images/hrac-migliarini.jpg",
+            "name": "Luca Migliarini",
+            "age": "2011",
+            "repre": true,
+            "repre_label": "U16",
+            "club": "SK Sigma Olomouc – U17",
+            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
+            "formation": "auto",
+            "position": "dm",
+            "career_1": "shopify://shop_images/klub-zbrojovka-brno.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/bcde3dd6-6ef1-41ac-b176-fe372c767fb6",
+            "achievement": "Záložník · nominace do reprezentace ČR U16 · debut v 1. celostátní lize U17 · 4 góly v 2. MSDL U17",
+            "rating": 0,
+            "quote": "Zkoušel jsem to na bolest pod kolenem (Osgood) – tím páskem jsem si vlastně stáhnul ten bod pod kolenem jako páskou, takže to uleví od bolesti a navíc to drží zpevněné celé koleno, díky.",
+            "photo_credit": ""
+          }
+        },
+        "player_klaska": {
+          "type": "player",
+          "settings": {
+            "hidden": false,
+            "image": "shopify://shop_images/hrac-klaska-2.jpg",
+            "name": "Vladimír Klaška",
+            "age": "2011",
+            "repre": true,
+            "repre_label": "U16",
+            "club": "FC Zbrojovka Brno – U17",
+            "club_logo": "shopify://shop_images/klub-zbrojovka-brno.jpg",
+            "formation": "auto",
+            "position": "cm",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/0850efba-d10e-4f36-afd0-279a02859295",
+            "achievement": "Záložník · nominace do reprezentace ČR U15 · 3. nejlepší střelec 2. MSDL U17 (9 gólů v 9 zápasech) · hattrick proti Hlučínu",
+            "rating": 0,
+            "quote": "Bandáž je fakt dobrá. Na pár týdnů mi to úplně oddálilo tu nejhorší bolest (Osgood) na tréninku, abych mohl normálně hrát. Pak už jsem to musel dořešit s doktorem, ale jako rychlá úleva a zpevnění mě to zachránilo, děkuju.",
+            "photo_credit": ""
+          }
+        },
         "player_QTkbna": {
           "type": "player",
           "settings": {
             "hidden": false,
             "image": "shopify://shop_images/hrac-dolezal.jpg",
             "name": "Martin Doležal",
-            "age": "",
+            "age": "2010",
+            "repre": false,
+            "repre_label": "",
             "club": "FC Sparta Brno – U19",
             "club_logo": "shopify://shop_images/klub-sparta-brno.jpg",
             "formation": "352",
@@ -33,76 +203,15 @@
             "photo_credit": ""
           }
         },
-        "player_klaska": {
-          "type": "player",
-          "settings": {
-            "hidden": false,
-            "image": "shopify://shop_images/hrac-klaska-2.jpg",
-            "name": "Vladimír Klaška",
-            "age": "2011",
-            "club": "FC Zbrojovka Brno – U17",
-            "club_logo": "shopify://shop_images/klub-zbrojovka-brno.jpg",
-            "formation": "auto",
-            "position": "cm",
-            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/0850efba-d10e-4f36-afd0-279a02859295",
-            "achievement": "Záložník · nominace do reprezentace ČR U15 · 3. nejlepší střelec 2. MSDL U17 (9 gólů v 9 zápasech) · hattrick proti Hlučínu",
-            "rating": 0,
-            "quote": "Bandáž je fakt dobrá. Na pár týdnů mi to úplně oddálilo tu nejhorší bolest (Osgood) na tréninku, abych mohl normálně hrát. Pak už jsem to musel dořešit s doktorem, ale jako rychlá úleva a zpevnění mě to zachránilo, děkuju.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U16"
-          }
-        },
-        "player_migli": {
-          "type": "player",
-          "settings": {
-            "hidden": false,
-            "image": "shopify://shop_images/hrac-migliarini.jpg",
-            "name": "Luca Migliarini",
-            "age": "2011",
-            "club": "SK Sigma Olomouc – U17",
-            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
-            "formation": "auto",
-            "position": "dm",
-            "career_1": "shopify://shop_images/klub-zbrojovka-brno.jpg",
-            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/bcde3dd6-6ef1-41ac-b176-fe372c767fb6",
-            "achievement": "Záložník · nominace do reprezentace ČR U16 · debut v 1. celostátní lize U17 · 4 góly v 2. MSDL U17",
-            "rating": 0,
-            "quote": "Zkoušel jsem to na bolest pod kolenem (Osgood) – tím páskem jsem si vlastně stáhnul ten bod pod kolenem jako páskou, takže to uleví od bolesti a navíc to drží zpevněné celé koleno, díky.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U16"
-          }
-        },
-        "player_hnilda": {
-          "type": "player",
-          "settings": {
-            "hidden": false,
-            "image": "shopify://shop_images/hrac-hnilica.jpg",
-            "name": "Matyáš Hnilica",
-            "age": "",
-            "club": "FC Sparta Brno – U19",
-            "club_logo": "shopify://shop_images/klub-sparta-brno.jpg",
-            "formation": "352",
-            "position": "st",
-            "career_1": "shopify://shop_images/klub-zbrojovka-brno.jpg",
-            "career_2": "shopify://shop_images/klub-banik-ostrava.jpg",
-            "career_3": "shopify://shop_images/klub-zbrojovka-brno.jpg",
-            "career_4": "shopify://shop_images/klub-start-brno.jpg",
-            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/07e88e4e-68f0-4a0b-8d98-8c59366def08",
-            "achievement": "Nejlepší střelec soutěže v sezóně 2025/26 · reprezentační sraz ČR U15 · 3 góly za Spartu Brno U19 v sezóně 2026/27",
-            "rating": 0,
-            "quote": "Po zranění jsem měl v hlavě blok jít do soubojů naplno. Ta bandáž mi dala hlavně jistotu, že je kloub stažený a v pohodě. Rozdíl jsem cítil hlavně u té stability, děkuji a doporučuji ostatním.",
-            "photo_credit": ""
-          }
-        },
         "player_brumic": {
           "type": "player",
           "settings": {
             "hidden": false,
             "image": "shopify://shop_images/hrac-brumar-2.jpg",
             "name": "Petr Brumar",
-            "age": "",
+            "age": "2009",
+            "repre": false,
+            "repre_label": "",
             "club": "1. SK Prostějov – U19",
             "club_logo": "shopify://shop_images/klub-1sk-prostejov.jpg",
             "formation": "auto",
@@ -116,98 +225,15 @@
             "photo_credit": ""
           }
         },
-        "player_strny": {
-          "type": "player",
-          "settings": {
-            "hidden": false,
-            "image": "shopify://shop_images/hrac-strnad.jpg",
-            "name": "Martin Strnad",
-            "age": "2010",
-            "club": "SK Sigma Olomouc – U17",
-            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
-            "formation": "auto",
-            "position": "fb",
-            "career_1": "shopify://shop_images/klub-banik-ostrava.jpg",
-            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/c35a3bdc-cb6d-4679-bf96-7c3a4c7a6986",
-            "achievement": "Obránce · pravidelně v nominacích reprezentace ČR (U15, U16, U17). Stabilní člen základní sestavy Sigmy v 1. celostátní lize U17",
-            "rating": 0,
-            "quote": "Tu bandáž jsem zkoušel hlavně kvůli stabilitě na tréninku. Dříve jsem měl problémy s koleny, tak při těžkých sprintech je to zpevnění a prevence super. Noha v tom drží skvěle. Látka je příjemná, jen po prvním vyprání trochu déle schla, ale jinak bomba věc.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U17"
-          }
-        },
-        "player_denca": {
-          "type": "player",
-          "settings": {
-            "hidden": false,
-            "image": "shopify://shop_images/hrac-mlcak.jpg",
-            "name": "Denis Mlčák",
-            "age": "2010",
-            "club": "FC Zbrojovka Brno – U17",
-            "club_logo": "shopify://shop_images/klub-zbrojovka-brno.jpg",
-            "formation": "auto",
-            "position": "dm",
-            "career_1": "shopify://shop_images/klub-sparta-brno.jpg",
-            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/f0b3ceec-47bf-494e-98e4-832223492c74",
-            "achievement": "Záložník · reprezentant ČR U16 (2 starty) ·  Stabilní člen základní sestavy Zbrojovky Brno U17",
-            "rating": 0,
-            "quote": "Zkoušel jsem ji hlavně kvůli stabilitě. Dřív jsem malý problém s meniskem měl, tak je to na těžké sprinty a běhové tréninky super prevence a zpevnění. Určitě doporučuju klukům, kteří problémy s koleny měli nebo mají, děkuju.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U16"
-          }
-        },
-        "player_nade": {
-          "type": "player",
-          "settings": {
-            "hidden": false,
-            "image": "shopify://shop_images/hrac-nadenicek-2.jpg",
-            "name": "Jakub Nádeníček",
-            "age": "2010",
-            "club": "SK Sigma Olomouc – U17",
-            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
-            "formation": "auto",
-            "position": "am",
-            "career_1": "shopify://shop_images/klub-tesany.jpg",
-            "career_2": "shopify://shop_images/klub-sparta-brno.jpg",
-            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/c35a3bdc-cb6d-4679-bf96-7c3a4c7a6986",
-            "achievement": "Záložník · pravidelně v nominacích reprezentace ČR (U15, U16, U17) · 5 gólů v 1. celostátní lize U17",
-            "rating": 0,
-            "quote": "Kolena mám víceméně v pohodě, ale bral jsem si ji preventivně na těžší fotbalové tréninky na umělce, kdy mě někdy bolel Osgood. Drží na místě, nesjíždí a celkově mám na hřišti lepší pocit a to utažení páskou je skvělý.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U17"
-          }
-        },
-        "player_johny": {
-          "type": "player",
-          "settings": {
-            "hidden": false,
-            "image": "shopify://shop_images/hrac-tretina.jpg",
-            "name": "Jan Třetina",
-            "age": "2011",
-            "club": "SK Sigma Olomouc – U17",
-            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
-            "formation": "auto",
-            "position": "st",
-            "career_1": "shopify://shop_images/klub-sk-hranice.jpg",
-            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/16ae4ae2-b27f-4893-a3f8-a956b157790b",
-            "achievement": "Útočník · nominace  na FIFA U-16 World Cup 2026 ČR · účastník všech srazů reprezentace ČR U15 (7 startů, 4 góly) · 3 góly v 1. celostátní lize U17",
-            "rating": 0,
-            "quote": "Testoval jsem tu bandáž v gymu na dřepy a na sprintech. Bolestí kolen netrpím, chtěl jsem jen poctivé zpevnění při zátěži (hlavně ve fitku). Účel to splnilo na jedničku, kloub je pevně stažený a při odrazu cítím větší sílu. Díky.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U16"
-          }
-        },
         "player_bratic": {
           "type": "player",
           "settings": {
             "hidden": false,
             "image": "shopify://shop_images/hrac-bratic.jpg",
             "name": "Luka Bratić",
-            "age": "",
+            "age": "2009",
+            "repre": false,
+            "repre_label": "",
             "club": "1. SK Prostějov – U19",
             "club_logo": "shopify://shop_images/klub-1sk-prostejov.jpg",
             "formation": "auto",
@@ -221,46 +247,28 @@
             "photo_credit": ""
           }
         },
-        "player_vsete": {
+        "player_hnilda": {
           "type": "player",
           "settings": {
             "hidden": false,
-            "image": "shopify://shop_images/hrac-vsetycek.jpg",
-            "name": "Adam Všetýček",
-            "age": "2010",
-            "club": "SK Sigma Olomouc – U19",
-            "club_logo": "shopify://shop_images/klub-sigma-olomouc.jpg",
-            "formation": "auto",
-            "position": "cb",
-            "career_1": "shopify://shop_images/klub-novy-malin.jpg",
-            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/663ddec9-be91-41dd-a7ec-38f0c5fb0ee9",
-            "achievement": "Obránce · profesionální smlouva se SK Sigma Olomouc · nejmladší debutant Sigmy v kategorii U19 · 8 zápasů v 1. celostátní lize U19 (2026/27) · reprezentant ČR U17",
-            "rating": 0,
-            "quote": "Koleno mám zdravé, tak jsem byl zvědavý hlavně na zpevnění. Bandáž kloub fakt dobře obejme a ten stahovací pásek tomu dává strašně velkou stabilitu, klukům s bolestmi rozhodně doporučuju, díky.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U17"
-          }
-        },
-        "player_soused": {
-          "type": "player",
-          "settings": {
-            "hidden": false,
-            "image": "shopify://shop_images/hrac-soused.jpg",
-            "name": "Lukáš Soused",
-            "age": "2010",
-            "club": "SK Slavia Praha – U19",
-            "club_logo": "shopify://shop_images/klub-slavia-praha.jpg",
-            "formation": "auto",
-            "position": "cm",
+            "image": "shopify://shop_images/hrac-hnilica.jpg",
+            "name": "Matyáš Hnilica",
+            "age": "2008",
+            "repre": false,
+            "repre_label": "",
+            "club": "FC Sparta Brno – U19",
+            "club_logo": "shopify://shop_images/klub-sparta-brno.jpg",
+            "formation": "352",
+            "position": "st",
             "career_1": "shopify://shop_images/klub-zbrojovka-brno.jpg",
-            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/5bed124f-3f2c-4039-bfd9-a7e60165ed71",
-            "achievement": "Profesionální smlouva se SK Slavia Praha · stálý reprezentant ČR (U15, U16, U17)· Debutant v 1. celostátní lize U19",
+            "career_2": "shopify://shop_images/klub-banik-ostrava.jpg",
+            "career_3": "shopify://shop_images/klub-zbrojovka-brno.jpg",
+            "career_4": "shopify://shop_images/klub-start-brno.jpg",
+            "facr_url": "https://www.fotbal.cz/souteze/zapasy/zapas/07e88e4e-68f0-4a0b-8d98-8c59366def08",
+            "achievement": "Nejlepší střelec soutěže v sezóně 2025/26 · reprezentační sraz ČR U15 · 3 góly za Spartu Brno U19 v sezóně 2026/27",
             "rating": 0,
-            "quote": "Na tréninku jsem ji párkrát vyzkoušel. Problémy s kolenem dlouhodobě nemám, takže nemůžu posoudit, jak pomáhá při bolesti, ale materiál je super, skvěle seděla a nesjížděla mi. Za mě bomba pro kluky s nestabilními koleny.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U17"
+            "quote": "Po zranění jsem měl v hlavě blok jít do soubojů naplno. Ta bandáž mi dala hlavně jistotu, že je kloub stažený a v pohodě. Rozdíl jsem cítil hlavně u té stability, děkuji a doporučuji ostatním.",
+            "photo_credit": ""
           }
         }
       },

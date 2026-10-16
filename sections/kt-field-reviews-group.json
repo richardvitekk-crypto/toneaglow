@@ -48,9 +48,7 @@
             "achievement": "Záložník · nominace do reprezentace ČR U15 · 3. nejlepší střelec 2. MSDL U17 (9 gólů v 9 zápasech) · hattrick proti Hlučínu",
             "rating": 0,
             "quote": "Bandáž je fakt dobrá. Na pár týdnů mi to úplně oddálilo tu nejhorší bolest (Osgood) na tréninku, abych mohl normálně hrát. Pak už jsem to musel dořešit s doktorem, ale jako rychlá úleva a zpevnění mě to zachránilo, děkuju.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U16"
+            "photo_credit": ""
           }
         },
         "player_migli": {
@@ -69,15 +67,14 @@
             "achievement": "Záložník · nominace do reprezentace ČR U16 · debut v 1. celostátní lize U17 · 4 góly v 2. MSDL U17",
             "rating": 0,
             "quote": "Zkoušel jsem to na bolest pod kolenem (Osgood) – tím páskem jsem si vlastně stáhnul ten bod pod kolenem jako páskou, takže to uleví od bolesti a navíc to drží zpevněné celé koleno, díky.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U16"
+            "photo_credit": ""
           }
         },
         "player_hnilda": {
           "type": "player",
           "settings": {
             "hidden": false,
+            "image": "shopify://shop_images/A0E10B94-D25B-4F97-B99D-80FF2629A4AE.jpg",
             "name": "Matyáš Hnilica",
             "age": "",
             "club": "FC Sparta Brno – U19",
@@ -99,7 +96,7 @@
           "type": "player",
           "settings": {
             "hidden": false,
-            "image": "shopify://shop_images/hrac-brumar.jpg",
+            "image": "shopify://shop_images/IMG_1373.jpg",
             "name": "Petr Brumar",
             "age": "",
             "club": "1. SK Prostějov – U19",
@@ -131,9 +128,7 @@
             "achievement": "Obránce · pravidelně v nominacích reprezentace ČR (U15, U16, U17). Stabilní člen základní sestavy Sigmy v 1. celostátní lize U17",
             "rating": 0,
             "quote": "Tu bandáž jsem zkoušel hlavně kvůli stabilitě na tréninku. Dříve jsem měl problémy s koleny, tak při těžkých sprintech je to zpevnění a prevence super. Noha v tom drží skvěle. Látka je příjemná, jen po prvním vyprání trochu déle schla, ale jinak bomba věc.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U17"
+            "photo_credit": ""
           }
         },
         "player_denca": {
@@ -152,16 +147,14 @@
             "achievement": "Záložník · reprezentant ČR U16 (2 starty) ·  Stabilní člen základní sestavy Zbrojovky Brno U17",
             "rating": 0,
             "quote": "Zkoušel jsem ji hlavně kvůli stabilitě. Dřív jsem malý problém s meniskem měl, tak je to na těžké sprinty a běhové tréninky super prevence a zpevnění. Určitě doporučuju klukům, kteří problémy s koleny měli nebo mají, děkuju.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U16"
+            "photo_credit": ""
           }
         },
         "player_nade": {
           "type": "player",
           "settings": {
             "hidden": false,
-            "image": "shopify://shop_images/hrac-nadenicek.jpg",
+            "image": "shopify://shop_images/IMG_1371.jpg",
             "name": "Jakub Nádeníček",
             "age": "2010",
             "club": "SK Sigma Olomouc – U17",
@@ -174,9 +167,7 @@
             "achievement": "Záložník · pravidelně v nominacích reprezentace ČR (U15, U16, U17) · 5 gólů v 1. celostátní lize U17",
             "rating": 0,
             "quote": "Kolena mám víceméně v pohodě, ale bral jsem si ji preventivně na těžší fotbalové tréninky na umělce, kdy mě někdy bolel Osgood. Drží na místě, nesjíždí a celkově mám na hřišti lepší pocit a to utažení páskou je skvělý.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U17"
+            "photo_credit": ""
           }
         },
         "player_johny": {
@@ -195,9 +186,7 @@
             "achievement": "Útočník · nominace  na FIFA U-16 World Cup 2026 ČR · účastník všech srazů reprezentace ČR U15 (7 startů, 4 góly) · 3 góly v 1. celostátní lize U17",
             "rating": 0,
             "quote": "Testoval jsem tu bandáž v gymu na dřepy a na sprintech. Bolestí kolen netrpím, chtěl jsem jen poctivé zpevnění při zátěži (hlavně ve fitku). Účel to splnilo na jedničku, kloub je pevně stažený a při odrazu cítím větší sílu. Díky.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U16"
+            "photo_credit": ""
           }
         },
         "player_bratic": {
@@ -236,9 +225,7 @@
             "achievement": "Obránce · profesionální smlouva se SK Sigma Olomouc · nejmladší debutant Sigmy v kategorii U19 · 8 zápasů v 1. celostátní lize U19 (2026/27) · reprezentant ČR U17",
             "rating": 0,
             "quote": "Koleno mám zdravé, tak jsem byl zvědavý hlavně na zpevnění. Bandáž kloub fakt dobře obejme a ten stahovací pásek tomu dává strašně velkou stabilitu, klukům s bolestmi rozhodně doporučuju, díky.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U17"
+            "photo_credit": ""
           }
         },
         "player_soused": {
@@ -257,25 +244,23 @@
             "achievement": "Profesionální smlouva se SK Slavia Praha · stálý reprezentant ČR (U15, U16, U17)· Debutant v 1. celostátní lize U19",
             "rating": 0,
             "quote": "Na tréninku jsem ji párkrát vyzkoušel. Problémy s kolenem dlouhodobě nemám, takže nemůžu posoudit, jak pomáhá při bolesti, ale materiál je super, skvěle seděla a nesjížděla mi. Za mě bomba pro kluky s nestabilními koleny.",
-            "photo_credit": "",
-            "repre": true,
-            "repre_label": "U17"
+            "photo_credit": ""
           }
         }
       },
       "block_order": [
-        "player_soused",
-        "player_vsete",
-        "player_johny",
-        "player_nade",
+        "player_QTkbna",
+        "player_klaska",
+        "player_migli",
+        "player_hnilda",
+        "player_brumic",
         "player_strny",
         "player_denca",
-        "player_migli",
-        "player_klaska",
-        "player_QTkbna",
-        "player_brumic",
+        "player_nade",
+        "player_johny",
         "player_bratic",
-        "player_hnilda"
+        "player_vsete",
+        "player_soused"
       ],
       "settings": {
         "eyebrow": "Testováno v terénu",
